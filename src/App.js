@@ -31,6 +31,7 @@ const technologies = {
   ]
 };
 
+// eslint-disable-next-line no-unused-vars
 const experiences = [
   {
     title: 'Systems Engineer',
@@ -64,6 +65,7 @@ const experiences = [
   }
 ];
 
+// eslint-disable-next-line no-unused-vars
 const education = [
   {
     program: 'Mobile Applications Development',
@@ -104,6 +106,7 @@ const education = [
   }
 ];
 
+// eslint-disable-next-line no-unused-vars
 const projects = [
   {
     title: 'HealthTrackPro',
