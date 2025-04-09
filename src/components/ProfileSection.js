@@ -1,3 +1,6 @@
+import { motion } from 'framer-motion';
+
+// eslint-disable-next-line no-unused-vars
 const ProfileSection = () => {
   return (
     <motion.div 

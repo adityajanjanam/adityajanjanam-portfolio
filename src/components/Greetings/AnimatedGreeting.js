@@ -12,9 +12,15 @@ export const AnimatedGreeting = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const { isMobile, isTablet } = useScreenSize();
 
+  const greetings = [
+    { text: 'Hello!', color: 'from-blue-400 to-blue-600' },
+    { text: 'Hi there!', color: 'from-green-400 to-green-600' },
+    { text: 'Welcome!', color: 'from-purple-400 to-purple-600' },
+  ];
+
   const cycleGreeting = useCallback(() => {
     setCurrentIndex(prev => (prev + 1) % greetings.length);
-  }, []);
+  }, [greetings.length]);
 
   useEffect(() => {
     const interval = setInterval(cycleGreeting, 1000);

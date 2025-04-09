@@ -35,17 +35,33 @@ const technologies = {
 const experiences = [
   {
     title: 'Systems Engineer',
-    company: 'Atos',
-    date: 'Jun 2021 – Present',
-    location: 'Remote',
-    description: 'Source Validation, Application Packaging & Testing using PowerShell, Admin Studio, InstallShield'
+    company: 'Atos Global',
+    date: 'Jun 2021 – Aug 2023',
+    location: 'Chennai, India',
+    description: [
+      'Led application packaging and testing initiatives using PowerShell, Admin Studio, and InstallShield',
+      'Automated deployment processes reducing manual effort by 40%',
+      'Managed enterprise software distribution using SCCM/MECM',
+      'Collaborated with cross-functional teams for seamless application delivery',
+      'Implemented quality assurance protocols improving package success rate by 25%'
+    ],
+    skills: ['PowerShell', 'SCCM', 'Admin Studio', 'InstallShield', 'Application Packaging', 'Software Testing'],
+    logo: '🏢'
   },
   {
     title: 'Software Engineer Intern',
     company: 'Capgemini',
     date: 'Sep 2020 – Dec 2020',
-    location: 'India',
-    description: 'Manual and Selenium Testing with Jira & Java'
+    location: 'Bengaluru, India',
+    description: [
+      'Conducted manual and automated testing using Selenium and Java',
+      'Developed test scripts improving test coverage by 30%',
+      'Utilized Jira for project tracking and bug reporting',
+      'Participated in agile development processes and sprint planning',
+      'Collaborated with development teams to resolve software defects'
+    ],
+    skills: ['Selenium', 'Java', 'Manual Testing', 'Jira', 'Agile', 'Test Automation'],
+    logo: '💻'
   }
 ];
 
@@ -54,8 +70,7 @@ const education = [
     program: 'Mobile Applications Development',
     institution: 'Centennial College',
     period: '2024-2025',
-    type: 'Post-Graduate Certificate',
-    status: 'PGWP Eligible',
+    type: 'Graduate Certificate',
     courses: [
       'Samsung Android Application Development',
       'Web Technologies for Mobile Platforms',
@@ -73,8 +88,8 @@ const education = [
     program: 'Computer Applications Development',
     institution: 'Conestoga College',
     period: '2024-2025',
-    type: 'Post-Graduate Certificate',
-    status: 'PGWP Eligible',
+    type: 'Graduate Certificate',
+    Grade: 'Distinction',
     courses: [
       'Systems Concepts, Analysis and Design',
       'Programming: Software Development Techniques',
@@ -93,67 +108,181 @@ const education = [
 const projects = [
   {
     title: 'HealthTrackPro',
-    description: 'A patient clinical data tracking app with QR sync, REST API, offline-first, and charts.',
-    tech: ['React Native', 'Flutter', 'Node.js', 'MongoDB'],
+    description: 'A comprehensive healthcare provider app built with React Native for tracking patient data. Features include QR sync, offline-first capability, clinical data management, and interactive charts.',
+    tech: ['React Native', 'Node.js', 'MongoDB', 'REST API'],
     type: 'Healthcare App',
-    link: 'https://github.com/adityajanjanam/HealthTrackPro'
+    link: 'https://github.com/adityajanjanam/HealthTrackPro',
+    image: '🏥',
+    highlights: [
+      'Offline-first architecture',
+      'Real-time data synchronization',
+      'HIPAA compliant data handling',
+      'Interactive medical charts'
+    ]
   },
   {
-    title: 'Missamma Makeovers',
-    description: 'Beauty studio site with smooth UI, contact form, SEO, and custom branding.',
-    tech: ['React', 'Tailwind', 'SEO'],
-    type: 'Business Website',
-    link: 'https://github.com/adityajanjanam'
+    title: 'TrainWithTail',
+    description: 'Pet training platform offering tailored programs, expert advice, and an integrated pet product shop for enhanced pet-owner relationships.',
+    tech: ['Node.js', 'MongoDB', 'HTML5', 'CSS3', 'JavaScript'],
+    type: 'Full Stack Web App',
+    link: 'https://github.com/adityajanjanam/TrainWithTail',
+    image: '🐕',
+    highlights: [
+      'Personalized training programs',
+      'E-commerce integration',
+      'Expert consultation system',
+      'Progress tracking dashboard'
+    ]
+  },
+  {
+    title: 'PatientDataAPI',
+    description: 'RESTful API for healthcare providers to manage and monitor patient clinical data. Built with Node.js and MongoDB, featuring Swagger documentation.',
+    tech: ['Node.js', 'Express', 'MongoDB', 'Swagger'],
+    type: 'Backend API',
+    link: 'https://github.com/adityajanjanam/PatientDataAPI',
+    image: '🔌',
+    highlights: [
+      'RESTful architecture',
+      'Comprehensive API documentation',
+      'Secure data handling',
+      'Scalable database design'
+    ]
   },
   {
     title: 'Scientific Calculator',
-    description: 'Flutter scientific calculator supporting layout optimization and advanced functions.',
-    tech: ['Flutter', 'Firebase'],
+    description: 'Modern scientific calculator app with advanced mathematical operations, built using React Native and Expo for cross-platform compatibility.',
+    tech: ['React Native', 'Expo', 'JavaScript'],
     type: 'Mobile Utility App',
-    link: 'https://expo.dev/artifacts/eas/qxwm3k8vpPepRHiTQTATXX.aab'
+    link: 'https://github.com/adityajanjanam/ScientificCalculatorApp',
+    image: '🧮',
+    highlights: [
+      'Cross-platform compatibility',
+      'Advanced mathematical functions',
+      'Intuitive user interface',
+      'Offline functionality'
+    ]
+  },
+  {
+    title: 'MAPD721 Android Animations',
+    description: 'Interactive Android app showcasing various Jetpack Compose animations, including animated transitions, infinite animations, and gesture-based interactions.',
+    tech: ['Kotlin', 'Jetpack Compose', 'Material Design'],
+    type: 'Android App',
+    link: 'https://github.com/adityajanjanam/MAPD721_A3_Aditya',
+    image: '📱',
+    highlights: [
+      'Custom animations',
+      'Gesture interactions',
+      'Material Design implementation',
+      'Performance optimization'
+    ]
+  },
+  {
+    title: 'Text to PDF Converter',
+    description: 'React-based utility for converting text documents to PDF format with customizable options and preview functionality.',
+    tech: ['React', 'JavaScript', 'PDF.js'],
+    type: 'Web Utility',
+    link: 'https://github.com/adityajanjanam/TextToPDFConverter',
+    image: '📄',
+    highlights: [
+      'PDF generation',
+      'Custom formatting options',
+      'Live preview',
+      'Batch processing'
+    ]
+  },
+  {
+    title: 'Weather Dashboard',
+    description: 'Real-time weather monitoring application with detailed forecasts, interactive maps, and severe weather alerts.',
+    tech: ['React', 'OpenWeather API', 'Mapbox', 'TailwindCSS'],
+    type: 'Web Application',
+    link: 'https://github.com/adityajanjanam/WeatherDashboard',
+    image: '🌤️',
+    highlights: [
+      'Real-time updates',
+      'Interactive weather maps',
+      'Location-based forecasts',
+      'Severe weather alerts'
+    ]
+  },
+  {
+    title: 'Task Manager Pro',
+    description: 'Full-featured task management application with team collaboration, progress tracking, and deadline management capabilities.',
+    tech: ['React', 'Redux', 'Firebase', 'Material-UI'],
+    type: 'Productivity App',
+    link: 'https://github.com/adityajanjanam/TaskManagerPro',
+    image: '📋',
+    highlights: [
+      'Team collaboration',
+      'Real-time updates',
+      'Progress analytics',
+      'Deadline tracking'
+    ]
   }
 ];
 
 // NavLinks component without router links
 const NavLinks = ({ activeTab, setActiveTab }) => (
-  <motion.nav 
-    initial={{ y: -20, opacity: 0 }}
-    animate={{ y: 0, opacity: 1 }}
-    className="fixed top-0 w-full px-6 py-4 bg-[#121212]/80 backdrop-blur-sm z-50 border-b border-purple-500/20"
-  >
-    <div className="max-w-6xl mx-auto flex justify-between items-center">
-      <div className="flex space-x-8">
-        {['Home', 'Experience', 'Education', 'Projects'].map((item) => (
-          <button
-            key={item}
-            onClick={() => setActiveTab(item.toLowerCase())}
-            className={`text-gray-400 hover:text-purple-400 transition-all duration-300 relative group ${
-              activeTab === item.toLowerCase() ? 'text-purple-400' : ''
-            }`}
-          >
-            {item}
-            <motion.span
-              className={`absolute -bottom-1 left-0 h-0.5 bg-purple-400 ${
-                activeTab === item.toLowerCase() ? 'w-full' : 'w-0'
-              }`}
-              animate={{ width: activeTab === item.toLowerCase() ? '100%' : '0%' }}
-              transition={{ duration: 0.3 }}
-            />
-          </button>
-        ))}
+  <nav className="fixed top-0 left-0 right-0 z-50"> 
+    {/* Solid dark background, slightly less harsh than pure black */}
+    <div className="w-full bg-[#111111] border-b border-gray-700"> 
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="flex items-center justify-between h-16"> 
+          {/* Logo/Brand (Optional) */}
+          <div className="flex-shrink-0">
+             {/* Use a high-contrast logo or text */}
+            <button onClick={() => setActiveTab('home')} className="text-xl font-bold text-white">
+              AJ
+            </button>
+          </div>
+          
+          {/* Desktop Navigation Links */}
+          <div className="hidden md:flex items-center space-x-4">
+            {[
+              { name: 'Home', path: 'home' },
+              { name: 'Experience', path: 'experience' },
+              { name: 'Projects', path: 'projects' },
+              { name: 'Education', path: 'education' }
+            ].map((item) => (
+              <button
+                key={item.name}
+                onClick={() => setActiveTab(item.path)}
+                className={`relative px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200
+                           ${activeTab === item.path 
+                             ? 'text-yellow-400' // Active link uses yellow accent
+                             : 'text-gray-300 hover:bg-gray-700 hover:text-white'}`} // High contrast text/hover
+              >
+                {item.name}
+                {/* Active indicator using yellow */}
+                {activeTab === item.path && (
+                  <motion.span
+                    layoutId="activeTabIndicator" // Use a different layoutId if needed
+                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-yellow-400"
+                    initial={false}
+                    transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                  />
+                )}
+              </button>
+            ))}
+            {/* Resume Button (Contrast) */}
+            <a 
+              href="/resume.pdf" // Update path if needed
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ml-4 px-4 py-2 border border-transparent rounded-md text-sm font-medium 
+                       text-black bg-yellow-400 hover:bg-yellow-300 transition-colors duration-200" // High contrast button
+            >
+              Resume
+            </a>
+          </div>
+          
+           {/* Mobile Menu Button (Placeholder - Implement if needed) */}
+           <div className="md:hidden">
+             {/* Add a high-contrast burger menu icon button here */}
+           </div>
+        </div>
       </div>
-      <motion.a
-        href="/resume.pdf"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        className="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Resume ↗
-      </motion.a>
     </div>
-  </motion.nav>
+  </nav>
 );
 
 // Social Links Component
@@ -261,19 +390,23 @@ const SocialLinks = () => (
 );
 
 // Update the CTASection component
-const CTASection = () => {
+const CTASection = ({ contrast = false }) => {
   const [showContactModal, setShowContactModal] = useState(false);
 
+  // Define base and contrast styles
+  const buttonPrimaryBase = "bg-purple-500 text-white hover:bg-purple-600 shadow-lg hover:shadow-purple-500/25";
+  const buttonPrimaryContrast = "bg-yellow-400 text-black hover:bg-yellow-300";
+  const buttonSecondaryBase = "border border-purple-500 text-purple-400 hover:bg-purple-500/10";
+  const buttonSecondaryContrast = "border border-gray-600 text-gray-300 hover:bg-gray-700 hover:text-white";
+
   return (
-    <div className="flex flex-col items-start gap-6 mb-8">
+    <div className="flex flex-col items-start gap-5"> 
       {/* Buttons */}
       <div className="flex gap-4">
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="px-6 py-3 bg-purple-500 text-white rounded-lg hover:bg-purple-600 
-                   transition-all duration-300 flex items-center gap-2
-                   shadow-lg hover:shadow-purple-500/25"
+          className={`px-5 py-2.5 rounded-md text-sm font-medium transition-all duration-200 flex items-center gap-2 ${buttonPrimaryContrast}`}
           onClick={() => setShowContactModal(true)}
         >
           Contact Me
@@ -281,22 +414,17 @@ const CTASection = () => {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
           </svg>
         </motion.button>
-
         <a 
-          href="/resume.pdf" 
+          href="/AdityaJanjanamResume.pdf" 
           target="_blank"
-          className="px-6 py-3 border border-purple-500 text-purple-400 rounded-lg
-                   hover:bg-purple-500/10 transition-all duration-300 flex items-center gap-2"
+          className={`px-5 py-2.5 rounded-md text-sm font-medium transition-all duration-200 flex items-center gap-2 ${buttonSecondaryContrast}`}
         >
           Resume
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
           </svg>
         </a>
-      </div>
-
-      {/* Social Links */}
-      <SocialLinks />
+        </div>
 
       {/* Contact Modal */}
       {showContactModal && (
@@ -304,26 +432,26 @@ const CTASection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4" 
           onClick={(e) => e.target === e.currentTarget && setShowContactModal(false)}
         >
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
-            className="bg-[#1a1a1a] rounded-xl p-6 max-w-lg w-full border border-purple-500/20"
+            className={`rounded-xl p-6 max-w-lg w-full border ${contrast ? 'bg-black border-gray-700' : 'bg-[#1a1a1a] border-purple-500/20'}`}
           >
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl font-bold text-white">Get in Touch</h2>
               <button
                 onClick={() => setShowContactModal(false)}
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-gray-500 hover:text-white transition-colors"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
-            </div>
+        </div>
 
             {/* Quick Contact Options */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
@@ -331,35 +459,33 @@ const CTASection = () => {
                 href="https://calendly.com/adityajanjanam"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 p-4 rounded-lg bg-purple-500/10 hover:bg-purple-500/20 
-                         border border-purple-500/20 transition-all duration-300"
+                className={`flex items-center gap-3 p-4 rounded-lg border transition-all duration-300 ${contrast ? 'bg-gray-800 border-gray-700 hover:bg-gray-700' : 'bg-purple-500/10 border-purple-500/20 hover:bg-purple-500/20'}`}
               >
-                <div className="p-2 bg-purple-500/20 rounded-lg">
-                  <svg className="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className={`p-2 rounded-lg ${contrast ? 'bg-gray-700' : 'bg-purple-500/20'}`}>
+                  <svg className={`w-6 h-6 ${contrast ? 'text-cyan-400' : 'text-purple-400'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
                           d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
-                </div>
+        </div>
                 <div>
-                  <h3 className="font-medium text-white">Schedule a Call</h3>
-                  <p className="text-sm text-gray-400">Book a time slot</p>
-                </div>
+                  <h3 className={`font-medium ${contrast ? 'text-white' : 'text-white'}`}>Schedule a Call</h3>
+                  <p className={`text-sm ${contrast ? 'text-gray-400' : 'text-gray-400'}`}>Book a time slot</p>
+      </div>
               </a>
 
               <a
                 href="mailto:adityajanjanam@gmail.com"
-                className="flex items-center gap-3 p-4 rounded-lg bg-purple-500/10 hover:bg-purple-500/20 
-                         border border-purple-500/20 transition-all duration-300"
+                className={`flex items-center gap-3 p-4 rounded-lg border transition-all duration-300 ${contrast ? 'bg-gray-800 border-gray-700 hover:bg-gray-700' : 'bg-purple-500/10 border-purple-500/20 hover:bg-purple-500/20'}`}
               >
-                <div className="p-2 bg-purple-500/20 rounded-lg">
-                  <svg className="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className={`p-2 rounded-lg ${contrast ? 'bg-gray-700' : 'bg-purple-500/20'}`}>
+                  <svg className={`w-6 h-6 ${contrast ? 'text-cyan-400' : 'text-purple-400'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
                           d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-medium text-white">Email Me</h3>
-                  <p className="text-sm text-gray-400">Get in touch directly</p>
+                  <h3 className={`font-medium ${contrast ? 'text-white' : 'text-white'}`}>Email Me</h3>
+                  <p className={`text-sm ${contrast ? 'text-gray-400' : 'text-gray-400'}`}>Get in touch directly</p>
                 </div>
               </a>
             </div>
@@ -402,8 +528,7 @@ const CTASection = () => {
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full py-3 bg-purple-500 text-white rounded-lg hover:bg-purple-600 
-                         transition-all duration-300 flex items-center justify-center gap-2"
+                className={`w-full py-3 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 ${contrast ? 'bg-cyan-500 text-black hover:bg-cyan-400' : 'bg-purple-500 text-white hover:bg-purple-600'}`}
               >
                 Send Message
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -704,7 +829,7 @@ const AnimatedGreeting = () => {
   return (
       <div className="text-red-500 p-4 rounded-lg bg-red-100">
         {error}
-      </div>
+        </div>
     );
   }
 
@@ -761,7 +886,7 @@ const AnimatedGreeting = () => {
           <span>{currentGreeting.lang}</span>
           <span className="text-gray-500"> • {currentGreeting.region}</span>
         </motion.div>
-      </div>
+        </div>
     </motion.div>
   );
 }
@@ -822,9 +947,9 @@ const TabButton = ({ active, children, onClick }) => (
   </motion.button>
 );
 
-const TechGrid = ({ setActiveTab }) => (
+const TechGrid = ({ setActiveTab, contrast = false }) => (
   <motion.div
-    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8"
+    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8 mb-24" 
     initial="hidden"
     animate="visible"
     variants={{
@@ -843,13 +968,13 @@ const TechGrid = ({ setActiveTab }) => (
           visible: { y: 0, opacity: 1 }
         }}
         onClick={() => area === 'applicationPackaging' && setActiveTab('application-packaging')}
-        className={`p-5 rounded-xl bg-purple-900/10 backdrop-blur-sm border border-purple-500/20 
-                   transition-all duration-300 group
-                   ${area === 'applicationPackaging' ? 
-                     'hover:border-purple-500/50 hover:bg-purple-900/20 cursor-pointer' : 
-                     'hover:border-purple-500/30'}`}
+        className={`p-5 rounded-xl border transition-all duration-300 group
+                   ${contrast 
+                     ? `bg-gray-900 border-gray-700 ${area === 'applicationPackaging' ? 'hover:border-cyan-400 hover:bg-gray-800 cursor-pointer' : 'hover:border-gray-600'}`
+                     : `bg-purple-900/10 border-purple-500/20 backdrop-blur-sm ${area === 'applicationPackaging' ? 'hover:border-purple-500/50 hover:bg-purple-900/20 cursor-pointer' : 'hover:border-purple-500/30'}`
+                   }`}
       >
-        <h3 className="text-lg font-semibold text-purple-400 mb-3 flex items-center gap-2">
+        <h3 className={`text-lg font-semibold mb-3 flex items-center gap-2 ${contrast ? 'text-cyan-400' : 'text-purple-400'}`}>
           {area === 'fullStack' ? '🌐 Full Stack' :
            area === 'desktop' ? '🖥️ Desktop' :
            area === 'mobile' ? '📱 Mobile' :
@@ -858,10 +983,10 @@ const TechGrid = ({ setActiveTab }) => (
            area === 'applicationPackaging' ? (
              <div className="flex items-center gap-2">
                📦 Application Packaging
-               <span className="text-xs text-purple-400/70 bg-purple-500/10 px-2 py-0.5 rounded-full">
+               <span className={`text-xs px-2 py-0.5 rounded-full ${contrast ? 'text-cyan-300 bg-cyan-900/50' : 'text-purple-400/70 bg-purple-500/10'}`}>
                  Click to view details ↗
                </span>
-             </div>
+      </div>
            ) : area}
         </h3>
         <div className="flex flex-wrap gap-2">
@@ -869,9 +994,11 @@ const TechGrid = ({ setActiveTab }) => (
             <motion.span
               key={tech.name}
               whileHover={{ scale: 1.05 }}
-              className="px-2.5 py-1 text-sm bg-purple-900/30 rounded-full text-gray-300
-                       hover:bg-purple-800/40 transition-colors duration-300 flex items-center gap-1.5
-                       border border-purple-500/10 hover:border-purple-500/20"
+              className={`px-2.5 py-1 text-sm rounded-full flex items-center gap-1.5 border hover:border-opacity-40 transition-colors duration-300
+                         ${contrast 
+                           ? 'bg-gray-800 border-gray-700 text-gray-300 hover:border-cyan-400' 
+                           : 'bg-purple-900/30 border-purple-500/10 text-gray-300 hover:bg-purple-800/40 hover:border-purple-500/20'}`
+                         }
             >
               <span className="text-base">{tech.icon}</span>
               <span className="relative top-[0.5px]">{tech.name}</span>
@@ -883,302 +1010,799 @@ const TechGrid = ({ setActiveTab }) => (
   </motion.div>
 );
 
-// Add this new component for animated multilingual greeting
-const MultilingualGreeting = () => {
+// Add a Footer component
+const Footer = ({ contrast = false }) => (
+   // Simplified background for contrast
+  <footer className={`w-full py-8 px-4 mt-auto ${contrast ? 'bg-black' : 'bg-gradient-to-t from-black/40 to-transparent'}`}>
+    <div className="container mx-auto text-center">
+       {/* Brighter text */}
+      <p className={`${contrast ? 'text-gray-500' : 'text-gray-400'} text-sm`}>
+        © {new Date().getFullYear()} Aditya Janjanam. All rights reserved.
+      </p>
+    </div>
+  </footer>
+);
+
+// --- Animated Multilingual Greeting Component ---
+const AnimatedMultilingualGreeting = () => {
   const greetings = [
-    { text: "నమస్కారం!", lang: "Telugu • తెలుగు" },
-    { text: "नमस्ते!", lang: "Hindi • हिंदी" },
-    { text: "வணக்கம்!", lang: "Tamil • தமிழ்" },
-    { text: "ನಮಸ್ಕಾರ!", lang: "Kannada • ಕನ್ನಡ" },
-    { text: "നമസ്കാരം!", lang: "Malayalam • മലയാളം" },
-    { text: "नमस्कार!", lang: "Sanskrit • संस्कृतम्" },
-    { text: "Hello!", lang: "English" },
-    { text: "Bonjour!", lang: "French" },
-    { text: "Hola!", lang: "Spanish" },
-    { text: "こんにちは!", lang: "Japanese • 日本語" },
-    { text: "안녕하세요!", lang: "Korean • 한국어" },
-    { text: "你好!", lang: "Chinese • 中文" },
-    { text: "Hallo!", lang: "German" }
+    { text: 'నమస్కారం!', langCode: 'te', fontFamily: "'Noto Sans Telugu', Gautami, sans-serif" }, 
+    { text: 'नमस्ते!', langCode: 'hi', fontFamily: "'Noto Sans Devanagari', Nirmala UI, sans-serif" },
+    { text: 'வணக்கம்!', langCode: 'ta', fontFamily: "'Noto Sans Tamil', Nirmala UI, sans-serif" },
+    { text: 'ನಮಸ್ಕಾರ!', langCode: 'kn', fontFamily: "'Noto Sans Kannada', Nirmala UI, sans-serif" },
+    { text: 'নমস্কার!', langCode: 'bn', fontFamily: "'Noto Sans Bengali', Nirmala UI, sans-serif" },
+    { text: 'ਸਤ ਸ੍ਰੀ ਅਕਾਲ!', langCode: 'pa', fontFamily: "'Noto Sans Gurmukhi', Nirmala UI, sans-serif" },
+    { text: 'നമസ്കാരം!', langCode: 'ml', fontFamily: "'Noto Sans Malayalam', Nirmala UI, sans-serif" },
+    { text: 'નમસ્તે!', langCode: 'gu', fontFamily: "'Noto Sans Gujarati', Nirmala UI, sans-serif" },
+    { text: 'ନମସ୍କାର!', langCode: 'or', fontFamily: "'Noto Sans Oriya', Kalinga, sans-serif" },
+    { text: 'नमस्कार!', langCode: 'mr', fontFamily: "'Noto Sans Devanagari', Nirmala UI, sans-serif" },
+    { text: 'Hello!', langCode: 'en', fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" },
+    { text: 'Hola!', langCode: 'es', fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" },
+    { text: 'Bonjour!', langCode: 'fr', fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" },
+    { text: '你好!', langCode: 'zh', fontFamily: "'PingFang SC', 'Microsoft YaHei', SimHei, sans-serif" },
+    { text: 'こんにちは!', langCode: 'ja', fontFamily: "'Hiragino Kaku Gothic ProN', Meiryo, sans-serif" },
+    { text: '안녕하세요!', langCode: 'ko', fontFamily: "'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" },
+    { text: 'Olá!', langCode: 'pt', fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" },
+    { text: 'Ciao!', langCode: 'it', fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" },
+    { text: 'Hallo!', langCode: 'de', fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" },
+    { text: 'Привет!', langCode: 'ru', fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" },
+    { text: 'مرحباً!', langCode: 'ar', fontFamily: "'Noto Naskh Arabic', Tahoma, sans-serif" },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const intervalId = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % greetings.length);
-    }, 3000); // Change greeting every 3 seconds
+    }, 3000); // Change every 3 seconds
 
-    return () => clearInterval(interval);
-  }, []);
+    return () => clearInterval(intervalId);
+  }, [greetings.length]);
+
+  const currentGreeting = greetings[currentIndex];
 
   return (
-    <div className="relative h-20">
+    <div className="h-16 mb-4 flex items-center"> {/* Fixed height container */}
       <AnimatePresence mode="wait">
-        <motion.div
-          key={currentIndex}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.5 }}
-          className="absolute w-full text-center"
+        <motion.h2
+          key={currentIndex} 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.8 }} 
+          style={{ fontFamily: currentGreeting.fontFamily }}
+          className="text-4xl lg:text-5xl font-semibold text-yellow-400" 
+          lang={currentGreeting.langCode} 
         >
-          <motion.p
-            className="text-purple-400 mb-2 text-xl"
-            initial={{ scale: 0.9 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 0.3 }}
-          >
-            {greetings[currentIndex].text}
-            <span className="text-gray-500 text-sm ml-2">
-              in {greetings[currentIndex].lang}
-            </span>
-          </motion.p>
-        </motion.div>
+          {currentGreeting.text}
+        </motion.h2>
       </AnimatePresence>
     </div>
   );
 };
 
-// Update the name section with animation
-const AnimatedName = () => {
+// Update the AnimatedNameWithCursor component
+const AnimatedNameWithCursor = () => {
   return (
-    <motion.h1 
-      className="text-5xl lg:text-7xl font-bold mb-6"
-      initial={{ y: 20, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ delay: 0.2 }}
-    >
-      <motion.span 
-        className="inline-block"
-        initial={{ scale: 0.9 }}
-        animate={{ scale: 1 }}
+    <div className="flex flex-col gap-4">
+      {/* Single greeting */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="text-2xl"
+      >
+        <span className="text-purple-400">¡Hola!</span>
+      </motion.div>
+
+      {/* Name section */}
+      <motion.h1 
+        className="text-6xl lg:text-7xl font-bold flex items-baseline"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        I am{" "}
-      </motion.span>
-      <motion.span 
-        className="bg-gradient-to-r from-purple-400 via-pink-500 to-purple-600 text-transparent bg-clip-text"
-        initial={{ x: -20, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ delay: 0.3, duration: 0.5 }}
+        <span className="text-gray-700 mr-4">I</span>
+        <span className="text-gray-700 mr-4">am</span>
+        <div className="inline-flex items-baseline">
+          <motion.div
+            className="flex flex-col"
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2 }}
+          >
+            <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-purple-500 text-transparent bg-clip-text">
+              Aditya
+            </span>
+            <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-purple-500 text-transparent bg-clip-text">
+              Janjanam
+            </span>
+          </motion.div>
+          <span className="text-gray-700 ml-2">!</span>
+        </div>
+      </motion.h1>
+
+      {/* Role/Description */}
+      <motion.p 
+        className="text-xl text-gray-400"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3 }}
       >
-        Aditya Janjanam
-      </motion.span>
-      <motion.span
-        className="inline-block text-purple-400"
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
+        Full Stack Developer | Mobile App Developer | Software Engineer
+      </motion.p>
+
+      {/* Stats section */}
+      <motion.div 
+        className="flex gap-12 mt-4"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4 }}
       >
-        !
-      </motion.span>
-    </motion.h1>
+        <div className="text-center">
+          <div className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 text-transparent bg-clip-text">2+</div>
+          <div className="text-sm text-gray-500">Years Experience</div>
+        </div>
+        <div className="text-center">
+          <div className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 text-transparent bg-clip-text">15+</div>
+          <div className="text-sm text-gray-500">Projects</div>
+        </div>
+        <div className="text-center">
+          <div className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 text-transparent bg-clip-text">5+</div>
+          <div className="text-sm text-gray-500">Technologies</div>
+      </div>
+      </motion.div>
+    </div>
   );
 };
 
+// Add these constants for your data
+const personalInfo = {
+  location: "Toronto, ON",
+  phone: "+1 365-779-2170",
+  email: "janjanamaditya@gmail.com",
+  linkedin: "linkedin.com/in/janjanamaditya"
+};
+
+const languages = [
+  { name: "Telugu", level: "Native or Bilingual" },
+  { name: "Tamil", level: "Full Professional" },
+  { name: "English", level: "Professional Working" },
+  { name: "Hindi", level: "Professional Working" },
+  { name: "Kannada", level: "Limited Working" },
+  { name: "Malayalam", level: "Elementary" }
+];
+
+const skills = {
+  topSkills: ["React Native", "Web Applications", "C#"],
+  technical: [
+    "JavaScript", "Python", "Java", "C++", "HTML", "CSS", "SQL",
+    "React.js", "Node.js", "Flutter", "Android", "iOS"
+  ],
+  tools: [
+    "Admin Studio", "PowerShell", "SCCM", "Hyper-V", "VMware",
+    "Android Studio", "Visual Studio Code", "Postman", "Git"
+  ]
+};
+
+const certifications = [
+  "The Complete Oracle SQL Bootcamp (2021)",
+  "Workshop on Code in Dark",
+  "Sales Professional - Electronics and Semiconductor Engineering",
+  "Complete Introduction to Excel Power Pivot",
+  "Dealing with Customer Service Incidents and Complaints"
+];
+
+// --- Home Component (Further Reduced Footer Gap) ---
 const Home = ({ setActiveTab }) => {
   return (
-    <div className="min-h-screen relative">
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl" />
-      </div>
-
-      {/* Main Content */}
-      <div className="relative container mx-auto px-4 pt-24">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
-          {/* Text Content */}
-          <div className="lg:w-1/2 text-left">
-            <MultilingualGreeting />
-            <AnimatedName />
-            
-            {/* Rest of your content */}
-            <motion.p 
-              className="text-xl text-gray-400 mb-8"
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.3 }}
-            >
-              Full Stack Developer | Mobile App Developer | Software Engineer
-            </motion.p>
-
-            {/* Quick Stats */}
-            <motion.div 
-              className="flex gap-8 mb-8"
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.4 }}
-            >
-              <div className="text-center">
-                <div className="text-2xl font-bold text-purple-400">2+</div>
-                <div className="text-sm text-gray-400">Years Experience</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-purple-400">15+</div>
-                <div className="text-sm text-gray-400">Projects</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-purple-400">5+</div>
-                <div className="text-sm text-gray-400">Technologies</div>
-              </div>
-            </motion.div>
-
-            {/* CTA Buttons and Social Links */}
-            <CTASection />
+    <div className="relative bg-[#080808] flex flex-col text-gray-200"> 
+      <div className="relative container mx-auto px-6 sm:px-8 lg:px-12 pt-12 pb-12"> 
+        <div className="flex flex-col lg:flex-row items-start justify-between gap-x-16 gap-y-12"> 
+          
+          {/* --- Left Column: Text Content --- */}
+          <div className="lg:w-3/5 w-full flex flex-col"> 
+             {/* ... Greeting, Name/Role, Stats, Summary, CTA ... */}
+             <AnimatedMultilingualGreeting /> 
+             <div className="mb-10"> 
+               <h1 className="text-3xl lg:text-4xl font-bold mb-2"> 
+                 <span className="text-gray-400 mr-2">I am</span> 
+                 <span className="text-white">Aditya Janjanam!</span>
+               </h1>
+               <p className="text-base lg:text-lg text-gray-400"> 
+                 Full Stack Developer | Mobile App Developer | Software Engineer
+               </p>
+             </div>
+             <div className="flex flex-wrap gap-x-10 gap-y-4 mb-10"> 
+               <div className="text-center">
+                 <div className="text-3xl lg:text-4xl font-bold text-white">2.3+</div> 
+                 <div className="text-xs lg:text-sm text-gray-400 mt-1 uppercase tracking-wider">Years Experience</div> 
+               </div>
+               <div className="text-center">
+                 <div className="text-3xl lg:text-4xl font-bold text-white">15+</div>
+                 <div className="text-xs lg:text-sm text-gray-400 mt-1 uppercase tracking-wider">Projects</div> 
+               </div>
+             </div>
+             <div className="mb-10">
+               <BriefSummary /> 
+             </div>
+             <div className="mt-auto pt-6"> 
+               <CTASection />
+             </div>
           </div>
 
-          {/* Photo Section - Adjusted Size */}
-          <motion.div 
-            className="lg:w-1/2 relative"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
+          {/* --- Right Column: Photo and Social Links --- */}
+          <div className="lg:w-2/5 w-full max-w-sm mx-auto lg:mx-0 flex flex-col items-center lg:items-start"> 
+            {/* Photo Section */}
+            <motion.div 
+              className="w-full" 
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ type: "spring", stiffness: 80, damping: 15, delay: 0.1 }}
+            >
+              <div className="relative group"> 
+                {/* Background Card Element */}
+                <div className="absolute -inset-1.5 bg-gradient-to-br from-yellow-400/50 via-yellow-400/10 to-transparent rounded-xl 
+                              opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-md z-0"></div> 
+
+                {/* Main Photo Container */}
+                <motion.div 
+                  className="relative aspect-[3/4] rounded-xl overflow-hidden 
+                             z-10 
+                             bg-[#1a1a1a] 
+                             border border-gray-700/80 
+                             shadow-xl shadow-gray-900/50 
+                             transition-all duration-300 ease-out"
+                  whileHover={{ scale: 1.02, y: -4 }} 
+                >
+                  {/* Image */}
+                  <motion.img 
+                    src="/profile.png" 
+                    alt="Aditya Janjanam"
+                    className="absolute inset-0 w-full h-full object-cover object-center" 
+                    transition={{ type: "spring", stiffness: 100, damping: 15 }} 
+                  />
+                  
+                  {/* Overlay Removed/Ignored as we add local backgrounds now */}
+                  
+                  {/* ===> Status Indicator (Enhanced Background) <=== */}
+                  <motion.div 
+                    initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} 
+                    className="absolute top-3 right-3 flex items-center gap-1.5 
+                               bg-black/60 backdrop-blur-sm px-2.5 py-1 rounded-full  
+                               border border-white/15 shadow-md z-30" // Increased contrast on border too
+                  >
+                    <div className="w-2 h-2 bg-green-400 rounded-full" /> 
+                    {/* Text remains white, background ensures visibility */}
+                    <span className="text-xs font-medium text-white">Available for hire</span> 
+                  </motion.div>
+                  
+                  {/* ===> Bottom Info (with Localized Background) <=== */}
+                  <motion.div 
+                    initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} 
+                    // Container for bottom text + background
+                    className="absolute bottom-0 inset-x-0 pt-10 pb-3 px-3.5  
+                               bg-gradient-to-t from-black/75 via-black/50 to-transparent 
+                               pointer-events-none z-30" // Gradient provides backdrop
+                  >
+                    {/* Text color remains white/light gray */}
+                    <h3 className="text-white text-lg font-semibold">Aditya Janjanam</h3> 
+                    <p className="text-gray-200 text-sm mt-0.5">Full Stack Developer</p> 
+                  </motion.div>
+                  
+                </motion.div> {/* End of Main Photo Container */}
+              </div> {/* End of Relative Group */}
+            </motion.div> {/* End of Outer Motion Div */}
+
+            {/* Social Links */}
+            <div className="mt-6 flex justify-center lg:justify-start w-full"> 
+              <SocialLinks />
+            </div>
+          </div> 
+          {/* --- End of Right Column --- */}
+
+        </div>
+
+        {/* Tech Grid */}
+        {/* ===> ADJUSTED MARGIN HERE <=== */}
+        {/* Changed mt-20 to mt-12 */}
+        <div className="mt-12"> 
+           <TechGrid setActiveTab={setActiveTab} /> 
+        </div>
+      </div> 
+      {/* Footer */}
+      <Footer /> 
+    </div>
+  );
+};
+
+// Update the BriefSummary component
+const BriefSummary = ({ contrast = false }) => (
+  <motion.div 
+    // Adjusted card style for contrast
+    className={`mt-8 p-6 rounded-xl border ${contrast ? 'bg-gray-900 border-gray-700' : 'bg-purple-900/10 border-purple-500/20 backdrop-blur-sm'}`}
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+  >
+     {/* Adjusted text colors */}
+    <h3 className={`text-xl font-semibold mb-4 ${contrast ? 'text-white' : 'text-purple-400'}`}>About Me</h3>
+    <p className={`${contrast ? 'text-gray-300' : 'text-gray-400'} leading-relaxed`}>
+      International student pursuing Mobile Applications Development at Centennial College, Toronto, 
+      with distinction in Computer Applications Development from Conestoga College, Waterloo. 
+      Former Systems Engineer at Atos with 2.3 years of experience in Application Packaging and Testing.
+    </p>
+  </motion.div>
+);
+
+const Experience = () => {
+  const experiences = [
+    {
+      title: 'Systems Engineer',
+      company: 'Atos Global',
+      date: 'Jun 2021 – Aug 2023',
+      location: 'Chennai, India',
+      description: [
+        'Led application packaging and testing initiatives using PowerShell, Admin Studio, and InstallShield',
+        'Automated deployment processes reducing manual effort by 40%',
+        'Managed enterprise software distribution using SCCM/MECM',
+        'Collaborated with cross-functional teams for seamless application delivery',
+        'Implemented quality assurance protocols improving package success rate by 25%'
+      ],
+      skills: ['PowerShell', 'SCCM', 'Admin Studio', 'InstallShield', 'Application Packaging', 'Software Testing'],
+      logo: '🏢'
+    },
+    {
+      title: 'Software Engineer Intern',
+      company: 'Capgemini',
+      date: 'Sep 2020 – Dec 2020',
+      location: 'Bengaluru, India',
+      description: [
+        'Conducted manual and automated testing using Selenium and Java',
+        'Developed test scripts improving test coverage by 30%',
+        'Utilized Jira for project tracking and bug reporting',
+        'Participated in agile development processes and sprint planning',
+        'Collaborated with development teams to resolve software defects'
+      ],
+      skills: ['Selenium', 'Java', 'Manual Testing', 'Jira', 'Agile', 'Test Automation'],
+      logo: '💻'
+    }
+  ];
+
+  return (
+    <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-16 text-gray-200 bg-[#080808]"> {/* Adjusted padding and background */}
+      {/* Header Section */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="mb-12 text-center"
+      >
+        {/* Yellow header */}
+        <h2 className="text-3xl sm:text-4xl font-bold text-yellow-400 mb-3"> 
+          Professional Experience
+        </h2>
+         {/* Brighter subtitle */}
+        <p className="text-gray-400 text-lg"> 
+          Building enterprise solutions and delivering quality software
+        </p>
+      </motion.div>
+
+      {/* Experience Timeline */}
+      <div className="relative space-y-10"> {/* Increased spacing */}
+        {/* Brighter Timeline Line */}
+        <div className="absolute left-4 top-2 bottom-2 w-0.5 bg-gray-700 hidden md:block" /> 
+
+        {experiences.map((exp, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: index * 0.2 }}
+            className="relative group"
           >
-            <div className="relative h-[500px] w-full max-w-[350px] mx-auto">
-              {/* Decorative Background */}
-              <div className="absolute inset-0 bg-gradient-to-b from-purple-500/20 to-pink-500/20 rounded-[30px] blur-3xl" />
-              
-              {/* Image Container */}
-              <div className="relative h-full w-full rounded-[30px] overflow-hidden 
-                            border-2 border-purple-500/20 backdrop-blur-sm
-                            bg-gradient-to-b from-purple-900/30 to-transparent">
-                <img 
-                  src="/profile.png" 
-                  alt="Aditya Janjanam"
-                  className="h-full w-full object-cover object-center"
-                />
-                
-                {/* Overlay Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-purple-900/40 to-transparent" />
-                
-                {/* Status Indicator */}
-                <div className="absolute top-4 right-4 flex items-center gap-2 bg-black/30 px-3 py-1 rounded-full">
-                  <div className="w-2 h-2 bg-green-400 rounded-full">
-                    <div className="absolute w-2 h-2 bg-green-400 rounded-full animate-ping opacity-75" />
-                  </div>
-                  <span className="text-sm text-white">Available for hire</span>
-                </div>
+            {/* Yellow Timeline Dot */}
+            <div className="absolute left-[10px] top-1 w-4 h-4 rounded-full bg-yellow-400 border-2 border-gray-800 hidden md:block
+                          group-hover:scale-125 transition-transform duration-300" />
 
-                {/* Bottom Info */}
-                <div className="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
-                  <div className="flex items-center gap-4">
-                    <div className="flex-1">
-                      <h3 className="text-white font-semibold">Aditya Janjanam</h3>
-                      <p className="text-gray-300 text-sm">Full Stack Developer</p>
-                    </div>
-                    <motion.button
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="bg-purple-500 p-2 rounded-full text-white hover:bg-purple-600 transition-colors"
-                    >
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                      </svg>
-                    </motion.button>
-                  </div>
+            {/* Experience Card (Contrast) */}
+            <div className="ml-0 md:ml-10 p-6 rounded-lg bg-[#1a1a1a] border border-gray-700
+                          hover:border-gray-600 transition-colors duration-300">
+              {/* Header */}
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3">
+                <div>
+                   {/* Yellow title */}
+                  <h3 className="text-xl font-semibold text-yellow-400 flex items-center gap-2">
+                    <span>{exp.logo}</span>
+                    {exp.title} @ {exp.company}
+                  </h3>
+                  <p className="text-gray-400 text-sm mt-1">{exp.date}</p>
                 </div>
+                <span className="mt-2 sm:mt-0 px-3 py-1 text-sm bg-purple-500/20 rounded-full text-purple-300">
+                  {exp.location}
+                </span>
               </div>
-        </div>
-          </motion.div>
-        </div>
 
-        <TechGrid setActiveTab={setActiveTab} />
+              {/* Description */}
+              <ul className="space-y-2 mb-4 list-disc list-inside text-gray-300">
+                {exp.description.map((item, i) => (
+                  <motion.li
+                    key={i}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.2 + (i * 0.1) }}
+                    className="text-gray-400 hover:text-gray-300 transition-colors"
+                  >
+                    {item}
+                  </motion.li>
+                ))}
+              </ul>
+
+              {/* Skills */}
+              <div className="flex flex-wrap gap-2 mt-4">
+                {exp.skills.map((skill, i) => (
+                  <motion.span
+                    key={i}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: index * 0.2 + (i * 0.1) }}
+                    className="px-3 py-1 text-sm bg-purple-500/10 rounded-full text-purple-300
+                             hover:bg-purple-500/20 transition-all duration-300"
+                  >
+                    {skill}
+                  </motion.span>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        ))}
       </div>
     </div>
   );
 };
 
-const Experience = () => (
-  <div className="space-y-8">
-    <h2 className="text-3xl font-bold text-center text-purple-400 mb-12">Experience</h2>
-    {experiences.map((exp, index) => (
-      <motion.div
-        key={index}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: index * 0.1 }}
-        className="bg-purple-900/10 p-6 rounded-xl border border-purple-500/20"
-      >
-        <h3 className="text-xl font-semibold text-purple-400">{exp.title}</h3>
-        <p className="text-gray-300">{exp.company}</p>
-        <p className="text-gray-400 mt-2">{exp.description}</p>
-        <div className="flex justify-between text-sm text-gray-500 mt-4">
-          <span>{exp.date}</span>
-          <span>{exp.location}</span>
-        </div>
-      </motion.div>
-    ))}
-  </div>
-);
+const Education = () => {
+  const educationData = [
+    {
+      program: 'Mobile Applications Development',
+      institution: 'Centennial College',
+      location: 'Toronto, ON',
+      period: '2024-2025',
+      type: 'Graduate Certificate',
+      courses: [
+        'Samsung Android Application Development',
+        'Web Technologies for Mobile Platforms',
+        'Enterprise Technologies for Mobile Platforms',
+        'iOS Development',
+        'Mobile Application UI/UX Design',
+        'Samsung Advanced Android Development',
+        'Mobile Web Development',
+        'Advanced iOS Development',
+        'Emerging Technologies',
+        'Mobile Application Development Project'
+      ]
+    },
+    {
+      program: 'Computer Applications Development',
+      institution: 'Conestoga College',
+      location: 'Waterloo, ON',
+      period: '2024-2025',
+      type: 'Graduate Certificate',
+      Grade: 'Distinction',
+      courses: [
+        'Systems Concepts, Analysis and Design',
+        'Programming: Software Development Techniques',
+        'Programming: Web Design and Development',
+        'Programming: Database Management',
+        'Web Foundations',
+        'System Development Project',
+        'Programming: Mobile Application Development',
+        'Microsoft Web Technologies',
+        'User Experience Design',
+        'Software Quality'
+      ]
+    }
+  ];
 
-const Education = () => (
-  <div className="space-y-8">
-    <h2 className="text-3xl font-bold text-center text-purple-400 mb-12">Education</h2>
-    {education.map((edu, index) => (
-      <motion.div
-        key={index}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: index * 0.1 }}
-        className="bg-purple-900/10 p-6 rounded-xl border border-purple-500/20"
-      >
-        <h3 className="text-xl font-bold text-purple-400">{edu.program}</h3>
-        <p className="text-gray-300">{edu.institution}</p>
-        <p className="text-gray-400">{edu.period} • {edu.type}</p>
-        <p className="text-green-400 text-sm mb-4">{edu.status}</p>
-        <h4 className="text-lg font-semibold text-gray-300 mb-2">Key Courses:</h4>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-          {edu.courses.map((course, j) => (
-            <div key={j} className="text-sm text-gray-400 p-2 bg-purple-900/20 rounded">
-              {course}
+  return (
+    <div className="container mx-auto px-4 py-16">
+      <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-purple-400 to-pink-500 text-transparent bg-clip-text">
+        Education
+      </h2>
+      
+      <div className="space-y-8">
+        {educationData.map((edu, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.2 }}
+            className="relative p-6 rounded-2xl overflow-hidden group
+                     bg-white/5 backdrop-blur-lg border border-white/10
+                     hover:bg-white/10 transition-all duration-300
+                     shadow-[0_0_20px_rgba(139,92,246,0.1)]
+                     hover:shadow-[0_0_30px_rgba(139,92,246,0.2)]"
+          >
+            {/* Background Glow */}
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 opacity-0 
+                          group-hover:opacity-100 transition-opacity duration-300" />
+            
+            {/* Content */}
+            <div className="relative z-10">
+              {/* Header */}
+              <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                {/* Left side: Program, Institution, Location */}
+                <div>
+                  <h3 className="text-2xl font-bold text-purple-400 mb-2">{edu.program}</h3>
+                  <p className="text-lg text-gray-300">{edu.institution}</p>
+                  <p className="text-gray-400">{edu.location}</p>
+                </div>
+                {/* Right side: Period, Type, Status, Grade */}
+                <div className="mt-2 md:mt-0 text-right">
+                  <p className="text-gray-300">{edu.period}</p>
+                  <p className="text-purple-400">{edu.type}</p>
+                  {/* Conditionally render Grade */}
+                  {edu.Grade && (
+                    <p className="text-yellow-400 font-semibold text-sm mt-1">Grade: {edu.Grade}</p> 
+                  )}
+                  {/* Conditionally render Status */}
+                  {edu.status && (
+                     <p className="text-green-400 text-sm mt-1">{edu.status}</p>
+                  )}
+                </div>
+              </div>
+
+              {/* Courses */}
+              <div className="mt-6">
+                <h4 className="text-lg font-semibold text-gray-300 mb-4">Key Courses</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {edu.courses.map((course, idx) => (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: (index * 0.2) + (idx * 0.1) }}
+                      className="flex items-center gap-2 p-3 rounded-lg
+                               bg-white/5 backdrop-blur-sm
+                               hover:bg-white/10 transition-all duration-300
+                               border border-white/5 hover:border-purple-500/30"
+                    >
+                      <span className="text-purple-400">•</span>
+                      <span className="text-gray-300 text-sm">{course}</span>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
             </div>
-          ))}
-        </div>
-      </motion.div>
-    ))}
-  </div>
-);
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  );
+};
 
-const Projects = () => (
-  <div className="space-y-8">
-    <h2 className="text-3xl font-bold text-center text-purple-400 mb-12">Projects</h2>
-    {projects.map((proj, index) => (
+const Projects = () => {
+  const projects = [
+    {
+      title: 'HealthTrackPro',
+      description: 'A comprehensive healthcare provider app built with React Native for tracking patient data. Features include QR sync, offline-first capability, clinical data management, and interactive charts.',
+      tech: ['React Native', 'Node.js', 'MongoDB', 'REST API'],
+      type: 'Healthcare App',
+      link: 'https://github.com/adityajanjanam/HealthTrackPro',
+      image: '🏥',
+      highlights: [
+        'Offline-first architecture',
+        'Real-time data synchronization',
+        'HIPAA compliant data handling',
+        'Interactive medical charts'
+      ]
+    },
+    {
+      title: 'TrainWithTail',
+      description: 'Pet training platform offering tailored programs, expert advice, and an integrated pet product shop for enhanced pet-owner relationships.',
+      tech: ['Node.js', 'MongoDB', 'HTML5', 'CSS3', 'JavaScript'],
+      type: 'Full Stack Web App',
+      link: 'https://github.com/adityajanjanam/TrainWithTail',
+      image: '🐕',
+      highlights: [
+        'Personalized training programs',
+        'E-commerce integration',
+        'Expert consultation system',
+        'Progress tracking dashboard'
+      ]
+    },
+    {
+      title: 'PatientDataAPI',
+      description: 'RESTful API for healthcare providers to manage and monitor patient clinical data. Built with Node.js and MongoDB, featuring Swagger documentation.',
+      tech: ['Node.js', 'Express', 'MongoDB', 'Swagger'],
+      type: 'Backend API',
+      link: 'https://github.com/adityajanjanam/PatientDataAPI',
+      image: '🔌',
+      highlights: [
+        'RESTful architecture',
+        'Comprehensive API documentation',
+        'Secure data handling',
+        'Scalable database design'
+      ]
+    },
+    {
+      title: 'Scientific Calculator',
+      description: 'Modern scientific calculator app with advanced mathematical operations, built using React Native and Expo for cross-platform compatibility.',
+      tech: ['React Native', 'Expo', 'JavaScript'],
+      type: 'Mobile Utility App',
+      link: 'https://github.com/adityajanjanam/ScientificCalculatorApp',
+      image: '🧮',
+      highlights: [
+        'Cross-platform compatibility',
+        'Advanced mathematical functions',
+        'Intuitive user interface',
+        'Offline functionality'
+      ]
+    },
+    {
+      title: 'MAPD721 Android Animations',
+      description: 'Interactive Android app showcasing various Jetpack Compose animations, including animated transitions, infinite animations, and gesture-based interactions.',
+      tech: ['Kotlin', 'Jetpack Compose', 'Material Design'],
+      type: 'Android App',
+      link: 'https://github.com/adityajanjanam/MAPD721_A3_Aditya',
+      image: '📱',
+      highlights: [
+        'Custom animations',
+        'Gesture interactions',
+        'Material Design implementation',
+        'Performance optimization'
+      ]
+    },
+    {
+      title: 'Text to PDF Converter',
+      description: 'React-based utility for converting text documents to PDF format with customizable options and preview functionality.',
+      tech: ['React', 'JavaScript', 'PDF.js'],
+      type: 'Web Utility',
+      link: 'https://github.com/adityajanjanam/TextToPDFConverter',
+      image: '📄',
+      highlights: [
+        'PDF generation',
+        'Custom formatting options',
+        'Live preview',
+        'Batch processing'
+      ]
+    },
+    {
+      title: 'Weather Dashboard',
+      description: 'Real-time weather monitoring application with detailed forecasts, interactive maps, and severe weather alerts.',
+      tech: ['React', 'OpenWeather API', 'Mapbox', 'TailwindCSS'],
+      type: 'Web Application',
+      link: 'https://github.com/adityajanjanam/WeatherDashboard',
+      image: '🌤️',
+      highlights: [
+        'Real-time updates',
+        'Interactive weather maps',
+        'Location-based forecasts',
+        'Severe weather alerts'
+      ]
+    },
+    {
+      title: 'Task Manager Pro',
+      description: 'Full-featured task management application with team collaboration, progress tracking, and deadline management capabilities.',
+      tech: ['React', 'Redux', 'Firebase', 'Material-UI'],
+      type: 'Productivity App',
+      link: 'https://github.com/adityajanjanam/TaskManagerPro',
+      image: '📋',
+      highlights: [
+        'Team collaboration',
+        'Real-time updates',
+        'Progress analytics',
+        'Deadline tracking'
+      ]
+    }
+  ];
+
+  return (
+    <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-12">
+      {/* Header Section */}
       <motion.div
-        key={index}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: index * 0.1 }}
-        className="bg-purple-900/10 p-6 rounded-xl border border-purple-500/20"
+        className="mb-12 text-center"
       >
-        <div className="flex justify-between items-start mb-4">
-          <h3 className="text-xl font-bold text-purple-400">{proj.title}</h3>
-          <span className="text-sm bg-purple-900/30 px-3 py-1 rounded-full text-gray-300">
-            {proj.type}
-          </span>
-        </div>
-        <p className="text-gray-400 mb-4">{proj.description}</p>
-        <div className="flex flex-wrap gap-2 mb-4">
-          {proj.tech.map((t, j) => (
-            <span key={j} className="text-sm bg-purple-900/30 px-3 py-1 rounded-full text-gray-300">
-              {t}
-            </span>
-          ))}
-        </div>
-        <a 
-          href={proj.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-purple-400 hover:text-purple-300 inline-flex items-center"
-        >
-          View Project →
-        </a>
+        <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 text-transparent bg-clip-text mb-4">
+          Featured Projects
+        </h2>
+        <p className="text-purple-400/80 text-lg">
+          Showcasing my technical expertise and creative problem-solving
+        </p>
       </motion.div>
-    ))}
-  </div>
-);
 
-const ApplicationPackagingSection = () => {
+      {/* Projects Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {projects.map((project, index) => (
+          <motion.div
+            key={project.title}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.1 }}
+            className="group relative"
+          >
+            {/* Project Card */}
+            <div className="h-full p-6 rounded-xl bg-purple-900/10 backdrop-blur-sm 
+                          border border-purple-500/20 hover:border-purple-500/40 
+                          transition-all duration-500 group-hover:bg-purple-900/20
+                          hover:shadow-[0_0_30px_rgba(168,85,247,0.2)]">
+        {/* Header */}
+              <div className="flex items-start justify-between mb-4">
+                <div className="flex items-center gap-3">
+                  <span className="text-3xl">{project.image}</span>
+                  <div>
+                    <h3 className="text-xl font-bold text-purple-400">{project.title}</h3>
+                    <span className="text-sm text-purple-300/70 bg-purple-500/10 px-2 py-0.5 rounded-full">
+                      {project.type}
+                    </span>
+                  </div>
+                </div>
+                <motion.a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="p-2 rounded-full bg-purple-500/10 hover:bg-purple-500/20 
+                           transition-colors duration-300"
+                >
+                  <svg className="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </motion.a>
+              </div>
+
+              {/* Description */}
+              <p className="text-gray-400 mb-4 line-clamp-2 group-hover:line-clamp-none transition-all duration-300">
+                {project.description}
+              </p>
+
+              {/* Key Highlights */}
+              <div className="mb-4">
+                <h4 className="text-sm font-semibold text-purple-400 mb-2">Key Highlights</h4>
+                <ul className="grid grid-cols-2 gap-2">
+                  {project.highlights.map((highlight, i) => (
+                    <motion.li
+                      key={i}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.1 + (i * 0.1) }}
+                      className="flex items-center gap-2 text-sm text-gray-400"
+                    >
+                      <svg className="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      {highlight}
+                    </motion.li>
+                  ))}
+                </ul>
+      </div>
+
+              {/* Technologies */}
+              <div className="flex flex-wrap gap-2">
+                {project.tech.map((tech, i) => (
+                  <motion.span
+                    key={i}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: index * 0.1 + (i * 0.1) }}
+                    className="px-3 py-1 text-sm bg-purple-500/10 rounded-full text-purple-300
+                             hover:bg-purple-500/20 transition-all duration-300"
+                  >
+                    {tech}
+                  </motion.span>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+// Update the ApplicationPackagingSection component with adjusted padding and spacing
+const ApplicationPackagingSection = ({ setActiveTab }) => {
   const tools = [
     { name: 'MSI/MSIX', icon: '📦', description: 'Enterprise Package Creation' },
     { name: 'PowerShell', icon: '💻', description: 'Automation & Scripting' },
@@ -1252,7 +1876,7 @@ const ApplicationPackagingSection = () => {
 
       {/* Back Button */}
       <motion.button
-        onClick={() => window.history.back()}
+        onClick={() => setActiveTab('home')}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8 }}
@@ -1261,7 +1885,7 @@ const ApplicationPackagingSection = () => {
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
         </svg>
-        Back to Overview
+        Back to Home
       </motion.button>
     </div>
   );
@@ -1413,46 +2037,74 @@ const ContactSection = () => {
   );
 };
 
+const SkillsAndLanguagesSection = () => {
+  const topSkills = [
+    'React Native',
+    'Web Applications',
+    'C#'
+  ];
+
+  const languages = [
+    { name: 'Telugu', level: 'Native or Bilingual' },
+    { name: 'Tamil', level: 'Full Professional' },
+    { name: 'English', level: 'Professional Working' },
+    { name: 'Hindi', level: 'Professional Working' },
+    { name: 'Kannada', level: 'Limited Working' }
+  ];
+
+  return (
+    <div className="flex gap-6 max-w-4xl mx-auto p-6">
+      {/* Top Skills Section */}
+      <div className="flex-1 bg-[#13111C] rounded-3xl p-6">
+        <h2 className="text-2xl text-purple-400 mb-6">Top Skills</h2>
+        <div className="space-y-3">
+          {topSkills.map((skill) => (
+            <div
+              key={skill}
+              className="bg-[#2D2B36] text-white px-4 py-2 rounded-full inline-block mr-2"
+            >
+              {skill}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Languages Section */}
+      <div className="flex-1 bg-[#13111C] rounded-3xl p-6">
+        <h2 className="text-2xl text-purple-400 mb-6">Languages</h2>
+        <div className="space-y-4">
+          {languages.map((language) => (
+            <div key={language.name} className="flex flex-col">
+              <div className="flex justify-between items-center">
+                <span className="text-white">{language.name}</span>
+                <span className="text-gray-400 text-sm">{language.level}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// --- App Component (Keep Main Padding Matching Header Height) ---
 const App = () => {
   const [activeTab, setActiveTab] = useState('home');
 
-  const renderContent = () => {
-    switch (activeTab) {
-      case 'experience':
-        return <Experience />;
-      case 'education':
-        return <Education />;
-      case 'projects':
-        return <Projects />;
-      case 'application-packaging':
   return (
-          <div className="container mx-auto px-4 pt-24">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="mb-8"
-            >
-              <button
-                onClick={() => setActiveTab('home')}
-                className="text-purple-400 hover:text-purple-300 mb-6 flex items-center gap-2"
-              >
-                ← Back to Home
-              </button>
-              <ApplicationPackagingSection />
-            </motion.div>
-          </div>
-        );
-      default:
-        return <Home setActiveTab={setActiveTab} />;
-    }
-  };
-
-  return (
-    <div className="min-h-screen bg-[#0a0b0f] text-white">
+    <div className="min-h-screen bg-[#080808] text-gray-200"> 
       <NavLinks activeTab={activeTab} setActiveTab={setActiveTab} />
-      {renderContent()}
-      </div>
+      
+      {/* Keep main padding matching header height (h-16) */}
+      <main className="pt-16"> 
+        {/* Render active section */}
+        {activeTab === 'home' && <Home setActiveTab={setActiveTab} />}
+        {activeTab === 'experience' && <Experience />}
+        {activeTab === 'projects' && <Projects />}
+        {activeTab === 'education' && <Education />}
+        {activeTab === 'application-packaging' && <ApplicationPackagingSection setActiveTab={setActiveTab} />}
+      </main>
+    </div>
   );
 };
 
