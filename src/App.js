@@ -223,69 +223,100 @@ const projects = [
 ];
 
 // NavLinks component without router links
-const NavLinks = ({ activeTab, setActiveTab }) => (
-  <nav className="fixed top-0 left-0 right-0 z-50"> 
-    {/* Solid dark background, slightly less harsh than pure black */}
-    <div className="w-full bg-[#111111] border-b border-gray-700"> 
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="flex items-center justify-between h-16"> 
-          {/* Logo/Brand (Optional) */}
-          <div className="flex-shrink-0">
-             {/* Use a high-contrast logo or text */}
-            <button onClick={() => setActiveTab('home')} className="text-xl font-bold text-white">
-              AJ
-            </button>
-          </div>
-          
-          {/* Desktop Navigation Links */}
-          <div className="hidden md:flex items-center space-x-4">
-            {[
-              { name: 'Home', path: 'home' },
-              { name: 'Experience', path: 'experience' },
-              { name: 'Projects', path: 'projects' },
-              { name: 'Education', path: 'education' }
-            ].map((item) => (
-              <button
-                key={item.name}
-                onClick={() => setActiveTab(item.path)}
-                className={`relative px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200
-                           ${activeTab === item.path 
-                             ? 'text-yellow-400' // Active link uses yellow accent
-                             : 'text-gray-300 hover:bg-gray-700 hover:text-white'}`} // High contrast text/hover
-              >
-                {item.name}
-                {/* Active indicator using yellow */}
-                {activeTab === item.path && (
-                  <motion.span
-                    layoutId="activeTabIndicator" // Use a different layoutId if needed
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-yellow-400"
-                    initial={false}
-                    transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                  />
-                )}
+const NavLinks = ({ activeTab, setActiveTab }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navItems = [
+    { name: 'Home', path: 'home' },
+    { name: 'Experience', path: 'experience' },
+    { name: 'Projects', path: 'projects' },
+    { name: 'Education', path: 'education' }
+  ];
+  
+  return (
+    <nav className="fixed top-0 left-0 right-0 z-50"> 
+      <div className="w-full bg-[#111111] border-b border-gray-700"> 
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="flex items-center justify-between h-16"> 
+            <div className="flex-shrink-0">
+              <button onClick={() => setActiveTab('home')} className="text-xl font-bold text-white">
+                AJ
               </button>
-            ))}
-            {/* Resume Button (Contrast) */}
-            <a 
-              href="/resume.pdf" // Update path if needed
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ml-4 px-4 py-2 border border-transparent rounded-md text-sm font-medium 
-                       text-black bg-yellow-400 hover:bg-yellow-300 transition-colors duration-200" // High contrast button
-            >
-              Resume
-            </a>
+            </div>
+            
+            {/* Desktop Navigation Links */}
+            <div className="hidden md:flex items-center space-x-4">
+              {navItems.map((item) => (
+                <button
+                  key={item.name}
+                  onClick={() => setActiveTab(item.path)}
+                  className={`relative px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200
+                             ${activeTab === item.path 
+                               ? 'text-yellow-400'
+                               : 'text-gray-300 hover:bg-gray-700 hover:text-white'}`}
+                >
+                  {item.name}
+                  {activeTab === item.path && (
+                    <motion.span
+                      layoutId="activeTabIndicator"
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-yellow-400"
+                      initial={false}
+                      transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                    />
+                  )}
+                </button>
+              ))}
+              <a 
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ml-4 px-4 py-2 border border-transparent rounded-md text-sm font-medium 
+                         text-black bg-yellow-400 hover:bg-yellow-300 transition-colors duration-200"
+              >
+                Resume
+              </a>
+            </div>
+            
+            {/* Mobile Menu Button */}
+            <div className="md:hidden">
+              <button 
+                onClick={() => setIsMenuOpen(!isMenuOpen)} 
+                className="p-2 text-gray-300 hover:text-white"
+              >
+                {isMenuOpen ? 'X' : '☰'}
+              </button>
+            </div>
           </div>
           
-           {/* Mobile Menu Button (Placeholder - Implement if needed) */}
-           <div className="md:hidden">
-             {/* Add a high-contrast burger menu icon button here */}
-           </div>
+          {/* Mobile Menu Dropdown */}
+          {isMenuOpen && (
+            <div className="md:hidden py-2">
+              {navItems.map((item) => (
+                <button
+                  key={item.name}
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    setActiveTab(item.path);
+                  }}
+                  className="block w-full text-left px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
+                >
+                  {item.name}
+                </button>
+              ))}
+              <a 
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block mx-3 mt-2 px-3 py-2 text-center text-black bg-yellow-400 hover:bg-yellow-300 rounded"
+              >
+                Resume
+              </a>
+            </div>
+          )}
         </div>
       </div>
-    </div>
-  </nav>
-);
+    </nav>
+  );
+};
 
 // Social Links Component
 const socialLinks = [
@@ -1022,7 +1053,7 @@ const Footer = ({ contrast = false }) => (
         © {new Date().getFullYear()} Aditya Janjanam. All rights reserved.
       </p>
     </div>
-  </footer>
+        </footer>
 );
 
 // --- Animated Multilingual Greeting Component ---
@@ -1079,7 +1110,7 @@ const AnimatedMultilingualGreeting = () => {
           {currentGreeting.text}
         </motion.h2>
       </AnimatePresence>
-    </div>
+      </div>
   );
 };
 
@@ -1105,7 +1136,7 @@ const Home = ({ setActiveTab }) => {
              </div>
              <div className="flex flex-wrap gap-x-10 gap-y-4 mb-10"> 
                <div className="text-center">
-                 <div className="text-3xl lg:text-4xl font-bold text-white">2.3+</div> 
+                 <div className="text-3xl lg:text-4xl font-bold text-white">3</div> 
                  <div className="text-xs lg:text-sm text-gray-400 mt-1 uppercase tracking-wider">Years Experience</div> 
                </div>
                <div className="text-center">
