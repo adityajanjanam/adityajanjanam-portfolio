@@ -1248,9 +1248,11 @@ const BriefSummary = ({ contrast = false }) => (
      {/* Adjusted text colors */}
     <h3 className={`text-xl font-semibold mb-4 ${contrast ? 'text-white' : 'text-purple-400'}`}>About Me</h3>
     <p className={`${contrast ? 'text-gray-300' : 'text-gray-400'} leading-relaxed`}>
-      International student pursuing Mobile Applications Development at Centennial College, Toronto, 
-      with distinction in Computer Applications Development from Conestoga College, Waterloo. 
-      Former Systems Engineer at Atos with 2.3 years of experience in Application Packaging and Testing.
+      As an international student, I am currently pursuing a Graduate Certificate in Mobile Applications Development at Centennial College in Toronto. Additionally, I hold a distinguished degree in Computer Applications Development from Conestoga College in Waterloo.
+
+      With over 3 years of IT experience in software development and systems engineering, I have honed my skills through two years of professional engagement as a Systems Engineer at Atos. My specialization in Application Packaging and Testing has enabled me to streamline deployment processes, automate installations, and enhance application performance across diverse enterprise environments.
+
+      My passion is centered on developing high-quality Mobile, Web, and Desktop Applications and Websites. I am proficient in a variety of technologies, including Android, iOS, Flutter, React Native, Node.js, and scripting languages such as PowerShell and VBScript. I am keen to apply my technical expertise and practical experience to contribute to innovative projects and thrive in dynamic team environments within the technology sector.
     </p>
   </motion.div>
 );
