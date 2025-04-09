@@ -926,12 +926,14 @@ class GreetingErrorBoundary extends React.Component {
 }
 
 // Wrap the AnimatedGreeting component with the error boundary
+// eslint-disable-next-line no-unused-vars
 const SafeAnimatedGreeting = () => (
   <GreetingErrorBoundary>
     <AnimatedGreeting />
   </GreetingErrorBoundary>
 );
 
+// eslint-disable-next-line no-unused-vars
 const TabButton = ({ active, children, onClick }) => (
   <motion.button
     onClick={onClick}
