@@ -1240,18 +1240,19 @@ const Home = ({ setActiveTab }) => {
 // Update the BriefSummary component
 const BriefSummary = ({ contrast = false }) => (
   <motion.div 
-    // Adjusted card style for contrast
-    className={`mt-8 p-6 rounded-xl border ${contrast ? 'bg-gray-900 border-gray-700' : 'bg-purple-900/10 border-purple-500/20 backdrop-blur-sm'}`}
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
+    className={`mt-8 p-6 rounded-xl border ${contrast ? 'bg-gray-900 border-gray-700 shadow-lg' : 'bg-purple-900/10 border-purple-500/20 backdrop-blur-sm shadow-md'} sm:p-8`}
+    initial={{ opacity: 0, y: 20, scale: 0.95 }}
+    animate={{ opacity: 1, y: 0, scale: 1 }}
+    transition={{ duration: 0.5, ease: 'easeOut' }}
   >
-     {/* Adjusted text colors */}
-    <h3 className={`text-xl font-semibold mb-4 ${contrast ? 'text-white' : 'text-purple-400'}`}>About Me</h3>
-    <p className={`${contrast ? 'text-gray-300' : 'text-gray-400'} leading-relaxed`}>
+    <h3 className={`text-2xl font-bold mb-6 ${contrast ? 'text-white' : 'text-purple-400'} sm:text-3xl`}>About Me</h3>
+    <p className={`text-base ${contrast ? 'text-gray-300' : 'text-gray-400'} leading-relaxed sm:text-lg text-justify`}>
       As an international student, I am currently pursuing a Graduate Certificate in Mobile Applications Development at Centennial College in Toronto. Additionally, I hold a distinguished degree in Computer Applications Development from Conestoga College in Waterloo.
-
+    </p>
+    <p className={`mt-4 text-base ${contrast ? 'text-gray-300' : 'text-gray-400'} leading-relaxed sm:text-lg text-justify`}>
       With over 3 years of IT experience in software development and systems engineering, I have honed my skills through two years of professional engagement as a Systems Engineer at Atos. My specialization in Application Packaging and Testing has enabled me to streamline deployment processes, automate installations, and enhance application performance across diverse enterprise environments.
-
+    </p>
+    <p className={`mt-4 text-base ${contrast ? 'text-gray-300' : 'text-gray-400'} leading-relaxed sm:text-lg text-justify`}>
       My passion is centered on developing high-quality Mobile, Web, and Desktop Applications and Websites. I am proficient in a variety of technologies, including Android, iOS, Flutter, React Native, Node.js, and scripting languages such as PowerShell and VBScript. I am keen to apply my technical expertise and practical experience to contribute to innovative projects and thrive in dynamic team environments within the technology sector.
     </p>
   </motion.div>
