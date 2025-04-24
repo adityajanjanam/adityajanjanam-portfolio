@@ -8,7 +8,7 @@ interface EducationProps {
 
 export const Education: React.FC<EducationProps> = ({ isDarkMode }) => {
   return (
-    <div className={`max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-16 ${isDarkMode ? 'bg-[#080808] text-gray-200' : 'bg-white text-gray-900'}`}>
+    <div className={`max-w-full mx-auto px-6 sm:px-8 lg:px-12 py-16 ${isDarkMode ? 'bg-[#080808] text-gray-200' : 'bg-white text-gray-900'}`}>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -53,7 +53,7 @@ export const Education: React.FC<EducationProps> = ({ isDarkMode }) => {
                   <p className={`text-lg ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                     {edu.institution}
                   </p>
-                  <p className={`${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                  <p className={` ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                     {edu.period} • {edu.type}
                   </p>
                 </div>
@@ -70,7 +70,7 @@ export const Education: React.FC<EducationProps> = ({ isDarkMode }) => {
                 <h4 className={`text-lg font-semibold ${isDarkMode ? 'text-gray-300' : 'text-gray-700'} mb-4`}>
                   Key Courses
                 </h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 overflow-x-auto">
                   {edu.courses.map((course, idx) => (
                     <motion.div
                       key={idx}
@@ -78,24 +78,24 @@ export const Education: React.FC<EducationProps> = ({ isDarkMode }) => {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: (index * 0.2) + (idx * 0.1) }}
                       className={`flex items-center gap-2 p-3 rounded-lg
-                               ${isDarkMode 
-                                 ? 'bg-gray-900 border-gray-700' 
-                                 : 'bg-gray-50 border-gray-200'}
-                               hover:border-gray-600 transition-all duration-300`}
+                               ${isDarkMode
+                                 ? 'bg-gray-900 border-gray-700 hover:bg-gray-800'
+                                 : 'bg-gray-50 border-gray-200 hover:bg-gray-100'}
+                                transition-all duration-300 max-w-full`}
                       role="listitem"
-                    >
-                      <span className={`${isDarkMode ? 'text-yellow-400' : 'text-yellow-600'}`}>•</span>
-                      <span className={`${isDarkMode ? 'text-gray-300' : 'text-gray-700'} text-sm`}>
-                        {course}
+                      >
+                         <span className={`${isDarkMode ? 'text-yellow-400' : 'text-yellow-600'}`}>•</span>
+                      <span className={`${isDarkMode ? 'text-gray-300' : 'text-gray-700'} text-sm max-w-full`}>
+                        {course} 
                       </span>
-                    </motion.div>
+                      </motion.div>
                   ))}
                 </div>
-              </div>
+              </div> 
             </div>
-          </motion.div>
-        ))}
+          </motion.div>)
+        ))
       </div>
     </div>
   );
-}; 
+};

@@ -3,5 +3,7 @@
     "tailwindCSS.emmetCompletions": true,
     "editor.quickSuggestions": {
       "strings": true
-    }
+    },
+    "IDX.aI.enableInlineCompletion": true,
+    "IDX.aI.enableCodebaseIndexing": true
   }

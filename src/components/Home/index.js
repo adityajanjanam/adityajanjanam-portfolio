@@ -13,7 +13,7 @@ export const Home = () => (
     <AnimatedGreeting />
     
     <motion.h1 
-      className="text-6xl md:text-7xl font-bold mb-6"
+      className="text-6xl md:text-8xl font-bold mb-8"
       initial={{ y: 20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ delay: 0.2 }}
@@ -22,7 +22,7 @@ export const Home = () => (
     </motion.h1>
 
     <motion.div
-      className="text-xl text-gray-400 mb-8"
+      className="text-xl text-gray-400 mb-12"
       initial={{ y: 20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ delay: 0.3 }}
@@ -49,11 +49,10 @@ export const Home = () => (
             hidden: { y: 20, opacity: 0 },
             visible: { y: 0, opacity: 1 }
           }}
-          className="p-4 rounded-xl bg-gradient-to-br from-purple-900/30 to-transparent
-                     backdrop-blur-sm border border-purple-500/20 hover:border-purple-500/50 
+          className="p-6 rounded-xl bg-gradient-to-br from-[#1e293b]/30 to-transparent backdrop-blur-sm border border-purple-500/20 hover:border-purple-500/50 hover:shadow-lg 
                      transition-all duration-300"
         >
-          <h3 className="text-lg font-semibold text-purple-400 mb-3">
+          <h3 className="text-lg font-semibold text-purple-400 mb-4">
             {area === 'fullStack' ? '🌐 Full Stack' :
              area === 'desktop' ? '🖥️ Desktop' :
              area === 'mobile' ? '📱 Mobile' :
@@ -64,8 +63,8 @@ export const Home = () => (
           <div className="flex flex-wrap gap-2">
             {techs.map(tech => (
               <span key={tech.name} 
-                    className="px-3 py-1 text-sm bg-purple-900/30 rounded-full text-gray-300
-                             hover:bg-purple-800/40 transition-colors duration-300">
+                    className="px-4 py-2 text-sm bg-[#182233]/70 border border-purple-400/40 rounded-full text-gray-300 
+                             hover:bg-[#1d2939]/80 transition-colors duration-300">
                 {tech.name}
               </span>
             ))}

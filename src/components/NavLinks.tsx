@@ -52,7 +52,7 @@ const NavLinks: React.FC<NavLinksProps> = ({
       className="fixed top-0 left-0 right-0 z-50"
       role="navigation"
       aria-label="Main navigation"
-    >
+    >    
       <div className={`w-full ${isDarkMode ? 'bg-[#111111] border-gray-700' : 'bg-white border-gray-200 shadow-lg'} border-b`}>
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="flex items-center justify-between h-16">
@@ -74,14 +74,14 @@ const NavLinks: React.FC<NavLinksProps> = ({
                   key={item.name}
                   onClick={() => setActiveTab(item.path)}
                   onKeyDown={(e) => handleKeyDown(e, item.path)}
-                  className={`relative px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200
+                  className={`relative px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 \
                              ${activeTab === item.path 
-                               ? 'text-yellow-500'
+                               ? 'text-yellow-400'
                                : isDarkMode 
-                                 ? 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                                 ? 'text-gray-300 hover:text-white hover:bg-[#1d2939]'
                                  : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'}`}
                   aria-current={activeTab === item.path ? 'page' : undefined}
-                  aria-label={item.name}
+                  aria-label={item.name}                  
                 >
                   {item.name}
                   {activeTab === item.path && (
@@ -104,7 +104,7 @@ const NavLinks: React.FC<NavLinksProps> = ({
                   }
                 }}
                 className={`p-2 rounded-md transition-colors duration-200 ${
-                  isDarkMode 
+                  isDarkMode
                     ? 'text-gray-300 hover:bg-gray-700 hover:text-white' 
                     : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
                 }`}
@@ -126,11 +126,11 @@ const NavLinks: React.FC<NavLinksProps> = ({
                 href="/Aditya_Janjanam_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                download="Aditya_Janjanam_Resume.pdf"
+                download="Aditya_Janjanam_Resume.pdf"                
                 className={`ml-4 px-4 py-2 rounded-md text-sm font-medium transition-all duration-200
                          flex items-center gap-2 hover:scale-105 hover:shadow-lg
                          ${isDarkMode 
-                           ? 'text-black bg-yellow-400 hover:bg-yellow-300 shadow-md shadow-yellow-400/20'
+                           ? 'bg-yellow-400 text-black hover:bg-yellow-300 shadow-md shadow-yellow-400/20'
                            : 'text-white bg-purple-600 hover:bg-purple-700 shadow-md shadow-purple-600/20'}`}
                 aria-label="Download Resume"
               >
@@ -163,7 +163,7 @@ const NavLinks: React.FC<NavLinksProps> = ({
           {/* Mobile Menu */}
           {isMenuOpen && (
             <div 
-              id="mobile-menu"
+            id="mobile-menu"
               className="md:hidden py-2"
               role="menu"
               aria-orientation="vertical"
@@ -182,7 +182,7 @@ const NavLinks: React.FC<NavLinksProps> = ({
                       setActiveTab(item.path);
                     }
                   }}
-                  className="block w-full text-left px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
+                  className={`block w-full text-left px-3 py-2 ${isDarkMode ? 'hover:bg-[#1d2939] text-gray-300 hover:text-white' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'}`}
                   role="menuitem"
                   aria-current={activeTab === item.path ? 'page' : undefined}
                 >
