@@ -223,8 +223,34 @@ const projects = [
 ];
 
 // NavLinks component without router links
-const NavLinks = ({ activeTab, setActiveTab }) => {
+const NavLinks = ({ activeTab, setActiveTab, isDarkMode, setIsDarkMode }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
+  useEffect(() => {
+    // Set initial theme
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+      document.documentElement.classList.remove('light');
+    } else {
+      document.documentElement.classList.add('light');
+      document.documentElement.classList.remove('dark');
+    }
+  }, [isDarkMode]);
+
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+    // Save preference to localStorage
+    localStorage.setItem('theme', !isDarkMode ? 'dark' : 'light');
+  };
+
+  // Check for saved theme preference on mount
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      setIsDarkMode(savedTheme === 'dark');
+    }
+  }, [setIsDarkMode]);
+
   const navItems = [
     { name: 'Home', path: 'home' },
     { name: 'Experience', path: 'experience' },
@@ -234,11 +260,11 @@ const NavLinks = ({ activeTab, setActiveTab }) => {
   
   return (
     <nav className="fixed top-0 left-0 right-0 z-50"> 
-      <div className="w-full bg-[#111111] border-b border-gray-700"> 
+      <div className={`w-full ${isDarkMode ? 'bg-[#111111] border-gray-700' : 'bg-white border-gray-200 shadow-lg'} border-b`}> 
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="flex items-center justify-between h-16"> 
             <div className="flex-shrink-0">
-              <button onClick={() => setActiveTab('home')} className="text-xl font-bold text-white">
+              <button onClick={() => setActiveTab('home')} className={`text-xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
                 AJ
               </button>
             </div>
@@ -251,28 +277,56 @@ const NavLinks = ({ activeTab, setActiveTab }) => {
                   onClick={() => setActiveTab(item.path)}
                   className={`relative px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200
                              ${activeTab === item.path 
-                               ? 'text-yellow-400'
-                               : 'text-gray-300 hover:bg-gray-700 hover:text-white'}`}
+                               ? 'text-yellow-500'
+                               : isDarkMode 
+                                 ? 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                                 : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'}`}
                 >
                   {item.name}
                   {activeTab === item.path && (
                     <motion.span
                       layoutId="activeTabIndicator"
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-yellow-400"
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-yellow-500"
                       initial={false}
                       transition={{ type: "spring", stiffness: 500, damping: 30 }}
                     />
                   )}
                 </button>
               ))}
+              <button
+                onClick={toggleTheme}
+                className={`p-2 rounded-md transition-colors duration-200 ${
+                  isDarkMode 
+                    ? 'text-gray-300 hover:bg-gray-700 hover:text-white' 
+                    : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
+                }`}
+                aria-label="Toggle dark mode"
+              >
+                {isDarkMode ? (
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                  </svg>
+                ) : (
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                  </svg>
+                )}
+              </button>
               <a 
-                href="/resume.pdf"
+                href="/Aditya_Janjanam_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="ml-4 px-4 py-2 border border-transparent rounded-md text-sm font-medium 
-                         text-black bg-yellow-400 hover:bg-yellow-300 transition-colors duration-200"
+                download="Aditya_Janjanam_Resume.pdf"
+                className={`ml-4 px-4 py-2 rounded-md text-sm font-medium transition-all duration-200
+                         flex items-center gap-2 hover:scale-105 hover:shadow-lg
+                         ${isDarkMode 
+                           ? 'text-black bg-yellow-400 hover:bg-yellow-300 shadow-md shadow-yellow-400/20'
+                           : 'text-white bg-purple-600 hover:bg-purple-700 shadow-md shadow-purple-600/20'}`}
               >
                 Resume
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
               </a>
             </div>
             
@@ -428,7 +482,7 @@ const CTASection = ({ contrast = false }) => {
 
   // Define contrast styles
   const buttonPrimaryContrast = "bg-yellow-400 text-black hover:bg-yellow-300";
-  const buttonSecondaryContrast = "border border-gray-600 text-gray-300 hover:bg-gray-700 hover:text-white";
+  const buttonSecondaryContrast = "bg-purple-600 text-white hover:bg-purple-700";
 
   return (
     <div className="flex flex-col items-start gap-5"> 
@@ -446,7 +500,7 @@ const CTASection = ({ contrast = false }) => {
           </svg>
         </motion.button>
         <a 
-          href="/AdityaJanjanamResume.pdf" 
+          href="/Aditya_Janjanam_Resume.pdf" 
           target="_blank"
           className={`px-5 py-2.5 rounded-md text-sm font-medium transition-all duration-200 flex items-center gap-2 ${buttonSecondaryContrast}`}
         >
@@ -980,7 +1034,7 @@ const TabButton = ({ active, children, onClick }) => (
   </motion.button>
 );
 
-const TechGrid = ({ setActiveTab, contrast = false }) => (
+const TechGrid = ({ setActiveTab, isDarkMode }) => (
   <motion.div
     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8 mb-24" 
     initial="hidden"
@@ -1002,12 +1056,12 @@ const TechGrid = ({ setActiveTab, contrast = false }) => (
         }}
         onClick={() => area === 'applicationPackaging' && setActiveTab('application-packaging')}
         className={`p-5 rounded-xl border transition-all duration-300 group
-                   ${contrast 
+                   ${isDarkMode 
                      ? `bg-gray-900 border-gray-700 ${area === 'applicationPackaging' ? 'hover:border-cyan-400 hover:bg-gray-800 cursor-pointer' : 'hover:border-gray-600'}`
-                     : `bg-purple-900/10 border-purple-500/20 backdrop-blur-sm ${area === 'applicationPackaging' ? 'hover:border-purple-500/50 hover:bg-purple-900/20 cursor-pointer' : 'hover:border-purple-500/30'}`
+                     : `bg-white border-gray-200 shadow-lg ${area === 'applicationPackaging' ? 'hover:border-yellow-500 hover:bg-gray-50 cursor-pointer' : 'hover:border-gray-300'}`}
                    }`}
       >
-        <h3 className={`text-lg font-semibold mb-3 flex items-center gap-2 ${contrast ? 'text-cyan-400' : 'text-purple-400'}`}>
+        <h3 className={`text-lg font-semibold mb-3 flex items-center gap-2 ${isDarkMode ? 'text-cyan-400' : 'text-gray-900'}`}>
           {area === 'fullStack' ? '🌐 Full Stack' :
            area === 'desktop' ? '🖥️ Desktop' :
            area === 'mobile' ? '📱 Mobile' :
@@ -1016,10 +1070,10 @@ const TechGrid = ({ setActiveTab, contrast = false }) => (
            area === 'applicationPackaging' ? (
              <div className="flex items-center gap-2">
                📦 Application Packaging
-               <span className={`text-xs px-2 py-0.5 rounded-full ${contrast ? 'text-cyan-300 bg-cyan-900/50' : 'text-purple-400/70 bg-purple-500/10'}`}>
+               <span className={`text-xs px-2 py-0.5 rounded-full ${isDarkMode ? 'text-cyan-300 bg-cyan-900/50' : 'text-yellow-600 bg-yellow-100'}`}>
                  Click to view details ↗
                </span>
-      </div>
+             </div>
            ) : area}
         </h3>
         <div className="flex flex-wrap gap-2">
@@ -1028,10 +1082,9 @@ const TechGrid = ({ setActiveTab, contrast = false }) => (
               key={tech.name}
               whileHover={{ scale: 1.05 }}
               className={`px-2.5 py-1 text-sm rounded-full flex items-center gap-1.5 border hover:border-opacity-40 transition-colors duration-300
-                         ${contrast 
+                         ${isDarkMode 
                            ? 'bg-gray-800 border-gray-700 text-gray-300 hover:border-cyan-400' 
-                           : 'bg-purple-900/30 border-purple-500/10 text-gray-300 hover:bg-purple-800/40 hover:border-purple-500/20'}`
-                         }
+                           : 'bg-gray-50 border-gray-200 text-gray-700 hover:border-yellow-500 hover:bg-yellow-50'}`}
             >
               <span className="text-base">{tech.icon}</span>
               <span className="relative top-[0.5px]">{tech.name}</span>
@@ -1045,15 +1098,13 @@ const TechGrid = ({ setActiveTab, contrast = false }) => (
 
 // Add a Footer component
 const Footer = ({ contrast = false }) => (
-   // Simplified background for contrast
   <footer className={`w-full py-8 px-4 mt-auto ${contrast ? 'bg-black' : 'bg-gradient-to-t from-black/40 to-transparent'}`}>
     <div className="container mx-auto text-center">
-       {/* Brighter text */}
-      <p className={`${contrast ? 'text-gray-500' : 'text-gray-400'} text-sm`}>
+      <p className={`${contrast ? 'text-gray-300' : 'text-gray-700'} text-sm font-medium`}>
         © {new Date().getFullYear()} Aditya Janjanam. All rights reserved.
       </p>
     </div>
-        </footer>
+  </footer>
 );
 
 // --- Animated Multilingual Greeting Component ---
@@ -1115,9 +1166,9 @@ const AnimatedMultilingualGreeting = () => {
 };
 
 // --- Home Component (Further Reduced Footer Gap) ---
-const Home = ({ setActiveTab }) => {
+const Home = ({ setActiveTab, isDarkMode }) => {
   return (
-    <div className="relative bg-[#080808] flex flex-col text-gray-200"> 
+    <div className={`relative ${isDarkMode ? 'bg-[#080808] text-gray-200' : 'bg-white text-gray-800'}`}> 
       <div className="relative container mx-auto px-6 sm:px-8 lg:px-12 pt-12 pb-12"> 
         <div className="flex flex-col lg:flex-row items-start justify-between gap-x-16 gap-y-12"> 
           
@@ -1126,29 +1177,29 @@ const Home = ({ setActiveTab }) => {
              {/* ... Greeting, Name/Role, Stats, Summary, CTA ... */}
              <AnimatedMultilingualGreeting /> 
              <div className="mb-10"> 
-               <h1 className="text-3xl lg:text-4xl font-bold mb-2"> 
-                 <span className="text-gray-400 mr-2">I am</span> 
-                 <span className="text-white">Aditya Janjanam!</span>
+               <h1 className={`text-3xl lg:text-4xl font-bold mb-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}> 
+                 <span className={`${isDarkMode ? 'text-gray-400' : 'text-gray-700'} mr-2`}>I am</span> 
+                 <span className={isDarkMode ? 'text-white' : 'text-gray-900'}>Aditya Janjanam!</span>
                </h1>
-               <p className="text-base lg:text-lg text-gray-400"> 
+               <p className={`text-base lg:text-lg ${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}> 
                  Full Stack Developer | Mobile App Developer | Software Engineer
                </p>
              </div>
              <div className="flex flex-wrap gap-x-10 gap-y-4 mb-10"> 
                <div className="text-center">
-                 <div className="text-3xl lg:text-4xl font-bold text-white">3</div> 
-                 <div className="text-xs lg:text-sm text-gray-400 mt-1 uppercase tracking-wider">Years Experience</div> 
+                 <div className={`text-3xl lg:text-4xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>3</div> 
+                 <div className={`text-xs lg:text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-700'} mt-1 uppercase tracking-wider`}>Years Experience</div> 
                </div>
                <div className="text-center">
-                 <div className="text-3xl lg:text-4xl font-bold text-white">15+</div>
-                 <div className="text-xs lg:text-sm text-gray-400 mt-1 uppercase tracking-wider">Projects</div> 
+                 <div className={`text-3xl lg:text-4xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>15+</div>
+                 <div className={`text-xs lg:text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-700'} mt-1 uppercase tracking-wider`}>Projects</div> 
                </div>
              </div>
              <div className="mb-10">
-               <BriefSummary /> 
+               <BriefSummary isDarkMode={isDarkMode} /> 
              </div>
              <div className="mt-auto pt-6"> 
-               <CTASection />
+               <CTASection isDarkMode={isDarkMode} />
              </div>
           </div>
 
@@ -1168,12 +1219,10 @@ const Home = ({ setActiveTab }) => {
 
                 {/* Main Photo Container */}
                 <motion.div 
-                  className="relative aspect-[3/4] rounded-xl overflow-hidden 
-                             z-10 
-                             bg-[#1a1a1a] 
-                             border border-gray-700/80 
-                             shadow-xl shadow-gray-900/50 
-                             transition-all duration-300 ease-out"
+                  className={`relative aspect-[3/4] rounded-xl overflow-hidden z-10 
+                             ${isDarkMode ? 'bg-[#1a1a1a] border-gray-700/80' : 'bg-white border-gray-200/80'} 
+                             border shadow-xl ${isDarkMode ? 'shadow-gray-900/50' : 'shadow-gray-200/50'} 
+                             transition-all duration-300 ease-out`}
                   whileHover={{ scale: 1.02, y: -4 }} 
                 >
                   {/* Image */}
@@ -1188,36 +1237,40 @@ const Home = ({ setActiveTab }) => {
                   
                   {/* ===> Status Indicator (Enhanced Background) <=== */}
                   <motion.div 
-                    initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} 
-                    className="absolute top-3 right-3 flex items-center gap-1.5 
-                               bg-black/60 backdrop-blur-sm px-2.5 py-1 rounded-full  
-                               border border-white/15 shadow-md z-30" // Increased contrast on border too
+                    initial={{ opacity: 0, y: 10 }} 
+                    animate={{ opacity: 1, y: 0 }} 
+                    transition={{ delay: 0.4 }} 
+                    className={`absolute top-3 right-3 flex items-center gap-1.5 
+                               ${isDarkMode ? 'bg-black/60' : 'bg-white/90'} backdrop-blur-sm px-2.5 py-1 rounded-full  
+                               border ${isDarkMode ? 'border-white/15' : 'border-gray-200/50'} shadow-md z-30`}
                   >
                     <div className="w-2 h-2 bg-green-400 rounded-full" /> 
                     {/* Text remains white, background ensures visibility */}
-                    <span className="text-xs font-medium text-white">Available for hire</span> 
+                    <span className={`text-xs font-medium ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Available for hire</span> 
                   </motion.div>
                   
                   {/* ===> Bottom Info (with Localized Background) <=== */}
                   <motion.div 
-                    initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} 
-                    // Container for bottom text + background
-                    className="absolute bottom-0 inset-x-0 pt-10 pb-3 px-3.5  
-                               bg-gradient-to-t from-black/75 via-black/50 to-transparent 
-                               pointer-events-none z-30" // Gradient provides backdrop
+                    initial={{ opacity: 0, y: 10 }} 
+                    animate={{ opacity: 1, y: 0 }} 
+                    transition={{ delay: 0.5 }} 
+                    className={`absolute bottom-0 inset-x-0 pt-10 pb-3 px-3.5  
+                               ${isDarkMode 
+                                 ? 'bg-gradient-to-t from-black/75 via-black/50 to-transparent' 
+                                 : 'bg-gradient-to-t from-white/90 via-white/70 to-transparent'} 
+                               pointer-events-none z-30`}
                   >
                     {/* Text color remains white/light gray */}
-                    <h3 className="text-white text-lg font-semibold">Aditya Janjanam</h3> 
-                    <p className="text-gray-200 text-sm mt-0.5">Full Stack Developer</p> 
+                    <h3 className={`${isDarkMode ? 'text-white' : 'text-gray-900'} text-lg font-semibold`}>Aditya Janjanam</h3> 
+                    <p className={`${isDarkMode ? 'text-gray-200' : 'text-gray-700'} text-sm mt-0.5`}>Full Stack Developer</p> 
                   </motion.div>
-                  
                 </motion.div> {/* End of Main Photo Container */}
               </div> {/* End of Relative Group */}
             </motion.div> {/* End of Outer Motion Div */}
 
             {/* Social Links */}
             <div className="mt-6 flex justify-center lg:justify-start w-full"> 
-              <SocialLinks />
+              <SocialLinks isDarkMode={isDarkMode} />
             </div>
           </div> 
           {/* --- End of Right Column --- */}
@@ -1228,92 +1281,56 @@ const Home = ({ setActiveTab }) => {
         {/* ===> ADJUSTED MARGIN HERE <=== */}
         {/* Changed mt-20 to mt-12 */}
         <div className="mt-12"> 
-           <TechGrid setActiveTab={setActiveTab} /> 
+           <TechGrid setActiveTab={setActiveTab} isDarkMode={isDarkMode} /> 
         </div>
       </div> 
       {/* Footer */}
-      <Footer /> 
+      <Footer isDarkMode={isDarkMode} /> 
     </div>
   );
 };
 
 // Update the BriefSummary component
-const BriefSummary = ({ contrast = false }) => (
+const BriefSummary = ({ isDarkMode }) => (
   <motion.div 
-    className={`mt-8 p-6 rounded-xl border ${contrast ? 'bg-gray-900 border-gray-700 shadow-lg' : 'bg-purple-900/10 border-purple-500/20 backdrop-blur-sm shadow-md'} sm:p-8`}
+    className={`mt-8 p-6 rounded-xl border ${isDarkMode 
+      ? 'bg-gray-900 border-gray-700 shadow-lg' 
+      : 'bg-white border-gray-200 shadow-lg'} sm:p-8`}
     initial={{ opacity: 0, y: 20, scale: 0.95 }}
     animate={{ opacity: 1, y: 0, scale: 1 }}
     transition={{ duration: 0.5, ease: 'easeOut' }}
   >
-    <h3 className={`text-2xl font-bold mb-6 ${contrast ? 'text-white' : 'text-purple-400'} sm:text-3xl`}>About Me</h3>
-    <p className={`text-base ${contrast ? 'text-gray-300' : 'text-gray-400'} leading-relaxed sm:text-lg text-justify`}>
+    <h3 className={`text-2xl font-bold mb-6 ${isDarkMode ? 'text-white' : 'text-gray-900'} sm:text-3xl`}>About Me</h3>
+    <p className={`text-base ${isDarkMode ? 'text-gray-300' : 'text-gray-700'} leading-relaxed sm:text-lg text-justify`}>
       As an international student, I am currently pursuing a Graduate Certificate in Mobile Applications Development at Centennial College in Toronto. Additionally, I hold a distinguished degree in Computer Applications Development from Conestoga College in Waterloo.
     </p>
-    <p className={`mt-4 text-base ${contrast ? 'text-gray-300' : 'text-gray-400'} leading-relaxed sm:text-lg text-justify`}>
+    <p className={`mt-4 text-base ${isDarkMode ? 'text-gray-300' : 'text-gray-700'} leading-relaxed sm:text-lg text-justify`}>
       With over 3 years of IT experience in software development and systems engineering, I have honed my skills through two years of professional engagement as a Systems Engineer at Atos. My specialization in Application Packaging and Testing has enabled me to streamline deployment processes, automate installations, and enhance application performance across diverse enterprise environments.
     </p>
-    <p className={`mt-4 text-base ${contrast ? 'text-gray-300' : 'text-gray-400'} leading-relaxed sm:text-lg text-justify`}>
+    <p className={`mt-4 text-base ${isDarkMode ? 'text-gray-300' : 'text-gray-700'} leading-relaxed sm:text-lg text-justify`}>
       My passion is centered on developing high-quality Mobile, Web, and Desktop Applications and Websites. I am proficient in a variety of technologies, including Android, iOS, Flutter, React Native, Node.js, and scripting languages such as PowerShell and VBScript. I am keen to apply my technical expertise and practical experience to contribute to innovative projects and thrive in dynamic team environments within the technology sector.
     </p>
   </motion.div>
 );
 
-const Experience = () => {
-  const experiences = [
-    {
-      title: 'Systems Engineer',
-      company: 'Atos Global',
-      date: 'Jun 2021 – Aug 2023',
-      location: 'Chennai, India',
-      description: [
-        'Led application packaging and testing initiatives using PowerShell, Admin Studio, and InstallShield',
-        'Automated deployment processes reducing manual effort by 40%',
-        'Managed enterprise software distribution using SCCM/MECM',
-        'Collaborated with cross-functional teams for seamless application delivery',
-        'Implemented quality assurance protocols improving package success rate by 25%'
-      ],
-      skills: ['PowerShell', 'SCCM', 'Admin Studio', 'InstallShield', 'Application Packaging', 'Software Testing'],
-      logo: '🏢'
-    },
-    {
-      title: 'Software Engineer Intern',
-      company: 'Capgemini',
-      date: 'Sep 2020 – Dec 2020',
-      location: 'Bengaluru, India',
-      description: [
-        'Conducted manual and automated testing using Selenium and Java',
-        'Developed test scripts improving test coverage by 30%',
-        'Utilized Jira for project tracking and bug reporting',
-        'Participated in agile development processes and sprint planning',
-        'Collaborated with development teams to resolve software defects'
-      ],
-      skills: ['Selenium', 'Java', 'Manual Testing', 'Jira', 'Agile', 'Test Automation'],
-      logo: '💻'
-    }
-  ];
-
+const Experience = ({ isDarkMode }) => {
   return (
-    <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-16 text-gray-200 bg-[#080808]"> {/* Adjusted padding and background */}
-      {/* Header Section */}
+    <div className={`max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-16 ${isDarkMode ? 'bg-[#080808] text-gray-200' : 'bg-white text-gray-900'}`}>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="mb-12 text-center"
       >
-        {/* Yellow header */}
-        <h2 className="text-3xl sm:text-4xl font-bold text-yellow-400 mb-3"> 
+        <h2 className={`text-3xl sm:text-4xl font-bold ${isDarkMode ? 'text-yellow-400' : 'text-yellow-600'} mb-3`}>
           Professional Experience
         </h2>
-         {/* Brighter subtitle */}
-        <p className="text-gray-400 text-lg"> 
+        <p className={`text-lg ${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}>
           Building enterprise solutions and delivering quality software
         </p>
       </motion.div>
 
-      {/* Experience Timeline */}
-      <div className="relative space-y-10"> {/* Increased spacing */}
-        {/* Brighter Timeline Line */}
-        <div className="absolute left-4 top-2 bottom-2 w-0.5 bg-gray-700 hidden md:block" /> 
+      <div className="relative space-y-10">
+        <div className={`absolute left-4 top-2 bottom-2 w-0.5 ${isDarkMode ? 'bg-gray-700' : 'bg-gray-300'} hidden md:block`} />
 
         {experiences.map((exp, index) => (
           <motion.div
@@ -1323,44 +1340,42 @@ const Experience = () => {
             transition={{ delay: index * 0.2 }}
             className="relative group"
           >
-            {/* Yellow Timeline Dot */}
-            <div className="absolute left-[10px] top-1 w-4 h-4 rounded-full bg-yellow-400 border-2 border-gray-800 hidden md:block
-                          group-hover:scale-125 transition-transform duration-300" />
+            <div className={`absolute left-[10px] top-1 w-4 h-4 rounded-full ${isDarkMode ? 'bg-yellow-400 border-gray-800' : 'bg-yellow-500 border-gray-200'} border-2 hidden md:block
+                          group-hover:scale-125 transition-transform duration-300`} />
 
-            {/* Experience Card (Contrast) */}
-            <div className="ml-0 md:ml-10 p-6 rounded-lg bg-[#1a1a1a] border border-gray-700
-                          hover:border-gray-600 transition-colors duration-300">
-              {/* Header */}
+            <div className={`ml-0 md:ml-10 p-6 rounded-lg ${isDarkMode 
+              ? 'bg-[#1a1a1a] border-gray-700' 
+              : 'bg-white border-gray-200 shadow-lg'} border
+                          hover:border-gray-600 transition-colors duration-300`}>
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3">
                 <div>
-                   {/* Yellow title */}
-                  <h3 className="text-xl font-semibold text-yellow-400 flex items-center gap-2">
+                  <h3 className={`text-xl font-semibold ${isDarkMode ? 'text-yellow-400' : 'text-yellow-600'} flex items-center gap-2`}>
                     <span>{exp.logo}</span>
                     {exp.title} @ {exp.company}
                   </h3>
-                  <p className="text-gray-400 text-sm mt-1">{exp.date}</p>
+                  <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'} mt-1`}>{exp.date}</p>
                 </div>
-                <span className="mt-2 sm:mt-0 px-3 py-1 text-sm bg-purple-500/20 rounded-full text-purple-300">
+                <span className={`mt-2 sm:mt-0 px-3 py-1 text-sm ${isDarkMode 
+                  ? 'bg-purple-500/20 text-purple-300' 
+                  : 'bg-yellow-500/10 text-yellow-700'} rounded-full`}>
                   {exp.location}
                 </span>
               </div>
 
-              {/* Description */}
-              <ul className="space-y-2 mb-4 list-disc list-inside text-gray-300">
+              <ul className={`space-y-2 mb-4 list-disc list-inside ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                 {exp.description.map((item, i) => (
                   <motion.li
                     key={i}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.2 + (i * 0.1) }}
-                    className="text-gray-400 hover:text-gray-300 transition-colors"
+                    className={`${isDarkMode ? 'text-gray-400' : 'text-gray-600'} hover:${isDarkMode ? 'text-gray-300' : 'text-gray-700'} transition-colors`}
                   >
                     {item}
                   </motion.li>
                 ))}
               </ul>
 
-              {/* Skills */}
               <div className="flex flex-wrap gap-2 mt-4">
                 {exp.skills.map((skill, i) => (
                   <motion.span
@@ -1368,8 +1383,9 @@ const Experience = () => {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: index * 0.2 + (i * 0.1) }}
-                    className="px-3 py-1 text-sm bg-purple-500/10 rounded-full text-purple-300
-                             hover:bg-purple-500/20 transition-all duration-300"
+                    className={`px-3 py-1 text-sm rounded-full ${isDarkMode 
+                      ? 'bg-purple-500/10 text-purple-300 hover:bg-purple-500/20' 
+                      : 'bg-yellow-500/10 text-yellow-700 hover:bg-yellow-500/20'} transition-all duration-300`}
                   >
                     {skill}
                   </motion.span>
@@ -1383,7 +1399,7 @@ const Experience = () => {
   );
 };
 
-const Education = () => {
+const Education = ({ isDarkMode }) => {
   const educationData = [
     {
       program: 'Mobile Applications Development',
@@ -1427,8 +1443,8 @@ const Education = () => {
   ];
 
   return (
-    <div className="container mx-auto px-4 py-16">
-      <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-purple-400 to-pink-500 text-transparent bg-clip-text">
+    <div className={`container mx-auto px-4 py-16 ${isDarkMode ? 'bg-[#080808] text-gray-200' : 'bg-white text-gray-900'}`}>
+      <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-yellow-400 to-yellow-500 text-transparent bg-clip-text">
         Education
       </h2>
       
@@ -1439,44 +1455,33 @@ const Education = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.2 }}
-            className="relative p-6 rounded-2xl overflow-hidden group
-                     bg-white/5 backdrop-blur-lg border border-white/10
-                     hover:bg-white/10 transition-all duration-300
-                     shadow-[0_0_20px_rgba(139,92,246,0.1)]
-                     hover:shadow-[0_0_30px_rgba(139,92,246,0.2)]"
+            className={`relative p-6 rounded-2xl overflow-hidden group
+                     ${isDarkMode 
+                       ? 'bg-[#1a1a1a] border-gray-700' 
+                       : 'bg-white border-gray-200 shadow-lg'}
+                     hover:border-gray-600 transition-all duration-300`}
           >
-            {/* Background Glow */}
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 opacity-0 
-                          group-hover:opacity-100 transition-opacity duration-300" />
-            
-            {/* Content */}
             <div className="relative z-10">
-              {/* Header */}
               <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
-                {/* Left side: Program, Institution, Location */}
                 <div>
-                  <h3 className="text-2xl font-bold text-purple-400 mb-2">{edu.program}</h3>
-                  <p className="text-lg text-gray-300">{edu.institution}</p>
-                  <p className="text-gray-400">{edu.location}</p>
+                  <h3 className={`text-2xl font-bold ${isDarkMode ? 'text-yellow-400' : 'text-yellow-600'} mb-2`}>{edu.program}</h3>
+                  <p className={`text-lg ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>{edu.institution}</p>
+                  <p className={`${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>{edu.location}</p>
                 </div>
-                {/* Right side: Period, Type, Status, Grade */}
                 <div className="mt-2 md:mt-0 text-right">
-                  <p className="text-gray-300">{edu.period}</p>
-                  <p className="text-purple-400">{edu.type}</p>
-                  {/* Conditionally render Grade */}
+                  <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>{edu.period}</p>
+                  <p className={`${isDarkMode ? 'text-yellow-400' : 'text-yellow-600'}`}>{edu.type}</p>
                   {edu.Grade && (
-                    <p className="text-yellow-400 font-semibold text-sm mt-1">Grade: {edu.Grade}</p> 
+                    <p className={`${isDarkMode ? 'text-yellow-400' : 'text-yellow-600'} font-semibold text-sm mt-1`}>Grade: {edu.Grade}</p> 
                   )}
-                  {/* Conditionally render Status */}
                   {edu.status && (
-                     <p className="text-green-400 text-sm mt-1">{edu.status}</p>
+                    <p className={`${isDarkMode ? 'text-green-400' : 'text-green-600'} text-sm mt-1`}>{edu.status}</p>
                   )}
                 </div>
               </div>
 
-              {/* Courses */}
               <div className="mt-6">
-                <h4 className="text-lg font-semibold text-gray-300 mb-4">Key Courses</h4>
+                <h4 className={`text-lg font-semibold ${isDarkMode ? 'text-gray-300' : 'text-gray-700'} mb-4`}>Key Courses</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {edu.courses.map((course, idx) => (
                     <motion.div
@@ -1484,13 +1489,14 @@ const Education = () => {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: (index * 0.2) + (idx * 0.1) }}
-                      className="flex items-center gap-2 p-3 rounded-lg
-                               bg-white/5 backdrop-blur-sm
-                               hover:bg-white/10 transition-all duration-300
-                               border border-white/5 hover:border-purple-500/30"
+                      className={`flex items-center gap-2 p-3 rounded-lg
+                               ${isDarkMode 
+                                 ? 'bg-gray-900 border-gray-700' 
+                                 : 'bg-gray-50 border-gray-200'}
+                               hover:border-gray-600 transition-all duration-300`}
                     >
-                      <span className="text-purple-400">•</span>
-                      <span className="text-gray-300 text-sm">{course}</span>
+                      <span className={`${isDarkMode ? 'text-yellow-400' : 'text-yellow-600'}`}>•</span>
+                      <span className={`${isDarkMode ? 'text-gray-300' : 'text-gray-700'} text-sm`}>{course}</span>
                     </motion.div>
                   ))}
                 </div>
@@ -1503,7 +1509,7 @@ const Education = () => {
   );
 };
 
-const Projects = () => {
+const Projects = ({ isDarkMode }) => {
   const projects = [
     {
       title: 'HealthTrackPro',
@@ -1620,17 +1626,17 @@ const Projects = () => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-12">
+    <div className={`max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-12 ${isDarkMode ? 'bg-[#080808] text-gray-200' : 'bg-white text-gray-900'}`}>
       {/* Header Section */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="mb-12 text-center"
       >
-        <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 text-transparent bg-clip-text mb-4">
+        <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-500 text-transparent bg-clip-text mb-4">
           Featured Projects
         </h2>
-        <p className="text-purple-400/80 text-lg">
+        <p className={`text-lg ${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}>
           Showcasing my technical expertise and creative problem-solving
         </p>
       </motion.div>
@@ -1645,18 +1651,16 @@ const Projects = () => {
             transition={{ delay: index * 0.1 }}
             className="group relative"
           >
-            {/* Project Card */}
-            <div className="h-full p-6 rounded-xl bg-purple-900/10 backdrop-blur-sm 
-                          border border-purple-500/20 hover:border-purple-500/40 
-                          transition-all duration-500 group-hover:bg-purple-900/20
-                          hover:shadow-[0_0_30px_rgba(168,85,247,0.2)]">
-        {/* Header */}
+            <div className={`h-full p-6 rounded-xl ${isDarkMode 
+              ? 'bg-[#1a1a1a] border-gray-700' 
+              : 'bg-white border-gray-200 shadow-lg'} border
+                          hover:border-gray-600 transition-all duration-500`}>
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
                   <span className="text-3xl">{project.image}</span>
                   <div>
-                    <h3 className="text-xl font-bold text-purple-400">{project.title}</h3>
-                    <span className="text-sm text-purple-300/70 bg-purple-500/10 px-2 py-0.5 rounded-full">
+                    <h3 className={`text-xl font-bold ${isDarkMode ? 'text-yellow-400' : 'text-yellow-600'}`}>{project.title}</h3>
+                    <span className={`text-sm ${isDarkMode ? 'text-yellow-400/70 bg-yellow-500/10' : 'text-yellow-600/70 bg-yellow-500/10'} px-2 py-0.5 rounded-full`}>
                       {project.type}
                     </span>
                   </div>
@@ -1667,24 +1671,24 @@ const Projects = () => {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
-                  className="p-2 rounded-full bg-purple-500/10 hover:bg-purple-500/20 
-                           transition-colors duration-300"
+                  className={`p-2 rounded-full ${isDarkMode 
+                    ? 'bg-yellow-500/10 hover:bg-yellow-500/20' 
+                    : 'bg-yellow-500/10 hover:bg-yellow-500/20'} 
+                    transition-colors duration-300`}
                 >
-                  <svg className="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className={`w-5 h-5 ${isDarkMode ? 'text-yellow-400' : 'text-yellow-600'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
                           d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                   </svg>
                 </motion.a>
               </div>
 
-              {/* Description */}
-              <p className="text-gray-400 mb-4 line-clamp-2 group-hover:line-clamp-none transition-all duration-300">
+              <p className={`mb-4 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'} line-clamp-2 group-hover:line-clamp-none transition-all duration-300`}>
                 {project.description}
               </p>
 
-              {/* Key Highlights */}
               <div className="mb-4">
-                <h4 className="text-sm font-semibold text-purple-400 mb-2">Key Highlights</h4>
+                <h4 className={`text-sm font-semibold ${isDarkMode ? 'text-yellow-400' : 'text-yellow-600'} mb-2`}>Key Highlights</h4>
                 <ul className="grid grid-cols-2 gap-2">
                   {project.highlights.map((highlight, i) => (
                     <motion.li
@@ -1692,18 +1696,17 @@ const Projects = () => {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.1 + (i * 0.1) }}
-                      className="flex items-center gap-2 text-sm text-gray-400"
+                      className={`flex items-center gap-2 text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}
                     >
-                      <svg className="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className={`w-4 h-4 ${isDarkMode ? 'text-yellow-400' : 'text-yellow-600'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       {highlight}
                     </motion.li>
                   ))}
                 </ul>
-      </div>
+              </div>
 
-              {/* Technologies */}
               <div className="flex flex-wrap gap-2">
                 {project.tech.map((tech, i) => (
                   <motion.span
@@ -1711,8 +1714,9 @@ const Projects = () => {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: index * 0.1 + (i * 0.1) }}
-                    className="px-3 py-1 text-sm bg-purple-500/10 rounded-full text-purple-300
-                             hover:bg-purple-500/20 transition-all duration-300"
+                    className={`px-3 py-1 text-sm rounded-full ${isDarkMode 
+                      ? 'bg-yellow-500/10 text-yellow-300 hover:bg-yellow-500/20' 
+                      : 'bg-yellow-500/10 text-yellow-700 hover:bg-yellow-500/20'} transition-all duration-300`}
                   >
                     {tech}
                   </motion.span>
@@ -1727,7 +1731,7 @@ const Projects = () => {
 };
 
 // Update the ApplicationPackagingSection component with adjusted padding and spacing
-const ApplicationPackagingSection = ({ setActiveTab }) => {
+const ApplicationPackagingSection = ({ setActiveTab, isDarkMode }) => {
   const tools = [
     { name: 'MSI/MSIX', icon: '📦', description: 'Enterprise Package Creation' },
     { name: 'PowerShell', icon: '💻', description: 'Automation & Scripting' },
@@ -1743,19 +1747,19 @@ const ApplicationPackagingSection = ({ setActiveTab }) => {
   ];
 
   return (
-    <div className="w-full max-w-6xl mx-auto py-8">
+    <div className={`w-full max-w-6xl mx-auto py-8 ${isDarkMode ? 'bg-[#080808] text-gray-200' : 'bg-white text-gray-900'}`}>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="mb-10 text-center"
       >
-        <h2 className="text-3xl font-bold text-white mb-3">Application Packaging</h2>
-        <p className="text-purple-400/80">Enterprise Software Deployment Solutions</p>
+        <h2 className={`text-3xl font-bold ${isDarkMode ? 'text-yellow-400' : 'text-yellow-600'} mb-3`}>Application Packaging</h2>
+        <p className={`text-lg ${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}>Enterprise Software Deployment Solutions</p>
       </motion.div>
 
       {/* Core Tools */}
       <div className="mb-8">
-        <h3 className="text-xl font-semibold text-purple-400 mb-4">Core Technologies</h3>
+        <h3 className={`text-xl font-semibold ${isDarkMode ? 'text-yellow-400' : 'text-yellow-600'} mb-4`}>Core Technologies</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {tools.map((tool, index) => (
             <motion.div
@@ -1763,14 +1767,16 @@ const ApplicationPackagingSection = ({ setActiveTab }) => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              className="bg-purple-900/10 backdrop-blur-sm p-4 rounded-xl border border-purple-500/20
-                       hover:border-purple-500/40 hover:bg-purple-900/20 transition-all duration-300"
+              className={`p-4 rounded-xl border ${isDarkMode 
+                ? 'bg-[#1a1a1a] border-gray-700' 
+                : 'bg-white border-gray-200 shadow-lg'}
+                hover:border-gray-600 transition-all duration-300`}
             >
               <div className="flex items-center gap-3 mb-2">
                 <span className="text-2xl">{tool.icon}</span>
-                <h4 className="font-medium text-white">{tool.name}</h4>
+                <h4 className={`font-medium ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{tool.name}</h4>
               </div>
-              <p className="text-sm text-gray-400/90">{tool.description}</p>
+              <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>{tool.description}</p>
             </motion.div>
           ))}
         </div>
@@ -1778,7 +1784,7 @@ const ApplicationPackagingSection = ({ setActiveTab }) => {
 
       {/* Additional Tools */}
       <div>
-        <h3 className="text-xl font-semibold text-purple-400 mb-4">Supporting Tools</h3>
+        <h3 className={`text-xl font-semibold ${isDarkMode ? 'text-yellow-400' : 'text-yellow-600'} mb-4`}>Supporting Tools</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {additionalTools.map((tool, index) => (
             <motion.div
@@ -1786,14 +1792,16 @@ const ApplicationPackagingSection = ({ setActiveTab }) => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 + (index * 0.1) }}
-              className="bg-purple-900/10 backdrop-blur-sm p-4 rounded-xl border border-purple-500/20
-                       hover:border-purple-500/40 hover:bg-purple-900/20 transition-all duration-300"
+              className={`p-4 rounded-xl border ${isDarkMode 
+                ? 'bg-[#1a1a1a] border-gray-700' 
+                : 'bg-white border-gray-200 shadow-lg'}
+                hover:border-gray-600 transition-all duration-300`}
             >
               <div className="flex items-center gap-3 mb-2">
                 <span className="text-2xl">{tool.icon}</span>
-                <h4 className="font-medium text-white">{tool.name}</h4>
+                <h4 className={`font-medium ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{tool.name}</h4>
               </div>
-              <p className="text-sm text-gray-400/90">{tool.description}</p>
+              <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>{tool.description}</p>
             </motion.div>
           ))}
         </div>
@@ -1805,7 +1813,7 @@ const ApplicationPackagingSection = ({ setActiveTab }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8 }}
-        className="mt-8 text-purple-400 hover:text-purple-300 transition-colors flex items-center gap-2"
+        className={`mt-8 ${isDarkMode ? 'text-yellow-400' : 'text-yellow-600'} hover:${isDarkMode ? 'text-yellow-300' : 'text-yellow-500'} transition-colors flex items-center gap-2`}
       >
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -1816,23 +1824,72 @@ const ApplicationPackagingSection = ({ setActiveTab }) => {
   );
 };
 
+const ScrollToTop = ({ isDarkMode }) => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  const toggleVisibility = () => {
+    if (window.pageYOffset > 300) {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', toggleVisibility);
+    return () => {
+      window.removeEventListener('scroll', toggleVisibility);
+    };
+  }, []);
+
+  return (
+    <motion.button
+      className={`fixed bottom-8 right-8 p-3 rounded-full bg-yellow-400 text-black
+                 hover:bg-yellow-300 transition-all duration-200 shadow-lg
+                 hover:shadow-yellow-400/20 hover:scale-110`}
+      onClick={scrollToTop}
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.5 }}
+      transition={{ duration: 0.2 }}
+    >
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+      </svg>
+    </motion.button>
+  );
+};
+
 // --- App Component (Keep Main Padding Matching Header Height) ---
 const App = () => {
   const [activeTab, setActiveTab] = useState('home');
+  const [isDarkMode, setIsDarkMode] = useState(true);
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      setIsDarkMode(savedTheme === 'dark');
+    }
+  }, [setIsDarkMode]);
 
   return (
-    <div className="min-h-screen bg-[#080808] text-gray-200"> 
-      <NavLinks activeTab={activeTab} setActiveTab={setActiveTab} />
+    <div className={`min-h-screen ${isDarkMode ? 'bg-[#080808] text-gray-200' : 'bg-white text-gray-800'}`}> 
+      <NavLinks activeTab={activeTab} setActiveTab={setActiveTab} isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
       
-      {/* Keep main padding matching header height (h-16) */}
       <main className="pt-16"> 
-        {/* Render active section */}
-        {activeTab === 'home' && <Home setActiveTab={setActiveTab} />}
-        {activeTab === 'experience' && <Experience />}
-        {activeTab === 'projects' && <Projects />}
-        {activeTab === 'education' && <Education />}
-        {activeTab === 'application-packaging' && <ApplicationPackagingSection setActiveTab={setActiveTab} />}
+        {activeTab === 'home' && <Home setActiveTab={setActiveTab} isDarkMode={isDarkMode} />}
+        {activeTab === 'experience' && <Experience isDarkMode={isDarkMode} />}
+        {activeTab === 'projects' && <Projects isDarkMode={isDarkMode} />}
+        {activeTab === 'education' && <Education isDarkMode={isDarkMode} />}
+        {activeTab === 'application-packaging' && <ApplicationPackagingSection setActiveTab={setActiveTab} isDarkMode={isDarkMode} />}
       </main>
+      <ScrollToTop isDarkMode={isDarkMode} />
     </div>
   );
 };

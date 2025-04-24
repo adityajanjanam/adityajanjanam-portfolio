@@ -25,4 +25,17 @@ export const NavLinks = () => {
       </div>
     </motion.nav>
   );
-}; 
+};
+
+const ResumeButton = () => (
+  <motion.a
+    href="/Aditya_Janjanam_Resume.pdf"
+    target="_blank"
+    rel="noopener noreferrer"
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+    className="px-4 py-2 rounded-md text-sm font-medium bg-yellow-400 text-black hover:bg-yellow-300 transition-colors"
+  >
+    Resume
+  </motion.a>
+); 

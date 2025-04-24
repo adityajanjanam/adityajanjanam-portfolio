@@ -61,7 +61,7 @@ const ProfileSection = () => {
         {/* Quick Links */}
         <div className="absolute top-1/2 -translate-y-1/2 left-4 flex flex-col gap-4">
           <motion.a
-            href="/resume.pdf"
+            href="/Aditya_Janjanam_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.1, x: 5 }}
