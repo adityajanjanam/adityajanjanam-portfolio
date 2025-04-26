@@ -1,0 +1,1 @@
+// Types moved to src/types/index.ts 

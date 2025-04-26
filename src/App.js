@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Education from './components/Education/Education';
 
 const technologies = {
   fullStack: [
@@ -70,27 +71,42 @@ const education = [
   {
     program: 'Mobile Applications Development',
     institution: 'Centennial College',
-    period: '2024-2025',
-    type: 'Graduate Certificate',
-    courses: [
-      'Samsung Android Application Development',
-      'Web Technologies for Mobile Platforms',
-      'Enterprise Technologies for Mobile Platforms',
-      'iOS Development',
-      'Mobile Application UI/UX Design',
-      'Samsung Advanced Android Development',
-      'Mobile Web Development',
-      'Advanced iOS Development',
-      'Emerging Technologies',
-      'Mobile Application Development Project'
+    location: 'Toronto, ON',
+    logo: '📱💻',
+    period: 'Sep 2024 - Apr 2025',
+    type: 'Postgraduate Degree',
+    description: [
+      'Acquiring advanced skills in mobile app development, focusing on both Android and iOS platforms.',
+      'Leveraging modern technologies like Kotlin, Swift, and React Native to create dynamic, ' +
+        'user-friendly applications.',
+      'Engaging with experienced professionals and working on industry-driven projects, gaining ' +
+        'valuable hands-on experience in mobile app architecture, UI/UX design, and backend integration.',
+      'Committed to delivering innovative solutions that enhance user experience and drive business success.'
+    ],
+    skills: [
+      'Full-Stack Development', 'User Experience (UX)', 'React Native', 'Web Applications', 
+      'Software Development', 'iOS Development', 'Mobile Application Development', 'Debugging', 
+      'Microsoft Visual Studio Code', 'Mobile Interface Design', 'ASP.NET MVC', 'PHP', 
+      'Android Development', 'User Experience Design (UED)', 'Object-Oriented Programming (OOP)'
     ]
   },
   {
     program: 'Computer Applications Development',
     institution: 'Conestoga College',
-    period: '2024-2025',
-    type: 'Graduate Certificate',
-    Grade: 'Distinction',
+    location: 'Waterloo, ON',
+    logo: '🖥️⚙️',
+    period: 'Sep 2023 - Apr 2024',
+    type: 'Postgraduate Degree',
+    Grade: 'DISTINCTION',
+    description: [
+      'Graduated with distinction in the Postgraduate Diploma in Computer Applications Development.',
+      'Engaging with industry experts and collaborating on real-world projects, committed to ' + 
+        'staying at the forefront of technological advancements.',
+      'Passionate about creating impactful software solutions and contributing to the digital ' +
+        'transformation landscape.',
+      'Acquired experience with HTML5, CSS, JavaScript, Node.js, Express JS, MongoDB, SQL, NoSQL, ' +
+        'C#, ASP.NET Core, Firebase Console, and Heroku.'
+    ],
     courses: [
       'Systems Concepts, Analysis and Design',
       'Programming: Software Development Techniques',
@@ -102,6 +118,66 @@ const education = [
       'Microsoft Web Technologies',
       'User Experience Design',
       'Software Quality'
+    ],
+    skills: [
+      'SQL', 'Full-Stack Development', 'Web Applications', 'Software Development', 
+      'Mobile Application Development', 'C#', 'Microsoft Visual Studio Code', 'MERN Stack', 
+      'Web Development', 'ASP.NET MVC', 'User Experience Design (UED)', 
+      'Front-end Development', 'Software Development Life Cycle (SDLC)'
+    ]
+  },
+  {
+    program: 'Bachelor of Technology, Electronics and Communication Engineering',
+    institution: 'Vignan Institute of Technology and Science',
+    location: 'India',
+    logo: '📡🔌',
+    period: 'Jun 2016 - Apr 2020',
+    type: 'Bachelor\'s Degree',
+    Grade: 'FIRST CLASS',
+    description: [
+      'Studies encompassed C, C++, Data Structures, Python, Digital Logic Circuits (DLC), ' +
+        'Analog/Digital Communications, Signal Processing, Microcontrollers, Math, Physics, Chemistry, ' +
+        'English, and Electrical Technology.',
+      'Gained a solid foundation in both theoretical concepts and practical applications.'
+    ],
+    skills: [
+      'Microsoft Office', 'Problem Solving', 'C++', 'Microsoft Visual Studio Code', 'English', 
+      'Electronics', 'Communication', 'C (Programming Language)', 'Programming', 
+      'Python (Programming Language)', 'Object-Oriented Programming (OOP)'
+    ]
+  },
+  {
+    program: 'Intermediate, Mathematics, Physics and Chemistry (MPC)',
+    institution: 'Vignan Co operative Junior College',
+    location: 'India',
+    logo: '🧪🔬',
+    period: 'Jun 2014 - Apr 2016',
+    type: 'Intermediate Education',
+    Grade: '95.7 % (DISTINCTION)',
+    description: [
+      'Achieved a score of 95.7%. Studied core subjects along with English and Sanskrit.',
+      'Actively involved in extracurricular activities like essay writing and stage performances, ' +
+        'enhancing communication, creativity, and confidence.'
+    ],
+    skills: [
+      'Chemistry', 'Physics', 'English', 'Sanskrit', 'Mathematics'
+    ]
+  },
+  {
+    program: 'SSC, Mathematics',
+    institution: 'Teja High School',
+    location: 'India',
+    logo: '📚🧠',
+    period: 'Jun 2004 - May 2014',
+    type: 'Secondary School Certificate',
+    Grade: '83 %',
+    description: [
+      'Studied Telugu, Sanskrit, Hindi, English, Mathematics, Physics, Biology, and Social Studies.',
+      'Achieved an 8.3 GPA in State Board Exams.'
+    ],
+    skills: [
+      'Telugu', 'Sanskrit', 'Hindi', 'English', 'Mathematics', 
+      'Physics', 'Biology', 'Social Studies'
     ]
   }
 ];
@@ -109,12 +185,28 @@ const education = [
 // eslint-disable-next-line no-unused-vars
 const projects = [
   {
-    title: 'HealthTrackPro',
-    description: 'A comprehensive healthcare provider app built with React Native for tracking patient data. Features include QR sync, offline-first capability, clinical data management, and interactive charts.',
+    title: 'HealthTrackPro (Flutter)',
+    description: 'A full-stack healthcare management solution designed to assist medical professionals ' +
+      'in tracking patient details and vital health records seamlessly. Built with Flutter and Node.js/Express.',
+    tech: ['Flutter', 'Node.js', 'Express.js', 'MongoDB', 'REST API', 'Hive'],
+    type: 'Full Stack Healthcare App',
+    link: 'https://github.com/adityajanjanam/HEALTH_TRACK_PRO', 
+    image: '🏥',
+    highlights: [
+      'Offline-first (Hive)',
+      'Secure JWT Authentication',
+      'Patient & Vitals Management',
+      'Dark/Light Mode'
+    ]
+  },
+  {
+    title: 'HealthTrackPro (React Native)',
+    description: 'A comprehensive healthcare provider app built with React Native for tracking patient data. ' +
+      'Features include QR sync, offline-first capability, clinical data management, and interactive charts.',
     tech: ['React Native', 'Node.js', 'MongoDB', 'REST API'],
     type: 'Healthcare App',
     link: 'https://github.com/adityajanjanam/HealthTrackPro',
-    image: '🏥',
+    image: '⚛️',
     highlights: [
       'Offline-first architecture',
       'Real-time data synchronization',
@@ -124,7 +216,8 @@ const projects = [
   },
   {
     title: 'TrainWithTail',
-    description: 'Pet training platform offering tailored programs, expert advice, and an integrated pet product shop for enhanced pet-owner relationships.',
+    description: 'Pet training platform offering tailored programs, expert advice, and an integrated ' +
+      'pet product shop for enhanced pet-owner relationships.',
     tech: ['Node.js', 'MongoDB', 'HTML5', 'CSS3', 'JavaScript'],
     type: 'Full Stack Web App',
     link: 'https://github.com/adityajanjanam/TrainWithTail',
@@ -138,7 +231,8 @@ const projects = [
   },
   {
     title: 'PatientDataAPI',
-    description: 'RESTful API for healthcare providers to manage and monitor patient clinical data. Built with Node.js and MongoDB, featuring Swagger documentation.',
+    description: 'RESTful API for healthcare providers to manage and monitor patient clinical data. ' +
+      'Built with Node.js and MongoDB, featuring Swagger documentation.',
     tech: ['Node.js', 'Express', 'MongoDB', 'Swagger'],
     type: 'Backend API',
     link: 'https://github.com/adityajanjanam/PatientDataAPI',
@@ -152,7 +246,8 @@ const projects = [
   },
   {
     title: 'Scientific Calculator',
-    description: 'Modern scientific calculator app with advanced mathematical operations, built using React Native and Expo for cross-platform compatibility.',
+    description: 'Modern scientific calculator app with advanced mathematical operations, built using ' +
+      'React Native and Expo for cross-platform compatibility.',
     tech: ['React Native', 'Expo', 'JavaScript'],
     type: 'Mobile Utility App',
     link: 'https://github.com/adityajanjanam/ScientificCalculatorApp',
@@ -165,8 +260,9 @@ const projects = [
     ]
   },
   {
-    title: 'MAPD721 Android Animations',
-    description: 'Interactive Android app showcasing various Jetpack Compose animations, including animated transitions, infinite animations, and gesture-based interactions.',
+    title: 'Android Animation Studio',
+    description: 'Interactive Android app showcasing various Jetpack Compose animations, including ' +
+      'animated transitions, infinite animations, and gesture-based interactions.',
     tech: ['Kotlin', 'Jetpack Compose', 'Material Design'],
     type: 'Android App',
     link: 'https://github.com/adityajanjanam/MAPD721_A3_Aditya',
@@ -180,7 +276,8 @@ const projects = [
   },
   {
     title: 'Text to PDF Converter',
-    description: 'React-based utility for converting text documents to PDF format with customizable options and preview functionality.',
+    description: 'React-based utility for converting text documents to PDF format with customizable ' +
+      'options and preview functionality.',
     tech: ['React', 'JavaScript', 'PDF.js'],
     type: 'Web Utility',
     link: 'https://github.com/adityajanjanam/TextToPDFConverter',
@@ -194,7 +291,8 @@ const projects = [
   },
   {
     title: 'Weather Dashboard',
-    description: 'Real-time weather monitoring application with detailed forecasts, interactive maps, and severe weather alerts.',
+    description: 'Real-time weather monitoring application with detailed forecasts, interactive maps, ' +
+      'and severe weather alerts.',
     tech: ['React', 'OpenWeather API', 'Mapbox', 'TailwindCSS'],
     type: 'Web Application',
     link: 'https://github.com/adityajanjanam/WeatherDashboard',
@@ -208,7 +306,8 @@ const projects = [
   },
   {
     title: 'Task Manager Pro',
-    description: 'Full-featured task management application with team collaboration, progress tracking, and deadline management capabilities.',
+    description: 'Full-featured task management application with team collaboration, progress tracking, ' +
+      'and deadline management capabilities.',
     tech: ['React', 'Redux', 'Firebase', 'Material-UI'],
     type: 'Productivity App',
     link: 'https://github.com/adityajanjanam/TaskManagerPro',
@@ -218,6 +317,76 @@ const projects = [
       'Real-time updates',
       'Progress analytics',
       'Deadline tracking'
+    ]
+  },
+  {
+    title: 'GuestbookProject',
+    description: 'Guestbook is a simple web application where users can register, log in, and leave ' +
+      'messages. Built using PHP and MySQL...',
+    tech: ['PHP', 'MySQL'],
+    type: 'Web Application',
+    link: 'https://github.com/adityajanjanam/GuestbookProject',
+    image: '📖',
+    highlights: [
+      'User Authentication',
+      'Message Management',
+      'PHP Backend'
+    ]
+  },
+  {
+    title: 'BMICalculatorApp',
+    description: 'A simple React Native app that calculates BMI based on height and weight. Users ' +
+      'select SI or Imperial units...',
+    tech: ['React Native', 'JavaScript'],
+    type: 'Mobile App',
+    link: 'https://github.com/adityajanjanam/BMICalculatorApp',
+    image: '⚖️',
+    highlights: [
+      'BMI Calculation',
+      'Unit Selection (SI/Imperial)',
+      'Weight Category Display'
+    ]
+  },
+  {
+    title: 'BloodSugarLevelConverterApp',
+    description: 'An Android app for converting blood sugar values between mmol/L and mg/dL, with ' +
+      'personalized user inputs and results.',
+    tech: ['Kotlin', 'Android'],
+    type: 'Android App',
+    link: 'https://github.com/adityajanjanam/BloodSugarLevelConverterApp',
+    image: '🩸',
+    highlights: [
+      'Blood Sugar Conversion',
+      'mmol/L <> mg/dL',
+      'Personalized Input'
+    ]
+  },
+  {
+    title: 'WIndowsDesktopCalculator',
+    description: 'Simple calculator application for Windows, built with Python and Tkinter.',
+    tech: ['Python', 'Tkinter'],
+    type: 'Desktop App',
+    link: 'https://github.com/adityajanjanam/WIndowsDesktopCalculator',
+    image: '🖥️',
+    highlights: [
+      'Basic Calculations',
+      'Windows Desktop GUI',
+      'Python/Tkinter'
+    ]
+  },
+  {
+    title: 'GDG Gemini Workshop Chat App',
+    description: 'Simple AI-powered chat application built with Streamlit and the Google Gemini API ' +
+      'during a GDG workshop.',
+    tech: ['Python', 'Streamlit', 'Gemini API', 'Google Cloud Run', 'Docker'],
+    type: 'AI Chat App / Workshop',
+    link: 'https://github.com/adityajanjanam/GDG-Gemini-Workshop',
+    image: '🤖',
+    highlights: [
+      'Built with Streamlit',
+      'Gemini API Integration',
+      'Google Cloud Run Deployment',
+      'GDG Workshop Project'
     ]
   }
 ];
@@ -260,45 +429,69 @@ const NavLinks = ({ activeTab, setActiveTab, isDarkMode, setIsDarkMode }) => {
   
   return (
     <nav className="fixed top-0 left-0 right-0 z-50"> 
-      <div className={`w-full ${isDarkMode ? 'bg-[#111111] border-gray-700' : 'bg-white border-gray-200 shadow-lg'} border-b`}> 
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div className={`w-full ${isDarkMode 
+        ? 'bg-gradient-to-r from-gray-900 to-black border-dark-primary-700' 
+        : 'bg-gradient-to-r from-white to-gray-50 border-light-primary-200 shadow-lg'} 
+        border-b backdrop-blur-sm`}> 
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16"> 
             <div className="flex-shrink-0">
-              <button onClick={() => setActiveTab('home')} className={`text-xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-                AJ
+              <button 
+                onClick={() => setActiveTab('home')} 
+                className={`text-xl font-bold transition-all duration-300 ${isDarkMode 
+                  ? 'text-dark-primary-300 hover:text-dark-primary-200' 
+                  : 'text-light-primary-700 hover:text-light-primary-600'}`}
+              >
+                <motion.span
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="inline-block"
+                >
+                  AJ
+                </motion.span>
               </button>
             </div>
             
             {/* Desktop Navigation Links */}
             <div className="hidden md:flex items-center space-x-4">
               {navItems.map((item) => (
-                <button
+                <motion.button
                   key={item.name}
                   onClick={() => setActiveTab(item.path)}
+                  whileHover={{ y: -2 }}
+                  whileTap={{ scale: 0.95 }}
                   className={`relative px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200
                              ${activeTab === item.path 
-                               ? 'text-yellow-500'
+                               ? isDarkMode 
+                                 ? 'text-dark-primary-300' 
+                                 : 'text-light-primary-600'
                                : isDarkMode 
-                                 ? 'text-gray-300 hover:bg-gray-700 hover:text-white'
-                                 : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'}`}
+                                 ? 'text-gray-300 hover:text-dark-primary-400'
+                                 : 'text-gray-700 hover:text-light-primary-700'}`}
                 >
                   {item.name}
                   {activeTab === item.path && (
                     <motion.span
                       layoutId="activeTabIndicator"
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-yellow-500"
+                      className={`absolute bottom-0 left-0 right-0 h-0.5 ${
+                        isDarkMode 
+                          ? 'bg-gradient-to-r from-dark-primary-400 to-dark-secondary-500' 
+                          : 'bg-gradient-to-r from-light-primary-500 to-light-secondary-500'
+                      }`}
                       initial={false}
                       transition={{ type: "spring", stiffness: 500, damping: 30 }}
                     />
                   )}
-                </button>
+                </motion.button>
               ))}
-              <button
+              <motion.button
                 onClick={toggleTheme}
-                className={`p-2 rounded-md transition-colors duration-200 ${
+                whileHover={{ rotate: 15, scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className={`p-2 rounded-full transition-colors duration-200 ${
                   isDarkMode 
-                    ? 'text-gray-300 hover:bg-gray-700 hover:text-white' 
-                    : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
+                    ? 'bg-dark-primary-900/50 text-dark-primary-300 hover:bg-dark-primary-800 hover:text-dark-primary-200' 
+                    : 'bg-light-primary-50 text-light-primary-600 hover:bg-light-primary-100 hover:text-light-primary-700'
                 }`}
                 aria-label="Toggle dark mode"
               >
@@ -311,60 +504,124 @@ const NavLinks = ({ activeTab, setActiveTab, isDarkMode, setIsDarkMode }) => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
                   </svg>
                 )}
-              </button>
-              <a 
+              </motion.button>
+              <motion.a 
                 href="/Aditya_Janjanam_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 download="Aditya_Janjanam_Resume.pdf"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
                 className={`ml-4 px-4 py-2 rounded-md text-sm font-medium transition-all duration-200
-                         flex items-center gap-2 hover:scale-105 hover:shadow-lg
+                         flex items-center gap-2 shadow-lg
                          ${isDarkMode 
-                           ? 'text-black bg-yellow-400 hover:bg-yellow-300 shadow-md shadow-yellow-400/20'
-                           : 'text-white bg-purple-600 hover:bg-purple-700 shadow-md shadow-purple-600/20'}`}
+                           ? 'text-black bg-gradient-to-r from-dark-primary-300 to-dark-secondary-400 hover:from-dark-primary-200 hover:to-dark-secondary-300 shadow-dark-primary-500/20'
+                           : 'text-white bg-gradient-to-r from-light-primary-600 to-light-secondary-700 hover:from-light-primary-500 hover:to-light-secondary-600 shadow-light-primary-500/20'}`}
               >
                 Resume
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                 </svg>
-              </a>
+              </motion.a>
             </div>
             
             {/* Mobile Menu Button */}
             <div className="md:hidden">
-              <button 
+              <motion.button 
                 onClick={() => setIsMenuOpen(!isMenuOpen)} 
-                className="p-2 text-gray-300 hover:text-white"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className={`p-2 rounded-full ${
+                  isDarkMode 
+                    ? 'bg-dark-primary-800 text-dark-primary-300 hover:bg-dark-primary-700' 
+                    : 'bg-light-primary-100 text-light-primary-700 hover:bg-light-primary-200'
+                }`}
               >
-                {isMenuOpen ? 'X' : '☰'}
-              </button>
+                {isMenuOpen ? (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                ) : (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                )}
+              </motion.button>
             </div>
           </div>
           
           {/* Mobile Menu Dropdown */}
           {isMenuOpen && (
-            <div className="md:hidden py-2">
+            <motion.div 
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.2 }}
+              className="md:hidden py-3 space-y-2"
+            >
               {navItems.map((item) => (
-                <button
+                <motion.button
                   key={item.name}
                   onClick={() => {
                     setIsMenuOpen(false);
                     setActiveTab(item.path);
                   }}
-                  className="block w-full text-left px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
+                  whileHover={{ x: 5 }}
+                  className={`block w-full text-left px-4 py-2.5 rounded-lg transition-colors duration-200 ${
+                    activeTab === item.path 
+                      ? isDarkMode 
+                        ? 'bg-dark-primary-800 text-dark-primary-300' 
+                        : 'bg-light-primary-100 text-light-primary-700'
+                      : isDarkMode 
+                        ? 'text-gray-300 hover:bg-dark-primary-900 hover:text-dark-primary-400' 
+                        : 'text-gray-700 hover:bg-light-primary-50 hover:text-light-primary-600'
+                  }`}
                 >
                   {item.name}
-                </button>
+                </motion.button>
               ))}
-              <a 
-                href="/resume.pdf"
+              <div className="flex justify-between items-center px-4 pt-2">
+                <motion.button
+                  onClick={toggleTheme}
+                  whileHover={{ scale: 1.1, rotate: 15 }}
+                  whileTap={{ scale: 0.9 }}
+                  className={`p-2 rounded-full ${
+                    isDarkMode 
+                      ? 'bg-dark-primary-800 text-dark-primary-300' 
+                      : 'bg-light-primary-100 text-light-primary-600'
+                  }`}
+                >
+                  {isDarkMode ? (
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                  ) : (
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                  )}
+                </motion.button>
+                
+                <motion.a 
+                  href="/Aditya_Janjanam_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block mx-3 mt-2 px-3 py-2 text-center text-black bg-yellow-400 hover:bg-yellow-300 rounded"
+                  download="Aditya_Janjanam_Resume.pdf"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200
+                           flex items-center gap-2
+                           ${isDarkMode 
+                             ? 'text-black bg-gradient-to-r from-dark-primary-300 to-dark-secondary-400' 
+                             : 'text-white bg-gradient-to-r from-light-primary-600 to-light-secondary-700'}`}
               >
                 Resume
-              </a>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                  </svg>
+                </motion.a>
             </div>
+            </motion.div>
           )}
         </div>
       </div>
@@ -442,7 +699,7 @@ const socialLinks = [
 ];
 
 // Update the social links section in the Home component
-const SocialLinks = () => (
+const SocialLinks = ({ isDarkMode }) => (
   <motion.div 
     id="social-links"
     className="flex items-center gap-4 mt-8"
@@ -458,14 +715,36 @@ const SocialLinks = () => (
         rel="noopener noreferrer"
         whileHover={{ 
           scale: 1.1,
-          transition: { type: "spring", stiffness: 400, damping: 10 }
+          rotate: [0, -3, 3, -3, 0],
+          boxShadow: isDarkMode 
+            ? "0 10px 20px -10px rgba(14, 165, 233, 0.3)" 
+            : "0 10px 20px -10px rgba(56, 189, 248, 0.5)",
+          transition: { 
+            type: "spring", 
+            stiffness: 400, 
+            damping: 10,
+            rotate: { 
+              repeat: 0, 
+              duration: 0.5, 
+              ease: "easeInOut"
+            }
+          }
         }}
         whileTap={{ scale: 0.95 }}
-        className={`p-3 ${link.bgColor} ${link.hoverBgColor} ${link.textColor} 
-                   rounded-xl shadow-lg transition-all duration-300 
+        className={`p-3 rounded-xl shadow-lg transition-all duration-300 
                    hover:shadow-xl flex items-center justify-center
                    min-w-[44px] min-h-[44px]
-                   ${link.name === 'Linktree' ? 'hover:shadow-[#26CF5F]/20' : ''}`}
+                   ${link.name === 'LinkedIn' 
+                     ? `${isDarkMode ? 'bg-[#0A66C2]' : 'bg-[#0077B5]'} text-white`
+                     : link.name === 'GitHub'
+                     ? `${isDarkMode ? 'bg-[#1F2328]' : 'bg-[#24292F]'} text-white` 
+                     : link.name === 'LeetCode'
+                     ? `${isDarkMode ? 'bg-[#FFB800]' : 'bg-[#FFA116]'} text-[#1A1A1A]`
+                     : link.name === 'Email'
+                     ? `${isDarkMode ? 'bg-[#D93025]' : 'bg-[#EA4335]'} text-white` 
+                     : link.name === 'Linktree'
+                     ? `${isDarkMode ? 'bg-black' : 'bg-[#18181B]'} text-[#26CF5F]`
+                     : ''}`}
         title={link.name}
       >
         <div className={`${link.name === 'Linktree' ? 'scale-110' : ''}`}>
@@ -1097,18 +1376,63 @@ const TechGrid = ({ setActiveTab, isDarkMode }) => (
 );
 
 // Add a Footer component
-const Footer = ({ contrast = false }) => (
-  <footer className={`w-full py-8 px-4 mt-auto ${contrast ? 'bg-black' : 'bg-gradient-to-t from-black/40 to-transparent'}`}>
-    <div className="container mx-auto text-center">
-      <p className={`${contrast ? 'text-gray-300' : 'text-gray-700'} text-sm font-medium`}>
-        © {new Date().getFullYear()} Aditya Janjanam. All rights reserved.
-      </p>
+const Footer = ({ isDarkMode }) => (
+  <footer className={`w-full py-10 px-4 mt-auto ${
+    isDarkMode 
+      ? 'bg-gradient-to-t from-black to-gray-900/30' 
+      : 'bg-gradient-to-t from-gray-100 to-transparent'
+  }`}>
+    <div className="max-w-7xl mx-auto">
+      <div className="border-t pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p className={`text-sm ${
+          isDarkMode ? 'text-gray-400 border-gray-800' : 'text-gray-600 border-gray-200'
+        }`}>
+          © {new Date().getFullYear()} All rights reserved.
+        </p>
+        
+        <motion.div 
+          className="flex items-center gap-6"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <a 
+            href="mailto:janjanamaditya@gmail.com" 
+            className={`text-sm hover:underline ${
+              isDarkMode ? 'text-gray-400 hover:text-dark-primary-300' : 'text-gray-600 hover:text-light-primary-700'
+            }`}
+          >
+            Contact
+          </a>
+          <a 
+            href="/Aditya_Janjanam_Resume.pdf" 
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`text-sm hover:underline ${
+              isDarkMode ? 'text-gray-400 hover:text-dark-primary-300' : 'text-gray-600 hover:text-light-primary-700'
+            }`}
+          >
+            Resume
+          </a>
+          <button 
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className={`text-sm hover:underline flex items-center gap-1 ${
+              isDarkMode ? 'text-gray-400 hover:text-dark-primary-300' : 'text-gray-600 hover:text-light-primary-700'
+            }`}
+          >
+            Back to top
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+            </svg>
+          </button>
+        </motion.div>
+      </div>
     </div>
   </footer>
 );
 
 // --- Animated Multilingual Greeting Component ---
-const AnimatedMultilingualGreeting = () => {
+const AnimatedMultilingualGreeting = ({ isDarkMode }) => {
   const greetings = [
     { text: 'నమస్కారం!', langCode: 'te', fontFamily: "'Noto Sans Telugu', Gautami, sans-serif" }, 
     { text: 'नमस्ते!', langCode: 'hi', fontFamily: "'Noto Sans Devanagari', Nirmala UI, sans-serif" },
@@ -1145,17 +1469,49 @@ const AnimatedMultilingualGreeting = () => {
 
   const currentGreeting = greetings[currentIndex];
 
+  // Color mapping for different language groups
+  const getGreetingColor = () => {
+    const langGroups = {
+      indianLanguages: ['te', 'hi', 'ta', 'kn', 'bn', 'pa', 'ml', 'gu', 'or', 'mr'],
+      europeanLanguages: ['en', 'es', 'fr', 'pt', 'it', 'de', 'ru'],
+      asianLanguages: ['zh', 'ja', 'ko'],
+      arabicLanguages: ['ar']
+    };
+
+    if (isDarkMode) {
+      if (langGroups.indianLanguages.includes(currentGreeting.langCode)) {
+        return 'bg-clip-text text-transparent bg-gradient-to-r from-dark-primary-300 to-dark-secondary-400';
+      } else if (langGroups.europeanLanguages.includes(currentGreeting.langCode)) {
+        return 'bg-clip-text text-transparent bg-gradient-to-r from-dark-secondary-300 to-dark-primary-400';
+      } else if (langGroups.asianLanguages.includes(currentGreeting.langCode)) {
+        return 'bg-clip-text text-transparent bg-gradient-to-r from-dark-accent-300 to-dark-accent-500';
+      } else {
+        return 'bg-clip-text text-transparent bg-gradient-to-br from-dark-primary-300 via-dark-secondary-400 to-dark-accent-300';
+      }
+    } else {
+      if (langGroups.indianLanguages.includes(currentGreeting.langCode)) {
+        return 'bg-clip-text text-transparent bg-gradient-to-r from-light-primary-600 to-light-secondary-500';
+      } else if (langGroups.europeanLanguages.includes(currentGreeting.langCode)) {
+        return 'bg-clip-text text-transparent bg-gradient-to-r from-light-secondary-600 to-light-primary-500';
+      } else if (langGroups.asianLanguages.includes(currentGreeting.langCode)) {
+        return 'bg-clip-text text-transparent bg-gradient-to-r from-light-accent-600 to-light-accent-400';
+      } else {
+        return 'bg-clip-text text-transparent bg-gradient-to-br from-light-primary-600 via-light-secondary-500 to-light-accent-500';
+      }
+    }
+  };
+
   return (
     <div className="h-16 mb-4 flex items-center"> {/* Fixed height container */}
       <AnimatePresence mode="wait">
         <motion.h2
           key={currentIndex} 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.8 }} 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          transition={{ duration: 0.5, type: "spring", stiffness: 100 }} 
           style={{ fontFamily: currentGreeting.fontFamily }}
-          className="text-4xl lg:text-5xl font-semibold text-yellow-400" 
+          className={`text-4xl lg:text-5xl font-semibold ${getGreetingColor()}`} 
           lang={currentGreeting.langCode} 
         >
           {currentGreeting.text}
@@ -1165,34 +1521,71 @@ const AnimatedMultilingualGreeting = () => {
   );
 };
 
-// --- Home Component (Further Reduced Footer Gap) ---
+// --- Home Component (Corrected Structure) ---
 const Home = ({ setActiveTab, isDarkMode }) => {
   return (
-    <div className={`relative ${isDarkMode ? 'bg-[#080808] text-gray-200' : 'bg-white text-gray-800'}`}> 
-      <div className="relative container mx-auto px-6 sm:px-8 lg:px-12 pt-12 pb-12"> 
+    // Main component div - Should fill width and height if needed (min-h-full added)
+    <div className={`relative min-h-full ${
+      isDarkMode 
+        ? 'bg-gradient-to-br from-gray-900 via-black to-gray-900 text-gray-200' 
+        : 'bg-gradient-to-br from-white via-gray-50 to-white text-gray-800'
+    } pt-12 pb-12`}>
+      {/* Inner container for main content (two columns) - Centered with max-width and padding */}
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row items-start justify-between gap-x-16 gap-y-12"> 
           
           {/* --- Left Column: Text Content --- */}
           <div className="lg:w-3/5 w-full flex flex-col"> 
-             {/* ... Greeting, Name/Role, Stats, Summary, CTA ... */}
-             <AnimatedMultilingualGreeting /> 
+            <AnimatedMultilingualGreeting isDarkMode={isDarkMode} />
              <div className="mb-10"> 
-               <h1 className={`text-3xl lg:text-4xl font-bold mb-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}> 
-                 <span className={`${isDarkMode ? 'text-gray-400' : 'text-gray-700'} mr-2`}>I am</span> 
-                 <span className={isDarkMode ? 'text-white' : 'text-gray-900'}>Aditya Janjanam!</span>
+              <h1 className={`text-3xl lg:text-4xl font-bold mb-2 ${
+                isDarkMode 
+                  ? 'text-white' 
+                  : 'text-gray-900'
+              }`}>
+                <span className={`${
+                  isDarkMode 
+                    ? 'text-gray-400' 
+                    : 'text-gray-700'
+                } mr-2`}>I am</span>
+                <span className={
+                  isDarkMode 
+                    ? 'bg-clip-text text-transparent bg-gradient-to-r from-dark-primary-300 to-dark-secondary-400' 
+                    : 'bg-clip-text text-transparent bg-gradient-to-r from-light-primary-600 to-light-secondary-700'
+                }>Aditya Janjanam!</span>
                </h1>
-               <p className={`text-base lg:text-lg ${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}> 
+              <p className={`text-base lg:text-lg ${
+                isDarkMode 
+                  ? 'text-gray-400' 
+                  : 'text-gray-700'
+              }`}>
                  Full Stack Developer | Mobile App Developer | Software Engineer
                </p>
              </div>
              <div className="flex flex-wrap gap-x-10 gap-y-4 mb-10"> 
                <div className="text-center">
-                 <div className={`text-3xl lg:text-4xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>3</div> 
-                 <div className={`text-xs lg:text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-700'} mt-1 uppercase tracking-wider`}>Years Experience</div> 
+                <div className={`text-3xl lg:text-4xl font-bold ${
+                  isDarkMode 
+                    ? 'text-dark-primary-300' 
+                    : 'text-light-primary-700'
+                }`}>3</div>
+                <div className={`text-xs lg:text-sm ${
+                  isDarkMode 
+                    ? 'text-gray-400' 
+                    : 'text-gray-700'
+                } mt-1 uppercase tracking-wider`}>Years Experience</div>
                </div>
                <div className="text-center">
-                 <div className={`text-3xl lg:text-4xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>15+</div>
-                 <div className={`text-xs lg:text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-700'} mt-1 uppercase tracking-wider`}>Projects</div> 
+                <div className={`text-3xl lg:text-4xl font-bold ${
+                  isDarkMode 
+                    ? 'text-dark-primary-300' 
+                    : 'text-light-primary-700'
+                }`}>15+</div>
+                <div className={`text-xs lg:text-sm ${
+                  isDarkMode 
+                    ? 'text-gray-400' 
+                    : 'text-gray-700'
+                } mt-1 uppercase tracking-wider`}>Projects</div>
                </div>
              </div>
              <div className="mb-10">
@@ -1214,14 +1607,24 @@ const Home = ({ setActiveTab, isDarkMode }) => {
             >
               <div className="relative group"> 
                 {/* Background Card Element */}
-                <div className="absolute -inset-1.5 bg-gradient-to-br from-yellow-400/50 via-yellow-400/10 to-transparent rounded-xl 
-                              opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-md z-0"></div> 
+                <div className={`absolute -inset-1.5 rounded-xl
+                              opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-md z-0 ${
+                                isDarkMode 
+                                  ? 'bg-gradient-to-br from-dark-primary-400/50 via-dark-primary-500/10 to-transparent'
+                                  : 'bg-gradient-to-br from-light-primary-400/50 via-light-primary-500/10 to-transparent'
+                              }`}></div>
 
                 {/* Main Photo Container */}
                 <motion.div 
                   className={`relative aspect-[3/4] rounded-xl overflow-hidden z-10 
-                             ${isDarkMode ? 'bg-[#1a1a1a] border-gray-700/80' : 'bg-white border-gray-200/80'} 
-                             border shadow-xl ${isDarkMode ? 'shadow-gray-900/50' : 'shadow-gray-200/50'} 
+                             ${isDarkMode 
+                                ? 'bg-gradient-to-br from-gray-900 to-black border-dark-primary-800' 
+                                : 'bg-gradient-to-br from-white to-gray-50 border-light-primary-200'}
+                             border shadow-xl ${
+                               isDarkMode 
+                                 ? 'shadow-dark-primary-900/30' 
+                                 : 'shadow-light-primary-500/20'
+                             }
                              transition-all duration-300 ease-out`}
                   whileHover={{ scale: 1.02, y: -4 }} 
                 >
@@ -1233,23 +1636,26 @@ const Home = ({ setActiveTab, isDarkMode }) => {
                     transition={{ type: "spring", stiffness: 100, damping: 15 }} 
                   />
                   
-                  {/* Overlay Removed/Ignored as we add local backgrounds now */}
-                  
-                  {/* ===> Status Indicator (Enhanced Background) <=== */}
+                  {/* Status Indicator */}
                   <motion.div 
                     initial={{ opacity: 0, y: 10 }} 
                     animate={{ opacity: 1, y: 0 }} 
                     transition={{ delay: 0.4 }} 
                     className={`absolute top-3 right-3 flex items-center gap-1.5 
-                               ${isDarkMode ? 'bg-black/60' : 'bg-white/90'} backdrop-blur-sm px-2.5 py-1 rounded-full  
-                               border ${isDarkMode ? 'border-white/15' : 'border-gray-200/50'} shadow-md z-30`}
+                               ${isDarkMode 
+                                 ? 'bg-black/60 backdrop-blur-sm border-dark-primary-800' 
+                                 : 'bg-white/90 backdrop-blur-sm border-light-primary-200'} 
+                               px-2.5 py-1 rounded-full border shadow-md z-30`}
                   >
-                    <div className="w-2 h-2 bg-green-400 rounded-full" /> 
-                    {/* Text remains white, background ensures visibility */}
-                    <span className={`text-xs font-medium ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Available for hire</span> 
+                    <div className="w-2 h-2 bg-success-400 rounded-full" />
+                    <span className={`text-xs font-medium ${
+                      isDarkMode 
+                        ? 'text-white' 
+                        : 'text-gray-900'
+                    }`}>Available for hire</span>
                   </motion.div>
                   
-                  {/* ===> Bottom Info (with Localized Background) <=== */}
+                  {/* Bottom Info */}
                   <motion.div 
                     initial={{ opacity: 0, y: 10 }} 
                     animate={{ opacity: 1, y: 0 }} 
@@ -1260,9 +1666,16 @@ const Home = ({ setActiveTab, isDarkMode }) => {
                                  : 'bg-gradient-to-t from-white/90 via-white/70 to-transparent'} 
                                pointer-events-none z-30`}
                   >
-                    {/* Text color remains white/light gray */}
-                    <h3 className={`${isDarkMode ? 'text-white' : 'text-gray-900'} text-lg font-semibold`}>Aditya Janjanam</h3> 
-                    <p className={`${isDarkMode ? 'text-gray-200' : 'text-gray-700'} text-sm mt-0.5`}>Full Stack Developer</p> 
+                    <h3 className={`${
+                      isDarkMode 
+                        ? 'text-white' 
+                        : 'text-gray-900'
+                    } text-lg font-semibold`}>Aditya Janjanam</h3>
+                    <p className={`${
+                      isDarkMode 
+                        ? 'text-gray-200' 
+                        : 'text-gray-700'
+                    } text-sm mt-0.5`}>Full Stack Developer</p>
                   </motion.div>
                 </motion.div> {/* End of Main Photo Container */}
               </div> {/* End of Relative Group */}
@@ -1275,18 +1688,17 @@ const Home = ({ setActiveTab, isDarkMode }) => {
           </div> 
           {/* --- End of Right Column --- */}
 
-        </div>
+        </div> {/* End of two-column flex container */}
+      </div> {/* End of inner container for main content */}
 
-        {/* Tech Grid */}
-        {/* ===> ADJUSTED MARGIN HERE <=== */}
-        {/* Changed mt-20 to mt-12 */}
-        <div className="mt-12"> 
+      {/* Tech Grid container - Centered with max-width and padding */}
+      <div className="mt-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
            <TechGrid setActiveTab={setActiveTab} isDarkMode={isDarkMode} /> 
         </div>
-      </div> 
-      {/* Footer */}
+
+      {/* Footer remains outside inner containers */}
       <Footer isDarkMode={isDarkMode} /> 
-    </div>
+    </div> // End of main component div
   );
 };
 
@@ -1294,22 +1706,47 @@ const Home = ({ setActiveTab, isDarkMode }) => {
 const BriefSummary = ({ isDarkMode }) => (
   <motion.div 
     className={`mt-8 p-6 rounded-xl border ${isDarkMode 
-      ? 'bg-gray-900 border-gray-700 shadow-lg' 
-      : 'bg-white border-gray-200 shadow-lg'} sm:p-8`}
+      ? 'bg-gradient-to-br from-gray-900 to-black border-dark-primary-800 shadow-lg shadow-dark-primary-900/20' 
+      : 'bg-gradient-to-br from-white to-gray-50 border-light-primary-200 shadow-lg shadow-light-primary-500/10'} sm:p-8`}
     initial={{ opacity: 0, y: 20, scale: 0.95 }}
     animate={{ opacity: 1, y: 0, scale: 1 }}
     transition={{ duration: 0.5, ease: 'easeOut' }}
   >
-    <h3 className={`text-2xl font-bold mb-6 ${isDarkMode ? 'text-white' : 'text-gray-900'} sm:text-3xl`}>About Me</h3>
-    <p className={`text-base ${isDarkMode ? 'text-gray-300' : 'text-gray-700'} leading-relaxed sm:text-lg text-justify`}>
+    <h3 className={`text-2xl font-bold mb-6 ${isDarkMode 
+      ? 'text-dark-primary-300' 
+      : 'text-light-primary-700'} sm:text-3xl`}>About Me</h3>
+    <p className={`text-base ${isDarkMode 
+      ? 'text-gray-300' 
+      : 'text-gray-700'} leading-relaxed sm:text-lg text-justify`}>
       As an international student, I am currently pursuing a Graduate Certificate in Mobile Applications Development at Centennial College in Toronto. Additionally, I hold a distinguished degree in Computer Applications Development from Conestoga College in Waterloo.
     </p>
-    <p className={`mt-4 text-base ${isDarkMode ? 'text-gray-300' : 'text-gray-700'} leading-relaxed sm:text-lg text-justify`}>
+    <p className={`mt-4 text-base ${isDarkMode 
+      ? 'text-gray-300' 
+      : 'text-gray-700'} leading-relaxed sm:text-lg text-justify`}>
       With over 3 years of IT experience in software development and systems engineering, I have honed my skills through two years of professional engagement as a Systems Engineer at Atos. My specialization in Application Packaging and Testing has enabled me to streamline deployment processes, automate installations, and enhance application performance across diverse enterprise environments.
     </p>
-    <p className={`mt-4 text-base ${isDarkMode ? 'text-gray-300' : 'text-gray-700'} leading-relaxed sm:text-lg text-justify`}>
+    <p className={`mt-4 text-base ${isDarkMode 
+      ? 'text-gray-300' 
+      : 'text-gray-700'} leading-relaxed sm:text-lg text-justify`}>
       My passion is centered on developing high-quality Mobile, Web, and Desktop Applications and Websites. I am proficient in a variety of technologies, including Android, iOS, Flutter, React Native, Node.js, and scripting languages such as PowerShell and VBScript. I am keen to apply my technical expertise and practical experience to contribute to innovative projects and thrive in dynamic team environments within the technology sector.
     </p>
+    
+    <div className="mt-8 flex flex-wrap gap-3">
+      {['Mobile Development', 'Web Development', 'Full Stack', 'UI/UX Design', 'Software Testing', 'Application Packaging'].map((skill) => (
+        <motion.span
+          key={skill}
+          className={`px-3 py-1.5 text-sm rounded-full ${isDarkMode
+            ? 'bg-dark-primary-900/60 text-dark-primary-300 border border-dark-primary-700'
+            : 'bg-light-primary-50 text-light-primary-700 border border-light-primary-200'}`}
+          whileHover={{ 
+            scale: 1.05, 
+            backgroundColor: isDarkMode ? 'rgba(15, 118, 110, 0.3)' : 'rgba(56, 189, 248, 0.1)' 
+          }}
+        >
+          {skill}
+        </motion.span>
+      ))}
+    </div>
   </motion.div>
 );
 
@@ -1321,7 +1758,7 @@ const Experience = ({ isDarkMode }) => {
         animate={{ opacity: 1, y: 0 }}
         className="mb-12 text-center"
       >
-        <h2 className={`text-3xl sm:text-4xl font-bold ${isDarkMode ? 'text-yellow-400' : 'text-yellow-600'} mb-3`}>
+        <h2 className={`text-3xl sm:text-4xl font-bold ${isDarkMode ? 'text-dark-primary-400' : 'text-light-primary-600'} mb-3`}>
           Professional Experience
         </h2>
         <p className={`text-lg ${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}>
@@ -1330,7 +1767,7 @@ const Experience = ({ isDarkMode }) => {
       </motion.div>
 
       <div className="relative space-y-10">
-        <div className={`absolute left-4 top-2 bottom-2 w-0.5 ${isDarkMode ? 'bg-gray-700' : 'bg-gray-300'} hidden md:block`} />
+        <div className={`absolute left-4 top-2 bottom-2 w-0.5 ${isDarkMode ? 'bg-dark-primary-700' : 'bg-light-primary-200'} hidden md:block`} />
 
         {experiences.map((exp, index) => (
           <motion.div
@@ -1340,24 +1777,24 @@ const Experience = ({ isDarkMode }) => {
             transition={{ delay: index * 0.2 }}
             className="relative group"
           >
-            <div className={`absolute left-[10px] top-1 w-4 h-4 rounded-full ${isDarkMode ? 'bg-yellow-400 border-gray-800' : 'bg-yellow-500 border-gray-200'} border-2 hidden md:block
+            <div className={`absolute left-[10px] top-1 w-4 h-4 rounded-full ${isDarkMode ? 'bg-dark-primary-400 border-gray-800' : 'bg-light-primary-500 border-gray-200'} border-2 hidden md:block
                           group-hover:scale-125 transition-transform duration-300`} />
 
             <div className={`ml-0 md:ml-10 p-6 rounded-lg ${isDarkMode 
-              ? 'bg-[#1a1a1a] border-gray-700' 
-              : 'bg-white border-gray-200 shadow-lg'} border
+              ? 'bg-gradient-to-br from-gray-900 to-black border-dark-primary-800' 
+              : 'bg-gradient-to-br from-white to-gray-50 border-light-primary-200 shadow-lg'} border
                           hover:border-gray-600 transition-colors duration-300`}>
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3">
                 <div>
-                  <h3 className={`text-xl font-semibold ${isDarkMode ? 'text-yellow-400' : 'text-yellow-600'} flex items-center gap-2`}>
+                  <h3 className={`text-xl font-semibold ${isDarkMode ? 'text-dark-primary-300' : 'text-light-primary-700'} flex items-center gap-2`}>
                     <span>{exp.logo}</span>
                     {exp.title} @ {exp.company}
                   </h3>
                   <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'} mt-1`}>{exp.date}</p>
                 </div>
                 <span className={`mt-2 sm:mt-0 px-3 py-1 text-sm ${isDarkMode 
-                  ? 'bg-purple-500/20 text-purple-300' 
-                  : 'bg-yellow-500/10 text-yellow-700'} rounded-full`}>
+                  ? 'bg-dark-secondary-900/40 text-dark-secondary-300' 
+                  : 'bg-light-secondary-100 text-light-secondary-700'} rounded-full`}>
                   {exp.location}
                 </span>
               </div>
@@ -1384,8 +1821,8 @@ const Experience = ({ isDarkMode }) => {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: index * 0.2 + (i * 0.1) }}
                     className={`px-3 py-1 text-sm rounded-full ${isDarkMode 
-                      ? 'bg-purple-500/10 text-purple-300 hover:bg-purple-500/20' 
-                      : 'bg-yellow-500/10 text-yellow-700 hover:bg-yellow-500/20'} transition-all duration-300`}
+                      ? 'bg-dark-secondary-900/40 text-dark-secondary-300 hover:bg-dark-secondary-800/40' 
+                      : 'bg-light-secondary-100 text-light-secondary-700 hover:bg-light-secondary-200'} transition-all duration-300`}
                   >
                     {skill}
                   </motion.span>
@@ -1399,241 +1836,23 @@ const Experience = ({ isDarkMode }) => {
   );
 };
 
-const Education = ({ isDarkMode }) => {
-  const educationData = [
-    {
-      program: 'Mobile Applications Development',
-      institution: 'Centennial College',
-      location: 'Toronto, ON',
-      period: '2024-2025',
-      type: 'Graduate Certificate',
-      courses: [
-        'Samsung Android Application Development',
-        'Web Technologies for Mobile Platforms',
-        'Enterprise Technologies for Mobile Platforms',
-        'iOS Development',
-        'Mobile Application UI/UX Design',
-        'Samsung Advanced Android Development',
-        'Mobile Web Development',
-        'Advanced iOS Development',
-        'Emerging Technologies',
-        'Mobile Application Development Project'
-      ]
-    },
-    {
-      program: 'Computer Applications Development',
-      institution: 'Conestoga College',
-      location: 'Waterloo, ON',
-      period: '2024-2025',
-      type: 'Graduate Certificate',
-      Grade: 'Distinction',
-      courses: [
-        'Systems Concepts, Analysis and Design',
-        'Programming: Software Development Techniques',
-        'Programming: Web Design and Development',
-        'Programming: Database Management',
-        'Web Foundations',
-        'System Development Project',
-        'Programming: Mobile Application Development',
-        'Microsoft Web Technologies',
-        'User Experience Design',
-        'Software Quality'
-      ]
-    }
-  ];
-
-  return (
-    <div className={`container mx-auto px-4 py-16 ${isDarkMode ? 'bg-[#080808] text-gray-200' : 'bg-white text-gray-900'}`}>
-      <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-yellow-400 to-yellow-500 text-transparent bg-clip-text">
-        Education
-      </h2>
-      
-      <div className="space-y-8">
-        {educationData.map((edu, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.2 }}
-            className={`relative p-6 rounded-2xl overflow-hidden group
-                     ${isDarkMode 
-                       ? 'bg-[#1a1a1a] border-gray-700' 
-                       : 'bg-white border-gray-200 shadow-lg'}
-                     hover:border-gray-600 transition-all duration-300`}
-          >
-            <div className="relative z-10">
-              <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
-                <div>
-                  <h3 className={`text-2xl font-bold ${isDarkMode ? 'text-yellow-400' : 'text-yellow-600'} mb-2`}>{edu.program}</h3>
-                  <p className={`text-lg ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>{edu.institution}</p>
-                  <p className={`${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>{edu.location}</p>
-                </div>
-                <div className="mt-2 md:mt-0 text-right">
-                  <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>{edu.period}</p>
-                  <p className={`${isDarkMode ? 'text-yellow-400' : 'text-yellow-600'}`}>{edu.type}</p>
-                  {edu.Grade && (
-                    <p className={`${isDarkMode ? 'text-yellow-400' : 'text-yellow-600'} font-semibold text-sm mt-1`}>Grade: {edu.Grade}</p> 
-                  )}
-                  {edu.status && (
-                    <p className={`${isDarkMode ? 'text-green-400' : 'text-green-600'} text-sm mt-1`}>{edu.status}</p>
-                  )}
-                </div>
-              </div>
-
-              <div className="mt-6">
-                <h4 className={`text-lg font-semibold ${isDarkMode ? 'text-gray-300' : 'text-gray-700'} mb-4`}>Key Courses</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  {edu.courses.map((course, idx) => (
-                    <motion.div
-                      key={idx}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: (index * 0.2) + (idx * 0.1) }}
-                      className={`flex items-center gap-2 p-3 rounded-lg
-                               ${isDarkMode 
-                                 ? 'bg-gray-900 border-gray-700' 
-                                 : 'bg-gray-50 border-gray-200'}
-                               hover:border-gray-600 transition-all duration-300`}
-                    >
-                      <span className={`${isDarkMode ? 'text-yellow-400' : 'text-yellow-600'}`}>•</span>
-                      <span className={`${isDarkMode ? 'text-gray-300' : 'text-gray-700'} text-sm`}>{course}</span>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-    </div>
-  );
-};
-
 const Projects = ({ isDarkMode }) => {
-  const projects = [
-    {
-      title: 'HealthTrackPro',
-      description: 'A comprehensive healthcare provider app built with React Native for tracking patient data. Features include QR sync, offline-first capability, clinical data management, and interactive charts.',
-      tech: ['React Native', 'Node.js', 'MongoDB', 'REST API'],
-      type: 'Healthcare App',
-      link: 'https://github.com/adityajanjanam/HealthTrackPro',
-      image: '🏥',
-      highlights: [
-        'Offline-first architecture',
-        'Real-time data synchronization',
-        'HIPAA compliant data handling',
-        'Interactive medical charts'
-      ]
-    },
-    {
-      title: 'TrainWithTail',
-      description: 'Pet training platform offering tailored programs, expert advice, and an integrated pet product shop for enhanced pet-owner relationships.',
-      tech: ['Node.js', 'MongoDB', 'HTML5', 'CSS3', 'JavaScript'],
-      type: 'Full Stack Web App',
-      link: 'https://github.com/adityajanjanam/TrainWithTail',
-      image: '🐕',
-      highlights: [
-        'Personalized training programs',
-        'E-commerce integration',
-        'Expert consultation system',
-        'Progress tracking dashboard'
-      ]
-    },
-    {
-      title: 'PatientDataAPI',
-      description: 'RESTful API for healthcare providers to manage and monitor patient clinical data. Built with Node.js and MongoDB, featuring Swagger documentation.',
-      tech: ['Node.js', 'Express', 'MongoDB', 'Swagger'],
-      type: 'Backend API',
-      link: 'https://github.com/adityajanjanam/PatientDataAPI',
-      image: '🔌',
-      highlights: [
-        'RESTful architecture',
-        'Comprehensive API documentation',
-        'Secure data handling',
-        'Scalable database design'
-      ]
-    },
-    {
-      title: 'Scientific Calculator',
-      description: 'Modern scientific calculator app with advanced mathematical operations, built using React Native and Expo for cross-platform compatibility.',
-      tech: ['React Native', 'Expo', 'JavaScript'],
-      type: 'Mobile Utility App',
-      link: 'https://github.com/adityajanjanam/ScientificCalculatorApp',
-      image: '🧮',
-      highlights: [
-        'Cross-platform compatibility',
-        'Advanced mathematical functions',
-        'Intuitive user interface',
-        'Offline functionality'
-      ]
-    },
-    {
-      title: 'MAPD721 Android Animations',
-      description: 'Interactive Android app showcasing various Jetpack Compose animations, including animated transitions, infinite animations, and gesture-based interactions.',
-      tech: ['Kotlin', 'Jetpack Compose', 'Material Design'],
-      type: 'Android App',
-      link: 'https://github.com/adityajanjanam/MAPD721_A3_Aditya',
-      image: '📱',
-      highlights: [
-        'Custom animations',
-        'Gesture interactions',
-        'Material Design implementation',
-        'Performance optimization'
-      ]
-    },
-    {
-      title: 'Text to PDF Converter',
-      description: 'React-based utility for converting text documents to PDF format with customizable options and preview functionality.',
-      tech: ['React', 'JavaScript', 'PDF.js'],
-      type: 'Web Utility',
-      link: 'https://github.com/adityajanjanam/TextToPDFConverter',
-      image: '📄',
-      highlights: [
-        'PDF generation',
-        'Custom formatting options',
-        'Live preview',
-        'Batch processing'
-      ]
-    },
-    {
-      title: 'Weather Dashboard',
-      description: 'Real-time weather monitoring application with detailed forecasts, interactive maps, and severe weather alerts.',
-      tech: ['React', 'OpenWeather API', 'Mapbox', 'TailwindCSS'],
-      type: 'Web Application',
-      link: 'https://github.com/adityajanjanam/WeatherDashboard',
-      image: '🌤️',
-      highlights: [
-        'Real-time updates',
-        'Interactive weather maps',
-        'Location-based forecasts',
-        'Severe weather alerts'
-      ]
-    },
-    {
-      title: 'Task Manager Pro',
-      description: 'Full-featured task management application with team collaboration, progress tracking, and deadline management capabilities.',
-      tech: ['React', 'Redux', 'Firebase', 'Material-UI'],
-      type: 'Productivity App',
-      link: 'https://github.com/adityajanjanam/TaskManagerPro',
-      image: '📋',
-      highlights: [
-        'Team collaboration',
-        'Real-time updates',
-        'Progress analytics',
-        'Deadline tracking'
-      ]
-    }
-  ];
+  // **Explicitly remove the internal 'projects' array declaration below this line**
+  // const projects = [ ... ]; // REMOVE THIS
 
   return (
-    <div className={`max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-12 ${isDarkMode ? 'bg-[#080808] text-gray-200' : 'bg-white text-gray-900'}`}>
+    // Apply full width and padding
+    <div className={`w-full px-4 py-16 ${isDarkMode ? 'bg-background text-gray-200' : 'bg-gray-100 text-gray-900'}`}>
+      {/* Container for centering content */}
+      <div className="max-w-7xl mx-auto">
       {/* Header Section */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="mb-12 text-center"
       >
-        <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-500 text-transparent bg-clip-text mb-4">
+          {/* Use yellow for header in dark mode */}
+          <h2 className={`text-3xl sm:text-4xl font-bold ${isDarkMode ? 'text-yellow-400' : 'text-indigo-600'} mb-4`}>
           Featured Projects
         </h2>
         <p className={`text-lg ${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}>
@@ -1641,26 +1860,34 @@ const Projects = ({ isDarkMode }) => {
         </p>
       </motion.div>
 
-      {/* Projects Grid */}
+        {/* Projects Grid - Ensure it maps over the GLOBAL projects constant */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Map over the correct global 'projects' array */}
         {projects.map((project, index) => (
           <motion.div
             key={project.title}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
-            className="group relative"
-          >
-            <div className={`h-full p-6 rounded-xl ${isDarkMode 
-              ? 'bg-[#1a1a1a] border-gray-700' 
-              : 'bg-white border-gray-200 shadow-lg'} border
-                          hover:border-gray-600 transition-all duration-500`}>
+              className="group relative h-full" // Added h-full for consistent height
+            >
+              {/* Use theme colors and yellow hover border */}
+              <div className={`h-full p-6 rounded-xl border
+                           ${isDarkMode
+                             ? 'bg-card-bg border-gray-700 hover:border-yellow-400'
+                             : 'bg-white border-gray-200 shadow-lg hover:border-indigo-500'}
+                           transition-all duration-300 flex flex-col`}> {/* Added flex flex-col */} 
+                
+                {/* Top Section: Icon, Title, Type, Link */}
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
                   <span className="text-3xl">{project.image}</span>
                   <div>
-                    <h3 className={`text-xl font-bold ${isDarkMode ? 'text-yellow-400' : 'text-yellow-600'}`}>{project.title}</h3>
-                    <span className={`text-sm ${isDarkMode ? 'text-yellow-400/70 bg-yellow-500/10' : 'text-yellow-600/70 bg-yellow-500/10'} px-2 py-0.5 rounded-full`}>
+                      {/* Use yellow for title in dark mode */}
+                      <h3 className={`text-xl font-bold ${isDarkMode ? 'text-yellow-400' : 'text-indigo-600'}`}>{project.title}</h3>
+                      {/* Use yellow for type badge in dark mode */}
+                      <span className={`text-xs px-2 py-0.5 rounded-full font-medium
+                                   ${isDarkMode ? 'bg-yellow-400/10 text-yellow-300' : 'bg-indigo-100 text-indigo-700'}`}>
                       {project.type}
                     </span>
                   </div>
@@ -1671,60 +1898,57 @@ const Projects = ({ isDarkMode }) => {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
-                  className={`p-2 rounded-full ${isDarkMode 
-                    ? 'bg-yellow-500/10 hover:bg-yellow-500/20' 
-                    : 'bg-yellow-500/10 hover:bg-yellow-500/20'} 
-                    transition-colors duration-300`}
-                >
-                  <svg className={`w-5 h-5 ${isDarkMode ? 'text-yellow-400' : 'text-yellow-600'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    // Use yellow for icon button in dark mode
+                    className={`p-2 rounded-full transition-colors duration-300
+                             ${isDarkMode ? 'bg-gray-700/50 hover:bg-gray-700/80 text-yellow-400' : 'bg-gray-100 hover:bg-gray-200 text-indigo-600'}`}
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
                           d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                   </svg>
                 </motion.a>
               </div>
 
-              <p className={`mb-4 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'} line-clamp-2 group-hover:line-clamp-none transition-all duration-300`}>
+                {/* Description */}
+                <p className={`mb-4 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'} text-sm leading-relaxed flex-grow`}> {/* Added flex-grow */} 
                 {project.description}
               </p>
 
+                {/* Highlights */}
+                {project.highlights && project.highlights.length > 0 && (
               <div className="mb-4">
-                <h4 className={`text-sm font-semibold ${isDarkMode ? 'text-yellow-400' : 'text-yellow-600'} mb-2`}>Key Highlights</h4>
-                <ul className="grid grid-cols-2 gap-2">
+                    <h4 className={`text-sm font-semibold ${isDarkMode ? 'text-yellow-400' : 'text-indigo-600'} mb-2`}>Key Highlights</h4>
+                    <ul className="space-y-1">
                   {project.highlights.map((highlight, i) => (
-                    <motion.li
-                      key={i}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 + (i * 0.1) }}
-                      className={`flex items-center gap-2 text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}
-                    >
-                      <svg className={`w-4 h-4 ${isDarkMode ? 'text-yellow-400' : 'text-yellow-600'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        <li key={i} className={`flex items-center gap-2 text-xs ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                          <svg className={`w-3 h-3 flex-shrink-0 ${isDarkMode ? 'text-yellow-400' : 'text-indigo-500'}`} fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
                       {highlight}
-                    </motion.li>
+                        </li>
                   ))}
                 </ul>
               </div>
+                )}
 
+                {/* Tech Stack */}
+                <div className="mt-auto pt-4"> {/* Ensure tech stack is at the bottom */} 
               <div className="flex flex-wrap gap-2">
                 {project.tech.map((tech, i) => (
-                  <motion.span
+                      <span
                     key={i}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: index * 0.1 + (i * 0.1) }}
-                    className={`px-3 py-1 text-sm rounded-full ${isDarkMode 
-                      ? 'bg-yellow-500/10 text-yellow-300 hover:bg-yellow-500/20' 
-                      : 'bg-yellow-500/10 text-yellow-700 hover:bg-yellow-500/20'} transition-all duration-300`}
+                        className={`px-2.5 py-1 text-xs rounded-full font-medium
+                                 ${isDarkMode ? 'bg-gray-700/50 text-gray-300' : 'bg-gray-100 text-gray-700'}`}
                   >
                     {tech}
-                  </motion.span>
+                      </span>
                 ))}
+                  </div>
               </div>
             </div>
           </motion.div>
         ))}
+        </div>
       </div>
     </div>
   );
@@ -1879,10 +2103,11 @@ const App = () => {
   }, [setIsDarkMode]);
 
   return (
-    <div className={`min-h-screen ${isDarkMode ? 'bg-[#080808] text-gray-200' : 'bg-white text-gray-800'}`}> 
+    <div className={`min-h-screen flex flex-col ${isDarkMode ? 'bg-[#080808] text-gray-200' : 'bg-white text-gray-800'}`}> 
       <NavLinks activeTab={activeTab} setActiveTab={setActiveTab} isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
       
-      <main className="pt-16"> 
+      {/* Add flex-grow here */}
+      <main className="pt-16 flex-grow"> 
         {activeTab === 'home' && <Home setActiveTab={setActiveTab} isDarkMode={isDarkMode} />}
         {activeTab === 'experience' && <Experience isDarkMode={isDarkMode} />}
         {activeTab === 'projects' && <Projects isDarkMode={isDarkMode} />}
