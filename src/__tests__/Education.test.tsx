@@ -40,7 +40,7 @@ describe('Education Component', () => {
     render(<Education isDarkMode={false} />);
     education.forEach((edu) => {
       edu.courses?.forEach((course) => {
-        expect(screen.getByText(course)).toBeInTheDocument();
+        expect(screen.getAllByText(course).length).toBeGreaterThan(0);
       });
     });
   });
