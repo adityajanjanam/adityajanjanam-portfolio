@@ -5,4 +5,4 @@ export const ApplicationPackaging = () => {
       <p>This component handles the packaging of applications.</p>
     </div>
   );
-); 
+}
