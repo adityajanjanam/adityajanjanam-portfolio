@@ -15,6 +15,8 @@ module.exports = {
     },
     extend: {
       colors: {
+        background: '#121212',
+        accent: '#7c3aed',
         // Light Mode Colors
         light: {
           primary: {
