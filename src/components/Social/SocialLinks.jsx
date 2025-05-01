@@ -11,7 +11,7 @@ export const SocialLinks = () => {
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5 }}
-      className="fixed left-6 bottom-0 flex flex-col items-center space-y-3 z-50"
+      className="hidden md:flex fixed left-6 bottom-0 flex-col items-center space-y-3 z-50 bg-gray-900/70 border border-gray-800 shadow-xl rounded-2xl p-2"
     >
       <div className="flex flex-col space-y-2">
         {socialLinks.map((social, index) => (
@@ -27,8 +27,8 @@ export const SocialLinks = () => {
             transition={{ delay: 0.1 * index }}
             className={`text-gray-400 ${social.color} transition-all duration-300 
               bg-gray-900/50 backdrop-blur-sm p-2 rounded-lg 
-              hover:bg-gray-800/80 hover:shadow-lg hover:ring-1 hover:ring-purple-500/20
-              group relative`}
+              hover:bg-gray-800/80 hover:shadow-xl hover:scale-110 hover:brightness-125 hover:ring-2 hover:ring-purple-500/30
+              group relative focus:outline-none focus:ring-2 focus:ring-purple-500/50`}
             title={social.name}
           >
             {React.cloneElement(social.icon, { className: 'w-7 h-7' })}
