@@ -6,7 +6,7 @@
 
 This repository contains the source code for my personal portfolio website, showcasing my skills, experience, and projects.
 
-**Live Site:** [adityajanjanam.com](https://adityajanjanam.com) (Deployment in progress/pending DNS)
+**Live Site:** [adityajanjanam.com](https://adityajanjanam.com)
 
 ## Features
 
