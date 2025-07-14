@@ -1,41 +1,53 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { useScreenSize } from '../../hooks/useScreenSize';
+import React from "react";
 
-export const NavLinks = () => {
-  const { isMobile } = useScreenSize();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const navItems = ['Home', 'Experience', 'Education', 'Projects'];
+const NavLinks = ({ activeTab, setActiveTab, isDarkMode, setIsDarkMode }) => {
+  const navItems = [
+    { id: "home", label: "Home" },
+    { id: "experience", label: "Experience" },
+    { id: "education", label: "Education" },
+    { id: "skills", label: "Skills" },
+    { id: "projects", label: "Projects" },
+    { id: "application-packaging", label: "Packaging" },
+    { id: "contact", label: "Contact" },
+  ];
 
   return (
-    <motion.nav 
-      initial={{ y: -20, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      className="fixed top-0 w-full px-4 sm:px-6 py-3 sm:py-4 bg-[#121212]/80 backdrop-blur-sm z-50 border-b border-purple-500/20"
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 ${isDarkMode ? "bg-gray-900" : "bg-white"} shadow-lg`}
     >
-      <div className="max-w-6xl mx-auto flex justify-between items-center">
-        {isMobile ? (
-          <MobileMenu items={navItems} isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />
-        ) : (
-          <DesktopMenu items={navItems} />
-        )}
-        <ResumeButton />
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-16">
+          <div className="flex items-center space-x-8">
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => setActiveTab(item.id)}
+                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  activeTab === item.id
+                    ? isDarkMode
+                      ? "bg-gray-700 text-white"
+                      : "bg-gray-200 text-gray-900"
+                    : isDarkMode
+                      ? "text-gray-300 hover:text-white"
+                      : "text-gray-700 hover:text-gray-900"
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+          <button
+            onClick={() => setIsDarkMode(!isDarkMode)}
+            className={`p-2 rounded-md ${
+              isDarkMode ? "text-yellow-400" : "text-gray-600"
+            }`}
+          >
+            {isDarkMode ? "☀️" : "🌙"}
+          </button>
+        </div>
       </div>
-    </motion.nav>
+    </nav>
   );
 };
 
-const ResumeButton = () => (
-  <motion.a
-    href="/Aditya_Janjanam_Resume.pdf"
-    target="_blank"
-    rel="noopener noreferrer"
-    whileHover={{ scale: 1.05 }}
-    whileTap={{ scale: 0.95 }}
-    className="px-4 py-2 rounded-md text-sm font-medium bg-yellow-400 text-black hover:bg-yellow-300 transition-colors"
-  >
-    Resume
-  </motion.a>
-); 
+export default NavLinks;

@@ -6,19 +6,19 @@ This repository contains the source code for my personal portfolio website, show
 
 ## Features
 
-*   **Modern UI:** Built with React and styled using Tailwind CSS with a high-contrast theme.
-*   **Animated Greetings:** Displays greetings in various Indian and world languages with fade animations.
-*   **Interactive Sections:** Includes sections for About Me, Experience (timeline view), Projects (grid view with details), Education, and Technologies Used.
-*   **Responsive Design:** Adapts to various screen sizes (desktop, tablet, mobile).
-*   **Contact Form/Modal:** Provides easy ways to get in touch.
-*   **Application Packaging Section:** Dedicated section detailing specific skills (initially accessible via Tech Grid).
+- **Modern UI:** Built with React and styled using Tailwind CSS with a high-contrast theme.
+- **Animated Greetings:** Displays greetings in various Indian and world languages with fade animations.
+- **Interactive Sections:** Includes sections for About Me, Experience (timeline view), Projects (grid view with details), Education, and Technologies Used.
+- **Responsive Design:** Adapts to various screen sizes (desktop, tablet, mobile).
+- **Contact Form/Modal:** Provides easy ways to get in touch.
+- **Application Packaging Section:** Dedicated section detailing specific skills (initially accessible via Tech Grid).
 
 ## Technologies Used
 
-*   **Frontend:** React.js, Tailwind CSS
-*   **Animation:** Framer Motion
-*   **Deployment:** Netlify (or chosen provider)
-*   **Version Control:** Git, GitHub
+- **Frontend:** React.js, Tailwind CSS
+- **Animation:** Framer Motion
+- **Deployment:** Netlify (or chosen provider)
+- **Version Control:** Git, GitHub
 
 ## Getting Started (Local Development)
 
@@ -41,11 +41,11 @@ This repository contains the source code for my personal portfolio website, show
 
 This site is configured for deployment on Netlify.
 
-*   **Build Command:** `npm run build`
-*   **Publish Directory:** `build`
-*   **Redirects:** A `public/_redirects` file is included to handle client-side routing.
+- **Build Command:** `npm run build`
+- **Publish Directory:** `build`
+- **Redirects:** A `public/_redirects` file is included to handle client-side routing.
 
 ## Contact
 
-*   **Email:** janjanamaditya@gmail.com
-*   **LinkedIn:** [linkedin.com/in/adityajanjanam](https://www.linkedin.com/in/adityajanjanam)
+- **Email:** janjanamaditya@gmail.com
+- **LinkedIn:** [linkedin.com/in/janjanamaditya](https://www.linkedin.com/in/janjanamaditya)

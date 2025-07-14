@@ -3,6 +3,17 @@
     "development"
   ],
   "hints": {
-    "compat-api/html": "off"
-  }
+    "compat-api/html": "off",
+    "axe/aria": [
+      "default",
+      {
+        "aria-valid-attr-value": "off"
+      }
+    ]
+  },
+  "browserslist": [
+    "defaults",
+    "not ie 11",
+    "not ios_saf <= 11.2"
+  ]
 }

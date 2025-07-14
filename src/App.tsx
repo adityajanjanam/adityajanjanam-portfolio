@@ -1,52 +1,88 @@
-import React, { useState } from 'react';
-import { ThemeProvider } from './components/Theme/ThemeContext';
-import Skills from './components/Skills/Skills';
-import NavLinks from './components/NavLinks';
-import Home from './components/Home';
-import Experience from './components/Experience';
-import Projects from './components/Projects';
-import Education from './components/Education/Education';
-import ApplicationPackaging from './components/ApplicationPackaging';
-import ScrollToTop from './components/ScrollToTop';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import '../src/i18n';
-import LanguageSwitcher from './components/LanguageSwitcher';
-import BlogList from './components/Blog/BlogList';
-import BlogDetail from './components/Blog/BlogDetail';
-import Testimonials from './components/Testimonials/Testimonials';
+import { AnimatePresence } from "framer-motion";
+import React, { useEffect, useState } from "react";
+
+// Component imports - only import files that actually exist
+import CustomCursor from "./components/CustomCursor.jsx";
+import Education from "./components/Education/Education";
+import FloatingNav from "./components/FloatingNav.jsx";
+import Footer from "./components/Footer.jsx";
+import { Home } from "./components/Home/index.jsx";
+import LoadingScreen from "./components/LoadingScreen";
+import ParticleBackground from "./components/ParticleBackground.jsx";
+import ScrollToTop from "./components/ScrollToTop.jsx";
+import Skills from "./components/Skills/Skills";
+import TechGrid from "./components/TechGrid.jsx";
 
 const App: React.FC = () => {
-  const [activeSection, setActiveSection] = useState<string>('home');
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+  const [activeTab, setActiveTab] = useState<string>("home");
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      setIsDarkMode(savedTheme === "dark");
+    } else {
+      // Check system preference
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+      setIsDarkMode(prefersDark);
+    }
+
+    // Simulate loading time
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    // Update theme in localStorage
+    localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+
+    // Update document class
+    if (isDarkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [isDarkMode]);
+
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
 
   return (
-    <Router>
-      <ThemeProvider>
-        <div className="min-h-screen bg-white dark:bg-[#080808] text-gray-800 dark:text-gray-200 m-0 p-0"> 
-          <LanguageSwitcher />
-          <NavLinks activeSection={activeSection} onSectionChange={setActiveSection} />
-          
-          <main className="pt-16"> 
-            <Skills setActiveTab={setActiveSection} />
-            {activeSection === 'home' && (
-              <>
-                <Home setActiveTab={setActiveSection} isDarkMode={false} />
-                <Testimonials />
-                <BlogList />
-              </>
-            )}
-            {activeSection === 'experience' && <Experience isDarkMode={false} />}
-            {activeSection === 'projects' && <Projects isDarkMode={false} />}
-            {activeSection === 'education' && <Education isDarkMode={false} />}
-            {activeSection === 'application-packaging' && <ApplicationPackaging setActiveTab={setActiveSection} isDarkMode={false} />}
-          </main>
-          <ScrollToTop />
-        </div>
-      </ThemeProvider>
-      <Routes>
-        <Route path="/blog/:slug" element={<BlogDetail />} />
-      </Routes>
-    </Router>
+    <div
+      className={`min-h-screen ${isDarkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"}`}
+    >
+      <ParticleBackground isDarkMode={isDarkMode} />
+      <CustomCursor />
+      <FloatingNav
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+        isDarkMode={isDarkMode}
+      />
+
+      <main className="container mx-auto px-4 py-8">
+        <AnimatePresence mode="wait">
+          {activeTab === "home" && (
+            <Home setActiveTab={setActiveTab} isDarkMode={isDarkMode} />
+          )}
+          {activeTab === "education" && <Education />}
+          {activeTab === "skills" && (
+            <TechGrid setActiveTab={setActiveTab} isDarkMode={isDarkMode} />
+          )}
+        </AnimatePresence>
+      </main>
+
+      <Footer isDarkMode={isDarkMode} />
+      <ScrollToTop isDarkMode={isDarkMode} />
+    </div>
   );
 };
 
-export default App; 
+export default App;

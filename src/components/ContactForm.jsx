@@ -1,57 +1,96 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from "react";
 
-const ContactForm = () => {
-  const [formState, setFormState] = useState({
-    name: '',
-    email: '',
-    message: '',
-    submitted: false
+const ContactForm = ({ isDarkMode }) => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFormState(prev => ({ ...prev, submitted: true }));
-    // Add your form submission logic here
+    // Handle form submission here
+    console.log("Form submitted:", formData);
+  };
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      className="max-w-2xl mx-auto p-6 bg-[#1a1a1a]/50 backdrop-blur-sm rounded-xl border border-purple-500/20"
-    >
-      {formState.submitted ? (
-        <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          className="text-center py-12"
+    <div className={`p-6 ${isDarkMode ? "text-white" : "text-gray-900"}`}>
+      <h1 className="text-3xl font-bold mb-6">Contact Me</h1>
+      <form onSubmit={handleSubmit} className="max-w-md space-y-4">
+        <div>
+          <label htmlFor="name" className="block text-sm font-medium mb-2">
+            Name
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            className={`w-full p-2 border rounded-md ${
+              isDarkMode
+                ? "bg-gray-800 border-gray-600 text-white"
+                : "bg-white border-gray-300 text-gray-900"
+            }`}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium mb-2">
+            Email
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            className={`w-full p-2 border rounded-md ${
+              isDarkMode
+                ? "bg-gray-800 border-gray-600 text-white"
+                : "bg-white border-gray-300 text-gray-900"
+            }`}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="message" className="block text-sm font-medium mb-2">
+            Message
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            rows={4}
+            className={`w-full p-2 border rounded-md ${
+              isDarkMode
+                ? "bg-gray-800 border-gray-600 text-white"
+                : "bg-white border-gray-300 text-gray-900"
+            }`}
+            required
+          />
+        </div>
+        <button
+          type="submit"
+          className={`w-full py-2 px-4 rounded-md font-medium ${
+            isDarkMode
+              ? "bg-blue-600 hover:bg-blue-700 text-white"
+              : "bg-blue-500 hover:bg-blue-600 text-white"
+          }`}
         >
-          <svg className="w-16 h-16 text-green-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-          </svg>
-          <h3 className="text-2xl font-bold text-white mb-2">Message Sent!</h3>
-          <p className="text-gray-400">I'll get back to you soon.</p>
-        </motion.div>
-      ) : (
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label className="block text-sm font-medium text-gray-400 mb-2">Name</label>
-            <motion.input
-              whileFocus={{ scale: 1.01 }}
-              type="text"
-              className="w-full px-4 py-2 bg-black/20 border border-purple-500/20 rounded-lg
-                       text-white placeholder-gray-500 focus:outline-none focus:border-purple-500/50"
-              placeholder="Your name"
-              value={formState.name}
-              onChange={e => setFormState(prev => ({ ...prev, name: e.target.value }))}
-            />
-          </div>
-          {/* Add more form fields */}
-        </form>
-      )}
-    </motion.div>
+          Send Message
+        </button>
+      </form>
+    </div>
   );
 };
 
-export default ContactForm; 
+export default ContactForm;

@@ -1,27 +1,37 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import SkillsChart from './SkillsChart';
-import { useTheme } from '../Theme/ThemeContext';
-import { BaseComponentProps } from '../../types';
-import { Skill } from '../../types/skills';
+import { motion } from "framer-motion";
+import React from "react";
+import { useTheme } from "../Theme/ThemeContext";
+import { technologies } from "../../data/constants";
 
-const Skills: React.FC<BaseComponentProps> = ({ setActiveTab }) => {
+const categoryMeta = [
+  { key: "fullStack", label: "Full Stack", icon: "🌐" },
+  { key: "frontend", label: "Frontend", icon: "⚛️" },
+  { key: "backend", label: "Backend", icon: "🚀" },
+  { key: "desktop", label: "Desktop", icon: "🖥️" },
+  { key: "mobile", label: "Mobile", icon: "📱" },
+  { key: "web", label: "Web", icon: "🌍" },
+  { key: "languages", label: "Languages", icon: "📚" },
+  { key: "testing", label: "Testing", icon: "🧪" },
+  { key: "devops", label: "DevOps", icon: "🔄" },
+  { key: "cloud", label: "Cloud", icon: "☁️" },
+  { key: "uiux", label: "UI/UX & Design", icon: "🎨" },
+  { key: "collaboration", label: "Collaboration", icon: "👥" },
+  { key: "aiTools", label: "AI Tools", icon: "🤖" },
+  { key: "applicationPackaging", label: "App Packaging", icon: "📦" },
+];
+
+const getSkillLevel = (name: string): number | undefined => {
+  // Optionally, map skill names to proficiency levels here
+  // For demo, return undefined (no bar), or set a default
+  return undefined;
+};
+
+const Skills: React.FC = () => {
   const { isDarkMode } = useTheme();
 
-  const skills: Skill[] = [
-    { name: 'React', level: 90 },
-    { name: 'JavaScript', level: 85 },
-    { name: 'TypeScript', level: 80 },
-    { name: 'Node.js', level: 75 },
-    { name: 'Python', level: 70 },
-    { name: 'SQL', level: 75 },
-    { name: 'AWS', level: 65 },
-    { name: 'Docker', level: 60 },
-  ];
-
   return (
-    <section id="skills" className="py-20">
-      <div className="container mx-auto px-4">
+    <section id="skills" className="py-20 min-h-screen">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -29,81 +39,78 @@ const Skills: React.FC<BaseComponentProps> = ({ setActiveTab }) => {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className={`text-3xl font-bold mb-4 ${
-            isDarkMode ? 'text-white' : 'text-gray-900'
-          }`}>
-            Technical Skills
+          <h2
+            className="text-4xl font-extrabold mb-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 bg-clip-text text-transparent"
+          >
+            My Technical Skills
           </h2>
-          <p className={`text-lg ${
-            isDarkMode ? 'text-gray-300' : 'text-gray-600'
-          }`}>
-            Here's a visualization of my technical expertise and proficiency levels
+          <p
+            className={`text-lg max-w-2xl mx-auto ${
+              isDarkMode ? "text-gray-300" : "text-gray-600"
+            }`}
+          >
+            A comprehensive showcase of my expertise across modern technologies, frameworks, and tools.
           </p>
         </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="flex justify-center"
-        >
-          <SkillsChart skills={skills} isDarkMode={isDarkMode} />
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-        >
-          {skills.map((skill) => (
-            <div
-              key={skill.name}
-              className={`p-6 rounded-lg ${
-                isDarkMode
-                  ? 'bg-gray-800 shadow-blue-500/20'
-                  : 'bg-white shadow-lg'
-              }`}
-            >
-              <h3 className={`text-xl font-semibold mb-2 ${
-                isDarkMode ? 'text-white' : 'text-gray-900'
-              }`}>
-                {skill.name}
-              </h3>
-              <div className="relative pt-1">
-                <div className="flex mb-2 items-center justify-between">
-                  <div>
-                    <span className={`text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full ${
-                      isDarkMode
-                        ? 'text-blue-300 bg-blue-900/30'
-                        : 'text-blue-600 bg-blue-200'
-                    }`}>
-                      {skill.level}%
-                    </span>
-                  </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          {categoryMeta.map((cat) => {
+            const skills = (technologies as any)[cat.key];
+            if (!skills) return null;
+            return (
+              <motion.div
+                key={cat.key}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className={`rounded-2xl shadow-xl p-6 flex flex-col glass-card border border-white/10 backdrop-blur-md ${
+                  isDarkMode
+                    ? "bg-gradient-to-br from-gray-900/80 via-gray-800/70 to-gray-900/90"
+                    : "bg-gradient-to-br from-white/80 via-blue-50/60 to-white/90"
+                }`}
+                style={{ minHeight: 320 }}
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="text-3xl">{cat.icon}</span>
+                  <h3 className="text-xl font-bold tracking-wide">
+                    {cat.label}
+                  </h3>
                 </div>
-                <div className={`overflow-hidden h-2 mb-4 text-xs flex rounded ${
-                  isDarkMode ? 'bg-gray-700' : 'bg-gray-200'
-                }`}>
-                  <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${skill.level}%` }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1, delay: 0.5 }}
-                    className={`shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center ${
-                      isDarkMode ? 'bg-blue-500' : 'bg-blue-600'
-                    }`}
-                  />
+                <div className="flex flex-col gap-3 flex-1">
+                  {skills.map((skill: any) => (
+                    <div key={skill.name} className="flex items-center gap-3 group">
+                      <span className="text-xl">{skill.icon}</span>
+                      <span
+                        className={`font-medium text-base flex-1 ${
+                          isDarkMode ? "text-gray-100" : "text-gray-800"
+                        }`}
+                      >
+                        {skill.name}
+                      </span>
+                      {/* Optionally show a progress bar if you want to map levels */}
+                      {typeof getSkillLevel(skill.name) === "number" && (
+                        <div className="w-32">
+                          <div className={`w-full h-2 rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden`}>
+                            <motion.div
+                              initial={{ width: 0 }}
+                              whileInView={{ width: `${getSkillLevel(skill.name)}%` }}
+                              viewport={{ once: true }}
+                              transition={{ duration: 1 }}
+                              className="h-2 rounded-full bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400"
+                            />
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  ))}
                 </div>
-              </div>
-            </div>
-          ))}
-        </motion.div>
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
 };
 
-export default Skills; 
+export default Skills;

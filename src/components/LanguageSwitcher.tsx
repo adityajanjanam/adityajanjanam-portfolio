@@ -1,22 +1,22 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
+import React from "react";
 
 const LanguageSwitcher: React.FC = () => {
-  const { i18n } = useTranslation();
-
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    i18n.changeLanguage(e.target.value);
-  };
-
   return (
-    <div className="mb-4">
-      <label htmlFor="language-select" className="mr-2">Language:</label>
-      <select id="language-select" onChange={handleChange} value={i18n.language} className="p-1 rounded">
+    <div className="language-switcher">
+      <label htmlFor="language-select" className="sr-only">
+        Select Language
+      </label>
+      <select
+        id="language-select"
+        className="p-2 border rounded-md"
+        aria-label="Select Language"
+      >
         <option value="en">English</option>
-        <option value="te">తెలుగు</option>
+        <option value="es">Español</option>
+        <option value="fr">Français</option>
       </select>
     </div>
   );
 };
 
-export default LanguageSwitcher; 
+export default LanguageSwitcher;

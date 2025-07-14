@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 const ScrollToTop = ({ isDarkMode }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -15,14 +15,14 @@ const ScrollToTop = ({ isDarkMode }) => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: "smooth",
     });
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', toggleVisibility);
+    window.addEventListener("scroll", toggleVisibility);
     return () => {
-      window.removeEventListener('scroll', toggleVisibility);
+      window.removeEventListener("scroll", toggleVisibility);
     };
   }, []);
 
@@ -34,8 +34,8 @@ const ScrollToTop = ({ isDarkMode }) => {
       onClick={scrollToTop}
       className={`fixed bottom-8 right-8 p-3 rounded-full shadow-lg ${
         isDarkMode
-          ? 'bg-gray-800 text-white hover:bg-gray-700'
-          : 'bg-white text-gray-800 hover:bg-gray-100'
+          ? "bg-gray-800 text-white hover:bg-gray-700"
+          : "bg-white text-gray-800 hover:bg-gray-100"
       }`}
       style={{ zIndex: 1000 }}
     >
@@ -57,4 +57,4 @@ const ScrollToTop = ({ isDarkMode }) => {
   );
 };
 
-export default ScrollToTop; 
+export default ScrollToTop;
