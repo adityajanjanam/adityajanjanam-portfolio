@@ -368,7 +368,7 @@ export const education: Education[] = [
     logo: "🎓",
     period: "Jun 2016 - May 2020",
     type: "Bachelor of Engineering",
-    Grade: "3.06/4.0 (WES Equivalent - B)",
+    Grade: "3.06 (FIRST CLASS)",
     description: [
       "Graduated with first class, building a strong foundation in electronics, programming, and communication systems.",
       "Coursework included C, C++, Python, digital/analog communications, and microcontrollers, preparing me for technical challenges in the field.",

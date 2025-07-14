@@ -7,7 +7,7 @@ const Education = ({ isDarkMode }) => {
       degree: "Postgraduate Diploma in Mobile Applications Development",
       institution: "Centennial College",
       year: "Sep 2024 – Apr 2025",
-      grade: "Grade: 3.55",
+      grade: "Grade: 3.55 (FIRST CLASS)",
       description:
         "🎓 Completed Post Graduation Diploma in Mobile Applications Development at Centennial College. 👨‍💻 Acquired advanced skills in mobile app development, focusing on both Android and iOS platforms. Leveraging modern technologies like Kotlin, Swift, and React Native to create dynamic, user-friendly applications. 🌟 Worked on industry-driven projects, gaining valuable hands-on experience in mobile app architecture, UI/UX design, and backend integration. Committed to delivering innovative solutions that enhance user experience and drive business success. 🚀 Passionate about developing intuitive, high-performance mobile applications, I'm eager to apply my skills and knowledge in creating impactful, user-centric apps.",
       skills: [
@@ -56,7 +56,7 @@ const Education = ({ isDarkMode }) => {
         "Bachelor of Engineering - Electronics and Communications Engineering",
       institution: "Sathyabama Institute of Science & Technology, Chennai",
       year: "Jun 2016 – May 2020",
-      grade: "Grade: 3.06/4.0 (WES Equivalent - B)",
+      grade: "Grade: 3.06 (FIRST CLASS)",
       description:
         "I graduated from Sathyabama Institute of Science and Technology in 2020 with a Bachelor's degree in Electronics and Communication Engineering. My studies encompassed a wide range of subjects, including C, C++, Data Structures in C, Python, Digital Logic Circuits (DLC), Analog Communications, Digital Communications, Signal Processing, Microcontrollers, Mathematics, Physics, Chemistry, English, and Electrical Technology. This diverse academic experience provided me with a solid foundation in both theoretical concepts and practical applications, equipping me with the skills necessary to excel in the rapidly evolving field of electronics and communication.",
       skills: [
