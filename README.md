@@ -1,3 +1,7 @@
+
+
+---
+
 # Aditya Janjanam - Portfolio
 
 This repository contains the source code for my personal portfolio website, showcasing my skills, experience, and projects.
@@ -49,3 +53,5 @@ This site is configured for deployment on Netlify.
 
 - **Email:** janjanamaditya@gmail.com
 - **LinkedIn:** [linkedin.com/in/janjanamaditya](https://www.linkedin.com/in/janjanamaditya)
+
+---
