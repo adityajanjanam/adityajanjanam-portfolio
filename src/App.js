@@ -11,6 +11,7 @@ import sololearnLogo from "./assets/sololearn.png";
 import uwaterlooLogo from "./assets/uwaterloo.png";
 import wrmuseumLogo from "./assets/wrmuseum.png";
 import Education from "./components/Education/index";
+import EmojiFeedbackWidget from "./components/EmojiFeedback";
 import Footer from "./components/Footer";
 
 const technologies = {
@@ -968,7 +969,7 @@ const SocialLinks = ({ isDarkMode }) => (
     animate={{ opacity: 1, y: 0 }}
     transition={{ delay: 0.6 }}
   >
-    {socialLinks.map((link, _index) => (
+    {socialLinks.map((link) => (
       <motion.a
         key={link.name}
         href={link.url}
@@ -1584,11 +1585,13 @@ const AnimatedMultilingualGreeting = ({ isDarkMode }) => {
   ];
   const [currentIndex, setCurrentIndex] = useState(0);
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % greetings.length);
-    }, 3000);
-    return () => clearInterval(intervalId);
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % greetings.length);
+    }, 2500);
+
+    return () => clearInterval(interval);
   }, [greetings.length]);
+
   const currentGreeting = greetings[currentIndex];
   const getGreetingColor = () => {
     const langGroups = {
@@ -1636,7 +1639,7 @@ const AnimatedMultilingualGreeting = ({ isDarkMode }) => {
     }
   };
   return (
-    <div className="h-16 mb-4 flex items-center justify-start">
+    <div className="h-16 mb-3 flex items-center justify-start">
       <motion.h2
         key={currentIndex}
         initial={{ opacity: 0 }}
@@ -1661,24 +1664,24 @@ const Home = ({ setActiveTab, isDarkMode }) => {
         isDarkMode
           ? "bg-gradient-to-br from-gray-900 via-black to-gray-900 text-gray-200"
           : "bg-gradient-to-br from-white via-gray-50 to-white text-gray-800"
-      } pt-12 pb-12`}
+      } pt-10 pb-10`}
     >
       {/* Inner container for main content - Two column layout with photo in top-right */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row items-start gap-8">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-5 lg:px-7">
+        <div className="flex flex-col lg:flex-row items-start gap-6">
           {/* --- Left Column: Main Content --- */}
           <div className="flex flex-col w-full lg:w-2/3">
             <AnimatedMultilingualGreeting isDarkMode={isDarkMode} />
-            <div className="mb-6">
+            <div className="mb-5">
               <h1
-                className={`text-3xl lg:text-4xl font-bold mb-2 ${
+                className={`text-3xl lg:text-[34px] font-bold mb-1.5 ${
                   isDarkMode ? "text-white" : "text-gray-900"
                 }`}
               >
                 <span
                   className={`${
                     isDarkMode ? "text-gray-400" : "text-gray-700"
-                  } mr-2`}
+                  } mr-1.5`}
                 >
                   I am
                 </span>
@@ -1693,14 +1696,14 @@ const Home = ({ setActiveTab, isDarkMode }) => {
                 </span>
               </h1>
               <p
-                className={`text-base lg:text-lg ${
+                className={`text-base lg:text-[17px] ${
                   isDarkMode ? "text-gray-400" : "text-gray-700"
                 } text-justify leading-relaxed`}
               >
                 Full Stack Developer | Mobile App Developer | Software Engineer
               </p>
             </div>
-            <div className="flex flex-wrap gap-x-10 gap-y-4 mb-6">
+            <div className="flex flex-wrap gap-x-8 gap-y-3 mb-5">
               <div className="text-center">
                 <div
                   className={`text-3xl lg:text-4xl font-bold ${
@@ -1714,7 +1717,7 @@ const Home = ({ setActiveTab, isDarkMode }) => {
                 <div
                   className={`text-xs lg:text-sm ${
                     isDarkMode ? "text-gray-400" : "text-gray-700"
-                  } mt-1 uppercase tracking-wider`}
+                  } mt-0.5 uppercase tracking-wider`}
                 >
                   Years Experience
                 </div>
@@ -1732,19 +1735,19 @@ const Home = ({ setActiveTab, isDarkMode }) => {
                 <div
                   className={`text-xs lg:text-sm ${
                     isDarkMode ? "text-gray-400" : "text-gray-700"
-                  } mt-1 uppercase tracking-wider`}
+                  } mt-0.5 uppercase tracking-wider`}
                 >
                   Projects
                 </div>
               </div>
             </div>
-            <div className="mb-6">
+            <div className="mb-5">
               <BriefSummary isDarkMode={isDarkMode} />
             </div>
           </div>
 
           {/* --- Right Column: Photo, Social Links, and CTA Buttons (Top-Right) --- */}
-          <div className="flex flex-col items-center lg:items-end w-full lg:w-1/3 lg:sticky lg:top-8">
+          <div className="flex flex-col items-center lg:items-end w-full lg:w-1/3 lg:sticky lg:top-6">
             <motion.div
               className="w-full max-w-sm"
               initial={{ opacity: 0, x: 30, scale: 0.95 }}
@@ -1757,7 +1760,7 @@ const Home = ({ setActiveTab, isDarkMode }) => {
                 delay: 0.1,
               }}
             >
-              {/* Photo Section */}
+              {/* Photo Section - Two Photos Gallery */}
               <motion.div
                 className="w-full"
                 initial={{ opacity: 0, y: 20, scale: 0.95 }}
@@ -1769,105 +1772,238 @@ const Home = ({ setActiveTab, isDarkMode }) => {
                   delay: 0.1,
                 }}
               >
-                <div className="relative group">
-                  {/* Background Card Element */}
-                  <div
-                    className={`absolute -inset-1.5 rounded-xl
-                                opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-md z-0 ${
-                                  isDarkMode
-                                    ? "bg-gradient-to-br from-dark-primary-400/50 via-dark-primary-500/10 to-transparent"
-                                    : "bg-gradient-to-br from-light-primary-400/50 via-light-primary-500/10 to-transparent"
-                                }`}
-                  ></div>
-                  {/* Main Photo Container */}
-                  <motion.div
-                    className={`relative aspect-[3/4] rounded-xl overflow-hidden z-10 
-                               ${
-                                 isDarkMode
-                                   ? "bg-gradient-to-br from-gray-900 to-black border-dark-primary-800"
-                                   : "bg-gradient-to-br from-white to-gray-50 border-light-primary-200"
-                               }
-                               border shadow-xl ${
-                                 isDarkMode
-                                   ? "shadow-dark-primary-900/30"
-                                   : "shadow-light-primary-500/20"
-                               }
-                               transition-all duration-300 ease-out`}
-                    whileHover={{ scale: 1.02, y: -4 }}
-                  >
-                    {/* Image */}
-                    <motion.img
-                      src="/profile.png"
-                      alt="Aditya Janjanam"
-                      className="absolute inset-5 w-[calc(100%-40px)] h-[calc(100%-40px)] object-cover object-center"
-                      transition={{
-                        type: "spring",
-                        stiffness: 100,
-                        damping: 15,
-                      }}
-                    />
-
-                    {/* Status Indicator */}
+                {/* Photo Gallery Container */}
+                <div className="flex flex-col sm:flex-row gap-4">
+                  {/* First Photo - Profile */}
+                  <div className="relative group flex-1">
+                    {/* Background Card Element */}
+                    <div
+                      className={`absolute -inset-1.5 rounded-xl
+                                  opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-md z-0 ${
+                                    isDarkMode
+                                      ? "bg-gradient-to-br from-dark-primary-400/50 via-dark-primary-500/10 to-transparent"
+                                      : "bg-gradient-to-br from-light-primary-400/50 via-light-primary-500/10 to-transparent"
+                                  }`}
+                    ></div>
+                    {/* Main Photo Container */}
                     <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.4 }}
-                      className={`absolute top-3 right-3 flex items-center gap-1.5 
+                      className={`relative aspect-[3/4] rounded-xl overflow-hidden z-10 
                                  ${
                                    isDarkMode
-                                     ? "bg-black/60 backdrop-blur-sm border-dark-primary-800"
-                                     : "bg-white/90 backdrop-blur-sm border-light-primary-200"
-                                 } 
-                                 px-2.5 py-1 rounded-full border shadow-md z-30`}
+                                     ? "bg-gradient-to-br from-gray-900 to-black border-dark-primary-800"
+                                     : "bg-gradient-to-br from-white to-gray-50 border-light-primary-200"
+                                 }
+                                 border shadow-xl ${
+                                   isDarkMode
+                                     ? "shadow-dark-primary-900/30"
+                                     : "shadow-light-primary-500/20"
+                                 }
+                                 transition-all duration-300 ease-out`}
+                      whileHover={{ scale: 1.02, y: -4 }}
                     >
-                      <div className="w-2 h-2 bg-success-400 rounded-full" />
-                      <span
-                        className={`text-xs font-medium ${
-                          isDarkMode ? "text-white" : "text-gray-900"
-                        }`}
-                      >
-                        Available for hire
-                      </span>
-                    </motion.div>
+                      {/* High Quality Image */}
+                      <motion.img
+                        src="/conestoga-graduation.png"
+                        alt="Aditya Janjanam - Conestoga College Graduation"
+                        loading="eager"
+                        className="absolute inset-3 w-[calc(100%-24px)] h-[calc(100%-24px)] object-cover object-center"
+                        style={{
+                          imageRendering: "high-quality",
+                          WebkitImageRendering: "high-quality",
+                        }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 100,
+                          damping: 15,
+                        }}
+                      />
 
-                    {/* Bottom Info */}
+                      {/* Status Indicator */}
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.4 }}
+                        className={`absolute top-2 right-2 flex items-center gap-1.5 
+                                   ${
+                                     isDarkMode
+                                       ? "bg-black/60 backdrop-blur-sm border-dark-primary-800"
+                                       : "bg-white/90 backdrop-blur-sm border-light-primary-200"
+                                   } 
+                                   px-2 py-0.5 rounded-full border shadow-md z-30`}
+                      >
+                        <div className="w-2 h-2 bg-success-400 rounded-full" />
+                        <span
+                          className={`text-xs font-medium ${
+                            isDarkMode ? "text-white" : "text-gray-900"
+                          }`}
+                        >
+                          Available
+                        </span>
+                      </motion.div>
+
+                      {/* Bottom Info Overlay */}
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.55 }}
+                        className={`absolute bottom-0 inset-x-0 pt-8 pb-2 px-3  
+                                   ${
+                                     isDarkMode
+                                       ? "bg-gradient-to-t from-black/80 via-black/60 to-transparent"
+                                       : "bg-gradient-to-t from-white/95 via-white/80 to-transparent"
+                                   } 
+                                   pointer-events-none z-30`}
+                      >
+                        <p
+                          className={`${
+                            isDarkMode ? "text-white" : "text-gray-900"
+                          } text-xs font-semibold text-center`}
+                        >
+                          Conestoga College
+                        </p>
+                        <p
+                          className={`${
+                            isDarkMode ? "text-gray-200" : "text-gray-700"
+                          } text-xs text-center mt-0.5`}
+                        >
+                          Graduation
+                        </p>
+                      </motion.div>
+                    </motion.div>
+                  </div>
+
+                  {/* Second Photo - Centennial College Graduation */}
+                  <div className="relative group flex-1">
+                    {/* Background Card Element */}
+                    <div
+                      className={`absolute -inset-1.5 rounded-xl
+                                  opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-md z-0 ${
+                                    isDarkMode
+                                      ? "bg-gradient-to-br from-dark-primary-400/50 via-dark-primary-500/10 to-transparent"
+                                      : "bg-gradient-to-br from-light-primary-400/50 via-light-primary-500/10 to-transparent"
+                                  }`}
+                    ></div>
+                    {/* Main Photo Container */}
                     <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.5 }}
-                      className={`absolute bottom-0 inset-x-0 pt-10 pb-3 px-3.5  
+                      className={`relative aspect-[3/4] rounded-xl overflow-hidden z-10 
                                  ${
                                    isDarkMode
-                                     ? "bg-gradient-to-t from-black/75 via-black/50 to-transparent"
-                                     : "bg-gradient-to-t from-white/90 via-white/70 to-transparent"
-                                 } 
-                                 pointer-events-none z-30`}
+                                     ? "bg-gradient-to-br from-gray-900 to-black border-dark-primary-800"
+                                     : "bg-gradient-to-br from-white to-gray-50 border-light-primary-200"
+                                 }
+                                 border shadow-xl ${
+                                   isDarkMode
+                                     ? "shadow-dark-primary-900/30"
+                                     : "shadow-light-primary-500/20"
+                                 }
+                                 transition-all duration-300 ease-out`}
+                      whileHover={{ scale: 1.02, y: -4 }}
                     >
-                      <h3
-                        className={`${
-                          isDarkMode ? "text-white" : "text-gray-900"
-                        } text-lg font-semibold`}
+                      {/* High Quality Image */}
+                      <motion.img
+                        src="/centennial-graduation.png"
+                        alt="Aditya Janjanam - Centennial College Graduation"
+                        loading="eager"
+                        className="absolute inset-3 w-[calc(100%-24px)] h-[calc(100%-24px)] object-cover object-center"
+                        style={{
+                          imageRendering: "high-quality",
+                          WebkitImageRendering: "high-quality",
+                        }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 100,
+                          damping: 15,
+                        }}
+                      />
+
+                      {/* Status Indicator */}
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.4 }}
+                        className={`absolute top-2 right-2 flex items-center gap-1.5 
+                                   ${
+                                     isDarkMode
+                                       ? "bg-black/60 backdrop-blur-sm border-dark-primary-800"
+                                       : "bg-white/90 backdrop-blur-sm border-light-primary-200"
+                                   } 
+                                   px-2 py-0.5 rounded-full border shadow-md z-30`}
                       >
-                        Aditya Janjanam
-                      </h3>
-                      <p
-                        className={`${
-                          isDarkMode ? "text-gray-200" : "text-gray-700"
-                        } text-sm mt-0.5`}
+                        <div className="w-2 h-2 bg-success-400 rounded-full" />
+                        <span
+                          className={`text-xs font-medium ${
+                            isDarkMode ? "text-white" : "text-gray-900"
+                          }`}
+                        >
+                          Available
+                        </span>
+                      </motion.div>
+
+                      {/* Bottom Info Overlay */}
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.6 }}
+                        className={`absolute bottom-0 inset-x-0 pt-8 pb-2 px-3  
+                                   ${
+                                     isDarkMode
+                                       ? "bg-gradient-to-t from-black/80 via-black/60 to-transparent"
+                                       : "bg-gradient-to-t from-white/95 via-white/80 to-transparent"
+                                   } 
+                                   pointer-events-none z-30`}
                       >
-                        Full Stack Developer
-                      </p>
+                        <p
+                          className={`${
+                            isDarkMode ? "text-white" : "text-gray-900"
+                          } text-xs font-semibold text-center`}
+                        >
+                          Centennial College
+                        </p>
+                        <p
+                          className={`${
+                            isDarkMode ? "text-gray-200" : "text-gray-700"
+                          } text-xs text-center mt-0.5`}
+                        >
+                          Graduation
+                        </p>
+                      </motion.div>
                     </motion.div>
-                  </motion.div>
+                  </div>
                 </div>
+
+                {/* Name and Title - Below Photos */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.7 }}
+                  className="mt-3 text-center"
+                >
+                  <h3
+                    className={`${
+                      isDarkMode ? "text-white" : "text-gray-900"
+                    } text-xl font-semibold`}
+                  >
+                    Aditya Janjanam
+                  </h3>
+                  <p
+                    className={`${
+                      isDarkMode ? "text-gray-300" : "text-gray-700"
+                    } text-sm mt-0.5`}
+                  >
+                    Full Stack Developer
+                  </p>
+                </motion.div>
               </motion.div>
               {/* Social Links */}
-              <div className="mt-4 flex justify-start w-full pl-2">
+              <div className="mt-3 flex justify-start w-full pl-1.5">
                 <SocialLinks isDarkMode={isDarkMode} />
               </div>
               {/* CTA Buttons - Below Social Links */}
-              <div className="mt-6 flex flex-col gap-3">
+              <div className="mt-5 flex flex-col gap-3">
                 <CTASection isDarkMode={isDarkMode} />
+                <div className="mt-2.5 w-full">
+                  <EmojiFeedbackWidget isDarkMode={isDarkMode} />
+                </div>
               </div>
             </motion.div>
           </div>

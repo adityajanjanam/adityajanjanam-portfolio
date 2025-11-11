@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
 import * as React from "react";
+
 import { FaEnvelope, FaGithub, FaGlobe, FaLinkedin } from "react-icons/fa";
+
+import VisitorCounter from "./VisitorCounter";
 
 const Footer = ({ isDarkMode, setActiveTab, activeTab }) => {
   const currentYear = new Date().getFullYear();
@@ -203,7 +206,7 @@ const Footer = ({ isDarkMode, setActiveTab, activeTab }) => {
             isDarkMode ? "border-gray-800" : "border-gray-200"
           }`}
         >
-          <div className="flex flex-col md:flex-row justify-between items-center">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-2">
             <p
               className={`text-sm ${
                 isDarkMode ? "text-gray-500" : "text-gray-600"
@@ -211,6 +214,7 @@ const Footer = ({ isDarkMode, setActiveTab, activeTab }) => {
             >
               © {currentYear} Aditya Janjanam. All rights reserved.
             </p>
+            <VisitorCounter isDarkMode={isDarkMode} />
             <p
               className={`text-sm mt-2 md:mt-0 ${
                 isDarkMode ? "text-gray-500" : "text-gray-600"
