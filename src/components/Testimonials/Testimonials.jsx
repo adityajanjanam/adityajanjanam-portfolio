@@ -4,11 +4,7 @@ import { FaLinkedin, FaQuoteLeft } from "react-icons/fa";
 
 import { testimonials } from "../../data/testimonials";
 
-interface TestimonialsProps {
-  isDarkMode?: boolean;
-}
-
-const Testimonials: React.FC<TestimonialsProps> = ({ isDarkMode = false }) => {
+const Testimonials = ({ isDarkMode = false }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -100,7 +96,7 @@ const Testimonials: React.FC<TestimonialsProps> = ({ isDarkMode = false }) => {
                   isDarkMode ? "text-gray-300" : "text-gray-700"
                 }`}
               >
-                "{testimonial.text}"
+                &ldquo;{testimonial.text}&rdquo;
               </p>
             </motion.div>
           ))}

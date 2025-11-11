@@ -13,6 +13,7 @@ import wrmuseumLogo from "./assets/wrmuseum.png";
 import Education from "./components/Education/index";
 import EmojiFeedbackWidget from "./components/EmojiFeedback";
 import Footer from "./components/Footer";
+import Testimonials from "./components/Testimonials/Testimonials";
 
 const technologies = {
   fullStack: [
@@ -578,6 +579,7 @@ const NavLinks = ({ activeTab, setActiveTab, isDarkMode, setIsDarkMode }) => {
     { name: "Honors & Awards", path: "honors-awards" },
     { name: "Volunteering", path: "volunteering" },
     { name: "Skills", path: "skills" },
+    { name: "Testimonials", path: "testimonials" },
   ];
 
   return (
@@ -3628,6 +3630,9 @@ const App = () => {
           <Volunteering isDarkMode={isDarkMode} />
         )}
         {activeTab === "skills" && <Skills isDarkMode={isDarkMode} />}
+        {activeTab === "testimonials" && (
+          <Testimonials isDarkMode={isDarkMode} />
+        )}
       </main>
 
       <Footer

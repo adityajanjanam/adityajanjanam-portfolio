@@ -1,14 +1,4 @@
-export interface Testimonial {
-  name: string;
-  role: string;
-  company: string;
-  relationship: string;
-  date: string;
-  text: string;
-  linkedIn?: string;
-}
-
-export const testimonials: Testimonial[] = [
+export const testimonials = [
   {
     name: "Prajna Muralkar",
     role: "Application Packager and Package Deployment Engineer",
