@@ -1699,7 +1699,7 @@ const Home = ({ setActiveTab, isDarkMode }) => {
                   isDarkMode ? "text-gray-400" : "text-gray-700"
                 } text-justify leading-relaxed`}
               >
-                Full Stack Developer | Mobile App Developer | Software Engineer
+                Full Stack Developer | Mobile App Developer | Software Engineer | Application Packager
               </p>
             </div>
             <div className="flex flex-wrap gap-x-8 gap-y-3 mb-5">

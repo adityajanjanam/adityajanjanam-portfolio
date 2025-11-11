@@ -58,7 +58,7 @@ const Home: React.FC = () => {
               I am <span className="text-indigo-400">Aditya Janjanam!</span>
             </h1>
             <div className="text-lg font-medium text-gray-400 mb-4">
-              Full Stack Developer | Mobile App Developer | Software Engineer
+              Full Stack Developer | Mobile App Developer | Software Engineer | Application Packager 
             </div>
             <div className="flex gap-8 mb-6">
               <div className="flex flex-col items-center">

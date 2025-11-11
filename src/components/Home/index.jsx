@@ -28,7 +28,7 @@ export const Home = ({ setActiveTab, isDarkMode }) => (
       animate={{ y: 0, opacity: 1 }}
       transition={{ delay: 0.3 }}
     >
-      <p>Full Stack Developer | Mobile App Developer | Software Engineer</p>
+      <p>Full Stack Developer | Mobile App Developer | Software Engineer | Application Packager </p>
     </motion.div>
 
     <motion.div

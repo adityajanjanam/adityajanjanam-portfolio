@@ -224,7 +224,7 @@ const Footer = ({ isDarkMode, setActiveTab, activeTab }) => {
             <p
               className={`text-xs mt-2 md:mt-0 ${isDarkMode ? "text-gray-500" : "text-gray-600"}`}
             >
-              Portfolio Version: <span className="font-semibold">V 1.1</span>
+              Portfolio Version: <span className="font-semibold">V 1.2</span>
             </p>
           </div>
         </motion.div>
