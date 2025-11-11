@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import * as React from "react";
-
 import { FaEnvelope, FaGithub, FaGlobe, FaLinkedin } from "react-icons/fa";
 
 import VisitorCounter from "./VisitorCounter";

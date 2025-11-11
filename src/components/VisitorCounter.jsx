@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-
-import { FaUsers, FaEye } from "react-icons/fa";
+import { FaEye, FaUsers } from "react-icons/fa";
 
 import { getDeviceId } from "../lib/deviceFingerprint";
 import { createVisitorStore } from "../lib/visitorStore";
