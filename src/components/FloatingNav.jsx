@@ -8,6 +8,7 @@ const FloatingNav = ({ activeTab, setActiveTab, isDarkMode }) => {
     { id: "education", label: "Education" },
     { id: "skills", label: "Skills" },
     { id: "projects", label: "Projects" },
+    { id: "testimonials", label: "Testimonials" },
     { id: "application-packaging", label: "App Packaging" },
     { id: "contact", label: "Contact" },
   ];

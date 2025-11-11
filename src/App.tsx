@@ -12,6 +12,7 @@ import ParticleBackground from "./components/ParticleBackground.jsx";
 import ScrollToTop from "./components/ScrollToTop.jsx";
 import Skills from "./components/Skills/Skills";
 import TechGrid from "./components/TechGrid.jsx";
+import Testimonials from "./components/Testimonials";
 
 const App: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
@@ -68,13 +69,16 @@ const App: React.FC = () => {
       />
 
       <main className="container mx-auto px-4 py-8">
-        <AnimatePresence mode="wait">
+        <AnimatePresence exitBeforeEnter>
           {activeTab === "home" && (
             <Home setActiveTab={setActiveTab} isDarkMode={isDarkMode} />
           )}
           {activeTab === "education" && <Education />}
           {activeTab === "skills" && (
             <TechGrid setActiveTab={setActiveTab} isDarkMode={isDarkMode} />
+          )}
+          {activeTab === "testimonials" && (
+            <Testimonials isDarkMode={isDarkMode} />
           )}
         </AnimatePresence>
       </main>

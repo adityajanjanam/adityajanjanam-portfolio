@@ -1,0 +1,76 @@
+export interface Testimonial {
+  name: string;
+  role: string;
+  company: string;
+  relationship: string;
+  date: string;
+  text: string;
+  linkedIn?: string;
+}
+
+export const testimonials: Testimonial[] = [
+  {
+    name: "Prajna Muralkar",
+    role: "Application Packager and Package Deployment Engineer",
+    company: "Varian - A Siemens Healthineers company",
+    relationship: "Mentor at ATOS",
+    date: "October 2025",
+    text: "I am happy to write these words of recommendation for Aditya Janjanam who had been my colleague and we worked for same project in my previous company ATOS. I see him as a potential person and his dedication to learning new things has always impressed me. Aditya consistently demonstrated communication, technical and analytical skills which resulted in delivering the qualitative work. His proactive approach and teamwork greatly contributed to the overall success of the project.",
+  },
+  {
+    name: "Divyanshoo Sinha",
+    role: "Software Developer",
+    company: "Mariapps, ex HCL",
+    relationship: "Studied together",
+    date: "September 2025",
+    text: "Aditya is a talented and detail-oriented MERN stack developer. Having worked with Aditya on multiple projects, I was consistently impressed by his ability to solve complex problems, deliver scalable solutions using MongoDB, Express, React, and Node.js, and collaborate effectively with the team. His proactive attitude, quick learning, and dedication to quality make him a valuable asset to any development team. I highly recommend Aditya for any roles involving full stack development.",
+  },
+  {
+    name: "Flavia Scutaru",
+    role: "Service Manager / Project Coordinator",
+    company: "Project Manager",
+    relationship: "Client",
+    date: "June 2025",
+    text: "I am pleased to recommend Aditya for any opportunity in IT service management. Having had the privilege of working alongside him, I have witnessed firsthand his dedication, technical expertise, and problem-solving skills that make him an invaluable asset to any team. Aditya consistently demonstrates a strong ability to troubleshoot complex issues, ensure seamless service delivery, and collaborate effectively with both technical and non-technical stakeholders. His commitment to continuous improvement and proactive approach to challenges have significantly contributed to the success of our projects and the overall efficiency of our IT operations.",
+  },
+  {
+    name: "Suriya Renganathan",
+    role: "Consultant | Application Packager",
+    company: "SCCM & Intune Deployment Expert",
+    relationship: "Team member at Atos",
+    date: "June 2025",
+    text: "I had the pleasure of working with Aditya at Atos and was always impressed by their professionalism and dedication. He brought strong technical skills and a collaborative spirit to every project. A reliable and proactive team member, Aditya was instrumental in driving results and maintaining a positive work environment. I highly recommend him for any future opportunity.",
+  },
+  {
+    name: "Devi Ganesan",
+    role: "Senior Software Engineer",
+    company: "IBM ODM & BPM Developer",
+    relationship: "Classmate at Sathyabama Institute",
+    date: "June 2025",
+    text: "I had the pleasure of studying alongside Aditya Janjanam during our time at Sathyabama Institute of science and technology-Chennai, and I can confidently say they are one of the most dedicated and insightful individuals I've met. Whether it was group discussions, class projects, or exam prep, Aditya always brought thoughtful perspectives, a strong work ethic, and a willingness to help others. Their curiosity and positive attitude made them not only a great student but also an excellent peer.",
+  },
+  {
+    name: "Anil Kumar Sarvesiah",
+    role: "Systems Engineer",
+    company: "Infosys",
+    relationship: "Studied together",
+    date: "June 2025",
+    text: "I've had the pleasure of studying alongside Aditya Janjanam, and I can confidently say he stands out as a dedicated and highly skilled professional. Aditya has consistently demonstrated a deep understanding of full-stack development and mobile app technologies such as React Native and Flutter. His technical expertise is matched by his eagerness to learn, collaborate, and solve complex problems efficiently. I strongly recommend Aditya for any role in full-stack development, mobile app development, or application packaging.",
+  },
+  {
+    name: "Amitha Sivaji",
+    role: "Full Stack Web Developer",
+    company: "",
+    relationship: "Capstone project teammate",
+    date: "February 2025",
+    text: "I had the opportunity to collaborate with Aditya on our capstone project, and I was thoroughly impressed with their expertise in software development. They have a deep understanding of development principles and excelled in creating a smooth and efficient user experience. Their work on the backend and overall functionality was crucial in ensuring the project ran seamlessly and reliably. I am confident that Aditya has a promising future in software development.",
+  },
+  {
+    name: "Sreehari Prathap",
+    role: "Experienced Software Engineer",
+    company: "AI/ML Enthusiast | Ex-Equitable",
+    relationship: "Capstone project teammate",
+    date: "January 2025",
+    text: "I had the pleasure of working with Adithya during our Capstone project, and he was an exceptional teammate who brought dedication and enthusiasm to the team. His strong knowledge in software development, cloud technologies, and mobile app development, along with his problem-solving skills, significantly contributed to the success of the project. Adithya's passion for technology and his collaborative approach make him an invaluable asset to any team.",
+  },
+];
