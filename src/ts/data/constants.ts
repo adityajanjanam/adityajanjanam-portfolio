@@ -16,6 +16,7 @@ interface Technologies {
   cloud: Technology[];
   uiux: Technology[];
   collaboration: Technology[];
+  aiTools: Technology[];
   applicationPackaging: Technology[];
 }
 
@@ -183,26 +184,64 @@ export const experiences: Experience[] = [
     logo: "🏢",
   },
   {
-    title: "Software Engineer Intern",
     company: "Capgemini",
     date: "Sep 2020 – Dec 2020",
     location: "Bengaluru, India",
+    title: "Software Engineer Intern | React.js",
     description: [
-      "Conducted manual and automated testing using Selenium and Java",
-      "Developed test scripts improving test coverage by 30%",
-      "Utilized Jira for project tracking and bug reporting",
-      "Participated in agile development processes and sprint planning",
-      "Collaborated with development teams to resolve software defects",
+      "Worked on developing responsive and interactive web pages using React.js, HTML, CSS, and JavaScript.",
+      "Built and maintained reusable React components for dynamic web applications.",
+      "Integrated APIs using Axios to display real-time data on the frontend.",
+      "Collaborated with team members to enhance UI design and improve user experience.",
+      "Used Git and GitHub for version control and deployed projects on Vercel/Netlify for live testing.",
     ],
     skills: [
-      "Selenium",
-      "Java",
-      "Manual Testing",
-      "Jira",
-      "Agile",
-      "Test Automation",
+      "React.js",
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Axios",
+      "Git",
+      "GitHub",
+      "Vercel",
+      "Netlify",
+      "Visual Studio Code",
     ],
     logo: "💻",
+  },
+  {
+    title: "Associate Software Engineer Intern | Full Stack Developer (MERN Stack)",
+    company: "Tech Mahindra",
+    date: "Jan 2021 – Jun 2021",
+    location: "Chennai, Tamil Nadu, India · Remote",
+    description: [
+      "Worked on Full Stack Web Development using the MERN stack (MongoDB, Express.js, React.js, Node.js).",
+      "Developed responsive web pages and interactive UI components with React.js, HTML, CSS, and JavaScript.",
+      "Built RESTful APIs using Node.js and Express.js and integrated them with MongoDB using Mongoose.",
+      "Implemented user authentication with JWT and bcrypt for secure login functionality.",
+      "Used Axios for API integration and managed state with React Hooks and Redux Toolkit.",
+      "Collaborated with the team using Git, GitHub, and Jira, following Agile/Scrum practices.",
+      "Deployed applications using Vercel, Netlify, and Firebase Hosting.",
+    ],
+    skills: [
+      "React.js",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "Redux Toolkit",
+      "Axios",
+      "JWT",
+      "Git",
+      "GitHub",
+      "Postman",
+      "Vercel",
+      "Netlify",
+      "Firebase",
+    ],
+    logo: "🏢",
   },
 ];
 

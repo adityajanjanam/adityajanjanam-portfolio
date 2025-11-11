@@ -1,15 +1,15 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import { Analytics } from "@vercel/analytics/react";
+import * as React from "react";
+import * as ReactDOM from "react-dom";
 
 import "./assets/index.css";
-// @ts-ignore
-const App = require("./App").default;
-
+import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
+    <Analytics />
   </React.StrictMode>,
   document.getElementById("root")
 );

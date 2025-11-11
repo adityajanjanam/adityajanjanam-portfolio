@@ -1,4 +1,3 @@
-/* eslint-disable import/default */
 import { motion } from "framer-motion";
 import * as React from "react";
 import { FaLinkedin, FaQuoteLeft } from "react-icons/fa";
