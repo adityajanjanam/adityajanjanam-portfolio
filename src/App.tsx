@@ -79,7 +79,7 @@ const App: React.FC = () => {
         </AnimatePresence>
       </main>
 
-      <Footer isDarkMode={isDarkMode} />
+      <Footer isDarkMode={isDarkMode} setActiveTab={setActiveTab} activeTab={activeTab} />
       <ScrollToTop isDarkMode={isDarkMode} />
     </div>
   );
