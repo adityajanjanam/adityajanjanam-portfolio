@@ -1,5 +1,6 @@
+/* eslint-disable import/default */
 import { motion } from "framer-motion";
-import React from "react";
+import * as React from "react";
 import { FaLinkedin, FaQuoteLeft } from "react-icons/fa";
 
 import { testimonials } from "../../data/testimonials";
@@ -118,7 +119,7 @@ const Testimonials = ({ isDarkMode = false }) => {
             }`}
           >
             All testimonials are authentic LinkedIn recommendations from
-            professionals who have worked or studied with Aditya Janjanam.
+            professionals who have worked or studied with me.
           </p>
         </motion.div>
       </div>
