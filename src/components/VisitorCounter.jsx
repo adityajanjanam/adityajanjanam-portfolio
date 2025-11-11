@@ -114,5 +114,5 @@ export const VisitorCounter = ({ className, isDarkMode }) => {
   );
 };
 
-export default VisitorCounter;
+// No default export; use named export only
 
