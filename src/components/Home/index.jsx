@@ -1,10 +1,10 @@
-import React from "react";
 import { motion } from "framer-motion";
+import * as React from "react";
 
 // Removed broken import - using AnimatedMultilingualGreeting from main App.js instead
 import { technologies } from "../../data/constants";
 
-export const Home = ({ setActiveTab, isDarkMode }) => (
+export const Home = () => (
   <motion.div
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
@@ -43,15 +43,14 @@ export const Home = ({ setActiveTab, isDarkMode }) => (
         },
       }}
     >
-      {Object.entries(technologies).map(([area, techs], index) => (
+      {Object.entries(technologies).map(([area, techs]) => (
         <motion.div
           key={area}
           variants={{
             hidden: { y: 20, opacity: 0 },
             visible: { y: 0, opacity: 1 },
           }}
-          className="p-6 rounded-xl bg-gradient-to-br from-[#1e293b]/30 to-transparent backdrop-blur-sm border border-purple-500/20 hover:border-purple-500/50 hover:shadow-lg 
-                     transition-all duration-300"
+          className="p-6 rounded-xl bg-gradient-to-br from-[#1e293b]/30 to-transparent backdrop-blur-sm border border-purple-500/20 hover:border-purple-500/50 hover:shadow-lg transition-all duration-300"
         >
           <h3 className="text-lg font-semibold text-purple-400 mb-4">
             {area === "fullStack"
@@ -70,8 +69,7 @@ export const Home = ({ setActiveTab, isDarkMode }) => (
             {techs.map((tech) => (
               <span
                 key={tech.name}
-                className="px-4 py-2 text-sm bg-[#182233]/70 border border-purple-400/40 rounded-full text-gray-300 
-                             hover:bg-[#1d2939]/80 transition-colors duration-300"
+                className="px-4 py-2 text-sm bg-[#182233]/70 border border-purple-400/40 rounded-full text-gray-300 hover:bg-[#1d2939]/80 transition-colors duration-300"
               >
                 {tech.name}
               </span>
