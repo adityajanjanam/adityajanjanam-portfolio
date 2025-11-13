@@ -34,8 +34,7 @@ const Skills: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
@@ -60,8 +59,7 @@ const Skills: React.FC = () => {
               <motion.div
                 key={cat.key}
                 initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className={`rounded-2xl shadow-xl p-6 flex flex-col glass-card border border-white/10 backdrop-blur-md ${
                   isDarkMode
@@ -93,8 +91,7 @@ const Skills: React.FC = () => {
                           <div className={`w-full h-2 rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden`}>
                             <motion.div
                               initial={{ width: 0 }}
-                              whileInView={{ width: `${getSkillLevel(skill.name)}%` }}
-                              viewport={{ once: true }}
+                              animate={{ width: `${getSkillLevel(skill.name)}%` }}
                               transition={{ duration: 1 }}
                               className="h-2 rounded-full bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400"
                             />
