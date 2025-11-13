@@ -1,4 +1,3 @@
-import { AnimatePresence } from "framer-motion";
 import * as React from "react";
 import { useEffect, useState } from "react";
 
@@ -93,36 +92,34 @@ const App: React.FC = () => {
       />
 
       <main className="container mx-auto px-4 py-8">
-        <AnimatePresence mode="wait">
-          {activeTab === "home" && (
-            <Home key="home" setActiveTab={setActiveTab} isDarkMode={isDarkMode} />
-          )}
-          {activeTab === "experience" && (
-            <Experience key="experience" isDarkMode={isDarkMode} />
-          )}
-          {activeTab === "education" && <Education key="education" />}
-          {activeTab === "skills" && (
-            <TechGrid key="skills" setActiveTab={setActiveTab} isDarkMode={isDarkMode} />
-          )}
-          {activeTab === "projects" && (
-            <Projects key="projects" isDarkMode={isDarkMode} />
-          )}
-          {activeTab === "certifications" && (
-            <Certifications key="certifications" />
-          )}
-          {activeTab === "awards" && (
-            <Awards key="awards" />
-          )}
-          {activeTab === "testimonials" && (
-            <Testimonials key="testimonials" isDarkMode={isDarkMode} />
-          )}
-          {activeTab === "application-packaging" && (
-            <ApplicationPackaging key="application-packaging" setActiveTab={setActiveTab} isDarkMode={isDarkMode} />
-          )}
-          {activeTab === "contact" && (
-            <Contact key="contact" isDarkMode={isDarkMode} />
-          )}
-        </AnimatePresence>
+        {activeTab === "home" && (
+          <Home key="home" setActiveTab={setActiveTab} isDarkMode={isDarkMode} />
+        )}
+        {activeTab === "experience" && (
+          <Experience key="experience" isDarkMode={isDarkMode} />
+        )}
+        {activeTab === "education" && <Education key="education" />}
+        {activeTab === "skills" && (
+          <TechGrid key="skills" setActiveTab={setActiveTab} isDarkMode={isDarkMode} />
+        )}
+        {activeTab === "projects" && (
+          <Projects key="projects" isDarkMode={isDarkMode} />
+        )}
+        {activeTab === "certifications" && (
+          <Certifications key="certifications" />
+        )}
+        {activeTab === "awards" && (
+          <Awards key="awards" />
+        )}
+        {activeTab === "testimonials" && (
+          <Testimonials key="testimonials" isDarkMode={isDarkMode} />
+        )}
+        {activeTab === "application-packaging" && (
+          <ApplicationPackaging key="application-packaging" setActiveTab={setActiveTab} isDarkMode={isDarkMode} />
+        )}
+        {activeTab === "contact" && (
+          <Contact key="contact" isDarkMode={isDarkMode} />
+        )}
       </main>
 
       <Footer isDarkMode={isDarkMode} setActiveTab={setActiveTab} activeTab={activeTab} />
