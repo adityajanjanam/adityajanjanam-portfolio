@@ -6,7 +6,7 @@
 
 A modern, interactive portfolio website showcasing my professional experience, skills, projects, certifications, and awards.
 
-**Live Site:** [adityajanjanam-portfolio.web.app](https://adityajanjanam-portfolio.web.app)
+**Live Site:** [adityajanjanam-portfolio.web.app](https://adityajanjanam.com)
 
 ## ✨ Features
 
@@ -225,7 +225,7 @@ This project is open source and available under the [MIT License](LICENSE).
 - **Email:** janjanamaditya@gmail.com
 - **LinkedIn:** [linkedin.com/in/janjanamaditya](https://www.linkedin.com/in/janjanamaditya)
 - **GitHub:** [github.com/adityajanjanam](https://github.com/adityajanjanam)
-- **Portfolio:** [adityajanjanam-portfolio.web.app](https://adityajanjanam-portfolio.web.app)
+- **Portfolio:** [adityajanjanam-portfolio.web.app](https://adityajanjanam.com)
 
 ---
 
