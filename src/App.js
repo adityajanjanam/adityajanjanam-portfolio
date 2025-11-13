@@ -1940,7 +1940,7 @@ const Home = ({ setActiveTab, isDarkMode }) => {
                       isDarkMode ? "text-gray-300" : "text-gray-700"
                     } text-sm mt-0.5`}
                   >
-                    Full Stack Developer
+                    Software Developer
                   </p>
                 </motion.div>
               </motion.div>
