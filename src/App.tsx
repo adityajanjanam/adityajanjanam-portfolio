@@ -2,25 +2,24 @@ import { AnimatePresence } from "framer-motion";
 import * as React from "react";
 import { useEffect, useState } from "react";
 
-import { initGA, trackNavigation, trackPageView } from "./utils/analytics";
-
 // Component imports - only import files that actually exist
 import ApplicationPackaging from "./components/ApplicationPackaging";
 import Awards from "./components/Awards";
 import Certifications from "./components/Certifications";
 import { Contact } from "./components/Contact";
-import CustomCursor from "./components/CustomCursor.jsx";
+import CustomCursor from "./components/CustomCursor";
 import Education from "./components/Education/Education";
 import Experience from "./components/Experience";
-import FloatingNav from "./components/FloatingNav.jsx";
-import Footer from "./components/Footer.jsx";
-import { Home } from "./components/Home/index.jsx";
+import FloatingNav from "./components/FloatingNav";
+import Footer from "./components/Footer";
+import { Home } from "./components/Home/index";
 import LoadingScreen from "./components/LoadingScreen";
-import ParticleBackground from "./components/ParticleBackground.jsx";
+import ParticleBackground from "./components/ParticleBackground";
 import Projects from "./components/Projects";
-import ScrollToTop from "./components/ScrollToTop.jsx";
-import TechGrid from "./components/TechGrid.jsx";
+import ScrollToTop from "./components/ScrollToTop";
+import TechGrid from "./components/TechGrid";
 import Testimonials from "./components/Testimonials";
+import { initGA, trackPageView } from "./utils/analytics";
 
 const App: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
@@ -54,8 +53,14 @@ const App: React.FC = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Track page views when tab changes
+  // Track page views and scroll to top when tab changes
   useEffect(() => {
+    // Scroll to top instantly when tab changes - multiple methods for compatibility
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    
+    // Track page view
     trackPageView(`/${activeTab}`, activeTab.charAt(0).toUpperCase() + activeTab.slice(1));
   }, [activeTab]);
 
@@ -88,35 +93,37 @@ const App: React.FC = () => {
       />
 
       <main className="container mx-auto px-4 py-8">
-        <AnimatePresence exitBeforeEnter>
-          {activeTab === "home" && (
-            <Home setActiveTab={setActiveTab} isDarkMode={isDarkMode} />
-          )}
-          {activeTab === "experience" && (
-            <Experience isDarkMode={isDarkMode} />
-          )}
-          {activeTab === "education" && <Education />}
-          {activeTab === "skills" && (
-            <TechGrid setActiveTab={setActiveTab} isDarkMode={isDarkMode} />
-          )}
-          {activeTab === "projects" && (
-            <Projects isDarkMode={isDarkMode} />
-          )}
-          {activeTab === "certifications" && (
-            <Certifications />
-          )}
-          {activeTab === "awards" && (
-            <Awards />
-          )}
-          {activeTab === "testimonials" && (
-            <Testimonials isDarkMode={isDarkMode} />
-          )}
-          {activeTab === "application-packaging" && (
-            <ApplicationPackaging setActiveTab={setActiveTab} isDarkMode={isDarkMode} />
-          )}
-          {activeTab === "contact" && (
-            <Contact isDarkMode={isDarkMode} />
-          )}
+        <AnimatePresence>
+          <div key={activeTab}>
+            {activeTab === "home" && (
+              <Home setActiveTab={setActiveTab} isDarkMode={isDarkMode} />
+            )}
+            {activeTab === "experience" && (
+              <Experience isDarkMode={isDarkMode} />
+            )}
+            {activeTab === "education" && <Education />}
+            {activeTab === "skills" && (
+              <TechGrid setActiveTab={setActiveTab} isDarkMode={isDarkMode} />
+            )}
+            {activeTab === "projects" && (
+              <Projects isDarkMode={isDarkMode} />
+            )}
+            {activeTab === "certifications" && (
+              <Certifications />
+            )}
+            {activeTab === "awards" && (
+              <Awards />
+            )}
+            {activeTab === "testimonials" && (
+              <Testimonials isDarkMode={isDarkMode} />
+            )}
+            {activeTab === "application-packaging" && (
+              <ApplicationPackaging setActiveTab={setActiveTab} isDarkMode={isDarkMode} />
+            )}
+            {activeTab === "contact" && (
+              <Contact isDarkMode={isDarkMode} />
+            )}
+          </div>
         </AnimatePresence>
       </main>
 
@@ -127,3 +134,4 @@ const App: React.FC = () => {
 };
 
 export default App;
+

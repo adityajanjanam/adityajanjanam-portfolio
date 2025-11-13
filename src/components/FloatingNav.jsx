@@ -15,6 +15,16 @@ const FloatingNav = ({ activeTab, setActiveTab, isDarkMode }) => {
     { id: "contact", label: "Contact" },
   ];
 
+  const handleTabClick = (tabId) => {
+    // Scroll to top immediately
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    
+    // Change the tab
+    setActiveTab(tabId);
+  };
+
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -28,7 +38,7 @@ const FloatingNav = ({ activeTab, setActiveTab, isDarkMode }) => {
         {tabs.map((tab) => (
           <motion.button
             key={tab.id}
-            onClick={() => setActiveTab(tab.id)}
+            onClick={() => handleTabClick(tab.id)}
             className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
               activeTab === tab.id
                 ? isDarkMode

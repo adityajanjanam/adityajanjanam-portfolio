@@ -3,6 +3,7 @@ import * as React from "react";
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
 
 import { trackSocialClick } from "../utils/analytics";
+
 import LinktreeIcon from "./LinktreeIcon";
 import { VisitorCounter } from "./VisitorCounter";
 
@@ -42,6 +43,16 @@ const Footer = ({ isDarkMode, setActiveTab, activeTab }) => {
     { name: "Honors & Awards", tab: "honors-awards" },
     { name: "Volunteering", tab: "volunteering" },
   ];
+
+  const handleQuickLinkClick = (tabId) => {
+    // Scroll to top immediately
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    
+    // Change the tab
+    setActiveTab(tabId);
+  };
 
   return (
     <footer
@@ -160,7 +171,7 @@ const Footer = ({ isDarkMode, setActiveTab, activeTab }) => {
                 >
                   <button
                     type="button"
-                    onClick={() => setActiveTab(link.tab)}
+                    onClick={() => handleQuickLinkClick(link.tab)}
                     className={`group flex items-center gap-2 text-sm bg-transparent border-none outline-none cursor-pointer transition-all duration-300 ${
                       activeTab === link.tab
                         ? isDarkMode

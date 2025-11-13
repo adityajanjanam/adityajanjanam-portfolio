@@ -1,8 +1,14 @@
-import emailjs from "@emailjs/browser";
+import { send as sendEmail } from "@emailjs/browser";
 import { motion } from "framer-motion";
 import * as React from "react";
 import { useState } from "react";
-import { FaEnvelope, FaGithub, FaLinkedin, FaMapMarkerAlt, FaPhone } from "react-icons/fa";
+import {
+  FaEnvelope,
+  FaGithub,
+  FaLinkedin,
+  FaMapMarkerAlt,
+  FaPhone,
+} from "react-icons/fa";
 
 import LinktreeIcon from "./LinktreeIcon";
 
@@ -38,7 +44,7 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
       const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID || "template_ny54bcd";
       const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || "pZfwV-LMNWwY10V98";
 
-      await emailjs.send(
+      await sendEmail(
         SERVICE_ID,
         TEMPLATE_ID,
         {
@@ -64,19 +70,19 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
 
   const contactInfo = [
     {
-      icon: <FaEnvelope />,
+      icon: React.createElement(FaEnvelope),
       label: "Email",
       value: "janjanamaditya@gmail.com",
       link: "mailto:janjanamaditya@gmail.com",
     },
     {
-      icon: <FaMapMarkerAlt />,
+      icon: React.createElement(FaMapMarkerAlt),
       label: "Location",
       value: "Waterloo, Ontario, Canada",
       link: "https://www.google.com/maps/place/Waterloo,+ON",
     },
     {
-      icon: <FaPhone />,
+      icon: React.createElement(FaPhone),
       label: "Availability",
       value: "Open to opportunities",
       link: null,
@@ -86,19 +92,19 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
   const socialLinks = [
     {
       name: "GitHub",
-      icon: <FaGithub />,
+      icon: React.createElement(FaGithub),
       url: "https://github.com/adityajanjanam",
       color: isDarkMode ? "hover:text-purple-400" : "hover:text-purple-600",
     },
     {
       name: "LinkedIn",
-      icon: <FaLinkedin />,
+      icon: React.createElement(FaLinkedin),
       url: "https://www.linkedin.com/in/janjanamaditya",
       color: isDarkMode ? "hover:text-blue-400" : "hover:text-blue-600",
     },
     {
       name: "Linktree",
-      icon: <LinktreeIcon />,
+      icon: React.createElement(LinktreeIcon),
       url: "https://linktr.ee/adityajanjanam",
       color: isDarkMode ? "hover:text-green-400" : "hover:text-green-600",
     },
