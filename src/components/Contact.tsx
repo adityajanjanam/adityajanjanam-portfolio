@@ -462,4 +462,4 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
   );
 };
 
-export { Contact };
+export default Contact;
