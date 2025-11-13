@@ -68,43 +68,45 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
     }
   };
 
+  // @ts-ignore - react-icons type compatibility issue
   const contactInfo = [
     {
-      icon: <FaEnvelope /> as any,
+      icon: <FaEnvelope />,
       label: "Email",
       value: "janjanamaditya@gmail.com",
       link: "mailto:janjanamaditya@gmail.com",
     },
     {
-      icon: <FaMapMarkerAlt /> as any,
+      icon: <FaMapMarkerAlt />,
       label: "Location",
       value: "Waterloo, Ontario, Canada",
       link: "https://www.google.com/maps/place/Waterloo,+ON",
     },
     {
-      icon: <FaPhone /> as any,
+      icon: <FaPhone />,
       label: "Availability",
       value: "Open to opportunities",
       link: null,
     },
   ];
 
+  // @ts-ignore - react-icons type compatibility issue
   const socialLinks = [
     {
       name: "GitHub",
-      icon: <FaGithub /> as any,
+      icon: <FaGithub />,
       url: "https://github.com/adityajanjanam",
       color: isDarkMode ? "hover:text-purple-400" : "hover:text-purple-600",
     },
     {
       name: "LinkedIn",
-      icon: <FaLinkedin /> as any,
+      icon: <FaLinkedin />,
       url: "https://www.linkedin.com/in/janjanamaditya",
       color: isDarkMode ? "hover:text-blue-400" : "hover:text-blue-600",
     },
     {
       name: "Linktree",
-      icon: <LinktreeIcon /> as any,
+      icon: <LinktreeIcon />,
       url: "https://linktr.ee/adityajanjanam",
       color: isDarkMode ? "hover:text-green-400" : "hover:text-green-600",
     },
