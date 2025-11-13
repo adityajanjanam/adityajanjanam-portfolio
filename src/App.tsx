@@ -1,11 +1,11 @@
 import * as React from "react";
 import { useEffect, useState } from "react";
 
-// Component imports - only import files that actually exist
+// Component imports - Merged from all App files
 import ApplicationPackaging from "./components/ApplicationPackaging";
 import Awards from "./components/Awards";
 import Certifications from "./components/Certifications";
-import { Contact } from "./components/Contact";
+import Contact from "./components/Contact";
 import CustomCursor from "./components/CustomCursor";
 import Education from "./components/Education/Education";
 import Experience from "./components/Experience";
@@ -19,6 +19,16 @@ import ScrollToTop from "./components/ScrollToTop";
 import TechGrid from "./components/TechGrid";
 import Testimonials from "./components/Testimonials";
 import { initGA, trackPageView } from "./utils/analytics";
+
+/**
+ * Main Portfolio Application
+ * Merged from multiple App files:
+ * - src/App.tsx (main production file)
+ * - src/App.js (legacy inline components)
+ * - src/js/App.js (routing-based variant)
+ * - src/ts/App.tsx (TypeScript routing variant)
+ * - src/js/App.legacy.js (oldest legacy version)
+ */
 
 const App: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
