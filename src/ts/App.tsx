@@ -11,8 +11,6 @@ import LanguageSwitcher from "./components/LanguageSwitcher";
 import NavLinks from "./components/NavLinks";
 import Projects from "./components/Projects/Projects";
 import ScrollToTop from "./components/ScrollToTop/index";
-// import Skills from "./components/Skills/Skills";
-// import Testimonials from "./components/Testimonials/Testimonials";
 import { ThemeProvider } from "./components/Theme/ThemeContext";
 
 const App: React.FC = () => {
@@ -29,11 +27,9 @@ const App: React.FC = () => {
           />
 
           <main className="pt-28">
-            {/* <Skills /> */}
             {activeSection === "home" && (
               <>
                 <Home />
-                {/* <Testimonials /> */}
               </>
             )}
             {activeSection === "experience" && <Experience />}
