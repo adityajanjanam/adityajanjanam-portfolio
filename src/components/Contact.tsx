@@ -173,7 +173,7 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
 
             <div className="space-y-6 mb-8">
               {contactInfo.map((item, index) => {
-                const Icon = item.icon;
+                const Icon = item.icon as React.ComponentType<any>;
                 return (
                 <motion.div
                   key={index}
@@ -239,7 +239,7 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
               </h4>
               <div className="flex gap-4">
                 {socialLinks.map((social, index) => {
-                  const Icon = social.icon;
+                  const Icon = social.icon as React.ComponentType<any>;
                   return (
                   <motion.a
                     key={index}
