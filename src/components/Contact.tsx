@@ -70,19 +70,19 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
 
   const contactInfo = [
     {
-      icon: React.createElement(FaEnvelope),
+      icon: <FaEnvelope /> as any,
       label: "Email",
       value: "janjanamaditya@gmail.com",
       link: "mailto:janjanamaditya@gmail.com",
     },
     {
-      icon: React.createElement(FaMapMarkerAlt),
+      icon: <FaMapMarkerAlt /> as any,
       label: "Location",
       value: "Waterloo, Ontario, Canada",
       link: "https://www.google.com/maps/place/Waterloo,+ON",
     },
     {
-      icon: React.createElement(FaPhone),
+      icon: <FaPhone /> as any,
       label: "Availability",
       value: "Open to opportunities",
       link: null,
@@ -92,19 +92,19 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
   const socialLinks = [
     {
       name: "GitHub",
-      icon: React.createElement(FaGithub),
+      icon: <FaGithub /> as any,
       url: "https://github.com/adityajanjanam",
       color: isDarkMode ? "hover:text-purple-400" : "hover:text-purple-600",
     },
     {
       name: "LinkedIn",
-      icon: React.createElement(FaLinkedin),
+      icon: <FaLinkedin /> as any,
       url: "https://www.linkedin.com/in/janjanamaditya",
       color: isDarkMode ? "hover:text-blue-400" : "hover:text-blue-600",
     },
     {
       name: "Linktree",
-      icon: React.createElement(LinktreeIcon),
+      icon: <LinktreeIcon /> as any,
       url: "https://linktr.ee/adityajanjanam",
       color: isDarkMode ? "hover:text-green-400" : "hover:text-green-600",
     },
