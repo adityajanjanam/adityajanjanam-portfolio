@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const DEFAULT_COUNTS = {
   great: 0,
   love: 0,
@@ -147,8 +148,9 @@ class FirestoreFeedbackStore {
 
   async init() {
     if (this.firestore) return;
-    const { initializeApp } = await import("firebase/app");
+    const { initializeApp, getApps } = await import("firebase/app");
     const { getFirestore, doc, getDoc, setDoc, updateDoc, increment, collection, query, where, getDocs } = await import("firebase/firestore");
+    // eslint-disable-next-line no-undef
     const config = {
       apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
       authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -160,7 +162,9 @@ class FirestoreFeedbackStore {
     if (!config.apiKey || !config.projectId) {
       throw new Error("Firebase config missing");
     }
-    this.firebaseApp = initializeApp(config);
+    // Use existing Firebase app if available, otherwise create new one
+    const existingApps = getApps();
+    this.firebaseApp = existingApps.length > 0 ? existingApps[0] : initializeApp(config);
     this.firestore = getFirestore(this.firebaseApp);
     this._doc = doc;
     this._getDoc = getDoc;
@@ -310,6 +314,7 @@ class FirestoreFeedbackStore {
 }
 
 export function createFeedbackStore() {
+  // eslint-disable-next-line no-undef
   const hasFirebase = Boolean(
     process.env.REACT_APP_FIREBASE_API_KEY && process.env.REACT_APP_FIREBASE_PROJECT_ID
   );

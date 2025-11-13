@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const DEFAULT_VISITOR_DATA = {
   totalVisitors: 0,
   visitors: [], // Array of { deviceId, timestamp, firstVisit }
@@ -124,7 +125,7 @@ class FirestoreVisitorStore {
 
   async init() {
     if (this.firestore) return;
-    const { initializeApp } = await import("firebase/app");
+    const { initializeApp, getApps } = await import("firebase/app");
     const { getFirestore, doc, getDoc, setDoc, updateDoc, collection, query, where, getDocs } = await import("firebase/firestore");
     const config = {
       apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -137,7 +138,9 @@ class FirestoreVisitorStore {
     if (!config.apiKey || !config.projectId) {
       throw new Error("Firebase config missing");
     }
-    this.firebaseApp = initializeApp(config);
+    // Use existing Firebase app if available, otherwise create new one
+    const existingApps = getApps();
+    this.firebaseApp = existingApps.length > 0 ? existingApps[0] : initializeApp(config);
     this.firestore = getFirestore(this.firebaseApp);
     this._doc = doc;
     this._getDoc = getDoc;

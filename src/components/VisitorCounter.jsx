@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { FaEye, FaUsers } from "react-icons/fa";
+import { FaUsers } from "react-icons/fa";
 
 import { getDeviceId } from "../lib/deviceFingerprint";
 import { createVisitorStore } from "../lib/visitorStore";
@@ -7,26 +7,21 @@ import { createVisitorStore } from "../lib/visitorStore";
 export const VisitorCounter = ({ className, isDarkMode }) => {
   const store = useMemo(() => createVisitorStore(), []);
   const [visitorCount, setVisitorCount] = useState(0);
-  const [activeViewers, setActiveViewers] = useState(0);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let mounted = true;
-    let heartbeatInterval = null;
+    let pollingInterval = null;
 
     const trackAndLoad = async () => {
       try {
         const deviceId = getDeviceId();
         // Track the visitor
         await store.trackVisitor(deviceId);
-        // Update active session
-        await store.updateActiveSession(deviceId);
-        
         // Get the updated count
         const data = await store.getVisitorCount();
         if (mounted) {
           setVisitorCount(data.totalVisitors);
-          setActiveViewers(data.activeViewers || 0);
         }
       } catch (error) {
         console.error("Error tracking visitor:", error);
@@ -37,53 +32,32 @@ export const VisitorCounter = ({ className, isDarkMode }) => {
       }
     };
 
-    const updateCounts = async () => {
+    const updateCount = async () => {
       try {
-        const deviceId = getDeviceId();
-        await store.updateActiveSession(deviceId);
         const data = await store.getVisitorCount();
         if (mounted) {
-          setActiveViewers(data.activeViewers || 0);
+          setVisitorCount(data.totalVisitors);
         }
       } catch (error) {
-        console.error("Error updating counts:", error);
+        console.error("Error updating visitor count:", error);
       }
     };
 
+    // Initial track and load
     trackAndLoad();
 
-    // Set up heartbeat to update active session every 30 seconds
-    heartbeatInterval = setInterval(() => {
+    // Poll for updates every 10 seconds to keep count fresh
+    pollingInterval = setInterval(() => {
       if (mounted) {
-        updateCounts();
+        updateCount();
       }
-    }, 30000); // 30 seconds
-
-    // Update active session on page visibility change
-    const handleVisibilityChange = () => {
-      if (!document.hidden && mounted) {
-        updateCounts();
-      }
-    };
-
-    document.addEventListener("visibilitychange", handleVisibilityChange);
-
-    // Update on window focus
-    const handleFocus = () => {
-      if (mounted) {
-        updateCounts();
-      }
-    };
-
-    window.addEventListener("focus", handleFocus);
+    }, 10000); // Update every 10 seconds
 
     return () => {
       mounted = false;
-      if (heartbeatInterval) {
-        clearInterval(heartbeatInterval);
+      if (pollingInterval) {
+        clearInterval(pollingInterval);
       }
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
-      window.removeEventListener("focus", handleFocus);
     };
   }, [store]);
 
@@ -94,7 +68,6 @@ export const VisitorCounter = ({ className, isDarkMode }) => {
   }
 
   const iconColor = isDarkMode ? "text-cyan-400" : "text-blue-600";
-  const activeIconColor = isDarkMode ? "text-green-400" : "text-green-600";
 
   return (
     <div className={`text-xs ${textMuted} ${className || ""}`}>
@@ -103,11 +76,6 @@ export const VisitorCounter = ({ className, isDarkMode }) => {
           <FaUsers className={`${iconColor} text-sm`} />
           <span className="font-medium">{visitorCount.toLocaleString()}</span>
           <span>total visitors</span>
-        </span>
-        <span className="inline-flex items-center gap-1.5">
-          <FaEye className={`${activeIconColor} text-sm animate-pulse`} />
-          <span className="font-medium">{activeViewers}</span>
-          <span>viewing now</span>
         </span>
       </div>
     </div>

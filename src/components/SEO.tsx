@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { Helmet } from "react-helmet-async";
 
 interface SEOProps {
@@ -198,6 +198,10 @@ const SEO: React.FC<SEOProps> = ({
         {/* Canonical URL */}
         <link rel="canonical" href={fullUrl} />
 
+        {/* Favicon and Touch Icons */}
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
         {/* Enhanced Open Graph Meta Tags */}
         <meta property="og:site_name" content="Aditya Janjanam Portfolio" />
         <meta property="og:title" content={title} />
@@ -247,10 +251,6 @@ const SEO: React.FC<SEOProps> = ({
         <script type="application/ld+json">
           {JSON.stringify(webpageStructuredData)}
         </script>
-
-        {/* Favicon */}
-        <link rel="icon" type="image/png" href="/favicon.png" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
         {/* Preload critical resources */}
         <link rel="preload" href="/profile.png" as="image" />

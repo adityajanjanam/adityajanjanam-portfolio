@@ -215,7 +215,7 @@ export const experiences: Experience[] = [
     title: "Associate Software Engineer Intern | Full Stack Developer (MERN Stack)",
     company: "Tech Mahindra",
     date: "Jan 2021 – Jun 2021",
-    location: "Chennai, Tamil Nadu, India · Remote",
+    location: "Chennai, India ",
     description: [
       "Worked on Full Stack Web Development using the MERN stack (MongoDB, Express.js, React.js, Node.js).",
       "Developed responsive web pages and interactive UI components with React.js, HTML, CSS, and JavaScript.",

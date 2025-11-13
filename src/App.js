@@ -151,7 +151,7 @@ const experiences = [
     title: "Career Break / Professional Development",
     company: "Centennial College & Conestoga College",
     date: "Sep 2023 – Apr 2025",
-    location: "Toronto & Waterloo, Ontario",
+    location: "Ontario, canada",
     description: [
       "Completed Mobile Applications Development at Centennial College (Sep 2024 – Apr 2025): Specialized in advanced mobile app development for Android/iOS, mobile architecture, UI/UX, and backend integration. Hands-on with Kotlin, Swift, React Native, and industry-driven projects.",
       "Completed Computer Applications Development at Conestoga College (Sep 2023 – Apr 2024, Distinction): Focused on full-stack/web development, real-world projects, and modern technologies. Courses included Systems Concepts, Web Design, Database, Mobile App Dev, User Experience, and Software Quality.",
@@ -265,7 +265,7 @@ const experiences = [
     title: "Associate Software Engineer Intern | Full Stack Developer (MERN Stack)",
     company: "Tech Mahindra",
     date: "Jan 2021 – Jun 2021",
-    location: "Chennai, Tamil Nadu, India · Remote",
+    location: "Chennai, India ",
     description: [
       "Worked on Full Stack Web Development using the MERN stack (MongoDB, Express.js, React.js, Node.js).",
       "Developed responsive web pages and interactive UI components with React.js, HTML, CSS, and JavaScript.",
@@ -299,7 +299,7 @@ const experiences = [
     title: "Software Engineer Intern | React.js",
     company: "Capgemini",
     date: "Sep 2020 – Dec 2020",
-    location: "Bengaluru, Karnataka, India · Remote",
+    location: "Bengaluru, India",
     description: [
       "Worked on developing responsive and interactive web pages using React.js, HTML, CSS, and JavaScript.",
       "Built and maintained reusable React components for dynamic web applications.",
@@ -337,56 +337,7 @@ const projects = [
     highlights: [
       "Offline-first (Hive)",
       "Secure JWT Authentication",
-      "Patient & Vitals Management",
-      "Dark/Light Mode",
-    ],
-  },
-  {
-    title: "HealthTrackPro (React Native)",
-    description:
-      "A comprehensive healthcare provider app built with React Native for tracking patient data. " +
-      "Features include QR sync, offline-first capability, clinical data management, and interactive charts.",
-    tech: ["React Native", "Node.js", "MongoDB", "REST API"],
-    type: "Healthcare App",
-    link: "https://github.com/adityajanjanam/HealthTrackPro",
-    image: "⚛️",
-    highlights: [
-      "Offline-first architecture",
-      "Real-time data synchronization",
-      "HIPAA compliant data handling",
-      "Interactive medical charts",
-    ],
-  },
-  {
-    title: "TrainWithTail",
-    description:
-      "Pet training platform offering tailored programs, expert advice, and an integrated " +
-      "pet product shop for enhanced pet-owner relationships.",
-    tech: ["Node.js", "MongoDB", "HTML5", "CSS3", "JavaScript"],
-    type: "Full Stack Web App",
-    link: "https://github.com/adityajanjanam/TrainWithTail",
-    image: "🐕",
-    highlights: [
-      "Personalized training programs",
-      "E-commerce integration",
-      "Expert consultation system",
-      "Progress tracking dashboard",
-    ],
-  },
-  {
-    title: "PatientDataAPI",
-    description:
-      "RESTful API for healthcare providers to manage and monitor patient clinical data. " +
-      "Built with Node.js and MongoDB, featuring Swagger documentation.",
-    tech: ["Node.js", "Express", "MongoDB", "Swagger"],
-    type: "Backend API",
-    link: "https://github.com/adityajanjanam/PatientDataAPI",
-    image: "🔌",
-    highlights: [
-      "RESTful architecture",
-      "Comprehensive API documentation",
-      "Secure data handling",
-      "Scalable database design",
+      "Patient & Vitals Management"
     ],
   },
   {
@@ -2030,68 +1981,19 @@ const BriefSummary = ({ isDarkMode }) => (
     animate={{ opacity: 1, y: 0, scale: 1 }}
     transition={{ duration: 0.5, ease: "easeOut" }}
   >
-    <h3
-      className={`text-xl font-bold mb-4 ${
-        isDarkMode ? "text-dark-primary-300" : "text-light-primary-700"
-      } sm:text-2xl`}
-    >
-      💼 Professional Summary
-    </h3>
-    <p
-      className={`text-sm ${
-        isDarkMode ? "text-gray-300" : "text-gray-700"
-      } leading-relaxed sm:text-base text-justify`}
-    >
-      I am a passionate and results-driven IT professional with over 3+ years of
-      experience in software development, mobile applications, and systems
-      engineering, including a solid 2-year tenure at Atos as a Systems
-      Engineer. My core expertise lies in Application Packaging, Testing, and
-      Automation, where I&apos;ve streamlined software deployment processes,
-      optimized enterprise application performance, and delivered reliable,
-      scalable solutions.
-    </p>
-    <p
-      className={`mt-3 text-sm ${
-        isDarkMode ? "text-gray-300" : "text-gray-700"
-      } leading-relaxed sm:text-base text-justify`}
-    >
-      I hold a Graduate Certificate in Mobile Applications Development from
-      Centennial College, Toronto, and a postgraduate credential in Computer
-      Applications Development from Conestoga College, Waterloo, both of which
-      have fortified my foundation in modern development practices.
-    </p>
-    <p
-      className={`mt-3 text-sm ${
-        isDarkMode ? "text-gray-300" : "text-gray-700"
-      } leading-relaxed sm:text-base text-justify`}
-    >
-      With a strong command of Mobile, Web, and Full-Stack Development, I
-      specialize in building intuitive, performant applications using
-      technologies like Flutter, React Native, Android, iOS, Node.js, MongoDB,
-      and Express.js. Additionally, I bring robust scripting expertise with
-      PowerShell and VBScript, enabling efficient automation and system-level
-      customization.
-    </p>
-    <p
-      className={`mt-3 text-sm ${
-        isDarkMode ? "text-gray-300" : "text-gray-700"
-      } leading-relaxed sm:text-base text-justify`}
-    >
-      Currently, I am actively seeking full-time opportunities in Mobile
-      Application Development (Flutter, React Native, Android/iOS), Full-Stack
-      Development (MERN/JavaScript/Node.js/.NET), Software Testing & Automation,
-      Application Packaging & Deployment, and Frontend and Backend Development.
-    </p>
-    <p
-      className={`mt-3 text-sm ${
-        isDarkMode ? "text-gray-300" : "text-gray-700"
-      } leading-relaxed sm:text-base text-justify`}
-    >
-      My work is driven by a deep enthusiasm for delivering high-quality digital
-      experiences and collaborating within agile, innovative teams. I&apos;m
-      especially motivated to contribute to organizations that value clean code,
-      product impact, and user-centric design.
-    </p>
+    <div>
+      <h3 className={`text-xl font-bold mb-4 ${isDarkMode ? "text-dark-primary-300" : "text-light-primary-700"} sm:text-2xl`}>
+        💼 Professional Summary
+      </h3>
+      <div className={`text-sm ${isDarkMode ? "text-gray-300" : "text-gray-700"} leading-relaxed sm:text-base text-left`}>
+        <b>Innovative Full Stack & Mobile Developer with 3+ years of hands-on experience delivering robust, user-centric solutions across web, mobile, and desktop platforms.</b> I blend deep expertise in React, Node.js, Flutter, and cloud technologies with a strong foundation in IT infrastructure and application packaging.<br /><br />
+        My academic journey includes a distinction in Computer Applications Development (Conestoga College, Waterloo), advanced Mobile Applications Development (Centennial College, Toronto), and a Bachelor’s in Electronics & Communication Engineering. These programs fueled my passion for building scalable, secure, and high-performance applications.<br /><br />
+        At Atos, I engineered enterprise-grade deployments, mastering MSI/MSIX packaging, PowerShell automation, and SCCM/Intune for seamless software delivery in virtualized environments (Citrix, VMware, Hyper-V).<br /><br />
+        My internships at Capgemini and Tech Mahindra sharpened my skills in the MERN stack, RESTful API design, and Agile collaboration. I thrive in dynamic teams, driving projects from concept to production with precision and creativity.<br /><br />
+        I excel at bridging development and deployment, ensuring smooth transitions from code to production. My focus is on crafting cross-platform apps that delight users and meet business goals.<br /><br />
+        <b>Open to new opportunities in:</b> Full Stack Development, Mobile App Development (React Native, Flutter, iOS/Android), Desktop Apps (Electron), and Enterprise Application Packaging & Deployment.
+      </div>
+    </div>
 
     <div className="mt-6">
       <h4

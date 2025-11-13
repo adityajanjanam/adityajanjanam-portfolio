@@ -1,5 +1,5 @@
-import React from "react";
 import { motion } from "framer-motion";
+import * as React from "react";
 
 const FloatingNav = ({ activeTab, setActiveTab, isDarkMode }) => {
   const tabs = [
@@ -8,6 +8,8 @@ const FloatingNav = ({ activeTab, setActiveTab, isDarkMode }) => {
     { id: "education", label: "Education" },
     { id: "skills", label: "Skills" },
     { id: "projects", label: "Projects" },
+    { id: "certifications", label: "Certifications" },
+    { id: "awards", label: "Awards" },
     { id: "testimonials", label: "Testimonials" },
     { id: "application-packaging", label: "App Packaging" },
     { id: "contact", label: "Contact" },
