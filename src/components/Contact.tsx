@@ -9,11 +9,26 @@ import {
   FaMapMarkerAlt,
   FaPhone,
 } from "react-icons/fa";
+import { IconType } from "react-icons";
 
 import LinktreeIcon from "./LinktreeIcon";
 
 interface ContactProps {
   isDarkMode: boolean;
+}
+
+interface ContactInfoItem {
+  icon: IconType;
+  label: string;
+  value: string;
+  link: string | null;
+}
+
+interface SocialLink {
+  name: string;
+  icon: IconType;
+  url: string;
+  color: string;
 }
 
 const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
@@ -68,7 +83,7 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
     }
   };
 
-  const contactInfo = [
+  const contactInfo: ContactInfoItem[] = [
     {
       icon: FaEnvelope,
       label: "Email",
@@ -89,7 +104,7 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
     },
   ];
 
-  const socialLinks = [
+  const socialLinks: SocialLink[] = [
     {
       name: "GitHub",
       icon: FaGithub,
