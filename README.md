@@ -6,7 +6,7 @@
 
 A modern, interactive portfolio website showcasing my professional experience, skills, projects, certifications, and awards.
 
-**Live Site:** [adityajanjanam-portfolio.web.app](https://adityajanjanam.com)
+**Live Site:** [adityajanjanam.com](https://adityajanjanam.com)
 
 ## ✨ Features
 
