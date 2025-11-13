@@ -225,7 +225,8 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
                     )}
                   </div>
                 </motion.div>
-              ))}
+                );
+              })}
             </div>
 
             {/* Social Links */}
