@@ -93,37 +93,35 @@ const App: React.FC = () => {
       />
 
       <main className="container mx-auto px-4 py-8">
-        <AnimatePresence>
-          <div key={activeTab}>
-            {activeTab === "home" && (
-              <Home setActiveTab={setActiveTab} isDarkMode={isDarkMode} />
-            )}
-            {activeTab === "experience" && (
-              <Experience isDarkMode={isDarkMode} />
-            )}
-            {activeTab === "education" && <Education />}
-            {activeTab === "skills" && (
-              <TechGrid setActiveTab={setActiveTab} isDarkMode={isDarkMode} />
-            )}
-            {activeTab === "projects" && (
-              <Projects isDarkMode={isDarkMode} />
-            )}
-            {activeTab === "certifications" && (
-              <Certifications />
-            )}
-            {activeTab === "awards" && (
-              <Awards />
-            )}
-            {activeTab === "testimonials" && (
-              <Testimonials isDarkMode={isDarkMode} />
-            )}
-            {activeTab === "application-packaging" && (
-              <ApplicationPackaging setActiveTab={setActiveTab} isDarkMode={isDarkMode} />
-            )}
-            {activeTab === "contact" && (
-              <Contact isDarkMode={isDarkMode} />
-            )}
-          </div>
+        <AnimatePresence mode="wait">
+          {activeTab === "home" && (
+            <Home key="home" setActiveTab={setActiveTab} isDarkMode={isDarkMode} />
+          )}
+          {activeTab === "experience" && (
+            <Experience key="experience" isDarkMode={isDarkMode} />
+          )}
+          {activeTab === "education" && <Education key="education" />}
+          {activeTab === "skills" && (
+            <TechGrid key="skills" setActiveTab={setActiveTab} isDarkMode={isDarkMode} />
+          )}
+          {activeTab === "projects" && (
+            <Projects key="projects" isDarkMode={isDarkMode} />
+          )}
+          {activeTab === "certifications" && (
+            <Certifications key="certifications" />
+          )}
+          {activeTab === "awards" && (
+            <Awards key="awards" />
+          )}
+          {activeTab === "testimonials" && (
+            <Testimonials key="testimonials" isDarkMode={isDarkMode} />
+          )}
+          {activeTab === "application-packaging" && (
+            <ApplicationPackaging key="application-packaging" setActiveTab={setActiveTab} isDarkMode={isDarkMode} />
+          )}
+          {activeTab === "contact" && (
+            <Contact key="contact" isDarkMode={isDarkMode} />
+          )}
         </AnimatePresence>
       </main>
 
