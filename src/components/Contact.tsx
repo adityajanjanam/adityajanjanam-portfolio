@@ -68,45 +68,43 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
     }
   };
 
-  // @ts-ignore - react-icons type compatibility issue
   const contactInfo = [
     {
-      icon: <FaEnvelope />,
+      icon: FaEnvelope,
       label: "Email",
       value: "janjanamaditya@gmail.com",
       link: "mailto:janjanamaditya@gmail.com",
     },
     {
-      icon: <FaMapMarkerAlt />,
+      icon: FaMapMarkerAlt,
       label: "Location",
       value: "Waterloo, Ontario, Canada",
       link: "https://www.google.com/maps/place/Waterloo,+ON",
     },
     {
-      icon: <FaPhone />,
+      icon: FaPhone,
       label: "Availability",
       value: "Open to opportunities",
       link: null,
     },
   ];
 
-  // @ts-ignore - react-icons type compatibility issue
   const socialLinks = [
     {
       name: "GitHub",
-      icon: <FaGithub />,
+      icon: FaGithub,
       url: "https://github.com/adityajanjanam",
       color: isDarkMode ? "hover:text-purple-400" : "hover:text-purple-600",
     },
     {
       name: "LinkedIn",
-      icon: <FaLinkedin />,
+      icon: FaLinkedin,
       url: "https://www.linkedin.com/in/janjanamaditya",
       color: isDarkMode ? "hover:text-blue-400" : "hover:text-blue-600",
     },
     {
       name: "Linktree",
-      icon: <LinktreeIcon />,
+      icon: LinktreeIcon,
       url: "https://linktr.ee/adityajanjanam",
       color: isDarkMode ? "hover:text-green-400" : "hover:text-green-600",
     },
@@ -159,7 +157,9 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
             </h3>
 
             <div className="space-y-6 mb-8">
-              {contactInfo.map((info, index) => (
+              {contactInfo.map((item, index) => {
+                const Icon = item.icon;
+                return (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, x: -20 }}
@@ -176,7 +176,7 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
                       isDarkMode ? "text-cyan-400" : "text-blue-600"
                     }`}
                   >
-                    {info.icon}
+                    <Icon />
                   </div>
                   <div>
                     <p
@@ -184,11 +184,11 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
                         isDarkMode ? "text-gray-400" : "text-gray-600"
                       }`}
                     >
-                      {info.label}
+                      {item.label}
                     </p>
-                    {info.link ? (
+                    {item.link ? (
                       <a
-                        href={info.link}
+                        href={item.link}
                         target="_blank"
                         rel="noopener noreferrer"
                         className={`${
@@ -197,7 +197,7 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
                             : "text-blue-600 hover:text-blue-700"
                         } transition-colors`}
                       >
-                        {info.value}
+                        {item.value}
                       </a>
                     ) : (
                       <p
@@ -205,7 +205,7 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
                           isDarkMode ? "text-gray-300" : "text-gray-700"
                         }`}
                       >
-                        {info.value}
+                        {item.value}
                       </p>
                     )}
                   </div>
@@ -223,7 +223,9 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
                 Connect on Social Media
               </h4>
               <div className="flex gap-4">
-                {socialLinks.map((social, index) => (
+                {socialLinks.map((social, index) => {
+                  const Icon = social.icon;
+                  return (
                   <motion.a
                     key={index}
                     href={social.url}
@@ -241,9 +243,10 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
                     } ${social.color}`}
                     title={social.name}
                   >
-                    <span className="text-2xl">{social.icon}</span>
+                    <span className="text-2xl"><Icon /></span>
                   </motion.a>
-                ))}
+                  );
+                })}
               </div>
             </div>
 
