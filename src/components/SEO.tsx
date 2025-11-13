@@ -98,39 +98,6 @@ const SEO: React.FC<SEOProps> = ({
     },
   };
 
-  // Article structured data for blog posts
-  const articleStructuredData =
-    type === "article"
-      ? {
-          "@context": "https://schema.org",
-          "@type": "Article",
-          headline: title,
-          description: description,
-          image: fullImageUrl,
-          author: {
-            "@type": "Person",
-            name: author,
-          },
-          publisher: {
-            "@type": "Organization",
-            name: "Aditya Janjanam Portfolio",
-            logo: {
-              "@type": "ImageObject",
-              url: "https://adityajanjanam.com/logo512.png",
-            },
-          },
-          datePublished: publishedTime,
-          dateModified: modifiedTime || publishedTime,
-          mainEntityOfPage: {
-            "@type": "WebPage",
-            "@id": fullUrl,
-          },
-          keywords: keywords.join(", "),
-          articleSection: section,
-          wordCount: description.length,
-        }
-      : null;
-
   // WebPage structured data
   const webpageStructuredData = {
     "@context": "https://schema.org",
@@ -241,12 +208,6 @@ const SEO: React.FC<SEOProps> = ({
         <script type="application/ld+json">
           {JSON.stringify(personStructuredData)}
         </script>
-
-        {articleStructuredData && (
-          <script type="application/ld+json">
-            {JSON.stringify(articleStructuredData)}
-          </script>
-        )}
 
         <script type="application/ld+json">
           {JSON.stringify(webpageStructuredData)}

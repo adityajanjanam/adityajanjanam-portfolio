@@ -3,8 +3,6 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 import "./i18n";
 import ApplicationPackaging from "./components/ApplicationPackaging/index";
-// import BlogDetail from "./components/Blog/BlogDetail";
-// import BlogList from "./components/Blog/BlogList";
 import Contact from "./components/Contact/Contact";
 import Education from "./components/Education/Education";
 import Experience from "./components/Experience/index";
@@ -36,7 +34,6 @@ const App: React.FC = () => {
               <>
                 <Home />
                 {/* <Testimonials /> */}
-                {/* <BlogList /> */}
               </>
             )}
             {activeSection === "experience" && <Experience />}
@@ -51,7 +48,6 @@ const App: React.FC = () => {
         </div>
       </ThemeProvider>
       <Routes>
-        {/* <Route path="/blog/:slug" element={<BlogDetail />} /> */}
         <Route path="/contact" element={<Contact />} />
       </Routes>
     </Router>
