@@ -56,32 +56,27 @@ const Footer = ({ isDarkMode, setActiveTab, activeTab }) => {
 
   return (
     <footer
-      className={`relative py-12 ${
+      className={`relative w-full min-h-[320px] md:min-h-[360px] py-10 md:py-12 border-t ${
         isDarkMode
           ? "bg-gradient-to-br from-gray-900 via-gray-800 to-black text-gray-300"
           : "bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 text-gray-700"
-      }`}
+      } ${isDarkMode ? "border-gray-800" : "border-gray-200"}`}
     >
       {/* Decorative Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className={`absolute -top-24 -right-24 w-96 h-96 rounded-full blur-3xl opacity-20 ${
+      <div className="absolute inset-0 overflow-hidden pointer-events-none hidden sm:block">
+        <div className={`absolute -top-20 -right-20 w-80 h-80 rounded-full blur-3xl opacity-10 ${
           isDarkMode ? "bg-cyan-500" : "bg-blue-400"
         }`}></div>
-        <div className={`absolute -bottom-24 -left-24 w-96 h-96 rounded-full blur-3xl opacity-20 ${
+        <div className={`absolute -bottom-20 -left-20 w-80 h-80 rounded-full blur-3xl opacity-10 ${
           isDarkMode ? "bg-purple-500" : "bg-purple-400"
         }`}></div>
       </div>
 
-      {/* Top Border with Gradient */}
-      <div className={`absolute top-0 left-0 right-0 h-1 ${
-        isDarkMode 
-          ? "bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500" 
-          : "bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500"
-      }`}></div>
+      
 
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
           {/* Brand Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -90,7 +85,7 @@ const Footer = ({ isDarkMode, setActiveTab, activeTab }) => {
             className="lg:col-span-2"
           >
             <motion.h3
-              className={`text-2xl font-bold mb-3 bg-clip-text text-transparent ${
+              className={`text-2xl font-bold mb-2 bg-clip-text text-transparent ${
                 isDarkMode 
                   ? "bg-gradient-to-r from-cyan-400 to-blue-500" 
                   : "bg-gradient-to-r from-blue-600 to-purple-600"
@@ -100,7 +95,7 @@ const Footer = ({ isDarkMode, setActiveTab, activeTab }) => {
               Aditya Janjanam
             </motion.h3>
             <p
-              className={`text-sm leading-relaxed mb-4 max-w-md ${
+              className={`text-sm leading-relaxed mb-3 max-w-md ${
                 isDarkMode ? "text-gray-400" : "text-gray-600"
               }`}
             >
@@ -122,14 +117,14 @@ const Footer = ({ isDarkMode, setActiveTab, activeTab }) => {
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ scale: 1.15, rotate: 5 }}
                   whileTap={{ scale: 0.95 }}
-                  className={`group relative p-3 rounded-xl transition-all duration-300 ${
+                  className={`group relative p-2.5 rounded-xl transition-all duration-300 ${
                     isDarkMode
                       ? "bg-gray-800/50 hover:bg-gradient-to-br hover:from-cyan-600 hover:to-blue-600 text-gray-300 hover:text-white backdrop-blur-sm border border-gray-700 hover:border-cyan-500"
                       : "bg-white/70 hover:bg-gradient-to-br hover:from-blue-600 hover:to-purple-600 text-gray-600 hover:text-white backdrop-blur-sm border border-gray-200 hover:border-blue-500 shadow-sm hover:shadow-lg"
                   }`}
                   title={link.name}
                 >
-                  <span className="text-xl relative z-10">{link.icon}</span>
+                  <span className="text-lg relative z-10">{link.icon}</span>
                   {/* Tooltip */}
                   <span className={`absolute -top-8 left-1/2 transform -translate-x-1/2 px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap ${
                     isDarkMode ? "bg-gray-700 text-gray-200" : "bg-gray-800 text-white"
@@ -146,7 +141,7 @@ const Footer = ({ isDarkMode, setActiveTab, activeTab }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className={`p-6 rounded-2xl backdrop-blur-sm ${
+            className={`p-5 rounded-2xl backdrop-blur-sm ${
               isDarkMode 
                 ? "bg-gray-800/30 border border-gray-700/50" 
                 : "bg-white/50 border border-gray-200/50 shadow-sm"
@@ -197,7 +192,7 @@ const Footer = ({ isDarkMode, setActiveTab, activeTab }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className={`p-6 rounded-2xl backdrop-blur-sm ${
+            className={`p-5 rounded-2xl backdrop-blur-sm ${
               isDarkMode 
                 ? "bg-gray-800/30 border border-gray-700/50" 
                 : "bg-white/50 border border-gray-200/50 shadow-sm"
@@ -270,7 +265,7 @@ const Footer = ({ isDarkMode, setActiveTab, activeTab }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.6 }}
-          className={`pt-8 border-t ${
+          className={`pt-6 border-t ${
             isDarkMode ? "border-gray-700/50" : "border-gray-300/50"
           }`}
         >
