@@ -345,7 +345,7 @@ const Footer = ({ isDarkMode, setActiveTab, activeTab }) => {
               } animate-pulse`}></span>
               Version <span className={`font-bold text-lg ${
                 isDarkMode ? "text-cyan-400" : "text-blue-600"
-              }`}>2.0</span>
+              }`}>1.2</span>
             </motion.p>
           </div>
         </motion.div>

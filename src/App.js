@@ -1616,7 +1616,6 @@ const AnimatedMultilingualGreeting = ({ isDarkMode }) => {
             : "0 0 30px rgba(59, 130, 246, 0.5), 0 6px 12px rgba(0, 0, 0, 0.15)",
         }}
       >
-      >
         {currentGreeting.text}
       </motion.h2>
     </motion.div>
@@ -2146,7 +2145,7 @@ const BriefSummary = ({ isDarkMode }) => (
         My internships at Capgemini and Tech Mahindra sharpened my skills in the MERN stack, RESTful API design, and Agile collaboration. I thrive in dynamic teams, driving projects from concept to production with precision and creativity.<br /><br />
         I excel at bridging development and deployment, ensuring smooth transitions from code to production. My focus is on crafting cross-platform apps that delight users and meet business goals.<br /><br />
         <b>Open to new opportunities in:</b> Full Stack Development, Mobile App Development (React Native, Flutter, iOS/Android), Desktop Apps (Electron), and Enterprise Application Packaging & Deployment.
-      </div>
+      </motion.div>
     </div>
 
     <div className="mt-6">

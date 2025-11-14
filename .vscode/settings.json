@@ -17,5 +17,6 @@
     "MD040": false,
     "MD034": false,
     "MD036": false
-  }
+  },
+  "editor.aiStats.enabled": true
 }
