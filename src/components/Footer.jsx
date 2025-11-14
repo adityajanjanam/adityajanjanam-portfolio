@@ -56,30 +56,42 @@ const Footer = ({ isDarkMode, setActiveTab, activeTab }) => {
 
   return (
     <footer
-      className={`relative py-12 ${
+      className={`relative py-16 overflow-hidden ${
         isDarkMode
-          ? "bg-gradient-to-br from-gray-900 via-gray-800 to-black text-gray-300"
-          : "bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 text-gray-700"
+          ? "bg-gradient-to-br from-gray-950 via-gray-900 to-black text-gray-300"
+          : "bg-gradient-to-br from-indigo-100 via-blue-50 to-purple-100 text-gray-800"
       }`}
     >
-      {/* Decorative Elements */}
+      {/* Enhanced Decorative Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className={`absolute -top-24 -right-24 w-96 h-96 rounded-full blur-3xl opacity-20 ${
-          isDarkMode ? "bg-cyan-500" : "bg-blue-400"
+        <div className={`absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full blur-3xl opacity-30 ${
+          isDarkMode ? "bg-gradient-to-br from-cyan-500 to-blue-600" : "bg-gradient-to-br from-blue-400 to-indigo-500"
         }`}></div>
-        <div className={`absolute -bottom-24 -left-24 w-96 h-96 rounded-full blur-3xl opacity-20 ${
-          isDarkMode ? "bg-purple-500" : "bg-purple-400"
+        <div className={`absolute -bottom-32 -left-32 w-[500px] h-[500px] rounded-full blur-3xl opacity-30 ${
+          isDarkMode ? "bg-gradient-to-br from-purple-600 to-pink-500" : "bg-gradient-to-br from-purple-400 to-pink-400"
+        }`}></div>
+        <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-3xl opacity-10 ${
+          isDarkMode ? "bg-gradient-to-r from-indigo-500 to-cyan-500" : "bg-gradient-to-r from-blue-300 to-purple-300"
         }`}></div>
       </div>
 
-      {/* Top Border with Gradient */}
-      <div className={`absolute top-0 left-0 right-0 h-1 ${
+      {/* Animated Top Border with Gradient */}
+      <div className={`absolute top-0 left-0 right-0 h-1.5 ${
         isDarkMode 
-          ? "bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500" 
-          : "bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500"
-      }`}></div>
+          ? "bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500" 
+          : "bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600"
+      } shadow-lg`}>
+        <motion.div
+          className={`h-full ${
+            isDarkMode ? "bg-gradient-to-r from-white to-cyan-300" : "bg-gradient-to-r from-white to-blue-300"
+          }`}
+          initial={{ width: "0%" }}
+          animate={{ width: "100%" }}
+          transition={{ duration: 2, ease: "easeOut" }}
+        />
+      </div>
 
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Brand Section */}
@@ -90,18 +102,19 @@ const Footer = ({ isDarkMode, setActiveTab, activeTab }) => {
             className="lg:col-span-2"
           >
             <motion.h3
-              className={`text-2xl font-bold mb-3 bg-clip-text text-transparent ${
+              className={`text-3xl font-extrabold mb-4 bg-clip-text text-transparent ${
                 isDarkMode 
-                  ? "bg-gradient-to-r from-cyan-400 to-blue-500" 
-                  : "bg-gradient-to-r from-blue-600 to-purple-600"
-              }`}
-              whileHover={{ scale: 1.02 }}
+                  ? "bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-500" 
+                  : "bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600"
+              } drop-shadow-lg`}
+              whileHover={{ scale: 1.03 }}
+              transition={{ duration: 0.3 }}
             >
               Aditya Janjanam
             </motion.h3>
             <p
-              className={`text-sm leading-relaxed mb-4 max-w-md ${
-                isDarkMode ? "text-gray-400" : "text-gray-600"
+              className={`text-base leading-relaxed mb-6 max-w-lg font-medium ${
+                isDarkMode ? "text-gray-300" : "text-gray-700"
               }`}
             >
               Full Stack Developer & Mobile Application Developer passionate
@@ -109,7 +122,7 @@ const Footer = ({ isDarkMode, setActiveTab, activeTab }) => {
               Node.js, and mobile development with a focus on user experience
               and performance.
             </p>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-4">
               {socialLinks.map((link, index) => (
                 <motion.a
                   key={link.name}
@@ -120,16 +133,16 @@ const Footer = ({ isDarkMode, setActiveTab, activeTab }) => {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: index * 0.1 }}
-                  whileHover={{ scale: 1.15, rotate: 5 }}
-                  whileTap={{ scale: 0.95 }}
-                  className={`group relative p-3 rounded-xl transition-all duration-300 ${
+                  whileHover={{ scale: 1.2, rotate: 10, y: -3 }}
+                  whileTap={{ scale: 0.9 }}
+                  className={`group relative p-4 rounded-2xl transition-all duration-300 shadow-lg ${
                     isDarkMode
-                      ? "bg-gray-800/50 hover:bg-gradient-to-br hover:from-cyan-600 hover:to-blue-600 text-gray-300 hover:text-white backdrop-blur-sm border border-gray-700 hover:border-cyan-500"
-                      : "bg-white/70 hover:bg-gradient-to-br hover:from-blue-600 hover:to-purple-600 text-gray-600 hover:text-white backdrop-blur-sm border border-gray-200 hover:border-blue-500 shadow-sm hover:shadow-lg"
+                      ? "bg-gradient-to-br from-gray-800/70 to-gray-900/70 hover:from-cyan-600 hover:to-blue-700 text-gray-300 hover:text-white backdrop-blur-md border border-gray-700/50 hover:border-cyan-400 hover:shadow-cyan-500/50"
+                      : "bg-white/90 hover:bg-gradient-to-br hover:from-blue-600 hover:to-purple-600 text-gray-700 hover:text-white backdrop-blur-md border border-gray-300 hover:border-blue-400 shadow-md hover:shadow-blue-500/30 hover:shadow-xl"
                   }`}
                   title={link.name}
                 >
-                  <span className="text-xl relative z-10">{link.icon}</span>
+                  <span className="text-2xl relative z-10">{link.icon}</span>
                   {/* Tooltip */}
                   <span className={`absolute -top-8 left-1/2 transform -translate-x-1/2 px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap ${
                     isDarkMode ? "bg-gray-700 text-gray-200" : "bg-gray-800 text-white"
@@ -146,18 +159,19 @@ const Footer = ({ isDarkMode, setActiveTab, activeTab }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className={`p-6 rounded-2xl backdrop-blur-sm ${
+            whileHover={{ y: -5 }}
+            className={`p-7 rounded-3xl backdrop-blur-md shadow-xl ${
               isDarkMode 
-                ? "bg-gray-800/30 border border-gray-700/50" 
-                : "bg-white/50 border border-gray-200/50 shadow-sm"
+                ? "bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700/60 hover:border-cyan-500/50" 
+                : "bg-white/80 border border-gray-200/60 hover:border-blue-400/60 shadow-lg hover:shadow-2xl"
             }`}
           >
             <h4
-              className={`text-lg font-bold mb-4 flex items-center gap-2 ${
+              className={`text-xl font-extrabold mb-5 flex items-center gap-3 ${
                 isDarkMode ? "text-cyan-300" : "text-blue-700"
               }`}
             >
-              <span className="text-xl">🔗</span>
+              <span className="text-2xl">🔗</span>
               Quick Links
             </h4>
             <ul className="space-y-2">
@@ -197,18 +211,19 @@ const Footer = ({ isDarkMode, setActiveTab, activeTab }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className={`p-6 rounded-2xl backdrop-blur-sm ${
+            whileHover={{ y: -5 }}
+            className={`p-7 rounded-3xl backdrop-blur-md shadow-xl ${
               isDarkMode 
-                ? "bg-gray-800/30 border border-gray-700/50" 
-                : "bg-white/50 border border-gray-200/50 shadow-sm"
+                ? "bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700/60 hover:border-cyan-500/50" 
+                : "bg-white/80 border border-gray-200/60 hover:border-blue-400/60 shadow-lg hover:shadow-2xl"
             }`}
           >
             <h4
-              className={`text-lg font-bold mb-4 flex items-center gap-2 ${
+              className={`text-xl font-extrabold mb-5 flex items-center gap-3 ${
                 isDarkMode ? "text-cyan-300" : "text-blue-700"
               }`}
             >
-              <span className="text-xl">💬</span>
+              <span className="text-2xl">💬</span>
               Contact
             </h4>
             <div className="space-y-3 text-sm">
@@ -270,11 +285,11 @@ const Footer = ({ isDarkMode, setActiveTab, activeTab }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.6 }}
-          className={`pt-8 border-t ${
-            isDarkMode ? "border-gray-700/50" : "border-gray-300/50"
+          className={`pt-10 mt-8 border-t-2 ${
+            isDarkMode ? "border-gray-700/60" : "border-gray-300/60"
           }`}
         >
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <motion.p
               whileHover={{ scale: 1.02 }}
               className={`text-sm flex items-center gap-2 ${
@@ -328,9 +343,9 @@ const Footer = ({ isDarkMode, setActiveTab, activeTab }) => {
               <span className={`w-2 h-2 rounded-full ${
                 isDarkMode ? "bg-green-400" : "bg-green-500"
               } animate-pulse`}></span>
-              Version <span className={`font-bold ${
+              Version <span className={`font-bold text-lg ${
                 isDarkMode ? "text-cyan-400" : "text-blue-600"
-              }`}>1.2</span>
+              }`}>2.0</span>
             </motion.p>
           </div>
         </motion.div>
