@@ -18,13 +18,13 @@ import Testimonials from "./components/Testimonials/Testimonials";
 const technologies = {
   fullStack: [
     { name: "React.js", icon: "⚛️" },
-    { name: "Next.js", icon: "⚡" },
+    { name: "Vite", icon: "⚡" },
     { name: "Node.js", icon: "🌐" },
     { name: "Express", icon: "🚀" },
     { name: "MongoDB", icon: "🍃" },
     { name: "MERN Stack", icon: "⚡" },
     { name: "REST APIs", icon: "🔌" },
-    { name: "GraphQL", icon: "📊" },
+    { name: "PostgreSQL", icon: "🐘" },
     { name: "JWT Auth", icon: "🔐" },
     { name: "OAuth", icon: "🔑" },
   ],
@@ -32,30 +32,29 @@ const technologies = {
     { name: "HTML5", icon: "🌐" },
     { name: "CSS3", icon: "🎨" },
     { name: "JavaScript (ES6+)", icon: "📜" },
-    { name: "TypeScript", icon: "📘" },
     { name: "React.js", icon: "⚛️" },
-    { name: "Next.js", icon: "⚡" },
+    { name: "Vite", icon: "⚡" },
     { name: "Redux", icon: "🔄" },
     { name: "MUI (Material-UI)", icon: "🎨" },
     { name: "Tailwind CSS", icon: "💨" },
+    { name: "Framer Motion", icon: "🎬" },
     { name: "Responsive Design", icon: "📱" },
   ],
   backend: [
     { name: "Node.js", icon: "🌐" },
     { name: "Express", icon: "🚀" },
     { name: "RESTful APIs", icon: "🔌" },
-    { name: "GraphQL", icon: "📊" },
     { name: "MongoDB", icon: "🍃" },
     { name: "JWT", icon: "🔐" },
-    { name: "OAuth", icon: "🔑" },
-    { name: "Axios/Fetch", icon: "🌐" },
+    { name: "Mongoose", icon: "🐭" },
+    { name: "Docker", icon: "🐳" },
   ],
   desktop: [
     { name: ".NET", icon: "🎯" },
     { name: "C#", icon: "🔷" },
-    { name: "WPF", icon: "🖥️" },
-    { name: "WinForms", icon: "🪟" },
-    { name: "ASP.NET MVC", icon: "🌐" },
+    { name: "Electron", icon: "⚛️" },
+    { name: "Tauri", icon: "🦀" },
+    { name: "ASP.NET Core", icon: "🌐" },
     { name: "Entity Framework", icon: "🗄️" },
   ],
   mobile: [
@@ -77,12 +76,10 @@ const technologies = {
   languages: [
     { name: "JavaScript (ES6+)", icon: "📜" },
     { name: "TypeScript", icon: "📘" },
-    { name: "Python", icon: "🐍" },
-    { name: "Java", icon: "☕" },
-    { name: "C", icon: "🔧" },
-    { name: "C++", icon: "⚡" },
-    { name: "Dart", icon: "🎯" },
     { name: "C#", icon: "🔷" },
+    { name: "C", icon: "🔧" },
+    { name: "Dart", icon: "🎯" },
+    { name: "SQL", icon: "💾" },
   ],
   testing: [
     { name: "Manual Testing", icon: "🔍" },
@@ -96,15 +93,15 @@ const technologies = {
     { name: "Git", icon: "📝" },
     { name: "GitHub", icon: "🐙" },
     { name: "GitLab", icon: "🦊" },
-    { name: "Bitbucket", icon: "🪣" },
+    { name: "Docker", icon: "🐳" },
     { name: "CI/CD", icon: "🔄" },
-    { name: "AWS", icon: "☁️" },
+    { name: "Kubernetes", icon: "☸️" },
   ],
   cloud: [
     { name: "Firebase", icon: "🔥" },
-    { name: "AWS", icon: "☁️" },
-    { name: "Cloud Deployment", icon: "🚀" },
-    { name: "Serverless", icon: "⚡" },
+    { name: "Vercel", icon: "⚫" },
+    { name: "Railway", icon: "🚂" },
+    { name: "Docker Hub", icon: "🐳" },
   ],
   uiux: [
     { name: "Figma", icon: "🎨" },
@@ -532,81 +529,92 @@ const NavLinks = ({ activeTab, setActiveTab, isDarkMode, setIsDarkMode }) => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50">
+      {/* Glassmorphism Nav Bar with Gradient Border */}
       <div
-        className={`w-full ${
+        className={`w-full backdrop-blur-xl border-b ${
           isDarkMode
-            ? "bg-gradient-to-r from-gray-900 to-black border-dark-primary-700"
-            : "bg-gradient-to-r from-white to-gray-50 border-light-primary-200 shadow-lg"
-        } 
-        border-b backdrop-blur-sm`}
+            ? "bg-gradient-to-r from-gray-900/80 via-blue-900/30 to-gray-900/80 border-blue-500/30"
+            : "bg-gradient-to-r from-white/90 via-blue-50/60 to-white/90 border-blue-300/40 shadow-lg"
+        }`}
+        style={{
+          boxShadow: isDarkMode
+            ? '0 4px 24px 0 rgba(59, 130, 246, 0.15)'
+            : '0 4px 24px 0 rgba(59, 130, 246, 0.1)',
+        }}
       >
+        {/* Gradient Top Border */}
+        <div 
+          className="absolute top-0 left-0 right-0 h-0.5"
+          style={{
+            background: isDarkMode
+              ? 'linear-gradient(90deg, #3B82F6 0%, #1D4ED8 50%, #06B6D4 100%)'
+              : 'linear-gradient(90deg, #60A5FA 0%, #3B82F6 50%, #06B6D4 100%)',
+          }}
+        />
+        
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
+            {/* Logo with Modern Badge */}
             <div className="flex-shrink-0">
               <button
                 onClick={() => setActiveTab("home")}
-                className={`text-xl font-bold transition-all duration-300 ${
-                  isDarkMode
-                    ? "text-dark-primary-300 hover:text-dark-primary-200"
-                    : "text-light-primary-700 hover:text-light-primary-600"
-                }`}
+                className="group relative"
               >
-                <motion.span
-                  whileHover={{ scale: 1.1 }}
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="inline-block"
+                  className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-all duration-300 ${
+                    isDarkMode
+                      ? "bg-gradient-to-r from-blue-600/20 to-cyan-600/20 hover:from-blue-600/30 hover:to-cyan-600/30 border border-blue-500/30"
+                      : "bg-gradient-to-r from-blue-100/50 to-cyan-100/50 hover:from-blue-200/60 hover:to-cyan-200/60 border border-blue-300/40"
+                  }`}
                 >
-                  AJ
-                </motion.span>
+                  <span
+                    className={`text-xl font-extrabold ${
+                      isDarkMode
+                        ? 'bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent'
+                        : 'text-purple-700'
+                    }`}
+                  >
+                    AJ
+                  </span>
+                </motion.div>
               </button>
             </div>
 
-            {/* Desktop Navigation Links */}
-            <div className="hidden md:flex items-center space-x-4">
+            {/* Desktop Navigation Links - Modern Pills */}
+            <div className="hidden md:flex items-center space-x-2">
               {navItems.map((item) => (
                 <motion.button
                   key={item.name}
                   onClick={() => setActiveTab(item.path)}
-                  whileHover={{ y: -2 }}
+                  whileHover={{ y: -2, scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className={`relative px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200
+                  className={`relative px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300
                              ${
                                activeTab === item.path
                                  ? isDarkMode
-                                   ? "text-dark-primary-300"
-                                   : "text-light-primary-600"
+                                   ? "bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-xl shadow-blue-500/50"
+                                   : "bg-gradient-to-r from-blue-700 to-cyan-700 text-white shadow-xl shadow-blue-600/60"
                                  : isDarkMode
-                                   ? "text-gray-300 hover:text-dark-primary-400"
-                                   : "text-gray-700 hover:text-light-primary-700"
+                                   ? "text-gray-100 hover:bg-blue-500/20 hover:text-blue-200"
+                                   : "text-gray-700 hover:bg-blue-200/70 hover:text-blue-900"
                              }`}
                 >
                   {item.name}
-                  {activeTab === item.path && (
-                    <motion.span
-                      layoutId="activeTabIndicator"
-                      className={`absolute bottom-0 left-0 right-0 h-0.5 ${
-                        isDarkMode
-                          ? "bg-gradient-to-r from-dark-primary-400 to-dark-secondary-500"
-                          : "bg-gradient-to-r from-light-primary-500 to-light-secondary-500"
-                      }`}
-                      initial={false}
-                      transition={{
-                        type: "spring",
-                        stiffness: 500,
-                        damping: 30,
-                      }}
-                    />
-                  )}
                 </motion.button>
               ))}
+              
+              {/* Theme Toggle - Modern Design */}
               <motion.button
                 onClick={toggleTheme}
-                whileHover={{ rotate: 15, scale: 1.1 }}
+                whileHover={{ rotate: 180, scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                className={`p-2 rounded-full transition-colors duration-200 ${
+                transition={{ duration: 0.3 }}
+                className={`p-2.5 rounded-xl ml-2 transition-all duration-300 ${
                   isDarkMode
-                    ? "bg-dark-primary-900/50 text-dark-primary-300 hover:bg-dark-primary-800 hover:text-dark-primary-200"
-                    : "bg-light-primary-50 text-light-primary-600 hover:bg-light-primary-100 hover:text-light-primary-700"
+                    ? "bg-blue-600/20 text-blue-300 hover:bg-blue-600/30 border border-blue-500/30"
+                    : "bg-blue-100/60 text-blue-700 hover:bg-blue-200/80 border border-blue-300/40"
                 }`}
                 aria-label="Toggle dark mode"
               >
@@ -640,22 +648,23 @@ const NavLinks = ({ activeTab, setActiveTab, isDarkMode, setIsDarkMode }) => {
                   </svg>
                 )}
               </motion.button>
+              
+              {/* Resume Button - Enhanced */}
               <motion.a
                 href="/Aditya_Janjanam_Resume.docx"
                 target="_blank"
                 rel="noopener noreferrer"
                 download="Aditya_Janjanam_Resume.docx"
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className={`ml-4 px-4 py-2 rounded-md text-sm font-medium transition-all duration-200
-                         flex items-center gap-2 shadow-lg
+                className={`ml-2 px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-300
+                         flex items-center gap-2 shadow-xl
                          ${
                            isDarkMode
-                             ? "text-black bg-gradient-to-r from-dark-primary-300 to-dark-secondary-400 hover:from-dark-primary-200 hover:to-dark-secondary-300 shadow-dark-primary-500/20"
-                             : "text-white bg-gradient-to-r from-light-primary-600 to-light-secondary-700 hover:from-light-primary-500 hover:to-light-secondary-600 shadow-light-primary-500/20"
+                             ? "bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:from-blue-400 hover:to-cyan-400 shadow-blue-500/50 border border-blue-400/50"
+                             : "bg-gradient-to-r from-blue-700 to-cyan-700 text-white hover:from-blue-600 hover:to-cyan-600 shadow-blue-600/60 border border-blue-500/50"
                          }`}
               >
-                Resume
                 <svg
                   className="w-4 h-4"
                   fill="none"
@@ -666,22 +675,23 @@ const NavLinks = ({ activeTab, setActiveTab, isDarkMode, setIsDarkMode }) => {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                    d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                   />
                 </svg>
+                Resume
               </motion.a>
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu Button - Enhanced */}
             <div className="md:hidden">
               <motion.button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className={`p-2 rounded-full ${
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className={`p-2.5 rounded-xl transition-all duration-300 ${
                   isDarkMode
-                    ? "bg-dark-primary-800 text-dark-primary-300 hover:bg-dark-primary-700"
-                    : "bg-light-primary-100 text-light-primary-700 hover:bg-light-primary-200"
+                    ? "bg-blue-600/20 text-blue-300 hover:bg-blue-600/30 border border-blue-500/30"
+                    : "bg-blue-100/60 text-blue-700 hover:bg-blue-200/80 border border-blue-300/40"
                 }`}
               >
                 {isMenuOpen ? (
@@ -717,14 +727,18 @@ const NavLinks = ({ activeTab, setActiveTab, isDarkMode, setIsDarkMode }) => {
             </div>
           </div>
 
-          {/* Mobile Menu Dropdown */}
+          {/* Mobile Menu Dropdown - Modern Design */}
           {isMenuOpen && (
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.2 }}
-              className="md:hidden py-3 space-y-2"
+              transition={{ duration: 0.3 }}
+              className={`md:hidden py-4 space-y-2 rounded-b-2xl ${
+                isDarkMode
+                  ? "bg-gradient-to-b from-gray-900/95 to-gray-900/98 border-t border-purple-500/30"
+                  : "bg-gradient-to-b from-white/95 to-purple-50/30 border-t border-purple-300/40"
+              }`}
             >
               {navItems.map((item) => (
                 <motion.button
@@ -734,59 +748,68 @@ const NavLinks = ({ activeTab, setActiveTab, isDarkMode, setIsDarkMode }) => {
                     setActiveTab(item.path);
                   }}
                   whileHover={{ x: 5 }}
-                  className={`block w-full text-left px-4 py-2.5 rounded-lg transition-colors duration-200 ${
+                  className={`block w-full text-left px-4 py-3 rounded-xl transition-all duration-300 mx-2 ${
                     activeTab === item.path
                       ? isDarkMode
-                        ? "bg-dark-primary-800 text-dark-primary-300"
-                        : "bg-light-primary-100 text-light-primary-700"
+                        ? "bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-xl shadow-blue-500/50"
+                        : "bg-gradient-to-r from-blue-700 to-cyan-700 text-white shadow-xl shadow-blue-600/60"
                       : isDarkMode
-                        ? "text-gray-300 hover:bg-dark-primary-900 hover:text-dark-primary-400"
-                        : "text-gray-700 hover:bg-light-primary-50 hover:text-light-primary-600"
+                        ? "text-gray-100 hover:bg-blue-500/20 hover:text-blue-200"
+                        : "text-gray-900 hover:bg-blue-200/70 hover:text-blue-900"
                   }`}
                 >
                   {item.name}
                 </motion.button>
               ))}
-              <div className="flex justify-between items-center px-4 pt-2">
+              <div className="flex justify-between items-center px-4 pt-3 gap-3">
                 <motion.button
                   onClick={toggleTheme}
-                  whileHover={{ scale: 1.1, rotate: 15 }}
-                  whileTap={{ scale: 0.9 }}
-                  className={`p-2 rounded-full ${
+                  whileHover={{ scale: 1.05, rotate: 180 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ duration: 0.3 }}
+                  className={`p-3 rounded-xl flex-1 transition-all duration-300 ${
                     isDarkMode
-                      ? "bg-dark-primary-800 text-dark-primary-300"
-                      : "bg-light-primary-100 text-light-primary-600"
+                      ? "bg-blue-600/20 text-blue-300 hover:bg-blue-600/30 border border-blue-500/30"
+                      : "bg-blue-100/60 text-blue-700 hover:bg-blue-200/80 border border-blue-300/40"
                   }`}
                 >
-                  {isDarkMode ? (
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-                      />
-                    </svg>
-                  ) : (
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-                      />
-                    </svg>
-                  )}
+                  <div className="flex items-center justify-center gap-2">
+                    {isDarkMode ? (
+                      <>
+                        <svg
+                          className="w-5 h-5"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+                          />
+                        </svg>
+                        <span className="text-sm font-semibold">Light</span>
+                      </>
+                    ) : (
+                      <>
+                        <svg
+                          className="w-5 h-5"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                          />
+                        </svg>
+                        <span className="text-sm font-semibold">Dark</span>
+                      </>
+                    )}
+                  </div>
                 </motion.button>
 
                 <motion.a
@@ -796,15 +819,14 @@ const NavLinks = ({ activeTab, setActiveTab, isDarkMode, setIsDarkMode }) => {
                   download="Aditya_Janjanam_Resume.docx"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200
-                           flex items-center gap-2
+                  className={`px-5 py-3 rounded-xl text-sm font-bold transition-all duration-300
+                           flex items-center justify-center gap-2 flex-1 shadow-xl
                            ${
                              isDarkMode
-                               ? "text-black bg-gradient-to-r from-dark-primary-300 to-dark-secondary-400"
-                               : "text-white bg-gradient-to-r from-light-primary-600 to-light-secondary-700"
+                               ? "bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:from-blue-400 hover:to-cyan-400 shadow-blue-500/50 border border-blue-400/50"
+                               : "bg-gradient-to-r from-blue-700 to-cyan-700 text-white hover:from-blue-600 hover:to-cyan-600 shadow-blue-600/60 border border-blue-500/50"
                            }`}
                 >
-                  Resume
                   <svg
                     className="w-4 h-4"
                     fill="none"
@@ -815,9 +837,10 @@ const NavLinks = ({ activeTab, setActiveTab, isDarkMode, setIsDarkMode }) => {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth={2}
-                      d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                      d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                     />
                   </svg>
+                  Resume
                 </motion.a>
               </div>
             </motion.div>
@@ -1020,7 +1043,7 @@ const CTASection = ({ contrast = false }) => {
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
-            className={`rounded-xl p-6 max-w-lg w-full border ${contrast ? "bg-black border-gray-700" : "bg-[#1a1a1a] border-purple-500/20"}`}
+            className={`rounded-xl p-6 max-w-lg w-full border ${contrast ? "bg-black border-gray-700" : "bg-[#1a1a1a] border-blue-500/20"}`}
           >
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl font-bold text-white">Get in Touch</h2>
@@ -1132,8 +1155,8 @@ const CTASection = ({ contrast = false }) => {
                   <input
                     type="text"
                     id="name"
-                    className="w-full px-4 py-2 rounded-lg bg-black/20 border border-purple-500/20 
-                             text-white placeholder-gray-500 focus:outline-none focus:border-purple-500/50"
+                    className="w-full px-4 py-2 rounded-lg bg-black/20 border border-blue-500/20 
+                             text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50"
                     placeholder="Your name"
                   />
                 </div>
@@ -1147,8 +1170,8 @@ const CTASection = ({ contrast = false }) => {
                   <input
                     type="email"
                     id="email"
-                    className="w-full px-4 py-2 rounded-lg bg-black/20 border border-purple-500/20 
-                             text-white placeholder-gray-500 focus:outline-none focus:border-purple-500/50 text-left"
+                    className="w-full px-4 py-2 rounded-lg bg-black/20 border border-blue-500/20 
+                             text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50 text-left"
                     placeholder="your@email.com"
                   />
                 </div>
@@ -1163,8 +1186,8 @@ const CTASection = ({ contrast = false }) => {
                 <textarea
                   id="message"
                   rows={4}
-                  className="w-full px-4 py-2 rounded-lg bg-black/20 border border-purple-500/20 
-                           text-white placeholder-gray-500 focus:outline-none focus:border-purple-500/50 
+                  className="w-full px-4 py-2 rounded-lg bg-black/20 border border-blue-500/20 
+                           text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50 
                            resize-none text-left"
                   placeholder="Your message..."
                 />
@@ -1172,7 +1195,7 @@ const CTASection = ({ contrast = false }) => {
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className={`w-full py-3 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 ${contrast ? "bg-cyan-500 text-black hover:bg-cyan-400" : "bg-purple-500 text-white hover:bg-purple-600"}`}
+                className={`w-full py-3 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 ${contrast ? "bg-cyan-500 text-black hover:bg-cyan-400" : "bg-blue-500 text-white hover:bg-blue-600"}`}
               >
                 Send Message
                 <svg
@@ -1544,49 +1567,10 @@ const AnimatedMultilingualGreeting = ({ isDarkMode }) => {
 
   const currentGreeting = greetings[currentIndex];
   const getGreetingColor = () => {
-    const langGroups = {
-      indianLanguages: [
-        "te",
-        "hi",
-        "ta",
-        "kn",
-        "bn",
-        "pa",
-        "ml",
-        "gu",
-        "or",
-        "mr",
-      ],
-      europeanLanguages: ["en", "es", "fr", "pt", "it", "de", "ru"],
-      asianLanguages: ["zh", "ja", "ko"],
-      arabicLanguages: ["ar"],
-    };
-
-    if (isDarkMode) {
-      if (langGroups.indianLanguages.includes(currentGreeting.langCode)) {
-        return "bg-clip-text text-transparent bg-gradient-to-r from-dark-primary-300 to-dark-secondary-400";
-      } else if (
-        langGroups.europeanLanguages.includes(currentGreeting.langCode)
-      ) {
-        return "bg-clip-text text-transparent bg-gradient-to-r from-dark-secondary-300 to-dark-primary-400";
-      } else if (langGroups.asianLanguages.includes(currentGreeting.langCode)) {
-        return "bg-clip-text text-transparent bg-gradient-to-r from-dark-accent-300 to-dark-accent-500";
-      } else {
-        return "bg-clip-text text-transparent bg-gradient-to-br from-dark-primary-300 via-dark-secondary-400 to-dark-accent-300";
-      }
-    } else {
-      if (langGroups.indianLanguages.includes(currentGreeting.langCode)) {
-        return "bg-clip-text text-transparent bg-gradient-to-r from-light-primary-600 to-light-secondary-500";
-      } else if (
-        langGroups.europeanLanguages.includes(currentGreeting.langCode)
-      ) {
-        return "bg-clip-text text-transparent bg-gradient-to-r from-light-secondary-600 to-light-primary-500";
-      } else if (langGroups.asianLanguages.includes(currentGreeting.langCode)) {
-        return "bg-clip-text text-transparent bg-gradient-to-r from-light-accent-600 to-light-accent-400";
-      } else {
-        return "bg-clip-text text-transparent bg-gradient-to-br from-light-primary-600 via-light-secondary-500 to-light-accent-500";
-      }
-    }
+    // Silver gradient in light mode, solid white in dark mode
+    return isDarkMode
+      ? "text-white"
+      : "bg-gradient-to-r from-blue-900 via-indigo-600 to-sky-400 bg-clip-text text-transparent drop-shadow";
   };
   return (
     <motion.div
@@ -1604,8 +1588,8 @@ const AnimatedMultilingualGreeting = ({ isDarkMode }) => {
         style={{
           fontFamily: currentGreeting.fontFamily,
           textShadow: isDarkMode
-            ? "0 0 30px rgba(96, 165, 250, 0.4), 0 4px 10px rgba(0, 0, 0, 0.5)"
-            : "0 0 20px rgba(59, 130, 246, 0.3), 0 4px 8px rgba(0, 0, 0, 0.1)",
+            ? "0 0 30px rgba(56, 189, 248, 0.45), 0 4px 10px rgba(0, 0, 0, 0.55)"
+            : "0 2px 6px rgba(15, 23, 42, 0.35), 0 0 12px rgba(59, 130, 246, 0.35)",
         }}
         className={`text-4xl lg:text-5xl font-semibold ${getGreetingColor()} cursor-pointer select-none`}
         lang={currentGreeting.langCode}
@@ -1633,59 +1617,46 @@ const Home = ({ setActiveTab, isDarkMode }) => {
           : "bg-gradient-to-br from-white via-gray-50 to-white text-gray-800"
       } pt-10 pb-10`}
     >
-      {/* Animated Background Orbs */}
+      {/* Modern Curved Header Background */}
+      <div className="absolute top-0 left-0 w-full h-[340px] md:h-[400px] z-0 pointer-events-none overflow-hidden">
+        <svg viewBox="0 0 1440 400" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full" preserveAspectRatio="none">
+          <path
+            d="M0,160 C480,320 960,0 1440,160 L1440,0 L0,0 Z"
+            fill={isDarkMode ? 'url(#headerGradientDark)' : 'url(#headerGradientLight)'}
+            opacity="0.9"
+          />
+          <defs>
+            <linearGradient id="headerGradientDark" x1="0" y1="0" x2="1440" y2="400" gradientUnits="userSpaceOnUse">
+              <stop stopColor="#3B82F6" />
+              <stop offset="0.5" stopColor="#1D4ED8" />
+              <stop offset="1" stopColor="#1E293B" />
+            </linearGradient>
+            <linearGradient id="headerGradientLight" x1="0" y1="0" x2="1440" y2="400" gradientUnits="userSpaceOnUse">
+              <stop stopColor="#60A5FA" />
+              <stop offset="0.5" stopColor="#3B82F6" />
+              <stop offset="1" stopColor="#DBEAFE" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
+      {/* Animated Background Orbs - More subtle */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          className={`absolute top-10 -left-20 w-[500px] h-[500px] rounded-full blur-3xl opacity-20 ${
+          className={`absolute top-20 -left-20 w-[400px] h-[400px] rounded-full blur-3xl opacity-10 ${
             isDarkMode
-              ? "bg-gradient-to-br from-dark-primary-400 via-dark-primary-500 to-dark-secondary-500"
-              : "bg-gradient-to-br from-light-primary-300 via-light-primary-400 to-light-secondary-400"
-          }`}
-          animate={{
-            x: [0, 60, 0],
-            y: [0, 40, 0],
-            scale: [1, 1.15, 1],
-          }}
-          transition={{
-            duration: 22,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        <motion.div
-          className={`absolute top-32 -right-20 w-[600px] h-[600px] rounded-full blur-3xl opacity-15 ${
-            isDarkMode
-              ? "bg-gradient-to-bl from-dark-secondary-400 via-dark-primary-500 to-dark-primary-400"
-              : "bg-gradient-to-bl from-light-secondary-300 via-light-primary-400 to-light-primary-300"
-          }`}
-          animate={{
-            x: [0, -50, 0],
-            y: [0, 60, 0],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 28,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 3,
-          }}
-        />
-        <motion.div
-          className={`absolute bottom-10 left-1/3 w-[450px] h-[450px] rounded-full blur-3xl opacity-10 ${
-            isDarkMode
-              ? "bg-gradient-to-tr from-dark-primary-500 to-dark-secondary-500"
-              : "bg-gradient-to-tr from-light-primary-400 to-light-secondary-400"
+              ? "bg-gradient-to-br from-purple-500 to-pink-500"
+              : "bg-gradient-to-br from-purple-300 to-pink-300"
           }`}
           animate={{
             x: [0, 40, 0],
-            y: [0, -50, 0],
-            scale: [1, 1.25, 1],
+            y: [0, 30, 0],
+            scale: [1, 1.1, 1],
           }}
           transition={{
-            duration: 32,
+            duration: 20,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: 6,
           }}
         />
       </div>
@@ -1696,46 +1667,69 @@ const Home = ({ setActiveTab, isDarkMode }) => {
           {/* --- Left Column: Main Content --- */}
           <div className="flex flex-col w-full lg:w-2/3">
             <AnimatedMultilingualGreeting isDarkMode={isDarkMode} />
+            
+            {/* Modern Glassmorphism Header Card */}
             <motion.div
-              className="mb-5"
+              className="mb-7 relative"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+              transition={{ duration: 0.7, ease: 'easeOut', delay: 0.2 }}
             >
-              <h1
-                className={`text-3xl lg:text-[34px] font-bold mb-1.5 ${
-                  isDarkMode ? "text-white" : "text-gray-900"
+              <div
+                className={`relative px-6 py-7 rounded-3xl shadow-2xl backdrop-blur-xl border overflow-hidden ${
+                  isDarkMode 
+                    ? 'bg-gradient-to-br from-gray-900/70 via-blue-900/30 to-gray-900/70 border-blue-500/30' 
+                    : 'bg-gradient-to-br from-white/80 via-blue-50/60 to-white/80 border-blue-300/40'
                 }`}
+                style={{
+                  boxShadow: isDarkMode
+                    ? '0 8px 32px 0 rgba(147, 51, 234, 0.25), inset 0 0 20px rgba(147, 51, 234, 0.1)' 
+                    : '0 8px 32px 0 rgba(147, 51, 234, 0.15), inset 0 0 20px rgba(244, 114, 182, 0.08)',
+                }}
               >
-                <span
-                  className={`${
-                    isDarkMode ? "text-gray-400" : "text-gray-700"
-                  } mr-1.5`}
-                >
-                  I am
-                </span>
-                <span
-                  className={`relative inline-block ${
-                    isDarkMode
-                      ? "bg-gradient-to-r from-dark-primary-200 via-dark-primary-300 to-dark-secondary-300"
-                      : "bg-gradient-to-r from-light-primary-600 via-light-primary-700 to-light-secondary-600"
-                  } bg-clip-text text-transparent`}
-                  style={{
-                    textShadow: isDarkMode
-                      ? "0 0 40px rgba(96, 165, 250, 0.4)"
-                      : "0 0 30px rgba(59, 130, 246, 0.3)",
+                <div className="mt-2">
+                  <h1
+                    className={`text-4xl lg:text-5xl font-extrabold mb-3 leading-tight ${
+                      isDarkMode ? '' : 'text-blue-900'
+                    }`}
+                    style={isDarkMode ? {
+                      background: 'linear-gradient(135deg, #60A5FA 0%, #3B82F6 50%, #06B6D4 100%)',
+                      WebkitBackgroundClip: 'text',
+                      backgroundClip: 'text',
+                      color: 'transparent',
+                      WebkitTextFillColor: 'transparent',
+                    } : {}}
+                  >
+                    Aditya Janjanam
+                  </h1>
+                  <p
+                    className={`text-base lg:text-lg font-bold ${
+                      isDarkMode ? 'text-blue-100' : 'text-blue-900'
+                    }`}
+                    style={{
+                      textShadow: isDarkMode
+                        ? '0 2px 12px rgba(59, 130, 246, 0.5)'
+                        : '0 2px 10px rgba(0, 0, 0, 0.2)',
+                    }}
+                  >
+                    Full Stack Developer • Mobile App Developer • Software Engineer
+                  </p>
+                </div>
+                
+                {/* Subtle animated background gradient */}
+                <motion.div 
+                  className="absolute -right-20 -bottom-20 w-40 h-40 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl"
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    opacity: [0.3, 0.5, 0.3],
                   }}
-                >
-                  Aditya Janjanam!
-                </span>
-              </h1>
-              <p
-                className={`text-base lg:text-[17px] ${
-                  isDarkMode ? "text-gray-400" : "text-gray-700"
-                } text-justify leading-relaxed`}
-              >
-                Full Stack Developer | Mobile App Developer | Software Engineer | Application Packager
-              </p>
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                  }}
+                />
+              </div>
             </motion.div>
             <motion.div
               className="flex flex-wrap gap-x-8 gap-y-3 mb-5"
@@ -1751,15 +1745,18 @@ const Home = ({ setActiveTab, isDarkMode }) => {
                 <div
                   className={`text-3xl lg:text-4xl font-bold ${
                     isDarkMode
-                      ? "text-dark-primary-300"
-                      : "text-light-primary-700"
+                      ? "text-blue-200"
+                      : "text-blue-800"
                   }`}
+                  style={{
+                    textShadow: isDarkMode ? '0 2px 10px rgba(59, 130, 246, 0.5)' : '0 2px 8px rgba(30, 64, 175, 0.3)',
+                  }}
                 >
                   3+
                 </div>
                 <div
-                  className={`text-xs lg:text-sm ${
-                    isDarkMode ? "text-gray-400" : "text-gray-700"
+                  className={`text-xs lg:text-sm font-semibold ${
+                    isDarkMode ? "text-gray-200" : "text-gray-700"
                   } mt-0.5 uppercase tracking-wider`}
                 >
                   Years Experience
@@ -1773,15 +1770,18 @@ const Home = ({ setActiveTab, isDarkMode }) => {
                 <div
                   className={`text-3xl lg:text-4xl font-bold ${
                     isDarkMode
-                      ? "text-dark-primary-300"
-                      : "text-light-primary-700"
+                      ? "text-blue-200"
+                      : "text-blue-800"
                   }`}
+                  style={{
+                    textShadow: isDarkMode ? '0 2px 10px rgba(59, 130, 246, 0.5)' : '0 2px 8px rgba(30, 64, 175, 0.3)',
+                  }}
                 >
                   15+
                 </div>
                 <div
-                  className={`text-xs lg:text-sm ${
-                    isDarkMode ? "text-gray-400" : "text-gray-700"
+                  className={`text-xs lg:text-sm font-semibold ${
+                    isDarkMode ? "text-gray-200" : "text-gray-700"
                   } mt-0.5 uppercase tracking-wider`}
                 >
                   Projects
@@ -2058,20 +2058,7 @@ const Home = ({ setActiveTab, isDarkMode }) => {
                   transition={{ delay: 0.7 }}
                   className="mt-3 text-center"
                 >
-                  <h3
-                    className={`${
-                      isDarkMode ? "text-white" : "text-gray-900"
-                    } text-xl font-semibold`}
-                  >
-                    Aditya Janjanam
-                  </h3>
-                  <p
-                    className={`${
-                      isDarkMode ? "text-gray-300" : "text-gray-700"
-                    } text-sm mt-0.5`}
-                  >
-                    Software Developer
-                  </p>
+                  {/* Name and Title removed as requested */}
                 </motion.div>
               </motion.div>
               {/* Social Links */}
@@ -2123,8 +2110,11 @@ const BriefSummary = ({ isDarkMode }) => (
     <div className="relative z-10">
       <motion.h3
         className={`text-xl font-bold mb-4 ${
-          isDarkMode ? "text-dark-primary-300" : "text-light-primary-700"
+          isDarkMode ? "text-blue-200" : "text-blue-900"
         } sm:text-2xl flex items-center gap-2`}
+        style={{
+          textShadow: isDarkMode ? '0 2px 10px rgba(59, 130, 246, 0.4)' : 'none',
+        }}
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5, delay: 0.5 }}
@@ -2132,27 +2122,27 @@ const BriefSummary = ({ isDarkMode }) => (
         <span>💼</span> Professional Summary
       </motion.h3>
       <motion.div
-        className={`text-sm ${
-          isDarkMode ? "text-gray-300" : "text-gray-700"
+        className={`text-sm font-medium ${
+          isDarkMode ? "text-gray-100" : "text-gray-800"
         } leading-relaxed sm:text-base text-left`}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.6 }}
       >
-        <b>Innovative Full Stack & Mobile Developer with 3+ years of hands-on experience delivering robust, user-centric solutions across web, mobile, and desktop platforms.</b> I blend deep expertise in React, Node.js, Flutter, and cloud technologies with a strong foundation in IT infrastructure and application packaging.<br /><br />
-        My academic journey includes a distinction in Computer Applications Development (Conestoga College, Waterloo), advanced Mobile Applications Development (Centennial College, Toronto), and a Bachelor’s in Electronics & Communication Engineering. These programs fueled my passion for building scalable, secure, and high-performance applications.<br /><br />
-        At Atos, I engineered enterprise-grade deployments, mastering MSI/MSIX packaging, PowerShell automation, and SCCM/Intune for seamless software delivery in virtualized environments (Citrix, VMware, Hyper-V).<br /><br />
-        My internships at Capgemini and Tech Mahindra sharpened my skills in the MERN stack, RESTful API design, and Agile collaboration. I thrive in dynamic teams, driving projects from concept to production with precision and creativity.<br /><br />
-        I excel at bridging development and deployment, ensuring smooth transitions from code to production. My focus is on crafting cross-platform apps that delight users and meet business goals.<br /><br />
-        <b>Open to new opportunities in:</b> Full Stack Development, Mobile App Development (React Native, Flutter, iOS/Android), Desktop Apps (Electron), and Enterprise Application Packaging & Deployment.
+        <b>Innovative Full Stack & Mobile Developer with 3+ years of hands-on experience</b> delivering robust, user-centric solutions across web, mobile, and desktop platforms. I blend deep expertise in React, Node.js, Flutter, and cloud technologies with a strong foundation in IT infrastructure and application packaging. A distinction in Computer Applications Development (Conestoga College, Waterloo), Mobile Applications Development (Centennial College, Toronto), and a Bachelor&apos;s Degree in Electronics & Communication Engineering (Sathyabama Institute of Science and Technology, Chennai, India) fuel my passion for building scalable, secure, and high-performance applications.<br /><br />
+        At Atos, I engineered enterprise-grade deployments, mastering MSI/MSIX packaging, PowerShell automation, and SCCM/Intune for seamless software delivery in virtualized environments such as Citrix, VMware, and Hyper-V. My internships at Capgemini and Tech Mahindra sharpened my skills in the MERN stack, RESTful API design, and Agile collaboration, where I drove projects from concept to production with precision and creativity. I excel at bridging development and deployment, ensuring smooth transitions from code to production while crafting cross-platform apps that delight users and meet business goals.<br /><br />
+        <b>Open to new opportunities in:</b> Full Stack Development, Mobile App Development (React Native, Flutter, iOS/Android), Desktop Apps (Electron), and Enterprise Application Packaging & Deployment. I&apos;m passionate about leveraging modern technologies to solve complex problems and deliver impactful solutions that drive business value.
       </motion.div>
     </div>
 
     <div className="mt-6">
       <motion.h4
-        className={`text-lg font-semibold mb-3 ${
-          isDarkMode ? "text-dark-primary-300" : "text-light-primary-700"
+        className={`text-lg font-bold mb-3 ${
+          isDarkMode ? "text-blue-200" : "text-blue-900"
         } flex items-center gap-2`}
+        style={{
+          textShadow: isDarkMode ? '0 2px 10px rgba(59, 130, 246, 0.4)' : 'none',
+        }}
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5, delay: 0.7 }}
@@ -2173,10 +2163,10 @@ const BriefSummary = ({ isDarkMode }) => (
         ].map((skill, index) => (
           <motion.span
             key={skill}
-            className={`px-2 py-1 text-xs rounded-full backdrop-blur-sm ${
+            className={`px-2 py-1 text-xs font-semibold rounded-full backdrop-blur-sm ${
               isDarkMode
-                ? "bg-dark-primary-900/60 text-dark-primary-300 border border-dark-primary-700 shadow-lg shadow-dark-primary-900/20"
-                : "bg-light-primary-50 text-light-primary-700 border border-light-primary-200 shadow-md shadow-light-primary-500/10"
+                ? "bg-blue-600/40 text-blue-100 border border-blue-400/50 shadow-lg shadow-blue-500/30"
+                : "bg-blue-100 text-blue-900 border border-blue-300 shadow-md shadow-blue-500/20"
             }`}
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}

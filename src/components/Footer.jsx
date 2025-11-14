@@ -56,120 +56,160 @@ const Footer = ({ isDarkMode, setActiveTab, activeTab }) => {
 
   return (
     <footer
-      className={`relative py-16 overflow-hidden ${
+      className={`relative py-20 overflow-hidden ${
         isDarkMode
           ? "bg-gradient-to-br from-gray-950 via-gray-900 to-black text-gray-300"
-          : "bg-gradient-to-br from-indigo-100 via-blue-50 to-purple-100 text-gray-800"
+          : "bg-gradient-to-br from-indigo-50 via-blue-50 to-cyan-50 text-gray-800"
       }`}
     >
-      {/* Enhanced Decorative Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className={`absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full blur-3xl opacity-30 ${
-          isDarkMode ? "bg-gradient-to-br from-cyan-500 to-blue-600" : "bg-gradient-to-br from-blue-400 to-indigo-500"
-        }`}></div>
-        <div className={`absolute -bottom-32 -left-32 w-[500px] h-[500px] rounded-full blur-3xl opacity-30 ${
-          isDarkMode ? "bg-gradient-to-br from-purple-600 to-pink-500" : "bg-gradient-to-br from-purple-400 to-pink-400"
-        }`}></div>
-        <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-3xl opacity-10 ${
-          isDarkMode ? "bg-gradient-to-r from-indigo-500 to-cyan-500" : "bg-gradient-to-r from-blue-300 to-purple-300"
-        }`}></div>
+      {/* Modern Curved Top Wave */}
+      <div className="absolute top-0 left-0 w-full h-32 z-0 pointer-events-none">
+        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full" preserveAspectRatio="none">
+          <path
+            d="M0,60 C360,0 720,120 1440,60 L1440,0 L0,0 Z"
+            fill={isDarkMode ? 'url(#footerWaveDark)' : 'url(#footerWaveLight)'}
+            opacity="0.7"
+          />
+          <defs>
+            <linearGradient id="footerWaveDark" x1="0" y1="0" x2="1440" y2="120" gradientUnits="userSpaceOnUse">
+              <stop stopColor="#3B82F6" />
+              <stop offset="0.5" stopColor="#1D4ED8" />
+              <stop offset="1" stopColor="#06B6D4" />
+            </linearGradient>
+            <linearGradient id="footerWaveLight" x1="0" y1="0" x2="1440" y2="120" gradientUnits="userSpaceOnUse">
+              <stop stopColor="#60A5FA" />
+              <stop offset="0.5" stopColor="#3B82F6" />
+              <stop offset="1" stopColor="#06B6D4" />
+            </linearGradient>
+          </defs>
+        </svg>
       </div>
 
-      {/* Animated Top Border with Gradient */}
-      <div className={`absolute top-0 left-0 right-0 h-1.5 ${
-        isDarkMode 
-          ? "bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500" 
-          : "bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600"
-      } shadow-lg`}>
-        <motion.div
-          className={`h-full ${
-            isDarkMode ? "bg-gradient-to-r from-white to-cyan-300" : "bg-gradient-to-r from-white to-blue-300"
+      {/* Enhanced Decorative Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div 
+          className={`absolute -top-20 -right-20 w-[400px] h-[400px] rounded-full blur-3xl opacity-20 ${
+            isDarkMode ? "bg-gradient-to-br from-blue-500 to-cyan-500" : "bg-gradient-to-br from-blue-400 to-cyan-400"
           }`}
-          initial={{ width: "0%" }}
-          animate={{ width: "100%" }}
-          transition={{ duration: 2, ease: "easeOut" }}
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.2, 0.3, 0.2],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div 
+          className={`absolute -bottom-20 -left-20 w-[450px] h-[450px] rounded-full blur-3xl opacity-15 ${
+            isDarkMode ? "bg-gradient-to-br from-cyan-500 to-blue-600" : "bg-gradient-to-br from-blue-400 to-indigo-500"
+          }`}
+          animate={{
+            scale: [1, 1.15, 1],
+            opacity: [0.15, 0.25, 0.15],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2,
+          }}
         />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-          {/* Brand Section */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          {/* Brand Section with Modern Card */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="lg:col-span-2"
           >
-            <motion.h3
-              className={`text-3xl font-extrabold mb-4 bg-clip-text text-transparent ${
-                isDarkMode 
-                  ? "bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-500" 
-                  : "bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600"
-              } drop-shadow-lg`}
-              whileHover={{ scale: 1.03 }}
-              transition={{ duration: 0.3 }}
-            >
-              Aditya Janjanam
-            </motion.h3>
-            <p
-              className={`text-base leading-relaxed mb-6 max-w-lg font-medium ${
-                isDarkMode ? "text-gray-300" : "text-gray-700"
-              }`}
-            >
-              Full Stack Developer & Mobile Application Developer passionate
-              about creating innovative solutions. Specialized in React,
-              Node.js, and mobile development with a focus on user experience
-              and performance.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              {socialLinks.map((link, index) => (
-                <motion.a
-                  key={link.name}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => trackSocialClick(link.name)}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ scale: 1.2, rotate: 10, y: -3 }}
-                  whileTap={{ scale: 0.9 }}
-                  className={`group relative p-4 rounded-2xl transition-all duration-300 shadow-lg ${
-                    isDarkMode
-                      ? "bg-gradient-to-br from-gray-800/70 to-gray-900/70 hover:from-cyan-600 hover:to-blue-700 text-gray-300 hover:text-white backdrop-blur-md border border-gray-700/50 hover:border-cyan-400 hover:shadow-cyan-500/50"
-                      : "bg-white/90 hover:bg-gradient-to-br hover:from-blue-600 hover:to-purple-600 text-gray-700 hover:text-white backdrop-blur-md border border-gray-300 hover:border-blue-400 shadow-md hover:shadow-blue-500/30 hover:shadow-xl"
-                  }`}
-                  title={link.name}
+            <div className={`p-8 rounded-3xl backdrop-blur-xl border shadow-2xl ${
+              isDarkMode 
+                ? "bg-gradient-to-br from-blue-900/30 via-gray-900/50 to-gray-900/30 border-blue-500/30" 
+                : "bg-gradient-to-br from-white/90 via-blue-50/70 to-white/90 border-blue-300/40"
+            }`}>
+              <motion.div
+                className="mb-5"
+                whileHover={{ scale: 1.02 }}
+              >
+                <h3
+                  className={`text-3xl font-extrabold ${isDarkMode ? '' : 'text-blue-900'}`}
+                  style={isDarkMode ? {
+                    background: 'linear-gradient(135deg, #60A5FA 0%, #3B82F6 50%, #06B6D4 100%)',
+                    WebkitBackgroundClip: 'text',
+                    backgroundClip: 'text',
+                    color: 'transparent',
+                    WebkitTextFillColor: 'transparent',
+                  } : {}}
                 >
-                  <span className="text-2xl relative z-10">{link.icon}</span>
-                  {/* Tooltip */}
-                  <span className={`absolute -top-8 left-1/2 transform -translate-x-1/2 px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap ${
-                    isDarkMode ? "bg-gray-700 text-gray-200" : "bg-gray-800 text-white"
-                  }`}>
-                    {link.name}
-                  </span>
-                </motion.a>
-              ))}
+                  Aditya Janjanam
+                </h3>
+              </motion.div>
+              <p
+                className={`text-sm leading-relaxed mb-6 font-medium ${
+                  isDarkMode ? "text-gray-200" : "text-gray-700"
+                }`}
+              >
+                Full Stack Developer & Mobile Application Developer passionate
+                about creating innovative solutions. Specialized in React,
+                Node.js, and mobile development with a focus on user experience
+                and performance.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                {socialLinks.map((link, index) => (
+                  <motion.a
+                    key={link.name}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => trackSocialClick(link.name)}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: index * 0.1 }}
+                    whileHover={{ scale: 1.15, rotate: 5, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                    className={`group relative p-3 rounded-xl transition-all duration-300 ${
+                      isDarkMode
+                        ? "bg-gray-800/50 hover:bg-gradient-to-br hover:from-blue-600 hover:to-cyan-600 text-gray-300 hover:text-white backdrop-blur-md border border-gray-700/50 hover:border-blue-400 shadow-lg hover:shadow-blue-500/50"
+                        : "bg-white/80 hover:bg-gradient-to-br hover:from-blue-600 hover:to-cyan-600 text-gray-700 hover:text-white backdrop-blur-md border border-gray-300 hover:border-blue-400 shadow-md hover:shadow-blue-500/40"
+                    }`}
+                    title={link.name}
+                  >
+                    <span className="text-xl relative z-10">{link.icon}</span>
+                    <span className={`absolute -top-8 left-1/2 transform -translate-x-1/2 px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap ${
+                      isDarkMode ? "bg-gray-700 text-gray-200" : "bg-gray-800 text-white"
+                    }`}>
+                      {link.name}
+                    </span>
+                  </motion.a>
+                ))}
+              </div>
             </div>
           </motion.div>
 
-          {/* Quick Links */}
+          {/* Quick Links - Modern Card */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            whileHover={{ y: -5 }}
-            className={`p-7 rounded-3xl backdrop-blur-md shadow-xl ${
+            className={`p-7 rounded-3xl backdrop-blur-xl shadow-2xl border ${
               isDarkMode 
-                ? "bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700/60 hover:border-cyan-500/50" 
-                : "bg-white/80 border border-gray-200/60 hover:border-blue-400/60 shadow-lg hover:shadow-2xl"
-            }`}
+                ? "bg-gradient-to-br from-gray-900/60 via-purple-900/20 to-gray-900/60 border-purple-500/30 hover:border-purple-400/50" 
+                : "bg-gradient-to-br from-white/90 via-purple-50/50 to-white/90 border-purple-300/40 hover:border-purple-400/60"
+            } transition-all duration-300 hover:scale-[1.02]`}
           >
             <h4
               className={`text-xl font-extrabold mb-5 flex items-center gap-3 ${
-                isDarkMode ? "text-cyan-300" : "text-blue-700"
+                isDarkMode ? "text-purple-200" : "text-purple-900"
               }`}
+              style={{
+                textShadow: isDarkMode ? '0 2px 10px rgba(192, 132, 252, 0.4)' : 'none',
+              }}
             >
               <span className="text-2xl">🔗</span>
               Quick Links
@@ -186,14 +226,14 @@ const Footer = ({ isDarkMode, setActiveTab, activeTab }) => {
                   <button
                     type="button"
                     onClick={() => handleQuickLinkClick(link.tab)}
-                    className={`group flex items-center gap-2 text-sm bg-transparent border-none outline-none cursor-pointer transition-all duration-300 ${
+                    className={`group flex items-center gap-2 text-sm font-medium bg-transparent border-none outline-none cursor-pointer transition-all duration-300 ${
                       activeTab === link.tab
                         ? isDarkMode
-                          ? "text-cyan-400 font-semibold"
-                          : "text-blue-600 font-semibold"
+                          ? "text-blue-200 font-bold"
+                          : "text-blue-900 font-bold"
                         : isDarkMode
-                          ? "text-gray-400 hover:text-cyan-400"
-                          : "text-gray-600 hover:text-blue-600"
+                          ? "text-gray-100 hover:text-blue-200"
+                          : "text-gray-700 hover:text-blue-900"
                     }`}
                   >
                     <span className={`transition-transform group-hover:translate-x-1 ${
@@ -206,22 +246,24 @@ const Footer = ({ isDarkMode, setActiveTab, activeTab }) => {
             </ul>
           </motion.div>
 
-          {/* Contact Info */}
+          {/* Contact Info - Modern Card */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            whileHover={{ y: -5 }}
-            className={`p-7 rounded-3xl backdrop-blur-md shadow-xl ${
+            className={`p-7 rounded-3xl backdrop-blur-xl shadow-2xl border ${
               isDarkMode 
-                ? "bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700/60 hover:border-cyan-500/50" 
-                : "bg-white/80 border border-gray-200/60 hover:border-blue-400/60 shadow-lg hover:shadow-2xl"
-            }`}
+                ? "bg-gradient-to-br from-gray-900/60 via-purple-900/20 to-gray-900/60 border-purple-500/30 hover:border-purple-400/50" 
+                : "bg-gradient-to-br from-white/90 via-purple-50/50 to-white/90 border-purple-300/40 hover:border-purple-400/60"
+            } transition-all duration-300 hover:scale-[1.02]`}
           >
             <h4
               className={`text-xl font-extrabold mb-5 flex items-center gap-3 ${
-                isDarkMode ? "text-cyan-300" : "text-blue-700"
+                isDarkMode ? "text-purple-200" : "text-purple-900"
               }`}
+              style={{
+                textShadow: isDarkMode ? '0 2px 10px rgba(192, 132, 252, 0.4)' : 'none',
+              }}
             >
               <span className="text-2xl">💬</span>
               Contact
@@ -229,15 +271,15 @@ const Footer = ({ isDarkMode, setActiveTab, activeTab }) => {
             <div className="space-y-3 text-sm">
               <motion.p
                 whileHover={{ x: 5 }}
-                className={`flex items-center gap-3 ${
-                  isDarkMode ? "text-gray-400" : "text-gray-600"
+                className={`flex items-center gap-3 font-medium ${
+                  isDarkMode ? "text-gray-100" : "text-gray-900"
                 }`}
               >
                 <span className="text-lg">📧</span>
                 <a
                   href="mailto:janjanamaditya@gmail.com"
                   className={`hover:underline transition-colors ${
-                    isDarkMode ? "hover:text-cyan-400" : "hover:text-blue-600"
+                    isDarkMode ? "hover:text-purple-400" : "hover:text-purple-600"
                   }`}
                 >
                   janjanamaditya@gmail.com
@@ -245,8 +287,8 @@ const Footer = ({ isDarkMode, setActiveTab, activeTab }) => {
               </motion.p>
               <motion.p
                 whileHover={{ x: 5 }}
-                className={`flex items-center gap-3 ${
-                  isDarkMode ? "text-gray-400" : "text-gray-600"
+                className={`flex items-center gap-3 font-medium ${
+                  isDarkMode ? "text-gray-100" : "text-gray-900"
                 }`}
               >
                 <span className="text-lg">📍</span>
@@ -255,7 +297,7 @@ const Footer = ({ isDarkMode, setActiveTab, activeTab }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`hover:underline transition-colors ${
-                    isDarkMode ? "hover:text-cyan-400" : "hover:text-blue-600"
+                    isDarkMode ? "hover:text-purple-400" : "hover:text-purple-600"
                   }`}
                 >
                   Waterloo, Canada
@@ -263,8 +305,8 @@ const Footer = ({ isDarkMode, setActiveTab, activeTab }) => {
               </motion.p>
               <motion.p
                 whileHover={{ x: 5 }}
-                className={`flex items-center gap-3 ${
-                  isDarkMode ? "text-gray-400" : "text-gray-600"
+                className={`flex items-center gap-3 font-medium ${
+                  isDarkMode ? "text-gray-100" : "text-gray-900"
                 }`}
               >
                 <span className="text-lg">💼</span>
@@ -280,20 +322,20 @@ const Footer = ({ isDarkMode, setActiveTab, activeTab }) => {
           </motion.div>
         </div>
 
-        {/* Bottom Bar */}
+        {/* Modern Bottom Bar with Gradient */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.6 }}
-          className={`pt-10 mt-8 border-t-2 ${
-            isDarkMode ? "border-gray-700/60" : "border-gray-300/60"
+          className={`pt-10 mt-10 border-t-2 ${
+            isDarkMode ? "border-purple-500/30" : "border-purple-300/40"
           }`}
         >
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <motion.p
               whileHover={{ scale: 1.02 }}
-              className={`text-sm flex items-center gap-2 ${
-                isDarkMode ? "text-gray-500" : "text-gray-600"
+              className={`text-sm flex items-center gap-2 font-medium ${
+                isDarkMode ? "text-gray-200" : "text-gray-800"
               }`}
             >
               <span className="text-base">©</span>
@@ -304,8 +346,8 @@ const Footer = ({ isDarkMode, setActiveTab, activeTab }) => {
             
             <motion.p
               whileHover={{ scale: 1.02 }}
-              className={`text-sm flex items-center gap-2 flex-wrap justify-center ${
-                isDarkMode ? "text-gray-500" : "text-gray-600"
+              className={`text-sm flex items-center gap-2 flex-wrap justify-center font-medium ${
+                isDarkMode ? "text-gray-200" : "text-gray-800"
               }`}
             >
               <span>Built with</span>
@@ -319,16 +361,16 @@ const Footer = ({ isDarkMode, setActiveTab, activeTab }) => {
               <span>using</span>
               <span className={`px-2 py-1 rounded-md text-xs font-semibold ${
                 isDarkMode 
-                  ? "bg-cyan-500/20 text-cyan-400 border border-cyan-500/30" 
-                  : "bg-blue-100 text-blue-700 border border-blue-200"
+                  ? "bg-purple-500/20 text-purple-400 border border-purple-500/30" 
+                  : "bg-purple-100 text-purple-700 border border-purple-200"
               }`}>
                 React
               </span>
               <span>&</span>
               <span className={`px-2 py-1 rounded-md text-xs font-semibold ${
                 isDarkMode 
-                  ? "bg-purple-500/20 text-purple-400 border border-purple-500/30" 
-                  : "bg-purple-100 text-purple-700 border border-purple-200"
+                  ? "bg-cyan-500/20 text-cyan-400 border border-cyan-500/30" 
+                  : "bg-cyan-100 text-cyan-700 border border-cyan-200"
               }`}>
                 Tailwind CSS
               </span>
@@ -344,7 +386,7 @@ const Footer = ({ isDarkMode, setActiveTab, activeTab }) => {
                 isDarkMode ? "bg-green-400" : "bg-green-500"
               } animate-pulse`}></span>
               Version <span className={`font-bold text-lg ${
-                isDarkMode ? "text-cyan-400" : "text-blue-600"
+                isDarkMode ? "text-purple-200" : "text-purple-900"
               }`}>1.2</span>
             </motion.p>
           </div>
