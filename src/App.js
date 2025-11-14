@@ -1589,19 +1589,37 @@ const AnimatedMultilingualGreeting = ({ isDarkMode }) => {
     }
   };
   return (
-    <div className="h-16 mb-3 flex items-center justify-start">
+    <motion.div
+      className="h-16 mb-3 flex items-center justify-start"
+      initial={{ opacity: 0, x: -30 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
       <motion.h2
         key={currentIndex}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, ease: "easeInOut" }}
-        style={{ fontFamily: currentGreeting.fontFamily }}
+        initial={{ opacity: 0, y: 20, scale: 0.9 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: -20, scale: 0.9 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
+        style={{
+          fontFamily: currentGreeting.fontFamily,
+          textShadow: isDarkMode
+            ? "0 0 30px rgba(96, 165, 250, 0.4), 0 4px 10px rgba(0, 0, 0, 0.5)"
+            : "0 0 20px rgba(59, 130, 246, 0.3), 0 4px 8px rgba(0, 0, 0, 0.1)",
+        }}
         className={`text-4xl lg:text-5xl font-semibold ${getGreetingColor()} cursor-pointer select-none`}
         lang={currentGreeting.langCode}
+        whileHover={{
+          scale: 1.05,
+          textShadow: isDarkMode
+            ? "0 0 40px rgba(96, 165, 250, 0.6), 0 6px 15px rgba(0, 0, 0, 0.6)"
+            : "0 0 30px rgba(59, 130, 246, 0.5), 0 6px 12px rgba(0, 0, 0, 0.15)",
+        }}
+      >
       >
         {currentGreeting.text}
       </motion.h2>
-    </div>
+    </motion.div>
   );
 };
 
@@ -1610,19 +1628,81 @@ const Home = ({ setActiveTab, isDarkMode }) => {
   return (
     // Main component div - Should fill width and height if needed (min-h-full added)
     <div
-      className={`relative min-h-full ${
+      className={`relative min-h-full overflow-hidden ${
         isDarkMode
           ? "bg-gradient-to-br from-gray-900 via-black to-gray-900 text-gray-200"
           : "bg-gradient-to-br from-white via-gray-50 to-white text-gray-800"
       } pt-10 pb-10`}
     >
+      {/* Animated Background Orbs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          className={`absolute top-10 -left-20 w-[500px] h-[500px] rounded-full blur-3xl opacity-20 ${
+            isDarkMode
+              ? "bg-gradient-to-br from-dark-primary-400 via-dark-primary-500 to-dark-secondary-500"
+              : "bg-gradient-to-br from-light-primary-300 via-light-primary-400 to-light-secondary-400"
+          }`}
+          animate={{
+            x: [0, 60, 0],
+            y: [0, 40, 0],
+            scale: [1, 1.15, 1],
+          }}
+          transition={{
+            duration: 22,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className={`absolute top-32 -right-20 w-[600px] h-[600px] rounded-full blur-3xl opacity-15 ${
+            isDarkMode
+              ? "bg-gradient-to-bl from-dark-secondary-400 via-dark-primary-500 to-dark-primary-400"
+              : "bg-gradient-to-bl from-light-secondary-300 via-light-primary-400 to-light-primary-300"
+          }`}
+          animate={{
+            x: [0, -50, 0],
+            y: [0, 60, 0],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{
+            duration: 28,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 3,
+          }}
+        />
+        <motion.div
+          className={`absolute bottom-10 left-1/3 w-[450px] h-[450px] rounded-full blur-3xl opacity-10 ${
+            isDarkMode
+              ? "bg-gradient-to-tr from-dark-primary-500 to-dark-secondary-500"
+              : "bg-gradient-to-tr from-light-primary-400 to-light-secondary-400"
+          }`}
+          animate={{
+            x: [0, 40, 0],
+            y: [0, -50, 0],
+            scale: [1, 1.25, 1],
+          }}
+          transition={{
+            duration: 32,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 6,
+          }}
+        />
+      </div>
+
       {/* Inner container for main content - Two column layout with photo in top-right */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-5 lg:px-7">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-5 lg:px-7 z-10">
         <div className="flex flex-col lg:flex-row items-start gap-6">
           {/* --- Left Column: Main Content --- */}
           <div className="flex flex-col w-full lg:w-2/3">
             <AnimatedMultilingualGreeting isDarkMode={isDarkMode} />
-            <div className="mb-5">
+            <motion.div
+              className="mb-5"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+            >
               <h1
                 className={`text-3xl lg:text-[34px] font-bold mb-1.5 ${
                   isDarkMode ? "text-white" : "text-gray-900"
@@ -1636,11 +1716,16 @@ const Home = ({ setActiveTab, isDarkMode }) => {
                   I am
                 </span>
                 <span
-                  className={
+                  className={`relative inline-block ${
                     isDarkMode
-                      ? "bg-clip-text text-transparent bg-gradient-to-r from-dark-primary-300 to-dark-secondary-400"
-                      : "bg-clip-text text-transparent bg-gradient-to-r from-light-primary-600 to-light-secondary-700"
-                  }
+                      ? "bg-gradient-to-r from-dark-primary-200 via-dark-primary-300 to-dark-secondary-300"
+                      : "bg-gradient-to-r from-light-primary-600 via-light-primary-700 to-light-secondary-600"
+                  } bg-clip-text text-transparent`}
+                  style={{
+                    textShadow: isDarkMode
+                      ? "0 0 40px rgba(96, 165, 250, 0.4)"
+                      : "0 0 30px rgba(59, 130, 246, 0.3)",
+                  }}
                 >
                   Aditya Janjanam!
                 </span>
@@ -1652,9 +1737,18 @@ const Home = ({ setActiveTab, isDarkMode }) => {
               >
                 Full Stack Developer | Mobile App Developer | Software Engineer | Application Packager
               </p>
-            </div>
-            <div className="flex flex-wrap gap-x-8 gap-y-3 mb-5">
-              <div className="text-center">
+            </motion.div>
+            <motion.div
+              className="flex flex-wrap gap-x-8 gap-y-3 mb-5"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.3 }}
+            >
+              <motion.div
+                className="text-center"
+                whileHover={{ scale: 1.05, y: -4 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
                 <div
                   className={`text-3xl lg:text-4xl font-bold ${
                     isDarkMode
@@ -1671,8 +1765,12 @@ const Home = ({ setActiveTab, isDarkMode }) => {
                 >
                   Years Experience
                 </div>
-              </div>
-              <div className="text-center">
+              </motion.div>
+              <motion.div
+                className="text-center"
+                whileHover={{ scale: 1.05, y: -4 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
                 <div
                   className={`text-3xl lg:text-4xl font-bold ${
                     isDarkMode
@@ -1689,8 +1787,8 @@ const Home = ({ setActiveTab, isDarkMode }) => {
                 >
                   Projects
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
             <div className="mb-5">
               <BriefSummary isDarkMode={isDarkMode} />
             </div>
@@ -1726,6 +1824,22 @@ const Home = ({ setActiveTab, isDarkMode }) => {
                 <div className="flex flex-col sm:flex-row gap-4">
                   {/* First Photo - Profile */}
                   <div className="relative group flex-1">
+                    {/* Animated Glow Effect */}
+                    <motion.div
+                      className={`absolute -inset-2 rounded-xl blur-xl opacity-0 group-hover:opacity-70 transition-opacity duration-500 ${
+                        isDarkMode
+                          ? "bg-gradient-to-br from-dark-primary-400 via-dark-primary-500 to-dark-secondary-500"
+                          : "bg-gradient-to-br from-light-primary-400 via-light-primary-500 to-light-secondary-400"
+                      }`}
+                      animate={{
+                        opacity: [0, 0.3, 0],
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                    />
                     {/* Background Card Element */}
                     <div
                       className={`absolute -inset-1.5 rounded-xl
@@ -1824,6 +1938,23 @@ const Home = ({ setActiveTab, isDarkMode }) => {
 
                   {/* Second Photo - Centennial College Graduation */}
                   <div className="relative group flex-1">
+                    {/* Animated Glow Effect */}
+                    <motion.div
+                      className={`absolute -inset-2 rounded-xl blur-xl opacity-0 group-hover:opacity-70 transition-opacity duration-500 ${
+                        isDarkMode
+                          ? "bg-gradient-to-br from-dark-secondary-400 via-dark-primary-500 to-dark-primary-400"
+                          : "bg-gradient-to-br from-light-secondary-400 via-light-primary-500 to-light-primary-400"
+                      }`}
+                      animate={{
+                        opacity: [0, 0.3, 0],
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: 1.5,
+                      }}
+                    />
                     {/* Background Card Element */}
                     <div
                       className={`absolute -inset-1.5 rounded-xl
@@ -1972,20 +2103,43 @@ const Home = ({ setActiveTab, isDarkMode }) => {
 // Update the BriefSummary component
 const BriefSummary = ({ isDarkMode }) => (
   <motion.div
-    className={`p-4 rounded-xl border ${
+    className={`relative p-4 rounded-xl border backdrop-blur-sm ${
       isDarkMode
-        ? "bg-gradient-to-br from-gray-900 to-black border-dark-primary-800 shadow-lg shadow-dark-primary-900/20"
-        : "bg-gradient-to-br from-white to-gray-50 border-light-primary-200 shadow-lg shadow-light-primary-500/10"
-    } sm:p-6`}
+        ? "bg-gradient-to-br from-gray-900/90 to-black/80 border-dark-primary-800 shadow-2xl shadow-dark-primary-900/30"
+        : "bg-gradient-to-br from-white/95 to-gray-50/90 border-light-primary-200 shadow-2xl shadow-light-primary-500/20"
+    } sm:p-6 overflow-hidden`}
     initial={{ opacity: 0, y: 20, scale: 0.95 }}
     animate={{ opacity: 1, y: 0, scale: 1 }}
-    transition={{ duration: 0.5, ease: "easeOut" }}
+    transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
   >
-    <div>
-      <h3 className={`text-xl font-bold mb-4 ${isDarkMode ? "text-dark-primary-300" : "text-light-primary-700"} sm:text-2xl`}>
-        💼 Professional Summary
-      </h3>
-      <div className={`text-sm ${isDarkMode ? "text-gray-300" : "text-gray-700"} leading-relaxed sm:text-base text-left`}>
+    {/* Decorative corner accent */}
+    <div
+      className={`absolute top-0 right-0 w-32 h-32 rounded-bl-full opacity-10 ${
+        isDarkMode
+          ? "bg-gradient-to-bl from-dark-primary-400 to-transparent"
+          : "bg-gradient-to-bl from-light-primary-400 to-transparent"
+      }`}
+    />
+    
+    <div className="relative z-10">
+      <motion.h3
+        className={`text-xl font-bold mb-4 ${
+          isDarkMode ? "text-dark-primary-300" : "text-light-primary-700"
+        } sm:text-2xl flex items-center gap-2`}
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
+      >
+        <span>💼</span> Professional Summary
+      </motion.h3>
+      <motion.div
+        className={`text-sm ${
+          isDarkMode ? "text-gray-300" : "text-gray-700"
+        } leading-relaxed sm:text-base text-left`}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.6 }}
+      >
         <b>Innovative Full Stack & Mobile Developer with 3+ years of hands-on experience delivering robust, user-centric solutions across web, mobile, and desktop platforms.</b> I blend deep expertise in React, Node.js, Flutter, and cloud technologies with a strong foundation in IT infrastructure and application packaging.<br /><br />
         My academic journey includes a distinction in Computer Applications Development (Conestoga College, Waterloo), advanced Mobile Applications Development (Centennial College, Toronto), and a Bachelor’s in Electronics & Communication Engineering. These programs fueled my passion for building scalable, secure, and high-performance applications.<br /><br />
         At Atos, I engineered enterprise-grade deployments, mastering MSI/MSIX packaging, PowerShell automation, and SCCM/Intune for seamless software delivery in virtualized environments (Citrix, VMware, Hyper-V).<br /><br />
@@ -1996,13 +2150,16 @@ const BriefSummary = ({ isDarkMode }) => (
     </div>
 
     <div className="mt-6">
-      <h4
+      <motion.h4
         className={`text-lg font-semibold mb-3 ${
           isDarkMode ? "text-dark-primary-300" : "text-light-primary-700"
-        }`}
+        } flex items-center gap-2`}
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5, delay: 0.7 }}
       >
-        🔑 Key Skills
-      </h4>
+        <span>🔑</span> Key Skills
+      </motion.h4>
       <div className="flex flex-wrap gap-2">
         {[
           "Mobile Development",
@@ -2014,16 +2171,28 @@ const BriefSummary = ({ isDarkMode }) => (
           "React Native",
           "Node.js",
           "MongoDB",
-        ].map((skill) => (
+        ].map((skill, index) => (
           <motion.span
             key={skill}
-            className={`px-2 py-1 text-xs rounded-full ${
+            className={`px-2 py-1 text-xs rounded-full backdrop-blur-sm ${
               isDarkMode
-                ? "bg-dark-primary-900/60 text-dark-primary-300 border border-dark-primary-700"
-                : "bg-light-primary-50 text-light-primary-700 border border-light-primary-200"
+                ? "bg-dark-primary-900/60 text-dark-primary-300 border border-dark-primary-700 shadow-lg shadow-dark-primary-900/20"
+                : "bg-light-primary-50 text-light-primary-700 border border-light-primary-200 shadow-md shadow-light-primary-500/10"
             }`}
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{
+              duration: 0.4,
+              delay: 0.7 + index * 0.05,
+              type: "spring",
+              stiffness: 200,
+            }}
             whileHover={{
-              scale: 1.05,
+              scale: 1.08,
+              y: -3,
+              boxShadow: isDarkMode
+                ? "0 10px 25px rgba(96, 165, 250, 0.3)"
+                : "0 10px 25px rgba(59, 130, 246, 0.2)",
             }}
           >
             {skill}
