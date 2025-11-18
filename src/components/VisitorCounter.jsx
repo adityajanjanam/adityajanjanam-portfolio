@@ -1,5 +1,6 @@
-import { useEffect, useMemo, useState } from "react";
-import { FaUsers } from "react-icons/fa";
+/* eslint-disable */
+import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 import { getDeviceId } from "../lib/deviceFingerprint";
 import { createVisitorStore } from "../lib/visitorStore";

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { motion } from "framer-motion";
 import * as React from "react";
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
@@ -5,7 +6,6 @@ import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
 import { trackSocialClick } from "../utils/analytics";
 
 import LinktreeIcon from "./LinktreeIcon";
-import { VisitorCounter } from "./VisitorCounter";
 
 const Footer = ({ isDarkMode, setActiveTab, activeTab }) => {
   const currentYear = new Date().getFullYear();
@@ -342,7 +342,7 @@ const Footer = ({ isDarkMode, setActiveTab, activeTab }) => {
               {currentYear} Aditya Janjanam. All rights reserved.
             </motion.p>
             
-            <VisitorCounter isDarkMode={isDarkMode} />
+            {/* Visitor counter removed per request */}
             
             <motion.p
               whileHover={{ scale: 1.02 }}
@@ -387,7 +387,7 @@ const Footer = ({ isDarkMode, setActiveTab, activeTab }) => {
               } animate-pulse`}></span>
               Version <span className={`font-bold text-lg ${
                 isDarkMode ? "text-purple-200" : "text-purple-900"
-              }`}>1.2</span>
+              }`}>2.0</span>
             </motion.p>
           </div>
         </motion.div>

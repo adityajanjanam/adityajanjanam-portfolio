@@ -18,5 +18,6 @@
     "MD034": false,
     "MD036": false
   },
-  "editor.aiStats.enabled": true
+  "editor.aiStats.enabled": true,
+  "window.autoDetectColorScheme": true
 }

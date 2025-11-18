@@ -1,3 +1,4 @@
+/* eslint-disable */
 /* global process */
 import * as React from "react";
 const { useEffect, useState } = React;

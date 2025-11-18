@@ -1,10 +1,15 @@
+import greatLearningLogo from "../assets/greatlearning.png";
+import soloLearnLogo from "../assets/sololearn.png";
+import uwaterlooLogo from "../assets/uwaterloo.png";
+import wrMuseumLogo from "../assets/wrmuseum.png";
+
 export const certifications = [
   {
     id: 1,
     title: "Great Learning Certificate",
     issuer: "Great Learning",
     date: "2024",
-    image: "/assets/greatlearning.png",
+    image: greatLearningLogo,
     description: "Completed comprehensive training in advanced programming concepts",
     skills: ["Programming", "Problem Solving", "Algorithms"],
   },
@@ -13,7 +18,7 @@ export const certifications = [
     title: "SoloLearn Certificate",
     issuer: "SoloLearn",
     date: "2024",
-    image: "/assets/sololearn.png",
+    image: soloLearnLogo,
     description: "Mastered programming fundamentals and coding best practices",
     skills: ["Web Development", "Mobile Development", "Coding"],
   },
@@ -22,7 +27,7 @@ export const certifications = [
     title: "University of Waterloo Certificate",
     issuer: "University of Waterloo",
     date: "2024",
-    image: "/assets/uwaterloo.png",
+    image: uwaterlooLogo,
     description: "Specialized training in software engineering and computer science",
     skills: ["Software Engineering", "Computer Science", "Development"],
   },
@@ -31,7 +36,7 @@ export const certifications = [
     title: "WR Museum Certificate",
     issuer: "Waterloo Region Museum",
     date: "2024",
-    image: "/assets/wrmuseum.png",
+    image: wrMuseumLogo,
     description: "Professional development and community engagement",
     skills: ["Professional Development", "Community Service", "Leadership"],
   },

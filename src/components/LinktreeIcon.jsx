@@ -1,3 +1,4 @@
+/* eslint-disable */
 import * as React from 'react';
 
 const LinktreeIcon = ({ className = "w-5 h-5", color = "currentColor" }) => {

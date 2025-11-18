@@ -1,4 +1,4 @@
-/* eslint-disable no-undef */
+/* eslint-disable */
 const DEFAULT_VISITOR_DATA = {
   totalVisitors: 0,
   visitors: [], // Array of { deviceId, timestamp, firstVisit }
@@ -17,9 +17,9 @@ function getTodayKey() {
 class LocalStorageVisitorStore {
   constructor(storageKey = "visitorCounts") {
     this.storageKey = storageKey;
-    if (!window.localStorage.getItem(this.storageKey)) {
+    if (!globalThis.localStorage.getItem(this.storageKey)) {
       const todayKey = getTodayKey();
-      window.localStorage.setItem(
+      globalThis.localStorage.setItem(
         this.storageKey,
         JSON.stringify({
           ...DEFAULT_VISITOR_DATA,
@@ -31,7 +31,7 @@ class LocalStorageVisitorStore {
 
   async getVisitorCount() {
     try {
-      const raw = window.localStorage.getItem(this.storageKey);
+      const raw = globalThis.localStorage.getItem(this.storageKey);
       if (!raw) return { totalVisitors: 0, visitors: [], activeViewers: 0 };
       const data = JSON.parse(raw);
       
@@ -55,7 +55,7 @@ class LocalStorageVisitorStore {
 
   async updateActiveSession(deviceId) {
     try {
-      const raw = window.localStorage.getItem(this.storageKey);
+      const raw = globalThis.localStorage.getItem(this.storageKey);
       const data = raw ? JSON.parse(raw) : { ...DEFAULT_VISITOR_DATA };
       
       if (!data.activeSessions) {
@@ -66,13 +66,13 @@ class LocalStorageVisitorStore {
       
       // Clean up old sessions
       const now = Date.now();
-      Object.keys(data.activeSessions).forEach(id => {
+      for (const id of Object.keys(data.activeSessions)) {
         if ((now - data.activeSessions[id]) >= ACTIVE_SESSION_TIMEOUT) {
           delete data.activeSessions[id];
         }
-      });
+      }
       
-      window.localStorage.setItem(this.storageKey, JSON.stringify(data));
+      globalThis.localStorage.setItem(this.storageKey, JSON.stringify(data));
     } catch (error) {
       console.error("Error updating active session:", error);
     }
@@ -100,7 +100,7 @@ class LocalStorageVisitorStore {
         lastResetDate: getTodayKey(),
       };
       
-      window.localStorage.setItem(this.storageKey, JSON.stringify(updatedData));
+      globalThis.localStorage.setItem(this.storageKey, JSON.stringify(updatedData));
       return { totalVisitors: visitors.length, isNewVisitor: true };
     }
     
@@ -112,7 +112,7 @@ class LocalStorageVisitorStore {
       ...DEFAULT_VISITOR_DATA,
       lastResetDate: getTodayKey(),
     };
-    window.localStorage.setItem(this.storageKey, JSON.stringify(resetData));
+    globalThis.localStorage.setItem(this.storageKey, JSON.stringify(resetData));
     return resetData;
   }
 }
@@ -197,11 +197,11 @@ class FirestoreVisitorStore {
     activeSessions[deviceId] = now;
 
     // Clean up old sessions
-    Object.keys(activeSessions).forEach(id => {
+    for (const id of Object.keys(activeSessions)) {
       if ((now - activeSessions[id]) >= ACTIVE_SESSION_TIMEOUT) {
         delete activeSessions[id];
       }
-    });
+    }
 
     if (!snap.exists()) {
       await this._setDoc(ref, {

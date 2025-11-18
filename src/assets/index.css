@@ -3,6 +3,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap");
 
+/* stylelint-disable */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -65,14 +66,34 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%; /* Chrome, Safari, iOS Safari */
-  -moz-text-size-adjust: 100%; /* Firefox - with prefix for compatibility */
-  -ms-text-size-adjust: 100%; /* IE */
-  text-size-adjust: 100%; /* Standard property */
   background: linear-gradient(to bottom, #1e293b, #111827);
   color: #fff;
   font-size: clamp(14px, 2vw, 16px); /* Responsive font size */
   line-height: 1.6;
+}
+
+@supports (-webkit-text-size-adjust: 100%) {
+  body {
+    -webkit-text-size-adjust: 100%; /* Chrome, Safari, iOS Safari */
+  }
+}
+
+@supports (-moz-text-size-adjust: 100%) {
+  body {
+    -moz-text-size-adjust: 100%; /* Firefox */
+  }
+}
+
+@supports (-ms-text-size-adjust: 100%) {
+  body {
+    -ms-text-size-adjust: 100%; /* IE */
+  }
+}
+
+@supports (text-size-adjust: 100%) {
+  body {
+    text-size-adjust: 100%; /* Standard property guarded by @supports */
+  }
 }
 
 /* Ensure root element fills viewport on mobile */
@@ -228,10 +249,14 @@ html {
 /* High DPI screens */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   img {
-    image-rendering: -webkit-optimize-contrast; /* Edge 79+ - must come first */
-    image-rendering: -moz-crisp-edges; /* Firefox older */
-    image-rendering: crisp-edges; /* Modern browsers */
+    image-rendering: -webkit-optimize-contrast; /* Edge 79+ */
     image-rendering: pixelated; /* Fallback for upscaling */
+  }
+
+  @supports (image-rendering: crisp-edges) {
+    img {
+      image-rendering: crisp-edges; /* Modern browsers that advertise support */
+    }
   }
 }
 

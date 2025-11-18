@@ -47,10 +47,10 @@ function calculateDailyWeekly(reactions, todayKey, weekStartKey) {
 class LocalStorageFeedbackStore {
   constructor(storageKey = "emojiFeedbackCounts") {
     this.storageKey = storageKey;
-    if (!window.localStorage.getItem(this.storageKey)) {
+    if (!globalThis.localStorage.getItem(this.storageKey)) {
       const todayKey = getTodayKey();
       const weekStartKey = getWeekStartKey();
-      window.localStorage.setItem(
+      globalThis.localStorage.setItem(
         this.storageKey,
         JSON.stringify({
           ...DEFAULT_COUNTS,
@@ -63,7 +63,7 @@ class LocalStorageFeedbackStore {
 
   async getCounts() {
     try {
-      const raw = window.localStorage.getItem(this.storageKey);
+      const raw = globalThis.localStorage.getItem(this.storageKey);
       if (!raw) return { ...DEFAULT_COUNTS };
       const counts = JSON.parse(raw);
       const todayKey = getTodayKey();
@@ -80,7 +80,7 @@ class LocalStorageFeedbackStore {
         counts.weeklyTotal = weeklyTotal;
         counts.todayDate = todayKey;
         counts.weekStartDate = weekStartKey;
-        window.localStorage.setItem(this.storageKey, JSON.stringify(counts));
+        globalThis.localStorage.setItem(this.storageKey, JSON.stringify(counts));
       }
 
       return { ...DEFAULT_COUNTS, ...counts };
@@ -118,7 +118,7 @@ class LocalStorageFeedbackStore {
     counts.todayDate = todayKey;
     counts.weekStartDate = weekStartKey;
 
-    window.localStorage.setItem(this.storageKey, JSON.stringify(counts));
+    globalThis.localStorage.setItem(this.storageKey, JSON.stringify(counts));
     return counts;
   }
 
@@ -135,7 +135,7 @@ class LocalStorageFeedbackStore {
       todayDate: todayKey,
       weekStartDate: weekStartKey,
     };
-    window.localStorage.setItem(this.storageKey, JSON.stringify(resetData));
+    globalThis.localStorage.setItem(this.storageKey, JSON.stringify(resetData));
     return resetData;
   }
 }

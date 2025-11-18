@@ -55,7 +55,8 @@
     "import/no-unresolved": [
       "error",
       {
-        "ignore": ["\\.(css|scss)$"]
+        "ignore": ["\\.(css|scss)$"],
+        "caseSensitive": false
       }
     ],
     "import/extensions": [

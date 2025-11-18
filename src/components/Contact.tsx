@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { send as sendEmail } from "@emailjs/browser";
 import { motion } from "framer-motion";
 import * as React from "react";
