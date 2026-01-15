@@ -54,6 +54,7 @@ export const EmojiFeedback = ({ className, isDarkMode, adminKey = null }) => {
 
   useEffect(() => {
     let mounted = true;
+    let unsubscribe = null;
     
     // Check opt-out status with fallback for incognito mode
     let optOutStatus = false;
@@ -94,23 +95,52 @@ export const EmojiFeedback = ({ className, isDarkMode, adminKey = null }) => {
           }
         });
 
-      store
-        .getCounts()
-        .then((c) => {
-          if (mounted) setCounts(c);
-        })
-        .catch(() => {
-          if (mounted) setError("Failed to load feedback");
-        })
-        .finally(() => {
-          if (mounted) setLoading(false);
+      // Subscribe to real-time updates if available
+      if (store.subscribeToUpdates) {
+        store.subscribeToUpdates((counts) => {
+          if (mounted) {
+            setCounts(counts);
+            setLoading(false);
+          }
+        }).then((unsub) => {
+          unsubscribe = unsub;
+        }).catch(() => {
+          // Fallback to one-time fetch if real-time not available
+          store
+            .getCounts()
+            .then((c) => {
+              if (mounted) setCounts(c);
+            })
+            .catch(() => {
+              if (mounted) setError("Failed to load feedback");
+            })
+            .finally(() => {
+              if (mounted) setLoading(false);
+            });
         });
+      } else {
+        // Fallback for LocalStorage store (no real-time)
+        store
+          .getCounts()
+          .then((c) => {
+            if (mounted) setCounts(c);
+          })
+          .catch(() => {
+            if (mounted) setError("Failed to load feedback");
+          })
+          .finally(() => {
+            if (mounted) setLoading(false);
+          });
+      }
     } else {
       setLoading(false);
     }
 
     return () => {
       mounted = false;
+      if (unsubscribe) {
+        unsubscribe();
+      }
     };
   }, [store, optOut]);
 

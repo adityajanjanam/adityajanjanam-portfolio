@@ -149,7 +149,7 @@ class FirestoreFeedbackStore {
   async init() {
     if (this.firestore) return;
     const { initializeApp, getApps } = await import("firebase/app");
-    const { getFirestore, doc, getDoc, setDoc, updateDoc, increment, collection, query, where, getDocs } = await import("firebase/firestore");
+    const { getFirestore, doc, getDoc, setDoc, updateDoc, increment, collection, query, where, getDocs, onSnapshot } = await import("firebase/firestore");
     // eslint-disable-next-line no-undef
     const config = {
       apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -175,6 +175,7 @@ class FirestoreFeedbackStore {
     this._query = query;
     this._where = where;
     this._getDocs = getDocs;
+    this._onSnapshot = onSnapshot;
   }
 
   async getCounts() {
@@ -310,6 +311,40 @@ class FirestoreFeedbackStore {
     };
     await this._setDoc(ref, resetData);
     return resetData;
+  }
+
+  // Real-time listener for counts
+  async subscribeToUpdates(callback) {
+    await this.init();
+    const [collectionName, id] = this.docPath.split("/");
+    const ref = this._doc(this.firestore, collectionName, id);
+    
+    return this._onSnapshot(ref, (snap) => {
+      const todayKey = getTodayKey();
+      const weekStartKey = getWeekStartKey();
+      
+      if (!snap.exists()) {
+        callback({
+          ...DEFAULT_COUNTS,
+          todayDate: todayKey,
+          weekStartDate: weekStartKey,
+        });
+        return;
+      }
+
+      const data = snap.data();
+      const reactions = data.reactions || [];
+      const { dailyTotal, weeklyTotal } = calculateDailyWeekly(reactions, todayKey, weekStartKey);
+
+      callback({
+        ...DEFAULT_COUNTS,
+        ...data,
+        dailyTotal,
+        weeklyTotal,
+        todayDate: todayKey,
+        weekStartDate: weekStartKey,
+      });
+    });
   }
 }
 
