@@ -36,11 +36,30 @@ export function generateDeviceFingerprint() {
 
 export function getDeviceId() {
   const STORAGE_KEY = "emojiFeedbackDeviceId";
-  let deviceId = localStorage.getItem(STORAGE_KEY);
-  if (!deviceId) {
-    deviceId = generateDeviceFingerprint();
-    localStorage.setItem(STORAGE_KEY, deviceId);
+  let deviceId;
+  
+  // Try localStorage first (normal mode)
+  try {
+    deviceId = localStorage.getItem(STORAGE_KEY);
+    if (!deviceId) {
+      deviceId = generateDeviceFingerprint();
+      localStorage.setItem(STORAGE_KEY, deviceId);
+    }
+  } catch (e) {
+    // Fallback for incognito mode or localStorage disabled
+    // Use session-based storage or just the fingerprint
+    deviceId = sessionStorage.getItem(STORAGE_KEY);
+    if (!deviceId) {
+      deviceId = generateDeviceFingerprint();
+      try {
+        sessionStorage.setItem(STORAGE_KEY, deviceId);
+      } catch (sessionError) {
+        // If even sessionStorage fails, just use the fingerprint directly
+        // This will regenerate on page reload but allows voting in incognito
+      }
+    }
   }
+  
   return deviceId;
 }
 

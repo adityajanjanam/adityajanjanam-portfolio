@@ -54,7 +54,15 @@ export const EmojiFeedback = ({ className, isDarkMode, adminKey = null }) => {
 
   useEffect(() => {
     let mounted = true;
-    const optOutStatus = localStorage.getItem(FEEDBACK_OPT_OUT_KEY) === "true";
+    
+    // Check opt-out status with fallback for incognito mode
+    let optOutStatus = false;
+    try {
+      optOutStatus = localStorage.getItem(FEEDBACK_OPT_OUT_KEY) === "true";
+    } catch (e) {
+      // Incognito mode - assume not opted out
+      optOutStatus = false;
+    }
     setOptOut(optOutStatus);
 
     if (!optOutStatus) {
@@ -68,9 +76,21 @@ export const EmojiFeedback = ({ className, isDarkMode, adminKey = null }) => {
           if (mounted) setHasVoted(voted);
         })
         .catch(() => {
-          // Fallback to localStorage check
+          // Fallback to localStorage/sessionStorage check
           if (mounted) {
-            setHasVoted(Boolean(localStorage.getItem(FEEDBACK_LOCAL_VOTE_KEY)));
+            let hasVotedLocal = false;
+            try {
+              hasVotedLocal = Boolean(localStorage.getItem(FEEDBACK_LOCAL_VOTE_KEY));
+            } catch (e) {
+              // Try sessionStorage for incognito mode
+              try {
+                hasVotedLocal = Boolean(sessionStorage.getItem(FEEDBACK_LOCAL_VOTE_KEY));
+              } catch (sessionError) {
+                // Allow voting even if storage fails
+                hasVotedLocal = false;
+              }
+            }
+            setHasVoted(hasVotedLocal);
           }
         });
 
@@ -102,13 +122,32 @@ export const EmojiFeedback = ({ className, isDarkMode, adminKey = null }) => {
       setLoading(true);
       const updated = await store.increment(key, deviceId);
       setCounts(updated);
-      localStorage.setItem(FEEDBACK_LOCAL_VOTE_KEY, "1");
+      
+      // Mark as voted in storage (with fallback for incognito)
+      try {
+        localStorage.setItem(FEEDBACK_LOCAL_VOTE_KEY, "1");
+      } catch (e) {
+        try {
+          sessionStorage.setItem(FEEDBACK_LOCAL_VOTE_KEY, "1");
+        } catch (sessionError) {
+          // Storage not available, but vote still recorded in Firebase
+        }
+      }
+      
       setHasVoted(true);
       setTimeout(() => setClickedEmoji(null), 1000);
     } catch (e) {
       if (e.message.includes("already voted")) {
         setHasVoted(true);
-        localStorage.setItem(FEEDBACK_LOCAL_VOTE_KEY, "1");
+        try {
+          localStorage.setItem(FEEDBACK_LOCAL_VOTE_KEY, "1");
+        } catch (storageError) {
+          try {
+            sessionStorage.setItem(FEEDBACK_LOCAL_VOTE_KEY, "1");
+          } catch (sessionError) {
+            // Ignore storage errors
+          }
+        }
       } else {
         setError("Failed to submit feedback");
       }
@@ -120,7 +159,11 @@ export const EmojiFeedback = ({ className, isDarkMode, adminKey = null }) => {
   const handleOptOut = () => {
     const newOptOut = !optOut;
     setOptOut(newOptOut);
-    localStorage.setItem(FEEDBACK_OPT_OUT_KEY, newOptOut.toString());
+    try {
+      localStorage.setItem(FEEDBACK_OPT_OUT_KEY, newOptOut.toString());
+    } catch (e) {
+      // Storage not available in incognito
+    }
     if (newOptOut) {
       setHasVoted(false);
       setCounts(initialCounts);
@@ -139,7 +182,15 @@ export const EmojiFeedback = ({ className, isDarkMode, adminKey = null }) => {
       await store.reset();
       setCounts(initialCounts);
       setHasVoted(false);
-      localStorage.removeItem(FEEDBACK_LOCAL_VOTE_KEY);
+      try {
+        localStorage.removeItem(FEEDBACK_LOCAL_VOTE_KEY);
+      } catch (e) {
+        try {
+          sessionStorage.removeItem(FEEDBACK_LOCAL_VOTE_KEY);
+        } catch (sessionError) {
+          // Ignore storage errors
+        }
+      }
       alert("Feedback data reset successfully");
       setShowAdmin(false);
       setAdminPassword("");
