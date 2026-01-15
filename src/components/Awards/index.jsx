@@ -53,11 +53,11 @@ const Awards = () => {
         >
           <div className="flex items-center justify-center gap-3 mb-4">
             <FaTrophy className="text-5xl text-yellow-500" />
-            <h1 className="text-5xl md:text-6xl font-extrabold gradient-text">
+            <h1 className="text-4xl md:text-5xl font-extrabold gradient-text">
               Honors & Awards
             </h1>
           </div>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-base text-gray-400 max-w-3xl mx-auto">
             Recognition of achievements, technical excellence, and contributions to the community
           </p>
         </motion.div>

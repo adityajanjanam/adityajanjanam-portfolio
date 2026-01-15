@@ -75,11 +75,11 @@ const Certifications = () => {
         >
           <div className="flex items-center justify-center gap-3 mb-4">
             <FaCertificate className="text-5xl text-purple-500" />
-            <h1 className="text-5xl md:text-6xl font-extrabold gradient-text">
+            <h1 className="text-4xl md:text-5xl font-extrabold gradient-text">
               Certifications
             </h1>
           </div>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-base text-gray-400 max-w-3xl mx-auto">
             Professional certifications and training programs completed to enhance technical expertise
           </p>
         </motion.div>

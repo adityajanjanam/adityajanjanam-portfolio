@@ -293,14 +293,14 @@ const Footer = ({ isDarkMode, setActiveTab, activeTab }) => {
               >
                 <span className="text-lg">📍</span>
                 <a
-                  href="https://www.google.com/maps/place/Waterloo,+ON"
+                  href="https://www.google.com/maps/place/Canada"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`hover:underline transition-colors ${
                     isDarkMode ? "hover:text-purple-400" : "hover:text-purple-600"
                   }`}
                 >
-                  Waterloo, Canada
+                  Canada
                 </a>
               </motion.p>
               <motion.p

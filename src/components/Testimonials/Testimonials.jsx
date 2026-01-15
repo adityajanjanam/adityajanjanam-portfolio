@@ -92,7 +92,7 @@ const Testimonials = ({ isDarkMode = false }) => {
             Professional Testimonials
           </h1>
           <p
-            className={`text-lg ${
+            className={`text-base ${
               isDarkMode ? "text-gray-400" : "text-gray-600"
             }`}
           >

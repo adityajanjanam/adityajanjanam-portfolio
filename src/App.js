@@ -16,6 +16,7 @@ import wrmuseumLogo from "./assets/wrmuseum.png";
 import Education from "./components/Education/index";
 import EmojiFeedbackWidget from "./components/EmojiFeedback";
 import Footer from "./components/Footer";
+import ScrollProgressBar from "./components/ScrollProgressBar";
 import Testimonials from "./components/Testimonials/Testimonials";
 
 const technologies = {
@@ -5882,9 +5883,10 @@ const skillsData = {
   ],
   Languages: [
     { name: "English" },
+    { name: "French (Learning)" },
     { name: "Hindi" },
     { name: "Kannada" },
-    { name: "Malayalam" },
+    { name: "Malayalam (Learning)" },
     { name: "Tamil" },
     { name: "Telugu" },
   ],
@@ -5999,29 +6001,72 @@ const Skills = ({ isDarkMode }) => {
         className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10"
       >
         {[
-          { label: "Total Skills", value: stats.totalSkills, icon: "🎯", color: "from-blue-500 to-cyan-500" },
-          { label: "Categories", value: stats.categories, icon: "📊", color: "from-purple-500 to-pink-500" },
-          { label: "Endorsed Skills", value: stats.endorsedSkills, icon: "⭐", color: "from-amber-500 to-orange-500" },
-          { label: "Total Endorsements", value: stats.totalEndorsements, icon: "👍", color: "from-green-500 to-emerald-500" },
+          { 
+            label: "Total Skills", 
+            value: stats.totalSkills, 
+            color: "from-blue-500 to-cyan-500",
+            iconColor: isDarkMode ? "text-blue-400" : "text-blue-600",
+            icon: (
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+              </svg>
+            )
+          },
+          { 
+            label: "Categories", 
+            value: stats.categories, 
+            color: "from-purple-500 to-pink-500",
+            iconColor: isDarkMode ? "text-purple-400" : "text-purple-600",
+            icon: (
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+              </svg>
+            )
+          },
+          { 
+            label: "Endorsed Skills", 
+            value: stats.endorsedSkills, 
+            color: "from-amber-500 to-orange-500",
+            iconColor: isDarkMode ? "text-amber-400" : "text-amber-600",
+            icon: (
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+              </svg>
+            )
+          },
+          { 
+            label: "Total Endorsements", 
+            value: stats.totalEndorsements, 
+            color: "from-green-500 to-emerald-500",
+            iconColor: isDarkMode ? "text-emerald-400" : "text-emerald-600",
+            icon: (
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
+              </svg>
+            )
+          },
         ].map((stat, index) => (
           <motion.div
             key={stat.label}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3, delay: 0.1 + index * 0.05 }}
-            className={`rounded-2xl p-6 text-center backdrop-blur-md border border-white/10 shadow-xl ${
+            whileHover={{ scale: 1.05, y: -5 }}
+            className={`rounded-lg p-3 backdrop-blur-md border shadow-md transition-all ${
               isDarkMode
-                ? "bg-gradient-to-br from-gray-900/80 to-gray-800/80"
-                : "bg-gradient-to-br from-white/90 to-gray-50/90"
+                ? "bg-gradient-to-br from-gray-900/80 to-gray-800/80 border-white/10 hover:border-white/20"
+                : "bg-gradient-to-br from-white/90 to-gray-50/90 border-gray-200 hover:border-gray-300"
             }`}
           >
-            <div className={`text-3xl mb-2 bg-gradient-to-r ${stat.color} bg-clip-text text-transparent font-bold`}>
-              {stat.icon}
+            <div className="flex items-center justify-between mb-1.5">
+              <div className={stat.iconColor}>
+                {stat.icon}
+              </div>
             </div>
-            <div className={`text-3xl font-bold mb-1 ${isDarkMode ? "text-white" : "text-gray-900"}`}>
+            <div className={`text-2xl font-bold mb-0.5 bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`}>
               {stat.value}
             </div>
-            <div className={`text-sm font-medium ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>
+            <div className={`text-xs font-medium ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>
               {stat.label}
             </div>
           </motion.div>
@@ -6042,7 +6087,7 @@ const Skills = ({ isDarkMode }) => {
             placeholder="🔍 Search skills... (e.g., React, PowerShell, Communication)"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className={`w-full px-6 py-4 rounded-xl text-lg font-medium border-2 transition-all ${
+            className={`w-full px-4 py-2 rounded-lg text-sm font-medium border-2 transition-all ${
               isDarkMode
                 ? "bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 focus:border-purple-500"
                 : "bg-white/80 border-gray-300 text-gray-900 placeholder-gray-400 focus:border-purple-500"
@@ -6054,7 +6099,7 @@ const Skills = ({ isDarkMode }) => {
         <div className="flex flex-wrap gap-3 mb-4">
           <button
             onClick={() => setSelectedCategory("all")}
-            className={`px-5 py-2.5 rounded-lg font-semibold transition-all transform hover:scale-105 ${
+            className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-all transform hover:scale-105 ${
               selectedCategory === "all"
                 ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg"
                 : isDarkMode
@@ -6068,7 +6113,7 @@ const Skills = ({ isDarkMode }) => {
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-5 py-2.5 rounded-lg font-semibold transition-all transform hover:scale-105 ${
+              className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-all transform hover:scale-105 ${
                 selectedCategory === cat
                   ? "bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg"
                   : isDarkMode
@@ -6104,20 +6149,20 @@ const Skills = ({ isDarkMode }) => {
       </motion.div>
 
       {/* Skills Grid */}
-      <div className="space-y-6">
+      <div className="space-y-4">
         {Object.entries(filteredData).map(([category, skills], catIndex) => (
           <motion.div
             key={category}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: catIndex * 0.05 }}
-            className={`rounded-2xl p-6 shadow-xl backdrop-blur-md border border-white/10 hover:shadow-2xl transition-all ${
+            className={`rounded-xl p-4 shadow-md backdrop-blur-md border border-white/10 hover:shadow-lg transition-all ${
               isDarkMode
                 ? "bg-gradient-to-br from-gray-900/80 via-gray-800/70 to-gray-900/90"
                 : "bg-gradient-to-br from-white/80 via-blue-50/60 to-white/90"
             }`}
           >
-            <div className="flex items-center justify-between mb-5 pb-4 border-b border-gray-700/30">
+            <div className="flex items-center justify-between mb-3 pb-2 border-b border-gray-700/30">
               <h3
                 className={`text-xl font-bold ${
                   isDarkMode ? "text-cyan-300" : "text-blue-700"
@@ -6126,7 +6171,7 @@ const Skills = ({ isDarkMode }) => {
                 {category}
               </h3>
               <span
-                className={`px-3 py-1 rounded-full text-sm font-semibold ${
+                className={`px-2.5 py-0.5 rounded-full text-sm font-medium ${
                   isDarkMode
                     ? "bg-blue-500/20 text-blue-300 border border-blue-400/40"
                     : "bg-blue-100 text-blue-700 border border-blue-200"
@@ -6143,7 +6188,7 @@ const Skills = ({ isDarkMode }) => {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.3, delay: catIndex * 0.05 + i * 0.02 }}
                   whileHover={{ scale: 1.05 }}
-                  className={`flex items-center gap-1 px-3 py-2 text-sm rounded-full font-medium transition-all cursor-default ${
+                  className={`flex items-center gap-1 px-2.5 py-1.5 text-sm rounded-full font-medium transition-all cursor-default ${
                     isDarkMode
                       ? skill.endorsement
                         ? "bg-gradient-to-r from-blue-600/80 to-purple-600/80 text-white border border-blue-400/50 shadow-lg"
@@ -6588,6 +6633,7 @@ const App = () => {
     <div
       className={`min-h-screen flex flex-col ${isDarkMode ? "bg-[#080808] text-gray-200" : "bg-white text-gray-800"}`}
     >
+      <ScrollProgressBar isDarkMode={isDarkMode} />
       <NavLinks
         activeTab={activeTab}
         setActiveTab={setActiveTab}
