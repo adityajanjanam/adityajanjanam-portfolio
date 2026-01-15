@@ -353,13 +353,22 @@ export function createFeedbackStore() {
   const hasFirebase = Boolean(
     process.env.REACT_APP_FIREBASE_API_KEY && process.env.REACT_APP_FIREBASE_PROJECT_ID
   );
+  console.log("🔥 Firebase config check:", {
+    hasApiKey: Boolean(process.env.REACT_APP_FIREBASE_API_KEY),
+    hasProjectId: Boolean(process.env.REACT_APP_FIREBASE_PROJECT_ID),
+    usingFirestore: hasFirebase
+  });
   if (hasFirebase) {
     try {
-      return new FirestoreFeedbackStore();
-    } catch {
+      const store = new FirestoreFeedbackStore();
+      console.log("✅ Created FirestoreFeedbackStore");
+      return store;
+    } catch (err) {
+      console.error("❌ Failed to create FirestoreFeedbackStore, falling back to LocalStorage:", err);
       return new LocalStorageFeedbackStore();
     }
   }
+  console.log("ℹ️ Using LocalStorageFeedbackStore (no Firebase config)");
   return new LocalStorageFeedbackStore();
 }
 

@@ -99,19 +99,26 @@ export const EmojiFeedback = ({ className, isDarkMode, adminKey = null }) => {
       if (store.subscribeToUpdates) {
         store.subscribeToUpdates((counts) => {
           if (mounted) {
+            console.log("📊 Received feedback counts:", counts);
             setCounts(counts);
             setLoading(false);
           }
         }).then((unsub) => {
           unsubscribe = unsub;
-        }).catch(() => {
+          console.log("✅ Subscribed to real-time feedback updates");
+        }).catch((err) => {
+          console.error("❌ Real-time subscription failed:", err);
           // Fallback to one-time fetch if real-time not available
           store
             .getCounts()
             .then((c) => {
-              if (mounted) setCounts(c);
+              if (mounted) {
+                console.log("📊 Fetched feedback counts (fallback):", c);
+                setCounts(c);
+              }
             })
-            .catch(() => {
+            .catch((fetchErr) => {
+              console.error("❌ Failed to fetch counts:", fetchErr);
               if (mounted) setError("Failed to load feedback");
             })
             .finally(() => {
@@ -120,12 +127,17 @@ export const EmojiFeedback = ({ className, isDarkMode, adminKey = null }) => {
         });
       } else {
         // Fallback for LocalStorage store (no real-time)
+        console.log("ℹ️ Using LocalStorage fallback (no real-time updates)");
         store
           .getCounts()
           .then((c) => {
-            if (mounted) setCounts(c);
+            if (mounted) {
+              console.log("📊 Fetched feedback counts (LocalStorage):", c);
+              setCounts(c);
+            }
           })
-          .catch(() => {
+          .catch((err) => {
+            console.error("❌ Failed to load feedback:", err);
             if (mounted) setError("Failed to load feedback");
           })
           .finally(() => {
